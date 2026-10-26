@@ -7,7 +7,7 @@ const runDirectory=join(tmpdir(),`classclash-browser-${Date.now()}`);
 mkdirSync(runDirectory,{recursive:true});mkdirSync('artifacts',{recursive:true});
 writeFileSync('artifacts/e2e-run-location.json',JSON.stringify({runDirectory,reason:'Keep SQLite WAL and active browser recording outside cloud-synced source folders; final screenshots/reports remain in artifacts.'},null,2));
 export default defineConfig({
-  testDir:'tests/e2e',testIgnore:'**/visual-performance.spec.ts',timeout:240000,workers:1,fullyParallel:false,
+  testDir:'tests/e2e',testIgnore:'**/visual-performance.spec.ts',timeout:240000,workers:1,fullyParallel:false,maxFailures:1,
   outputDir:join(runDirectory,'browser-results'),
   expect:{timeout:15000},reporter:[['list'],['html',{open:'never'}]],
   use:{launchOptions:hardwareGpu?{args:['--use-gl=angle','--use-angle=d3d11'],ignoreDefaultArgs:['--enable-unsafe-swiftshader']}:{},baseURL:'http://127.0.0.1:3101',viewport:{width:1366,height:768},trace:'retain-on-failure',screenshot:'only-on-failure',video:'off'},

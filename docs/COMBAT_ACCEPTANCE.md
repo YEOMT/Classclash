@@ -12,8 +12,8 @@
 
 | 증거 | 실제 결과와 범위 |
 |---|---|
-| [unit-results.txt](../artifacts/unit-results.txt) | 126개 실행, 126 PASS, 0 FAIL. C 20개, H의 36개 스킬별 양성 시전과 개별 회귀, 룸·경제·복구 등을 포함한다. 소요 34.5초는 다른 브라우저·서버 작업과 경쟁한 환경의 값이다. |
-| [acceptance-unit-results.txt](../artifacts/acceptance-unit-results.txt) | 이전 115개 실행, 115 PASS. 최신 126개 기록보다 오래된 증거다. |
+| [unit-results.txt](../artifacts/unit-results.txt) | 최신153개 실행, 153 PASS, 0 FAIL, 약10.15초. C 21개(미니언 접선 회귀 포함), H의36개 스킬별 양성 시전과 개별 회귀, 추가E12개·heartbeat·룸·경제·복구 등을 포함한다. |
+| [acceptance-unit-results.txt](../artifacts/acceptance-unit-results.txt) | 이전 115개 실행, 115 PASS. 최신153개 기록보다 오래된 증거다. |
 | [acceptance-extra-heartbeat-results.txt](../artifacts/acceptance-extra-heartbeat-results.txt) | 추가 회귀 E 12개와 heartbeat 6개를 실제 실행하여 18/18 PASS, 0 skip, 종료코드0. E의 상태 제어 fixture는 서버 검증이며 브라우저 시각 검증을 뜻하지 않는다. |
 | [VISUAL_REVIEW.md](../artifacts/VISUAL_REVIEW.md) | 정상 속도 실제 HTTP/WS에서 사람 1+AI 29 로비·퀴즈·출정·전투·재접속 화면을 열어 본 과거 기록. 호스트 전체맵, 학생 추적 화면, 퀴즈 중 전투, 모바일 폭 확인. 36개 모든 스킬의 프레임 동기 검수는 포함하지 않는다. |
 | [visual-spot-check-failure.json](../artifacts/visual-spot-check-failure.json) 및 [최신 시각 기록](../artifacts/VISUAL_REVIEW.md) | COUNTDOWN 정체 실패를 보존했다. 픽셀 자산 로더 수정 후 18:38 KST 생산 번들 단독 단축 점검은 PASS: BATTLE 전환·실제 첫 적중·18개 아틀라스·관찰 패널 높이 수정 확인. 시작 퀴즈를 조기 마감한 단축 시험이므로 전체 수업 완주나 36스킬 시간축 전수 검증의 증거는 아니다. |
@@ -21,11 +21,12 @@
 | [browser-performance.json](../artifacts/browser-performance.json) | 최신 생산 번들 단독 정상 20Hz 서버·30 STANDARD AI·5분 표본에서 frame p95 116.8ms로 목표20ms FAIL. 장면 갱신CPU p95 1.8ms, WebGL 제출CPU p95 4.7ms이며 실제 전투는 계속 진행했다. Windows/Chromium/SwiftShader 개발 환경이므로 학교 GPU 성능으로 일반화하지 않는다. |
 | [후보 7 기록](../artifacts/soak-candidate7-90hp-results.json) | 10개 서로 다른 시드, 완료 7, 600–780초 4, 900초 제한 내 미완료 3. 최종 이동 수정 후 정체/불법 위치 모두 0. 경기 길이 인수는 FAIL. |
 | [후보 8 기록](../artifacts/soak-candidate8-siege-results.json) | 8개 기록 후 중단한 탐색 배치. 완료 6, 목표 구간 3, 제한 내 미완료 2. 최종 40경기에 합산하지 않는다. |
-| [후보 9 기록](../artifacts/soak-candidate9-terminals-results.json) | 현재 수치로 완료한 시드 1001–1004: 776.25, 576.30, 631.15, 694.80초. 4개 중 목표 구간 3, 정체/불법 위치 0. 브라우저 검증 자원 분리를 위해 시드1005 진행 중 중단했으며 부분 경기는 표본에서 제외했다. |
+| [후보9 합산10경기](../artifacts/soak-final40/summary.json) | 10/10 완료, 목표 구간6/10, 중앙값685.075초, 최소491.20/최대836.95초로 시간 분포 FAIL. 정체1건(시드1010 원거리 미니언), 불법 위치0. 중단한 부분 경기 대신 시드별 완료 기록만 합산했다. |
+| [후보10 새40경기 지문](../artifacts/soak-candidate10-final40/manifest.json) | 수호/넥서스 원래HP 복원·후반 배율 조정·미니언 접선 수정 뒤의 코드/수치를 고정했다. 과거10개 결과를 가져오지 않는다. 준비 시점 실행0, 브라우저 성능 검증 후 시드1001–1040을 새로 측정한다. |
 
 ### 변경한 초기 수치의 적용 범위
 
-원본 명세 JSON을 수정하지 않았다. [runtime balance](../src/shared/balance.ts)에 사망 후 최소 수동 출정 대기 20초(초기 5초), 미니언의 구조물 상대 배율 0/480/600/720초에서 1/2/4/8(초기 1/1.25/1.5/2), 수호 타워 HP 8000, 넥서스 HP 10000을 명시했다. 일반 외부/내부 타워 HP는 9000/12000이다. 따라서 COM-041과 COM-043의 **원본 숫자 그대로 통과했다는 주장과 현재 설정의 검증은 다르다**. 사용자 확정 규칙인 수동 출정, 실제 공격으로 넥서스 파괴, 승패 시간 제한 없음은 유지한다. 최종 40경기 분포가 미완료이므로 이 수치를 최종 검증 완료한 균형으로 간주하지 않는다.
+원본 명세 JSON을 수정하지 않았다. [runtime balance](../src/shared/balance.ts)에 사망 후 최소 수동 출정 대기 20초(초기 5초), 미니언의 구조물 상대 배율 0/480/600/720초에서 1/2/8/16(초기1/1.25/1.5/2)을 명시했다. 수호 타워/넥서스 HP는 후보9의8000/10000에서 원래14000/22000으로 복원했고, 외부/내부 타워 HP는9000/12000이다. 따라서 COM-041과 COM-043의 **원본 숫자 그대로 통과했다는 주장과 현재 설정의 검증은 다르다**. 사용자 확정 규칙인 수동 출정, 실제 공격으로 넥서스 파괴, 승패 시간 제한 없음은 유지한다. 최종 40경기 분포가 미완료이므로 이 수치를 최종 검증 완료한 균형으로 간주하지 않는다.
 
 ## 02 전투 인수 조건 — 50개
 
@@ -37,7 +38,7 @@
 | COM-004 | PASS | R06, E06 | 생존 중 뽑기·성장·선택·출정 거부, 자산·인벤토리·선택 불변 및 동일 초기 상태의 사람/각 봇 프로필 100틱 전투 전체 상태 동등성을 실제 실행 확인. |
 | COM-005 | PASS | RE04 | 같은 요청 네 번과 다른 요청 ID 재시도 모두 활성 영웅/출정 하나만 유지. |
 | COM-006 | PASS | C18 | 근접8의 서로 다른 링 자리, 실제 피해, 겹침 허용치, 정체0 검사. |
-| COM-007 | PASS | C19, C20; 후보7/8/9 기록 | 두 실제 타워 모서리 정체 재현을 회귀 검사했고, 최종 이동 코드의 기록된 밀집 경기들에서 5초 이동 정체0. 최종40경기 추가 표본은 별도 미실행. |
+| COM-007 | NOT_RUN | C19, C20, C21; navigation-1010-before/after | 후보9의10경기 중 원거리 미니언 정체1건을 발견했다. 정확한 좌표로 수정 전 실패를 재현하고 실제 시작 좌표/목표 연결 검사를 고쳐 이동 회귀3개와 전체153개 PASS. 현재 코드의 밀집 새40경기 무정체 확인은 남음. |
 | COM-008 | NOT_RUN | 스킬 양성 fixture; 과거 호스트 캡처 | 탱커·궁수·사제의 전후열/사제 단독 선두 금지를 수치 또는 연속 영상으로 판정한 기록 없음. |
 | COM-009 | NOT_RUN | C08은 잠금 의존성만 검사 | 도주 적을 타워 뒤로 추격하다 포기하는 경로 시나리오 없음. |
 | COM-010 | NOT_RUN | 현재 타깃 유지 로직 구현 | 두 후보 거리의 교대 변화에 따른 타깃 전환 횟수 회귀 없음. |
@@ -73,7 +74,7 @@
 | COM-040 | PASS | C16, R10, RE12 | 확정 뒤 추가 step으로 상태 불변; 종료 후 요청/답안은 마감 처리되어 자원·통계·시상 불변. |
 | COM-041 | NOT_RUN | RE02; runtime minimumDeadWaitSeconds=20 | 원문5초를 그대로 사용하지 않음. 현 설정의 직전 틱 거부와 충분히 지난 뒤 수동 출정/정비는 PASS. 정확한 20.00초 첫 허용 경계 자체는 미검증. |
 | COM-042 | NOT_RUN | R09, R07; E05 구현 | 일시정지 시 공용 틱/요청 정지와 재개 PASS. 퀴즈 무응답 중 1분 실제 공격 진행 E05도 추가 실행 PASS. 전투·퀴즈쿨·사망잠금이 모두 걸린 단일 시나리오의 경계 대조는 남음. |
-| COM-043 | PASS | C10, C11 | 현재 명시한 1/2/4/8 런타임 배율 경계와 실제 미니언 구조물 피해만 배율 적용, 영웅/미니언 상대 피해 불변 PASS. 원문1/1.25/1.5/2 통과를 뜻하지 않음. |
+| COM-043 | PASS | C10, C11 | 현재 명시한 1/2/8/16 런타임 배율 경계와 실제 미니언 구조물 피해만 배율 적용, 영웅/미니언 상대 피해 불변 PASS. 원문1/1.25/1.5/2 통과를 뜻하지 않음. |
 | COM-044 | PASS | C12 | 큰 구조물 표면 거리 안의 근접 링에서 실제 공격·피해 시작. |
 | COM-045 | PASS | C02, D03, 36개 양성 시전 | 230/300/150ms의 올림 틱5/6/3 및 초기 피해 지연 검사, 모든 스킬 데이터의 틱 정렬 검사. 렌더 프레임 검증은 COM-012/HERO-18 별도. |
 | COM-046 | PASS | R09 | 정지된 틱을 기다리지 않는 RESUME 즉시 처리와 다음 틱 진행. |
@@ -120,11 +121,11 @@
 | 양라인 수호 타워 합류 폭·밀집 통과 | NOT_RUN | 실제 경기 정체0 표본은 있으나 합류부 연속 육안 검수 없음. |
 | 사망 정비→수동 재출정 UI | NOT_RUN | 정비 화면/서버 흐름 일부 PASS. 실제 퀴즈 중 사망을 포함한 최종 브라우저 완주 검증은 남음. |
 
-최종 **30 STANDARD AI 40개 서로 다른 시드의 경기 길이 분포는 NOT_RUN**이다. 현재 후보9의 4개 기록(그중3개 목표 구간)을 40개 결과로 확대해 보고하지 않는다. 최종 요구인 중앙값600–780초 및 70% 이상600–780초는 아직 판정할 수 없다. 후보7·8의 완료율/목표 구간 실패 기록도 보존했다. 사람1+AI29 완주와 AI30의 연속3회 넥서스 파괴·시상식 E2E 역시 현재 로그로 PASS 처리하지 않는다.
+최종 **30 STANDARD AI 40개 서로 다른 시드의 경기 길이 분포는 NOT_RUN**이다. 후보9는10개 중6개만 목표 구간이라 예비 분포 FAIL이었다. 이를 최종40개 결과로 확대해 보고하거나 새 코드에 섞지 않는다. 후보10의 새40개가 끝난 뒤 중앙값600–780초 및28/40 이상600–780초를 판정하며, 예비 결과가 나빠도40개 전체 분포를 수집한다. 후보7·8·9의 실패 기록도 보존했다. 사람1+AI29 완주와 AI30의 연속3회 넥서스 파괴·시상식 E2E 역시 현재 로그로 PASS 처리하지 않는다.
 
 ## 테스트 제목 색인
 
-아래 제목은 소스에서 그대로 추출했다. C/H/R/RE/D 중 실행 로그에 있는 제목은 위의 126개 실행 기록에 연결된다. E 12개는 추가 18개 실행 로그에서 전부 PASS를 확인했다. 제목에 COM/HERO 번호가 있어도 표에 적힌 실제 assertion 범위만 인정한다.
+아래 제목은 소스에서 그대로 추출했다. C/H/R/RE/D 중 실행 로그에 있는 제목은 위의153개 실행 기록에 연결된다. E 12개는 추가 18개 실행 로그에서 전부 PASS를 확인했다. 제목에 COM/HERO 번호가 있어도 표에 적힌 실제 assertion 범위만 인정한다.
 
 ### C — [tests/combat.test.ts](../tests/combat.test.ts)
 
@@ -148,6 +149,8 @@
 - **C18** — COM-006: eight melee attackers reserve distinct ring positions instead of the target center
 - **C19** — COM-007: a tank adjacent to its own tower navigates around the solid obstacle
 - **C20** — COM-007: a mage at the inner tower and corridor corner finds a valid departure edge
+
+- **C21** — COM-007: a nearby ranged-minion goal cannot shortcut the tower tangent from its grid center
 
 ### H — [tests/hero-skills.test.ts](../tests/hero-skills.test.ts)
 

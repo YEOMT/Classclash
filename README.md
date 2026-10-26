@@ -72,6 +72,14 @@ npm run test:render-perf
 - `test:soak`: 표준 AI 30명, 기본 40개 고정 시드로 같은 실제 전투 엔진을 가속 실행합니다. 15분 관측 상한은 시험만 종료하며 게임의 승리 조건을 바꾸지 않습니다. 미완주 또는 목표 시간 비율 미달이면 종료 코드 1입니다.
 - `test:render-perf`: 다른 부하 시험을 종료한 뒤 운영 빌드·30 AI·정상 1배속으로 5분 동안 호스트 프레임 간격을 측정합니다. 설정된 p95 기준을 넘으면 종료 코드 1이며 실제 학교 기기 시험은 아닙니다.
 
+Windows에서 물리 GPU를 사용하는 Playwright 시험은 다음처럼 구분해 실행할 수 있습니다. 이 개발 노트북에서는 기본 헤드리스 실행이 SwiftShader를 선택했고, 아래 설정은 실제 Intel Iris Xe / Direct3D11로 확인했습니다. 성능 보고서에는 두 환경을 별도로 기록합니다.
+
+```powershell
+$env:CLASH_TEST_GPU='d3d11'
+npm run test:render-perf
+npm run test:e2e
+```
+
 모든 검사 스크립트는 실패 시 0이 아닌 종료 코드를 반환합니다. 결과 JSON·로그·화면 캡처와 재현 가능한 시각 검토 기록은 `artifacts/`에 있습니다. 전체 브라우저 시험은 OS 임시 폴더에 DB·실패 trace를 저장하며 경로를 `artifacts/e2e-run-location.json`에 남깁니다. 동영상은 기본 녹화하지 않습니다. 3회 정상 종료 재경기를 포함하는 전체 시험에는 시간이 걸립니다. 개별 시드 디버깅: PowerShell에서 `$env:SEEDS='1'; $env:SEED_START='1001'; npm run test:soak`.
 
 ## 자산과 저장

@@ -1,6 +1,6 @@
 # 05 명세 인수 조건별 증거 감사
 
-감사 시점: 2026-10-26. 기준 커밋: `7a56e90` 및 후속 작업 트리 (최신 통합 실행150 PASS). 최종 제출 커밋과 후속 실행 결과는 루트 `TEST_REPORT.md`에서 갱신한다. 이 표는 `05_BOTS_AND_ACCEPTANCE.md`의 L/B/Q/M/G/C/N/V/R/P 각 15개, 총 150개 조건을 모두 대조한 중간 감사다. 원본 명세의 조건·상태는 수정하지 않는다.
+감사 시점: 2026-10-26. 기준 구현 커밋: `cb6cafe` 및 후속 문서 작업 트리 (최신 통합 실행 153 PASS / 0 FAIL / 0 SKIP, 생산 빌드 PASS). 최종 제출 커밋과 후속 실행 결과는 루트 `TEST_REPORT.md`에서 갱신한다. 이 표는 `05_BOTS_AND_ACCEPTANCE.md`의 L/B/Q/M/G/C/N/V/R/P 각 15개, 총 150개 조건을 모두 대조한 중간 감사다. 원본 명세의 조건·상태는 수정하지 않는다.
 
 PASS는 적힌 범위의 실제 증거가 있다는 뜻이다. 일부만 시험한 행은 NOT_RUN으로 두고 이미 검증한 부분을 설명한다. FAIL은 실행 수치가 기준에 미달하거나 현재 코드의 구체적 결함을 확인한 경우다. 시험 도구의 이름이나 파일 존재만으로 통과시키지 않았다. 특히 취소→로비 반복은 실제 넥서스 파괴 3연속 재경기와 구분한다.
 
@@ -8,7 +8,7 @@ PASS는 적힌 범위의 실제 증거가 있다는 뜻이다. 일부만 시험�
 
 | 약어 | 정확한 증거 |
 |---|---|
-| U | [현재 단위시험 실행 로그](../artifacts/unit-results.txt): Windows / Node24.19.0,150 PASS,FAIL0,SKIP0. `npm test` 전체 테스트 실행 결과(9.09초); 실제 서버 프로세스 시험도 포함 |
+| U | [현재 통합 자동시험 실행 로그](../artifacts/unit-results.txt): Windows / Node 24.19.0, 153 PASS / 0 FAIL / 0 SKIP. `npm test` 전체 결과 10.15초; 실제 서버 프로세스 강제 복구·슬롯 경합·자산 응답 시험도 포함 |
 | R | [room.test.ts](../tests/room.test.ts), 기본 시험 seed 77; 채점·경제·권한·로스터·취소·통계 검증 |
 | E | [room-edge.test.ts](../tests/room-edge.test.ts), seed 77/17; 실제 공격 사망, Q7, 중복 출정, 사망 세대, 교체 쿨타임. 세부 전제는 [경계 감사](ROOM_EDGE_AUDIT.md) |
 | S | [storage-version.test.ts](../tests/storage-version.test.ts), SQLite 메모리 DB; 호환 버전·원본 보존·비활성 정리·SQL 오류 롤백 20개 |
@@ -19,13 +19,16 @@ PASS는 적힌 범위의 실제 증거가 있다는 뜻이다. 일부만 시험�
 | O | [client-snapshot-order.test.ts](../tests/client-snapshot-order.test.ts), [실행 로그](../artifacts/snapshot-order-results.txt): 인증된 새 epoch에서 재시작 seq 0 복구 검사. 전체 열린 브라우저 프로세스 재시작은 별도 |
 | G | [economy-boundaries.test.ts](../tests/economy-boundaries.test.ts), [실행 로그](../artifacts/economy-boundary-results.txt): 실제 시작 퀴즈 자산으로 잔액/레벨/강화/소유 경계 6 PASS 및 갱신 O 1 PASS. 골드를 시험용으로 직접 주입하지 않음 |
 | X | [acceptance-extra.test.ts](../tests/acceptance-extra.test.ts) 12개 + [heartbeat.test.ts](../tests/heartbeat.test.ts) 6개, [실행 로그](../artifacts/acceptance-extra-heartbeat-results.txt): Node 24.19.0, 18 PASS / 0 FAIL / 0 SKIP, 종료 코드 0. 실제 틱·공격·봇 관리자·자산 경계와 서버 정체 후 heartbeat 유예 검사. 브라우저/HTTP 통합 시험과 별도 |
-| W | [load-results.json](../artifacts/load-results.json), Node 24.19.0, 독립 인증 학생 WebSocket 30개+호스트 1개, 초기 답변 600개·중복 뽑기·재접속·실제 전투 20초. 30개 브라우저 렌더링 시험은 아님 |
+| EV | [client-event-playback.test.ts](../tests/client-event-playback.test.ts), U에서 2 PASS: 느린 실제 전달은 사건 나이로 누락시키지 않고 복구 스냅숏만 지난 순간 효과를 제외. 중복 ID 주입·전체 렌더링 계수 검사는 아님 |
+| W | [load-results.json](../artifacts/load-results.json), [실행 로그](../artifacts/load-log.txt): Node 24.19.0, 독립 인증 학생 WebSocket 30개+호스트 1개, 초기 답변 600개·동시 뽑기 30개·동일 요청 재전송 30개·1명 재접속·실제 전투 20.011초 PASS. 학생별 평균 wire 86.54~87.75 KiB/s (압축 해제 후 514.92~525.15 KiB/s). 30개 브라우저 렌더링 시험은 아님 |
 | UI | [VISUAL_REVIEW.md](../artifacts/VISUAL_REVIEW.md), [ui.spec.ts](../tests/e2e/ui.spec.ts): 실제 브라우저 사람 1+AI 29의 로비→시작 퀴즈→준비→교전→학생 새로고침. 1366×768/1280×800, 모바일 CSS 390×844, DPR 1, 개발 서버 |
-| VP | [browser-performance.json](../artifacts/browser-performance.json), Chromium 156, i5-1340P / RAM 약 16GB, 1366×768, DPR 1, 개발 빌드·헤드리스, 표준 AI 30명 정상 속도 5분. 파일의 기존 최상위 PASS와 달리 `targetMet=false`, p95=33.4ms이므로 P03은 FAIL |
+| LB | [lobby-errors.spec.ts](../tests/e2e/lobby-errors.spec.ts), [실행·시각 기록](../artifacts/VISUAL_REVIEW.md): 생산 번들 실제 브라우저 2/2 PASS, 12.6초. 없는 방/이름 오류 후 같은 폼 복구, 빈 팀 안내, AI 팀 이동 양 화면 동기화, 호스트 새로고침; screenshots/20~24 |
+| VP | [browser-performance.json](../artifacts/browser-performance.json), 보존 사본 [browser-performance-software.json](../artifacts/browser-performance-software.json): Chromium 156, i5-1340P / RAM 약 16GB, 1366×768, DPR 1, 생산 빌드·헤드리스·SwiftShader 소프트웨어 렌더링, 표준 AI 30명 정상 속도 5분. RAF p95=116.8ms, 목표 20ms 미달 FAIL. 물리 GPU 5분 실행은 이 감사 시점에 완료 결과 대기 |
 | ART | [ART_REFERENCE.md](ART_REFERENCE.md), [아트 갤러리](../public/art-gallery.html), [gallery 캡처](../artifacts/visual/art-gallery-basic.png); 모델이 실제 이미지를 열어 확인. 학교 실기기 또는 인간 전문 미술 승인 아님 |
 | SOAK | [soak-candidate5-original-hp-summary.json](../artifacts/soak-candidate5-original-hp-summary.json), 해당 후보 3경기 전부 넥서스 종료, 목표 1/3, 중앙값 824.15초. 최종 40시드 튜닝 통과를 뜻하지 않음 |
+| SCREEN9 | [후보 9 보존 요약](../artifacts/soak-final40/summary.json): 10개 모두 넥서스 종료, 목표 6/10, 중앙값 685.075초, 10개 선별 게이트 FAIL. 1010시드 경로 정체 1건. 최종 40개가 아니며 후보 10의 새 40시드와 섞지 않음 |
 
-U 실행: `npm test` (`tsx --test tests/*.test.ts`),150 PASS. 실제 프로세스 강제 종료·마지막 슬롯 경합·18PNG와 health/ACK 동시 응답도 포함한다. 시각 증거는 UI/VP/ART의 실제 조건을 따르며 단위시험과 동일 환경의 증거로 합치지 않는다.
+U 실행: `npm test` (`tsx --test tests/*.test.ts`), 153 PASS. 실제 프로세스 강제 종료·마지막 슬롯 경합·18 PNG와 health/ACK 동시 응답도 포함한다 (실제 PNG 합계 851,175바이트, 동시 응답 140ms). 시각 증거는 UI/LB/VP/ART의 실제 조건을 따르며 단위시험과 동일 환경의 증거로 합치지 않는다.
 
 ## 방과 로비
 
@@ -33,19 +36,19 @@ U 실행: `npm test` (`tsx --test tests/*.test.ts`),150 PASS. 실제 프로세�
 |---|---|---|---|
 | L01 | 방 생성·참가 URL | PASS | UI 01/02 캡처와 실제 브라우저 HTTP/WS 참가 |
 | L02 | 서로 다른 학생·공유 로스터 | PASS | W 독립 인증 30명, 호스트 30명 목록·준비 후 실제 전투 |
-| L03 | 없는 코드 오류 화면 | NOT_RUN | 서버 ROOM_NOT_FOUND 경로 있음. 브라우저 오류 후 재입력 미실행 |
-| L04 | 잘못된 이름 오류 화면 | NOT_RUN | 서버 2~12자·공백 검증 있음. 입력 경계와 화면 복구 미실행 |
+| L03 | 없는 코드 오류 화면 | PASS | LB 없는 코드에서 명시적 오류·활성 재입력 폼 확인 후 같은 폼으로 정상 방 참가. 캡처 20 |
+| L04 | 잘못된 이름 오류 화면 | PASS | LB 빈 값·공백·1자·13자 거부, 호스트 명단 불변, 입력/버튼 계속 사용 가능, 정상 이름으로 복구 참가. 캡처 21 |
 | L05 | 마지막 슬롯 인간/AI 경합 | PASS | U의 실제 서버 시험:29AI 로비에서 HTTP학생참가와 WS AI추가를 동시 전송, 정확히한요청만30번째 자리 확보 |
 | L06 | 31번째 참가 거부 | PASS | R L05-L11: 30명 이후 추가 참가·AI 요청 거부 |
 | L07 | AI 30명·15대15·배지 | PASS | VP 로비 캡처 10, R 팀당 정원 |
 | L08 | 사람 1+AI 29 채우기 | PASS | UI 로스터 30행·사람 1/AI 29 표시와 사람 참가 유지 |
 | L09 | AI 제거·지연 요청 거부 | PASS | R 제거/정원, E 제거 뒤 봇 요청 NOT_AUTHORIZED |
-| L10 | 팀 이동 동기화 | NOT_RUN | 로비 팀 선택 UI·서버 정원 검사 있음. 실제 팀 이동 양쪽 화면 미실행 |
+| L10 | 팀 이동 동기화 | PASS | LB AI를 청팀→홍팀으로 이동, 호스트 선택과 학생 홍팀 명단의 동일 참가자 ID/팀 확인. 캡처 22/23, R 정원 제한 별도 검사 |
 | L11 | 시작 이후 명단 잠금 | PASS | R 추가·팀 변경 INVALID_PHASE, UI 단계 전환에서 관리 UI 제거 |
-| L12 | 빈 팀 시작 거부 | NOT_RUN | X 빈 팀 시작과 팀별 READY 미충족을 실제 명령으로 거부하며 allowUnready도 우회 불가. 명확한 브라우저 안내는 새 lobby-errors.spec.ts 실행 대기 |
+| L12 | 빈 팀 시작 거부 | PASS | X 빈 팀/팀별 READY 미충족 명령 거부·allowUnready 우회 불가. LB 빈 팀 시작 버튼 비활성 및 양 팀 최소 1명 안내, 팀 이동 후 활성 |
 | L13 | AI 2명으로 준비 전 과정 | PASS | X 빈 로비에서 표준 AI 2명→40답 실제 채점→무료 선택/투자→READY, 호스트 시작 후 두 영웅·28미니언 첫 출정 |
 | L14 | 학생의 호스트 명령 거부 | PASS | R 권한 검사, 학생 ADD_BOTS 거부. 서버 공통 hostTypes 권한 경로 |
-| L15 | 호스트 페이지 새로고침 | NOT_RUN | 학생 새로고침은 UI에서 실행. 호스트 브라우저 새로고침은 별도 미실행 |
+| L15 | 호스트 페이지 새로고침 | PASS | LB 실제 reload 뒤 roomId·방 코드·참가자 ID 목록·AI 팀·호스트 팀 관리/시작 권한 유지. 캡처 24 |
 
 ## AI 학생
 
@@ -159,13 +162,13 @@ U 실행: `npm test` (`tsx --test tests/*.test.ts`),150 PASS. 실제 프로세�
 | N06 | 퀴즈 새로고침 | PASS | UI 실제 전투 attempt 유지·이어 풀기; R/E 시도와 지갑 서버 유지 |
 | N07 | 오래된 스냅숏 무시 | PASS | O 후속 수정: 새 인증 epoch의 seq 0 허용, 같은 경기/epoch의 오래된 seq·다른 epoch 거부. 열린 브라우저 강제 서버 재시작 시각 검증은 N15 별도 |
 | N08 | 중복 전투 이벤트 | NOT_RUN | renderer seen ID 처리 및 VP 중복 소비 0. 의도적인 중복 전달 주입 미실행 |
-| N09 | 지속 효과 포함 전체 복구 | NOT_RUN | full snapshot에 현재 투사체/장판 포함. 단절 장면 재투영의 시각 검증 미실행 |
+| N09 | 지속 효과 포함 전체 복구 | NOT_RUN | full snapshot에 현재 투사체/장판 포함, EV 복구의 지난 순간 효과 필터 2개 경계는 PASS. 실제 단절 장면의 지속 효과 재투영 시각 검증 미실행 |
 | N10 | 이전 경기 지연 입력/이벤트 | PASS | R 서버 STALE_MATCH. 후속 O/G 로그: 같은 epoch의 이전 경기 낮은/같은 seq 거부, 새 경기 높은 seq 허용. 이전 소켓 콜백은 socket identity로 제외 |
 | N11 | 비정상 세션/권한 | PASS | R actor·epoch·타인 인벤토리·호스트 권한 격리. 실제 프로세스 시험은 별도 루트 결과 |
 | N12 | 단절 중 구매 연타/재시도 | NOT_RUN | 같은 commandId 재전송 구현·R/W 거래 1회. UI 단절/ACK 손실 주입 미실행 |
 | N13 | 탭 배경→복귀 | NOT_RUN | visibility RESYNC·낡은 순간 효과 필터 구현. 실제 탭 숨김 복귀 미실행 |
 | N14 | 만료 방 늦은 요청 | NOT_RUN | S 만료 방/요청 제거와 E 제거 봇 거부 PASS. 삭제 후 실제 소켓/HTTP 지연 입력 미실행 |
-| N15 | 프로세스 강제 재시작 | NOT_RUN | R/S 저장 복원은 PASS. 별도 server.test.ts 루트 실행 결과를 합쳐야 함. 열린 브라우저 seq 문제는 N07 |
+| N15 | 프로세스 강제 재시작 | NOT_RUN | U 실제 프로세스 SIGKILL→SQLite 재시작→동일 학생/퀴즈/잔액 복구·지급 ACK 재전송 1회 보상 PASS. S 절대 틱/버전 보존도 PASS. 실제 강제 종료 전후 봇 보류 답안·전투 상태 전체 대조는 아직 직접 단언하지 않음 |
 
 ## 도트·화면
 
@@ -212,16 +215,16 @@ U 실행: `npm test` (`tsx --test tests/*.test.ts`),150 PASS. 실제 프로세�
 | ID | 조건 | 상태 | 증거·한계 |
 |---|---|---|---|
 | P01 | AI 30명 15분 상한 관측 | PASS | SOAK 같은 엔진 고정 틱 가속 3경기 넥서스 종료. 정상 벽시계 브라우저 전체 완료와 구분 |
-| P02 | F12 5분 서버 틱 예산 | NOT_RUN | SOAK tickP95/p99 존재. 대표 부하 고정 5분·현재 최종 설정·서버 네트워크/저장 포함 계측 미완료 |
-| P03 | 호스트 프레임 p95≤20ms | FAIL | VP 5분 headless p95=33.4ms, 목표 미달. 스크립트 완료를 성능 PASS로 표시하지 않음 |
+| P02 | F12 5분 서버 틱 예산 | NOT_RUN | 요구된 F12 5분 계측 대기. W의 별도 20초 31연결 부하는 서버 tick p95=71.50ms/p99=107.26ms로 예산 초과이며 5분 F12의 통과 증거로 사용하지 않음 |
+| P03 | 호스트 프레임 p95≤20ms | FAIL | VP 생산 번들·소프트웨어 렌더러 5분 RAF p95=116.8ms, 20ms 목표 미달. 물리 GPU 5분 완료 결과 대기이며 기존 실패를 지우지 않음 |
 | P04 | 학교 태블릿 p95≤33.3ms | NOT_RUN | 실기기 없음 |
 | P05 | 독립 학생 연결 30+호스트 | PASS | W 31개 독립 인증 WS·각 20답/준비/전투, 서버 AI 30명과 구분 |
-| P06 | 동시 초기 답변·뽑기 | NOT_RUN | W 600개 동시 답변은 PASS. 뽑기는 1명 중복만 시험하여 30명 동시 뽑기 미완료 |
+| P06 | 동시 초기 답변·뽑기 | PASS | W 독립 학생 30명×20답 확정→각 20원, 동시 일반 뽑기 30개와 같은 요청 재전송 30개 모두 확정/REPLAYED, 각 창고 2명·잔액 18원. 실제 전투·재접속까지 진행 |
 | P07 | 100ms RTT·30ms 지터 | NOT_RUN | 네트워크 장애 주입 미실행 |
 | P08 | 전체+3재경기 메모리 회수 | NOT_RUN | 누수 계측 없음. 명령/이벤트 버퍼의 장기 크기 관측 필요 |
-| P09 | 기능 사건 누락/중복 0 | PASS | VP 한 정상 연결 5분: 서버 eventSeq 16,990, 수신/시각 소비 각 16,990, 중복 0. 단절 복구 재투영 별도 미검증 |
+| P09 | 기능 사건 누락/중복 0 | FAIL | 최신 VP 5분: 서버/수신 20,413, 시각 소비 20,362, 차이 51, 중복 0. 이후 EV에서 느린 live 전달의 나이 필터 제거를 2개 단위시험으로 검증했으나 수정 후 5분 전체 소비 계수 결과는 아직 대기 |
 | P10 | 장기 생존 웨이브 혼잡 | NOT_RUN | 임의 생존 유닛 상한 삭제 없음. 오래 생존한 여러 웨이브 지정 부하 검증 미실행 |
-| P11 | 표준 대칭 40시드 길이 | NOT_RUN | 최종 40개 분포 실행 대기. 후보 3개 중 1개 목표 범위, 중앙값 824.15초는 목표 미달이며 최종 결과 아님 |
+| P11 | 표준 대칭 40시드 길이 | NOT_RUN | 후보 10의 새 40개 분포 완료 결과 대기. SCREEN9는 10/10 종료·목표 6/10·중앙값 685.075초·경로 정체 1건으로 선별 FAIL이며 최종 40개 통과가 아님 |
 | P12 | 2·10·20·27·30명 | NOT_RUN | 2/30명 일부 시험 있음. 모든 인원+홀수 UI의 전체 흐름 미실행 |
 | P13 | 모든 단계 화면 캡처 | NOT_RUN | UI 준비/퀴즈/정비/출정/교전 있음. 사망 정비·최종 결과 캡처 대기 |
 | P14 | 중요 명령 오류 주입 | NOT_RUN | E 재전송·S SQL 삭제 오류·서버 권한 거부 일부 PASS. 각 중요 명령 네트워크/API 오류 UI 미실행 |
@@ -231,10 +234,10 @@ U 실행: `npm test` (`tsx --test tests/*.test.ts`),150 PASS. 실제 프로세�
 
 - 사람 1+AI 29의 실제 최종 넥서스 종료와 시상: NOT_RUN. UI 증거는 초기 실제 교전·재접속까지다.
 - AI 30명 브라우저 실제 넥서스 파괴 3연속 재경기: NOT_RUN, 전용 시험 파일은 있으나 완료 결과 생성 대기.
-- 최종 조정값 40시드: NOT_RUN. 중간 후보 3시드를 40시드 결과로 표현하지 않는다.
+- 최종 조정값 40시드: NOT_RUN. 후보 10 새 40개 완료 결과 대기. 후보 9의 10개 선별 FAIL (6/10 목표, 경로 정체 1건)을 보존하며 서로 다른 설정의 시드를 합치지 않는다.
 - 공개 배포: NOT_RUN. GitHub Pages만으로 서버가 배포되었다고 간주하지 않는다.
 - 실제 학교 기기·학교 무선망·학생 터치: NOT_RUN. CSS 뷰포트와 헤드리스 결과로 대체하지 않는다.
-- 읽기 전용 AI 학생 투영 및 호스트 초기 자산 분포: 감사 후 hostStudents 및 검사 패널 구현이 추가되었다. E에서 읽기 전용 권한·현재 보기와 미래 정보의 분리는 PASS. 새 패널의 실제 브라우저 시각 검증은 아직 별도 결과 대기다.
+- 읽기 전용 AI 학생 투영 및 호스트 초기 자산 분포: E에서 읽기 전용 권한·현재 보기와 미래 정보의 분리는 PASS. UI 재실행과 생산 번들 단축 점검에서 실제 AI 관찰 패널을 확인했다. 캡처 14에서 패널을 열어도 양 넥서스·두 라인·모든 타워가 화면에 남는 것을 시각 검토했다 (VISUAL_REVIEW.md). 전체 경기 완료의 증거는 아니다.
 
 ## 루트 TEST_REPORT에 필요한 형식
 

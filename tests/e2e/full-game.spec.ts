@@ -25,9 +25,11 @@ test('AI30 completes an initial match plus three consecutive real nexus-destruct
   test.setTimeout(1400000);await mkdir('artifacts/screenshots',{recursive:true});const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/');await page.getByRole('button',{name:'새 방 만들기'}).click();await page.getByRole('button',{name:'30명 채우기'}).click();await expect(page.locator('.player-row')).toHaveCount(30);
   const results=[],heaps:number[]=[];const cdp=await page.context().newCDPSession(page);await cdp.send('Performance.enable');
+  try{
   for(let i=0;i<4;i++){
     results.push(await startBotRound(page,i));
     await cdp.send('HeapProfiler.collectGarbage');const memory=await cdp.send('Performance.getMetrics');heaps.push(memory.metrics.find((m:any)=>m.name==='JSHeapUsedSize')?.value||0);
+    await writeFile('artifacts/browser-rematches-progress.json',JSON.stringify({status:'IN_PROGRESS',completedMatches:results.length,requiredMatches:4,postResultHeapBytesAfterGC:heaps,results},null,2));
     if(i===0){const downloadEvent=page.waitForEvent('download');await page.getByRole('button',{name:'실제 기록 JSON 저장'}).click();const download=await downloadEvent;await download.saveAs('artifacts/downloaded-match-result.json');expect(JSON.parse(await readFile('artifacts/downloaded-match-result.json','utf8'))).toEqual(results[0]);}
     if(i<3){await page.getByRole('button',{name:/같은 참가자로 재경기/}).click();await expect.poll(()=>phase(page)).toBe('LOBBY');
       const cleared=await page.evaluate(()=>window.__classClash.snapshot);expect(cleared.result).toBeNull();expect(cleared.battle).toBeNull();expect(cleared.matchId).toBeNull();expect(cleared.players.every((p:any)=>p.state==='WAITING'&&p.level===0&&!p.activeEntityId)).toBe(true);expect(cleared.hostStudents.every((p:any)=>p.gold===0&&p.inventory.length===0&&p.quiz===null&&p.deathId===null&&p.stats.deployments===0&&Object.keys(p.sharedSkillReadyAt).length===0)).toBe(true);
@@ -35,6 +37,7 @@ test('AI30 completes an initial match plus three consecutive real nexus-destruct
   }
   expect(new Set(results.map(x=>x.matchId)).size).toBe(4);expect(errors).toEqual([]);
   await writeFile('artifacts/browser-three-rematches.json',JSON.stringify({status:'PASS',initialMatches:1,consecutiveRematches:3,totalMatches:4,gpuMode:process.env.CLASH_TEST_GPU||'default',mode:'actual browser, server-authoritative, test scheduler acceleration visibly labeled',postResultHeapBytesAfterGC:heaps,results,errors},null,2));
+  }finally{await cancelActiveTestMatch(page).catch(()=>{});}
 });
 
 test('one human +29 AI completes quiz, manual redeployment and human awards',async({browser,baseURL})=>{
