@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.tools/
+spec-source/
+*.zip
+data/
+.env
+test-results/
+playwright-report/
+artifacts/**/*.webm
+artifacts/**/*.mp4
+artifacts/videos/
+artifacts/ui-trace/
+artifacts/*-test-results/

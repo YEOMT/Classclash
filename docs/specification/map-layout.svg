@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1030" viewBox="0 0 1536 1030" role="img" aria-label="Class Clash two-lane map specification">
+<rect width="1536" height="1030" fill="#101a25"/>
+<g font-family="DejaVu Sans,Arial,sans-serif" fill="#f1f4f8">
+<text x="42" y="53" font-size="28" font-weight="bold">CLASS CLASH</text>
+<text x="42" y="86" font-size="16" fill="#9cabb9">TWO-LANE MAP SPECIFICATION  /  v1.0  /  NOT A GAMEPLAY CAPTURE</text>
+<rect x="36" y="108" width="1464" height="70" rx="8" fill="#1d2c3b"/>
+<text x="60" y="150" font-size="22" fill="#87c9ff">A TEAM</text>
+<text x="310" y="150" font-size="16">NEXUS HP  /  TOWERS  /  KILLS</text>
+<text x="768" y="150" text-anchor="middle" font-size="18">SCOREBOARD</text>
+<text x="1150" y="150" text-anchor="middle" font-size="16">NEXUS HP  /  TOWERS  /  KILLS</text>
+<text x="1470" y="150" text-anchor="end" font-size="22" fill="#ffac94">B TEAM</text>
+</g>
+<g transform="translate(0,190)">
+<rect x="16" y="0" width="1504" height="768" rx="14" fill="#223a35"/>
+<path d="M 152,384 L 300,384 L 380,224 L 1156,224 L 1236,384 L 1384,384" fill="none" stroke="#b8b091" stroke-width="144" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 152,384 L 300,384 L 380,544 L 1156,544 L 1236,384 L 1384,384" fill="none" stroke="#b8b091" stroke-width="144" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="40" y="264" width="296" height="240" rx="40" fill="#b8b091"/>
+<rect x="1200" y="264" width="296" height="240" rx="40" fill="#b8b091"/>
+<g fill="none" stroke="#d8d0b5" stroke-width="2" stroke-dasharray="8 10">
+<path d="M 152,384 L 300,384 L 380,224 L 1156,224 L 1236,384 L 1384,384"/>
+<path d="M 152,384 L 300,384 L 380,544 L 1156,544 L 1236,384 L 1384,384"/>
+</g>
+<g font-family="DejaVu Sans,Arial,sans-serif" text-anchor="middle">
+<text x="768" y="108" fill="#e8ede3" font-size="24" font-weight="bold">TOP LANE</text>
+<text x="768" y="680" fill="#e8ede3" font-size="24" font-weight="bold">BOTTOM LANE</text>
+<text x="768" y="132" fill="#b7c6bd" font-size="14">144 world units wide</text>
+<text x="768" y="708" fill="#b7c6bd" font-size="14">144 world units wide</text>
+<text x="768" y="380" fill="#afc7b2" font-size="20">SEPARATED LANES</text>
+<text x="768" y="407" fill="#89a88f" font-size="14">No cross-lane routing while deployed</text>
+<polygon points="92,342 128,366 128,407 92,427 56,407 56,366" fill="#63b8f7" stroke="#122331" stroke-width="5"/>
+<text x="92" y="391" font-size="18" font-weight="bold" fill="#122331">NX</text>
+<text x="92" y="457" font-size="14" fill="#183344">NEXUS</text>
+<rect x="191" y="292" width="58" height="64" rx="5" fill="#63b8f7" stroke="#122331" stroke-width="5"/>
+<text x="220" y="330" font-size="18" font-weight="bold" fill="#122331">G</text>
+<text x="220" y="375" font-size="13" fill="#183344">GUARD</text>
+<rect x="191" y="412" width="58" height="64" rx="5" fill="#63b8f7" stroke="#122331" stroke-width="5"/>
+<text x="220" y="450" font-size="18" font-weight="bold" fill="#122331">G</text>
+<text x="220" y="495" font-size="13" fill="#183344">GUARD</text>
+<circle cx="360" cy="224" r="28" fill="#63b8f7" stroke="#122331" stroke-width="5"/>
+<text x="360" y="230" font-size="18" font-weight="bold" fill="#122331">I</text>
+<text x="360" y="275" font-size="13" fill="#183344">INNER</text>
+<text x="360" y="292" font-size="11" fill="#183344">(360, 224)</text>
+<circle cx="520" cy="224" r="28" fill="#63b8f7" stroke="#122331" stroke-width="5"/>
+<text x="520" y="230" font-size="18" font-weight="bold" fill="#122331">O</text>
+<text x="520" y="275" font-size="13" fill="#183344">OUTER</text>
+<text x="520" y="292" font-size="11" fill="#183344">(520, 224)</text>
+<circle cx="360" cy="544" r="28" fill="#63b8f7" stroke="#122331" stroke-width="5"/>
+<text x="360" y="550" font-size="18" font-weight="bold" fill="#122331">I</text>
+<text x="360" y="494" font-size="13" fill="#183344">INNER</text>
+<text x="360" y="510" font-size="11" fill="#183344">(360, 544)</text>
+<circle cx="520" cy="544" r="28" fill="#63b8f7" stroke="#122331" stroke-width="5"/>
+<text x="520" y="550" font-size="18" font-weight="bold" fill="#122331">O</text>
+<text x="520" y="494" font-size="13" fill="#183344">OUTER</text>
+<text x="520" y="510" font-size="11" fill="#183344">(520, 544)</text>
+<polygon points="1444,342 1480,366 1480,407 1444,427 1408,407 1408,366" fill="#ee8e74" stroke="#122331" stroke-width="5"/>
+<text x="1444" y="391" font-size="18" font-weight="bold" fill="#122331">NX</text>
+<text x="1444" y="457" font-size="14" fill="#183344">NEXUS</text>
+<rect x="1287" y="292" width="58" height="64" rx="5" fill="#ee8e74" stroke="#122331" stroke-width="5"/>
+<text x="1316" y="330" font-size="18" font-weight="bold" fill="#122331">G</text>
+<text x="1316" y="375" font-size="13" fill="#183344">GUARD</text>
+<rect x="1287" y="412" width="58" height="64" rx="5" fill="#ee8e74" stroke="#122331" stroke-width="5"/>
+<text x="1316" y="450" font-size="18" font-weight="bold" fill="#122331">G</text>
+<text x="1316" y="495" font-size="13" fill="#183344">GUARD</text>
+<circle cx="1176" cy="224" r="28" fill="#ee8e74" stroke="#122331" stroke-width="5"/>
+<text x="1176" y="230" font-size="18" font-weight="bold" fill="#122331">I</text>
+<text x="1176" y="275" font-size="13" fill="#183344">INNER</text>
+<text x="1176" y="292" font-size="11" fill="#183344">(1176, 224)</text>
+<circle cx="1016" cy="224" r="28" fill="#ee8e74" stroke="#122331" stroke-width="5"/>
+<text x="1016" y="230" font-size="18" font-weight="bold" fill="#122331">O</text>
+<text x="1016" y="275" font-size="13" fill="#183344">OUTER</text>
+<text x="1016" y="292" font-size="11" fill="#183344">(1016, 224)</text>
+<circle cx="1176" cy="544" r="28" fill="#ee8e74" stroke="#122331" stroke-width="5"/>
+<text x="1176" y="550" font-size="18" font-weight="bold" fill="#122331">I</text>
+<text x="1176" y="494" font-size="13" fill="#183344">INNER</text>
+<text x="1176" y="510" font-size="11" fill="#183344">(1176, 544)</text>
+<circle cx="1016" cy="544" r="28" fill="#ee8e74" stroke="#122331" stroke-width="5"/>
+<text x="1016" y="550" font-size="18" font-weight="bold" fill="#122331">O</text>
+<text x="1016" y="494" font-size="13" fill="#183344">OUTER</text>
+<text x="1016" y="510" font-size="11" fill="#183344">(1016, 544)</text>
+<text x="160" y="645" font-size="13" fill="#d5e5db">240-wide merge</text>
+<text x="1376" y="645" font-size="13" fill="#d5e5db">240-wide merge</text>
+</g></g>
+<g font-family="DejaVu Sans,Arial,sans-serif" fill="#b8c6d2" font-size="15">
+<text x="40" y="991">WORLD 1536 x 768   |   8 lane towers + 4 guards + 2 nexuses</text>
+<text x="1496" y="991" text-anchor="end">Wave: 3 melee + 4 ranged / team / lane   |   28 total</text>
+</g></svg>

@@ -1,0 +1,458 @@
+{
+  "specVersion": "1.0",
+  "status": "PROPOSED_IMPLEMENTATION_DEFAULTS_NOT_PLAYTESTED",
+  "note": "사용자 확정 요구와 초기 구현값의 구분은 01_MASTER_SPEC.md를 따른다. 게임 구현 또는 실제 시험 결과가 아니다.",
+  "room": {
+    "maxPlayersIncludingBots": 30,
+    "maxPlayersPerTeam": 15,
+    "teams": [
+      "A",
+      "B"
+    ],
+    "lanes": [
+      "TOP",
+      "BOTTOM"
+    ],
+    "countdownSeconds": 5
+  },
+  "clock": {
+    "tickHz": 20,
+    "aiHz": 5,
+    "snapshotHz": 10,
+    "renderFpsTarget": 60,
+    "clockOrigin": "OPENING_QUIZ",
+    "battleElapsed": "(tick-battleStartTick)/tickHz",
+    "cooldownUnit": "absoluteMatchTick"
+  },
+  "quiz": {
+    "openingQuestions": 20,
+    "battleQuestions": 10,
+    "cooldownSecondsAfterLastAnswer": 30,
+    "goldPerCorrect": 1,
+    "goldPerWrong": 0,
+    "openingTimeLimitSeconds": null,
+    "minimumBankSize": 20,
+    "maximumBankSize": 1000,
+    "goldGrantedOncePerAnswer": true
+  },
+  "economy": {
+    "starterCommonHeroChoices": 1,
+    "inventoryLimit": 120,
+    "duplicates": "INDEPENDENT_OWNED_HERO_INSTANCES",
+    "killGold": 0,
+    "normalDraw": {
+      "cost": 2,
+      "probability": {
+        "COMMON": 0.8,
+        "ADVANCED": 0.2,
+        "LEGENDARY": 0.0
+      },
+      "pools": [
+        "ALL",
+        "tank",
+        "melee",
+        "ranged",
+        "mage",
+        "support"
+      ]
+    },
+    "premiumDraw": {
+      "cost": 10,
+      "probability": {
+        "COMMON": 0.3,
+        "ADVANCED": 0.6,
+        "LEGENDARY": 0.1
+      },
+      "pools": [
+        "ALL",
+        "tank",
+        "melee",
+        "mage"
+      ]
+    },
+    "pityEnabled": false
+  },
+  "growth": {
+    "maxLevel": 5,
+    "levelUpCosts": [
+      2,
+      3,
+      4,
+      6
+    ],
+    "skillUnlockLevels": [
+      2,
+      5
+    ],
+    "maxEnhancementsTotal": 3,
+    "enhancementCosts": [
+      2,
+      4,
+      6
+    ],
+    "hpPerLevel": 0.12,
+    "powerPerLevel": 0.1,
+    "armorPerLevel": 2,
+    "hpPerVitalityEnhancement": 0.08,
+    "powerPerPowerEnhancement": 0.06,
+    "allowedOnlyInMaintenance": true
+  },
+  "deployment": {
+    "activeHeroesPerPlayer": 1,
+    "minimumDeadWaitSeconds": 5,
+    "autoRedeployHumans": false,
+    "spawnAnimationSeconds": 0.35,
+    "laneChangeWhileActive": false,
+    "sharedCooldownKey": [
+      "playerId",
+      "heroDefinitionId",
+      "skillId"
+    ]
+  },
+  "combat": {
+    "rangeMetric": "SURFACE_GAP",
+    "armorFormula": "damage*100/(100+armor)",
+    "maxShieldFractionOfMaxHp": 0.35,
+    "maxDamageReduction": 0.6,
+    "hardCcMaxContinuousSeconds": 2,
+    "hardCcImmunityAfterCapSeconds": 2,
+    "maxSlow": 0.5,
+    "assistWindowSeconds": 5,
+    "basicRecoveryFormula": "ceilTick(min(0.30,0.20*effectiveAttackInterval))"
+  },
+  "minions": {
+    "meleePerTeamLane": 3,
+    "rangedPerTeamLane": 4,
+    "firstWaveBattleSeconds": 0,
+    "waveIntervalSeconds": 20,
+    "melee": {
+      "hp": 150,
+      "power": 10,
+      "armor": 8,
+      "speed": 42,
+      "attackIntervalMs": 1150,
+      "range": 10,
+      "windupMs": 230,
+      "recoveryMs": 280,
+      "radius": 8,
+      "detectionRange": 220
+    },
+    "ranged": {
+      "hp": 95,
+      "power": 12,
+      "armor": 0,
+      "speed": 42,
+      "attackIntervalMs": 1350,
+      "range": 130,
+      "windupMs": 280,
+      "recoveryMs": 300,
+      "radius": 7,
+      "detectionRange": 240,
+      "projectileSpeed": 260
+    },
+    "structureDamagePhases": [
+      {
+        "fromBattleSecond": 0,
+        "multiplier": 1.0
+      },
+      {
+        "fromBattleSecond": 480,
+        "multiplier": 1.25
+      },
+      {
+        "fromBattleSecond": 600,
+        "multiplier": 1.5
+      },
+      {
+        "fromBattleSecond": 720,
+        "multiplier": 2.0
+      }
+    ]
+  },
+  "structureStats": {
+    "OUTER": {
+      "hp": 9000,
+      "armor": 20,
+      "power": 75,
+      "attackIntervalMs": 1200,
+      "range": 180,
+      "windupMs": 250,
+      "projectileSpeed": 360,
+      "radius": 28
+    },
+    "INNER": {
+      "hp": 12000,
+      "armor": 25,
+      "power": 90,
+      "attackIntervalMs": 1100,
+      "range": 180,
+      "windupMs": 250,
+      "projectileSpeed": 380,
+      "radius": 30
+    },
+    "GUARD": {
+      "hp": 14000,
+      "armor": 30,
+      "power": 125,
+      "attackIntervalMs": 1100,
+      "range": 240,
+      "windupMs": 350,
+      "projectileSpeed": 400,
+      "radius": 32
+    },
+    "NEXUS": {
+      "hp": 22000,
+      "armor": 20,
+      "power": 0,
+      "attackIntervalMs": null,
+      "range": 0,
+      "windupMs": null,
+      "projectileSpeed": null,
+      "radius": 42
+    }
+  },
+  "map": {
+    "width": 1536,
+    "height": 768,
+    "laneWidth": 144,
+    "mergeWidth": 240,
+    "laneY": {
+      "TOP": 224,
+      "BOTTOM": 544
+    },
+    "spawn": {
+      "A": [
+        152,
+        384
+      ],
+      "B": [
+        1384,
+        384
+      ]
+    },
+    "pathsAtoB": {
+      "TOP": [
+        [
+          152,
+          384
+        ],
+        [
+          300,
+          384
+        ],
+        [
+          380,
+          224
+        ],
+        [
+          1156,
+          224
+        ],
+        [
+          1236,
+          384
+        ],
+        [
+          1384,
+          384
+        ]
+      ],
+      "BOTTOM": [
+        [
+          152,
+          384
+        ],
+        [
+          300,
+          384
+        ],
+        [
+          380,
+          544
+        ],
+        [
+          1156,
+          544
+        ],
+        [
+          1236,
+          384
+        ],
+        [
+          1384,
+          384
+        ]
+      ]
+    },
+    "structures": [
+      {
+        "id": "A_NEXUS",
+        "team": "A",
+        "kind": "NEXUS",
+        "lane": null,
+        "x": 92,
+        "y": 384
+      },
+      {
+        "id": "A_GUARD_1",
+        "team": "A",
+        "kind": "GUARD",
+        "lane": null,
+        "x": 220,
+        "y": 324
+      },
+      {
+        "id": "A_GUARD_2",
+        "team": "A",
+        "kind": "GUARD",
+        "lane": null,
+        "x": 220,
+        "y": 444
+      },
+      {
+        "id": "A_TOP_INNER",
+        "team": "A",
+        "kind": "INNER",
+        "lane": "TOP",
+        "x": 360,
+        "y": 224
+      },
+      {
+        "id": "A_TOP_OUTER",
+        "team": "A",
+        "kind": "OUTER",
+        "lane": "TOP",
+        "x": 520,
+        "y": 224
+      },
+      {
+        "id": "A_BOTTOM_INNER",
+        "team": "A",
+        "kind": "INNER",
+        "lane": "BOTTOM",
+        "x": 360,
+        "y": 544
+      },
+      {
+        "id": "A_BOTTOM_OUTER",
+        "team": "A",
+        "kind": "OUTER",
+        "lane": "BOTTOM",
+        "x": 520,
+        "y": 544
+      },
+      {
+        "id": "B_NEXUS",
+        "team": "B",
+        "kind": "NEXUS",
+        "lane": null,
+        "x": 1444,
+        "y": 384
+      },
+      {
+        "id": "B_GUARD_1",
+        "team": "B",
+        "kind": "GUARD",
+        "lane": null,
+        "x": 1316,
+        "y": 324
+      },
+      {
+        "id": "B_GUARD_2",
+        "team": "B",
+        "kind": "GUARD",
+        "lane": null,
+        "x": 1316,
+        "y": 444
+      },
+      {
+        "id": "B_TOP_INNER",
+        "team": "B",
+        "kind": "INNER",
+        "lane": "TOP",
+        "x": 1176,
+        "y": 224
+      },
+      {
+        "id": "B_TOP_OUTER",
+        "team": "B",
+        "kind": "OUTER",
+        "lane": "TOP",
+        "x": 1016,
+        "y": 224
+      },
+      {
+        "id": "B_BOTTOM_INNER",
+        "team": "B",
+        "kind": "INNER",
+        "lane": "BOTTOM",
+        "x": 1176,
+        "y": 544
+      },
+      {
+        "id": "B_BOTTOM_OUTER",
+        "team": "B",
+        "kind": "OUTER",
+        "lane": "BOTTOM",
+        "x": 1016,
+        "y": 544
+      }
+    ]
+  },
+  "match": {
+    "winCondition": "DESTROY_ENEMY_NEXUS",
+    "targetBattleSeconds": [
+      600,
+      780
+    ],
+    "automaticTimeLimitSeconds": null,
+    "simultaneousNexusDestruction": "DRAW",
+    "hostCancellation": "CANCELLED_NO_WINNER"
+  },
+  "bots": {
+    "BASIC": {
+      "correctProbability": 0.55,
+      "answerSeconds": [
+        3.0,
+        6.0
+      ],
+      "decisionSeconds": [
+        1.0,
+        1.8
+      ]
+    },
+    "STANDARD": {
+      "correctProbability": 0.75,
+      "answerSeconds": [
+        2.0,
+        4.0
+      ],
+      "decisionSeconds": [
+        0.6,
+        1.2
+      ]
+    },
+    "SKILLED": {
+      "correctProbability": 0.9,
+      "answerSeconds": [
+        1.2,
+        2.6
+      ],
+      "decisionSeconds": [
+        0.4,
+        0.8
+      ]
+    }
+  },
+  "acceptance": {
+    "balanceSeeds": 40,
+    "balancedStandardBots": 30,
+    "targetTimeMinimumMatches": 28,
+    "timeTargetSeconds": [
+      600,
+      780
+    ],
+    "testRunnerOnlyStopSeconds": 900,
+    "gameTimeLimitEnabled": false
+  }
+}

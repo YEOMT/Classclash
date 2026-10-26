@@ -1,0 +1,43 @@
+{
+  "testId": "P03-browser-headless",
+  "status": "FAIL",
+  "command": "node node_modules/@playwright/test/cli.js test --config tests/e2e/performance.config.ts",
+  "environment": {
+    "os": "10.0.26200",
+    "platform": "win32",
+    "cpu": "13th Gen Intel(R) Core(TM) i5-1340P",
+    "memoryBytes": 16718413824,
+    "node": "v24.19.0",
+    "browser": "156.0.8078.4",
+    "viewport": "1366x768",
+    "dpr": 1,
+    "mode": "Vite development; normal speed; headless Chromium"
+  },
+  "fixture": "30 STANDARD AI, 15 per team, 0 human participants; actual authoritative combat; five wall-clock minutes",
+  "start": {
+    "tick": 1812,
+    "matchId": "match-9818fb15-500e-4b1e-9890-d84323bbb336",
+    "roomCode": "C1BDBD",
+    "events": 58
+  },
+  "end": {
+    "tick": 6100,
+    "phase": "RESULT",
+    "units": 58,
+    "projectiles": 4,
+    "effects": 0,
+    "events": 13564,
+    "renderer": {}
+  },
+  "frames": 13453,
+  "frameMs": {
+    "p50": 16.70000000001164,
+    "p95": 33.39999999999418,
+    "p99": 33.40000000002328,
+    "max": 50.10000000000582
+  },
+  "targetP95Ms": 20,
+  "targetMet": false,
+  "errors": [],
+  "limitations": "Headless Chromium on development computer. Not a school tablet or proof of physical GPU FPS. Server is a single local room during measurement."
+}

@@ -1,0 +1,384 @@
+{
+  "specVersion": "1.0",
+  "note": "기본 스탯 및 안정 ID 참고자료. 36개 스킬의 실제 실행 조건/판정/계수/시간은 03_HEROES_AND_PIXEL_ART.md 전체 정의를 함께 구현한다. 이 JSON만으로 스킬을 대체하지 않는다.",
+  "heroes": [
+    {
+      "id": "paladin",
+      "name": "성전사",
+      "rarity": "COMMON",
+      "role": "tank",
+      "baseStats": {
+        "hp": 850.0,
+        "power": 44.0,
+        "armor": 28.0,
+        "range": 14.0,
+        "speed": 58.0,
+        "projectileSpeed": null,
+        "radius": 13.0,
+        "attackIntervalMs": 1200,
+        "windupMs": 300
+      },
+      "skillIds": [
+        "paladin.shield_bash",
+        "paladin.sanctuary_shield"
+      ]
+    },
+    {
+      "id": "swordsman",
+      "name": "검사",
+      "rarity": "COMMON",
+      "role": "melee",
+      "baseStats": {
+        "hp": 620.0,
+        "power": 58.0,
+        "armor": 12.0,
+        "range": 12.0,
+        "speed": 68.0,
+        "projectileSpeed": null,
+        "radius": 11.0,
+        "attackIntervalMs": 850,
+        "windupMs": 200
+      },
+      "skillIds": [
+        "swordsman.parry",
+        "swordsman.flash_cut"
+      ]
+    },
+    {
+      "id": "brawler",
+      "name": "격투가",
+      "rarity": "COMMON",
+      "role": "melee",
+      "baseStats": {
+        "hp": 700.0,
+        "power": 48.0,
+        "armor": 15.0,
+        "range": 10.0,
+        "speed": 72.0,
+        "projectileSpeed": null,
+        "radius": 12.0,
+        "attackIntervalMs": 750,
+        "windupMs": 150
+      },
+      "skillIds": [
+        "brawler.flurry",
+        "brawler.uppercut"
+      ]
+    },
+    {
+      "id": "archer",
+      "name": "궁수",
+      "rarity": "COMMON",
+      "role": "ranged",
+      "baseStats": {
+        "hp": 470.0,
+        "power": 51.0,
+        "armor": 5.0,
+        "range": 160.0,
+        "speed": 62.0,
+        "projectileSpeed": 380.0,
+        "radius": 10.0,
+        "attackIntervalMs": 1100,
+        "windupMs": 300
+      },
+      "skillIds": [
+        "archer.piercing_arrow",
+        "archer.arrow_rain"
+      ]
+    },
+    {
+      "id": "pyromancer",
+      "name": "화염술사",
+      "rarity": "COMMON",
+      "role": "mage",
+      "baseStats": {
+        "hp": 480.0,
+        "power": 59.0,
+        "armor": 5.0,
+        "range": 145.0,
+        "speed": 56.0,
+        "projectileSpeed": 280.0,
+        "radius": 11.0,
+        "attackIntervalMs": 1350,
+        "windupMs": 350
+      },
+      "skillIds": [
+        "pyromancer.fire_burst",
+        "pyromancer.flame_wall"
+      ]
+    },
+    {
+      "id": "cryomancer",
+      "name": "얼음술사",
+      "rarity": "COMMON",
+      "role": "mage",
+      "baseStats": {
+        "hp": 520.0,
+        "power": 43.0,
+        "armor": 8.0,
+        "range": 145.0,
+        "speed": 56.0,
+        "projectileSpeed": 300.0,
+        "radius": 11.0,
+        "attackIntervalMs": 1250,
+        "windupMs": 300
+      },
+      "skillIds": [
+        "cryomancer.frost_fan",
+        "cryomancer.ice_prison"
+      ]
+    },
+    {
+      "id": "priest",
+      "name": "사제",
+      "rarity": "COMMON",
+      "role": "support",
+      "baseStats": {
+        "hp": 520.0,
+        "power": 29.0,
+        "armor": 8.0,
+        "range": 135.0,
+        "speed": 58.0,
+        "projectileSpeed": 320.0,
+        "radius": 11.0,
+        "attackIntervalMs": 1300,
+        "windupMs": 300
+      },
+      "skillIds": [
+        "priest.healing_light",
+        "priest.healing_prayer"
+      ]
+    },
+    {
+      "id": "barbarian",
+      "name": "야만인",
+      "rarity": "COMMON",
+      "role": "melee",
+      "baseStats": {
+        "hp": 820.0,
+        "power": 68.0,
+        "armor": 10.0,
+        "range": 16.0,
+        "speed": 62.0,
+        "projectileSpeed": null,
+        "radius": 13.0,
+        "attackIntervalMs": 1350,
+        "windupMs": 400
+      },
+      "skillIds": [
+        "barbarian.spin_slash",
+        "barbarian.leap_slam"
+      ]
+    },
+    {
+      "id": "monk",
+      "name": "수도승",
+      "rarity": "COMMON",
+      "role": "support",
+      "baseStats": {
+        "hp": 640.0,
+        "power": 42.0,
+        "armor": 14.0,
+        "range": 18.0,
+        "speed": 66.0,
+        "projectileSpeed": null,
+        "radius": 11.0,
+        "attackIntervalMs": 1050,
+        "windupMs": 250
+      },
+      "skillIds": [
+        "monk.repelling_staff",
+        "monk.cleansing_bell"
+      ]
+    },
+    {
+      "id": "iron_knight",
+      "name": "철갑기사",
+      "rarity": "ADVANCED",
+      "role": "tank",
+      "baseStats": {
+        "hp": 1100.0,
+        "power": 43.0,
+        "armor": 34.0,
+        "range": 14.0,
+        "speed": 50.0,
+        "projectileSpeed": null,
+        "radius": 15.0,
+        "attackIntervalMs": 1450,
+        "windupMs": 350
+      },
+      "skillIds": [
+        "iron_knight.armored_charge",
+        "iron_knight.iron_wall"
+      ]
+    },
+    {
+      "id": "guardian_golem",
+      "name": "수호골렘",
+      "rarity": "ADVANCED",
+      "role": "tank",
+      "baseStats": {
+        "hp": 1300.0,
+        "power": 46.0,
+        "armor": 24.0,
+        "range": 18.0,
+        "speed": 44.0,
+        "projectileSpeed": null,
+        "radius": 16.0,
+        "attackIntervalMs": 1650,
+        "windupMs": 450
+      },
+      "skillIds": [
+        "guardian_golem.earth_slam",
+        "guardian_golem.guard_roar"
+      ]
+    },
+    {
+      "id": "assassin",
+      "name": "암살자",
+      "rarity": "ADVANCED",
+      "role": "melee",
+      "baseStats": {
+        "hp": 490.0,
+        "power": 66.0,
+        "armor": 6.0,
+        "range": 10.0,
+        "speed": 82.0,
+        "projectileSpeed": null,
+        "radius": 10.0,
+        "attackIntervalMs": 800,
+        "windupMs": 150
+      },
+      "skillIds": [
+        "assassin.shadow_leap",
+        "assassin.vital_combo"
+      ]
+    },
+    {
+      "id": "crossbowman",
+      "name": "석궁병",
+      "rarity": "ADVANCED",
+      "role": "ranged",
+      "baseStats": {
+        "hp": 510.0,
+        "power": 76.0,
+        "armor": 8.0,
+        "range": 168.0,
+        "speed": 54.0,
+        "projectileSpeed": 440.0,
+        "radius": 11.0,
+        "attackIntervalMs": 1550,
+        "windupMs": 350
+      },
+      "skillIds": [
+        "crossbowman.steel_bolt",
+        "crossbowman.binding_bolt"
+      ]
+    },
+    {
+      "id": "stormcaller",
+      "name": "번개술사",
+      "rarity": "ADVANCED",
+      "role": "mage",
+      "baseStats": {
+        "hp": 490.0,
+        "power": 52.0,
+        "armor": 6.0,
+        "range": 150.0,
+        "speed": 60.0,
+        "projectileSpeed": 360.0,
+        "radius": 11.0,
+        "attackIntervalMs": 1200,
+        "windupMs": 250
+      },
+      "skillIds": [
+        "stormcaller.chain_lightning",
+        "stormcaller.thunder_strike"
+      ]
+    },
+    {
+      "id": "bard",
+      "name": "음유시인",
+      "rarity": "ADVANCED",
+      "role": "support",
+      "baseStats": {
+        "hp": 560.0,
+        "power": 28.0,
+        "armor": 10.0,
+        "range": 140.0,
+        "speed": 60.0,
+        "projectileSpeed": 320.0,
+        "radius": 11.0,
+        "attackIntervalMs": 1250,
+        "windupMs": 300
+      },
+      "skillIds": [
+        "bard.marching_melody",
+        "bard.dissonance"
+      ]
+    },
+    {
+      "id": "rune_mage",
+      "name": "룬 마법사",
+      "rarity": "LEGENDARY",
+      "role": "mage",
+      "baseStats": {
+        "hp": 600.0,
+        "power": 58.0,
+        "armor": 12.0,
+        "range": 160.0,
+        "speed": 58.0,
+        "projectileSpeed": 320.0,
+        "radius": 12.0,
+        "attackIntervalMs": 1250,
+        "windupMs": 350
+      },
+      "skillIds": [
+        "rune_mage.triple_rune",
+        "rune_mage.rune_resonance"
+      ]
+    },
+    {
+      "id": "ancient_one",
+      "name": "고대의 존재",
+      "rarity": "LEGENDARY",
+      "role": "melee",
+      "baseStats": {
+        "hp": 920.0,
+        "power": 70.0,
+        "armor": 18.0,
+        "range": 18.0,
+        "speed": 60.0,
+        "projectileSpeed": null,
+        "radius": 15.0,
+        "attackIntervalMs": 1300,
+        "windupMs": 400
+      },
+      "skillIds": [
+        "ancient_one.shatter_sigil",
+        "ancient_one.primordial_fissure"
+      ]
+    },
+    {
+      "id": "guardian_spirit",
+      "name": "수호령",
+      "rarity": "LEGENDARY",
+      "role": "tank",
+      "baseStats": {
+        "hp": 1320.0,
+        "power": 42.0,
+        "armor": 32.0,
+        "range": 18.0,
+        "speed": 48.0,
+        "projectileSpeed": null,
+        "radius": 16.0,
+        "attackIntervalMs": 1600,
+        "windupMs": 400
+      },
+      "skillIds": [
+        "guardian_spirit.soul_guard",
+        "guardian_spirit.guardian_barrier"
+      ]
+    }
+  ]
+}

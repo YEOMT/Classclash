@@ -1,0 +1,220 @@
+﻿source,id,scenario,acceptance,status
+02_AI_AND_COMBAT.md,COM-001,경기 시작 직후 웨이브 조회,"각 팀 각 라인 근접3·원거리4, 전체28기",NOT_RUN
+02_AI_AND_COMBAT.md,COM-002,20초 직전·직후 고정 스텝 진행,"웨이브는 한 번만 추가, 중복 생성 없음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-003,"30명 모두 출정, 10초 관전","활성 영웅30 이하, 15vs15, 라인과 합류 지형 안 이동",NOT_RUN
+02_AI_AND_COMBAT.md,COM-004,출정 중 교체·강화·라인변경 API 요청,"서버 거부, 잔액·스탯·좌표 불변",NOT_RUN
+02_AI_AND_COMBAT.md,COM-005,같은 출정 요청을 네 번 재전송,"활성 영웅1, 동일 deploymentId 결과",NOT_RUN
+02_AI_AND_COMBAT.md,COM-006,근접8명을 적1명에게 접근,"공격 자리 사용, 한점중첩·무한회전 없음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-007,양 팀 밀집 미니언과 영웅 교전,이동 가능한 유닛의 5초 이상 정체0,NOT_RUN
+02_AI_AND_COMBAT.md,COM-008,탱커·궁수·사제 동시 출정,"탱커 전열, 궁수·사제 후열; 사제가 선두단독진입하지 않음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-009,빠른 적이 타워 뒤로 도주,"추적 제한으로 포기, 잠긴 구조물 사이 관통추적 없음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-010,두 후보 적이 교대로 조금 가까워짐,hysteresis로 표적 과도변경 없음,NOT_RUN
+02_AI_AND_COMBAT.md,COM-011,공격 windup 중 target이 허용오차 밖 도주,"근접 헛손질, 먼거리 피해 없음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-012,화살 발사 전후 시간 캡처,"발사 이전 피해0, 실제 적중시점에 피해·표현 일치",NOT_RUN
+02_AI_AND_COMBAT.md,COM-013,빠른 관통탄이 스텝 중 적 통과,"sweep 충돌로 지정 피해, 중복 적중 없음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-014,공격자 사망 뒤 기존 화살 착탄,발사체는 남고 원래 출정에 통계 귀속,NOT_RUN
+02_AI_AND_COMBAT.md,COM-015,상대 사망 후 추적탄 이동,"다른 적 자동조준 없음, 마지막위치 소멸",NOT_RUN
+02_AI_AND_COMBAT.md,COM-016,같은 tick 상호치명타,"양쪽 사망, 배열순서와 팀편향 없음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-017,"같은 tick 피해70·치유30, 시작HP50","최종HP10, 결과 재현",NOT_RUN
+02_AI_AND_COMBAT.md,COM-018,연속 스턴 반복 적용,"연속hardCC≤2초 후 면역, 영구기절 없음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-019,겹친 감속·속박·침묵,"정책대로독립적용, 잘못된이동·스킬허용 없음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-020,벽을 향해 넉백,"벽접점정지, 지형밖·순간이동 없음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-021,풀HP 아군과 부상아군 배치,"유효치유대상선택, 사망자/만피에 낭비 없음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-022,"CC만 있는 아군, HP 충분",정화 스킬이 실제CC를 보고 사용,NOT_RUN
+02_AI_AND_COMBAT.md,COM-023,같은 보호막 재시전,"출처별갱신, 무한누적없음, 총35%상한",NOT_RUN
+02_AI_AND_COMBAT.md,COM-024,적이 없는 곳에 AoE 준비,최소타겟조건 실패로 시전하지 않음,NOT_RUN
+02_AI_AND_COMBAT.md,COM-025,Lv1·Lv2·Lv5 각각전투,"해금스킬0·1·2, 정확히2개상한",NOT_RUN
+02_AI_AND_COMBAT.md,COM-026,스킬사용→죽음→교체→원래영웅 및 동일종류새인스턴스,"max(instance,player+definition+skill)쿨타임유지, 성장각각유지",NOT_RUN
+02_AI_AND_COMBAT.md,COM-027,외부타워 생존중 내부타워에 모든피해종류,"내부타워피해0, AI는외부목표선택",NOT_RUN
+02_AI_AND_COMBAT.md,COM-028,윗라인두타워파괴·아랫라인타워생존,"수호타워공격가능, 전체라인파괴요구없음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-029,수호타워1개남고 넥서스AoE,"넥서스피해0, AI는남은수호타워공격",NOT_RUN
+02_AI_AND_COMBAT.md,COM-030,수호타워둘파괴 후 넥서스근처 적미니언,"승리 가능한Nexus공성유지,불필요추적안함",NOT_RUN
+02_AI_AND_COMBAT.md,COM-031,미니언탱킹중영웅이수비영웅공격,타워어그로가공격영웅으로전환,NOT_RUN
+02_AI_AND_COMBAT.md,COM-032,타워발사후 표적사거리이탈,"발사된탄환유지,경계출입으로무한취소불가",NOT_RUN
+02_AI_AND_COMBAT.md,COM-033,죽은학생20초대기,"자동부활없음,활성영웅0,정비선택가능",NOT_RUN
+02_AI_AND_COMBAT.md,COM-034,퀴즈답변중사망,"퀴즈상태보존,정비알림,답변중복보상없음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-035,호스트와학생동시에동일전투보기,"판정동일,카메라만다름,호스트모든전장효과표시",NOT_RUN
+02_AI_AND_COMBAT.md,COM-036,호스트탭백그라운드30초,"서버경기정상진행,복귀시현재상태복원",NOT_RUN
+02_AI_AND_COMBAT.md,COM-037,같은seed·입력을3회재생,승패·파괴순서·핵심통계동일,NOT_RUN
+02_AI_AND_COMBAT.md,COM-038,실제생존유닛증가상태30명부하시험,"미니언누락없음,고정스텝누락없음,측정수치보고",NOT_RUN
+02_AI_AND_COMBAT.md,COM-039,두Nexus같은tick파괴,"무승부1회확정,양측UI일치",NOT_RUN
+02_AI_AND_COMBAT.md,COM-040,Nexus파괴후추가발사체·출정·답변,"결과확정후변경없음,요청오류/마감응답명확",NOT_RUN
+02_AI_AND_COMBAT.md,COM-041,사망직후·4.95초·5.00초 출정요청,"5초이전거부,5초부터수동출정가능,다른정비기능은즉시가능",NOT_RUN
+02_AI_AND_COMBAT.md,COM-042,전투·퀴즈쿨·사망잠금중호스트일시정지,"같은simulationclock정지·재개,학생퀴즈열기만으로는정지하지않음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-043,479.95·480·600·720초 전후 구조물공격,"미니언피해배율1·1.25·1.5·2,기존/신규동일,유닛상대불변",NOT_RUN
+02_AI_AND_COMBAT.md,COM-044,공격 링에 도달한 근접 영웅과 큰 타워,"gap≤R, 평타 실제 시작, R+여유로 정지하지 않음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-045,230ms·300ms 선딜과 150ms 다단히트,"각각5틱·6틱·3틱, 과거틱 당김·중복hit 없음",NOT_RUN
+02_AI_AND_COMBAT.md,COM-046,일시정지 뒤 RESUME 명령만 전송,정지된 틱을 기다리지 않고 정상 재개,NOT_RUN
+02_AI_AND_COMBAT.md,COM-047,시작 퀴즈·준비 5분 경과 후 BATTLE,"elapsed0, 기존 절대쿨타임 정상, 첫웨이브1회",NOT_RUN
+02_AI_AND_COMBAT.md,COM-048,양쪽 외부 타워 및 중앙 첫 교전,"x520/1016·사거리180, 중앙이 양 타워 범위의 겹침이 아님",NOT_RUN
+02_AI_AND_COMBAT.md,COM-049,동일 틱 90·60 피해로 HP100 영웅 처치,"기여60·40, 큰source에마무리, 팀킬1, 반복재생동일",NOT_RUN
+02_AI_AND_COMBAT.md,COM-050,수도승 정화·기존 면역·신규 동일틱CC,"기존부정상태해제,긍정면역보존,숨은신규면역없음",NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-01,Lv.1 성전사와 Lv.1 검사 1대1,"평타만 사용, 두 스킬 잠금 표시, 공격 선딜과 피해 일치",NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-02,Lv.2 격투가의 연환권 2타 직전 표적 사망,3타가 다른 적에게 순간 재배정되지 않음,NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-03,화염 폭발 투사체 발사 직후 시전자 사망,발사체가 정상 이동·충돌하되 사망 전 미발사 스킬은 생성되지 않음,NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-04,얼음술사 두 명이 같은 적에게 서리 부채·빙결 감옥 반복,감속은 최강 효과 하나만 적용하고 50%를 넘지 않으며 속박 만료는 max로 갱신. 속박 중 사거리 안 평타·스킬은 가능하고 강한 CC 면역을 새로 만들지 않음,NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-05,사제의 치유 대상이 시전 중 풀 HP가 됨,"유효성 재검사 후 불필요 초과 치유 기록 없음, 다른 대상에게 순간 이동 치유하지 않음",NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-06,수도승의 보호 대상이 속박 상태,정화 가능; 스턴 상태의 수도승 자신이 임의로 시전하지 못함,NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-07,암살자 뒤에 적 포탑 몸체가 있는 표적,"착지 가능한 측면이 없으면 도약 미시전, 구조물 뒤 순간 이동 없음",NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-08,석궁 구속 볼트 앞에 미니언,"먼저 맞은 미니언이 피해·속박 대상, 뒤 영웅에 보이지 않는 확정 명중 없음",NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-09,연쇄 번개 첫 적과 다음 적 거리 100,70 점프 범위를 넘지 않아 연쇄 종료,NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-10,음유시인 3명이 같은 아군 버프,"공격주기 단축은 최댓값 15% 한 번, 재생 중 공격의 hit 시각 변경 없음",NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-11,룬 마법사 두 명이 같은 적에 표식,"시전자별 표식 구분, 한 명의 공명이 다른 명의 표식을 소모하지 않음",NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-12,공명 폭발 원 세 개 겹침,대상 하나의 총 피해 150% 상한 적용,NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-13,고대의 존재 두 명이 각각 인장 2중첩,합산 4중첩 폭발 없음. 각 인스턴스 3중첩일 때만 폭발,NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-14,수호령의 결계 중 수호령 사망,"결계 종료, 남은 보호막은 해당 효과의 만료 규칙대로 유지",NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-15,일반 사제와 전설 수호령 비교,사제만 직접 회복 가능. 수호령이 높은 체력과 보호막 외에 숨은 치유를 갖지 않음,NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-16,포탑·넥서스에 모든 스킬 시전,"잠금, 구조물 배율, CC·치유·표식 면역 일관",NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-17,정비 중 고급 영웅으로 교체하고 재출정,새 인스턴스의 레벨·강화·스킬 해금·쿨다운을 읽음. 이전 영웅 성장 이전 없음,NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-18,호스트 전체맵과 학생 확대화면 동시 관전,"동일 actionId의 발사·적중 순서 일치, 양 라인의 핵심 액션 모두 호스트에 보임",NOT_RUN
+03_HEROES_AND_PIXEL_ART.md,HERO-19,성전사·격투가·번개술사 여러 명의 강타·승룡권·낙뢰를 고정 시점에 반복 적용,스턴·띄우기의 연속 구간이 2초 상한에서 강제 종료되고 이후 2초 강한 CC 면역. 짧은 스턴의 자연 종료·정화만으로는 새 면역을 만들지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L01,새 호스트가 방 생성,고유 방 코드·호스트 세션·로비가 생성되고 학생 참가 URL이 실제로 열림,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L02,서로 다른 학생 2명이 같은 코드로 참가,호스트와 각 학생에게 같은 참가자 목록·서로 다른 참가자 ID가 보임,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L03,존재하지 않는 코드 입력,이유가 있는 오류와 다시 입력할 화면이 나오며 무한 로딩·빈 배경이 아님,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L04,빈 이름·공백만 있는 이름·과도한 길이 입력,명시된 길이·문자 검증으로 거부하고 화면이 계속 사용 가능,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L05,29명인 방에 인간 참가와 AI 추가를 동시에 요청,한 요청만 마지막 슬롯을 차지하며 총원이 30을 넘지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L06,30명인 방에 31번째 참가 요청,`ROOM_FULL`로 거부하고 기존 참가자를 내보내지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L07,AI 30명 자동 채우기,팀당 15명이며 AI 배지·고유 이름·프로필이 모두 보임,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L08,인간 1명 참가 후 30명 채우기,인간 1명은 보존되고 AI 29명만 생성됨,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L09,AI 1명을 로비에서 제거,명단·정원·타이머·세션이 함께 정리되고 지연 명령이 적용되지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L10,AI를 팀 간 이동,목적 팀 정원을 지키며 호스트·학생 명단이 같은 팀을 표시,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L11,시작 퀴즈 이후 AI 추가·제거·팀 변경 요청,UI가 잠기고 직접 API 요청도 단계 오류로 거부,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L12,양 팀 중 한 팀이 비어 있는 상태로 전투 시작,시작을 거부하고 필요한 인원을 명확히 안내,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L13,참가자 0명인 로비에서 AI 2명 추가 후 시작,두 팀 1명씩 배치하여 인간 없이 모든 준비 단계 진행 가능,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L14,학생 권한으로 호스트 전용 명령 전송,AI 관리·단계 전환·방 삭제가 모두 권한 오류로 거부,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,L15,호스트가 화면을 새로고침,기존 방·호스트 권한·참가 명단을 복구하며 새 방을 몰래 생성하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B01,같은 시드·문제·설정·참가자 ID로 두 번 실행,봇의 정답 의도·응답 시각·정비 동점 결정 로그가 동일,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B02,봇 관리 주기를 변경하되 질문·실제 행동은 동일하게 유지,독립 스트림 덕분에 뽑기·전투 난수 결과가 바뀌지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B03,"각 프로필 문제 표본 10,000개 생성",정답률이 목표값의 ±2%p 안이고 항상 같은 정답 수로 고정되지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B04,"각 프로필 응답 시간 10,000개 생성",모든 값이 범위 안이며 평균이 이론적 중앙값의 ±0.05초 이내,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B05,"오답 의도 1,000개를 서로 다른 선택지 순서에 적용",정답을 고르지 않고 모든 합법 오답에 도달 가능,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B06,봇 1명이 초기 퀴즈 완료 후 첫 준비 진입,20개 채점 기록의 자산을 한 번만 얻고 무료 선택권→선택→SET_READY로 이어지며 DEPLOY_HERO 오용 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B07,봇의 경기 중 10문제 완료 직후 다음 퀴즈 요청,"30초 이전에는 거부, 이후에는 정확히 한 새 세트만 생성",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B08,봇 영웅이 살아 있을 때 관리자가 강화·교체 시도,인간과 동일하게 거부되고 전투 상태가 변하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B09,자산 0인 봇이 사망 후 정비,무료 출정 가능한 보유 영웅으로 복귀하며 무한 쇼핑 대기 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B10,봇이 같은 정비 단계에서 구매 응답을 늦게 받음,응답 전 중복 구매하지 않고 확정 상태 기준 다음 행동 수행,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B11,전열이 없는 라인과 과밀 라인을 동시에 제시,역할 부족·인구 차이를 고려하며 모든 봇이 같은 틱 한 라인으로 몰리지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B12,봇을 숙련으로 바꿔 동일 영웅 전투 장면 재생,전투 스탯·스킬 조건·탐지 범위·피해는 표준과 동일,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B13,봇을 정비 명령 거부 상태에 두고 READY·일시정지 대기도 비교,"정비 정체는 단계별 합법 복구, READY·일시정지는 정체로 오인하지 않음",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B14,봇 예정 답·시드·관리 정보를 학생 트래픽에서 검색,공개할 이유 없는 정답·미래 정보·세션 비밀이 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,B15,AI 30명으로 시작→종료→재경기,사람이 학생 입력을 대신하지 않아도 전체 흐름이 끝까지 진행,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q01,유효한 사용자 문제 목록을 등록,문제·정답·오답을 정확히 해석하고 시작 전에 잘못된 행을 알려 줌,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q02,중복 선택지·정답 누락·빈 문제 포함,방 시작 전에 해당 행을 거부하며 임의의 정답을 만들지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q03,초기 퀴즈 시작,각 학생에게 20문제 시도가 한 번만 생성되고 전투는 아직 시작되지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q04,초기 퀴즈에서 정답 수 0·1·10·20인 사례가 준비 단계로 진입,지갑이 각각 0·1·10·20원으로 유지되고 준비 진입 추가 지급 없음; 0점도 무료 영웅 선택 후 준비 가능,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q05,정답 제출 직후 같은 요청 ID를 3번 재전송,보상·문제 이동·학습 기록이 각각 한 번만 반영,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q06,예전 문제 ID 또는 다른 학생의 문제 ID 제출,거부하고 현재 문제·지갑·연속 기록을 바꾸지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q07,선택지가 매번 다르게 섞인 문제 풀이,화면 위치가 아닌 선택지 ID로 정확히 채점,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q08,퀴즈 화면을 닫았다 다시 열기,같은 세트·같은 미응답 문제로 복귀하고 이미 얻은 보상을 다시 주지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q09,10번째 문제 채점 확정,그 서버 시각부터 30초 쿨타임을 계산하고 클라이언트 시계 조작으로 단축되지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q10,퀴즈 7번째 문제에서 영웅 사망,문제·진행·보상을 보존하고 정비 진입을 함께 표시,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q11,퀴즈 도중 재출정,이미 진행한 문제는 유지되며 살아 있는 영웅은 자동 전투를 계속,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q12,퀴즈를 풀지 않고 전장을 1분 관전,영웅 전투는 계속되며 자산을 임의로 지급하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q13,진행 중 퀴즈가 있는 상태에서 새 세트 시작 요청,기존 시도를 반환하거나 충돌로 거부하고 병렬 자원 파밍 불가,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q14,결과 확정 직후 늦은 퀴즈 답 도착,종료 이후 자산·시상 기록에 추가 반영되지 않고 종료 사유 반환,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,Q15,학생 응답·소스·스냅숏을 확인,현재 문항의 선택지는 보이되 미제출 문항의 정답 키 전체는 노출되지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M01,첫 준비에서 영웅·라인 선택 후 출정,해당 학생의 영웅 정확히 1명만 본진 출발 위치에 생성,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M02,출정 버튼 더블클릭·동일 명령 재전송,한 출정만 적용되고 중복 영웅이 생기지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M03,생존 중 성장·뽑기·교체·라인 변경 요청,"전부 서버에서 거부, 퀴즈 시작·응답은 허용",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M04,영웅 HP가 0이 됨,"사망 이벤트 한 번, 전장 영웅 비활성화, 정비 선택지 표시",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M05,최소 사망 대기 5초 이전 재출정 요청,출정 거부와 남은 시간이 보이며 구매·퀴즈 등 합법 정비는 가능,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M06,대기 종료 후 아무 조작 없이 인간 학생을 30초 둠,자동 부활하지 않고 정비 상태 유지,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M07,사망 전 영웅을 그대로 선택하여 출정,"같은 인스턴스·레벨·강화 유지, 출정 체력은 규정대로 초기화",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M08,영웅 A를 강화한 뒤 영웅 B로 교체,B에 A의 레벨·강화·해금 스킬이 옮겨가지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M09,A→B→A 순서로 사망 후 교체,A의 기존 성장만 그대로 복원,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M10,같은 종류의 영웅 인스턴스 2개 보유,각 인스턴스의 성장·쿨타임·선택 ID가 혼동되지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M11,타인의 영웅 인스턴스로 출정·강화 요청,소유권 오류로 거부하고 지갑을 차감하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M12,정비에서 아래 라인을 고른 후 출정,첫 경로부터 아래 라인을 따르고 생존 중 위 라인으로 재지정 불가,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M13,첫 준비 완료 후 READY에서 성장·뽑기·선택 변경을 요청하고 준비 취소 뒤 재시도,READY에서는 거부하고 SET_READY(false) 후 허용; 무료 선택권·초기 자산을 재지급하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M14,이전 사망 세대의 교체·출정 명령이 다음 생존 중 도착,오래된 명령으로 거부하고 현재 영웅 상태를 바꾸지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,M15,정비 중 경기 종료,구매·출정 입력을 닫고 최종 기록으로 전환하며 전장에 새 영웅을 만들지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G01,자산 2원으로 일반 뽑기 1회,정확히 2원을 차감하고 영웅 1개를 창고에 추가,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G02,자산 10원으로 고급 뽑기 1회,정확히 10원을 차감하고 영웅 1개를 창고에 추가,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G03,자산 1원·9원으로 해당 뽑기 시도,잔액 부족으로 거부하고 영웅·지갑 모두 불변,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G04,동일 뽑기 요청을 재시도,최초 영웅 결과를 반환하고 추가 차감·추가 영웅 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G05,고정 난수 경계값을 각 확률 구간에 주입,명세의 구간과 등급이 일치하고 빠진 경계·중복 구간 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G06,"일반 뽑기 표본 100,000회",전설이 0회이며 일반·고급 비율이 설정값의 ±0.5%p 이내,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G07,"고급 뽑기 표본 100,000회","전설 비율이 10%의 ±0.5%p 이내, 확률 합계 100%",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G08,전설 등급에서 영웅 풀 검사,룬 마법사·고대의 존재·수호령만 선택되고 각 설정 가중치 준수,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G09,역할 선택·등급·가용 풀의 조합 전부 검사,일반 5역할·고급 통합·고급 탱커/근접/마법은 동작하고 고급 원거리/지원 지정은 비활성; 전설 10% 재정규화 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G10,뽑기 완료 직후 출정 영웅 상태 확인,창고만 늘고 새 영웅이 자동으로 전장에 투입되지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G11,같은 영웅을 Lv.1→Lv.5까지 성장,"설정 비용을 각각 차감, Lv.2 첫 스킬·Lv.5 두 번째 스킬 해금",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G12,Lv.5 영웅에게 추가 레벨업 요청,상한 오류로 거부하고 비용 차감·세 번째 스킬 생성 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G13,강화 상한과 두 투자 유형 검사,각 투자 효과·비용·총 상한이 설정대로 적용되고 다른 영웅에 영향 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G14,지갑 버전이 같은 성장 요청 두 개 동시 제출,허용된 순서·잔액으로만 처리되어 음수 지갑·초과 구매 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,G15,경기 종료 후 같은 방에서 새 경기,전판 창고·전설·레벨·강화·남은 자산이 초기화되고 새 초기 퀴즈로 시작,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C01,맵 초기 상태 검사,일반 타워 8개·수호 타워 4개·넥서스 2개가 정확한 팀·라인·위치로 존재,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C02,전투 시작 틱과 다음 웨이브 시각 관측,"t=0에 각 팀·각 라인 근접 3+원거리 4, 총 28기 생성; 이후 설정 주기 준수",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C03,단독 영웅을 두 라인에서 각각 출정,해당 넓은 길을 따라 이동하며 중앙 비보행 지형을 뚫거나 반대 라인으로 순간 이동하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C04,F02 전열 혼잡 장면 실행,근접들이 공격 위치를 나누고 후열까지 한 점에 쌓이지 않으며 장기 정체 진단 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C05,표적 둘을 사거리 경계에서 교차 이동,유효한 공격을 매 틱 취소하는 표적 진동 없이 규정된 유지·재평가 조건 준수,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C06,근접 공격 선딜 중 표적 이탈·사망,명시된 확정·취소·빗나감 규칙을 적용하고 유령 적중을 만들지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C07,원거리 공격을 저속 재생,발사 전에 피해가 없고 실제 투사체 도착·충돌 틱에 한 번 피해 적용,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C08,기본 공격·두 스킬을 같은 틱에 사용 가능한 장면,"우선순위와 행동 잠금으로 합법 행동만 실행, 중복 공격·공짜 취소 없음",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C09,저체력·만피 아군이 섞인 F09 실행,치유·실드·정화가 유효한 대상을 택하며 빈 곳에 반복 낭비하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C10,적 넥서스가 잠긴 F05 실행,공격 가능한 타워를 우선 공략하며 무적 넥서스 앞에 정지하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C11,한 라인의 적 일반 타워 2개만 파괴,"해당 진입로로 합류부 공성 가능, 다른 라인 파괴를 몰래 요구하지 않음",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C12,영웅이 타워 아래 적을 추격하되 아군 웨이브가 사라짐,역할·위험 규칙에 맞는 판단을 하며 무한 추격·출입 진동 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C13,여러 CC·넉백이 같은 틱에 적용,CC 처리 우선순위·상한·넉백 충돌이 일관되고 영구 멈춤·벽 통과 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C14,같은 틱에 양쪽 넥서스가 파괴,틱 내 피해 정산을 완료한 뒤 무승부 처리하여 엔티티 순회 순서로 승자 결정하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,C15,인간 소유·봇 소유의 동일 영웅을 같은 장면에 배치,입력 소유 종류와 무관하게 동일한 전투 규칙·기본 수치·의사결정 적용,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N01,학생·호스트 동시 접속해 같은 교전 관측,같은 엔티티 ID·HP·위치·공격 사건을 공유하고 카메라만 다름,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N02,학생 연결을 5초 끊었다 복구,동일 참가자·창고·지갑·퀴즈·영웅·정비 상태로 재접속,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N03,호스트 연결을 10초 끊음,서버 전투와 학생 퀴즈가 계속되고 호스트 복귀 시 최신 전체 맵 표시,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N04,생존 중 학생 페이지 새로고침,영웅이 추가 소환되거나 생존 상태가 정비로 바뀌지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N05,정비 중 학생 페이지 새로고침,사망 세대·대기 종료시각·선택 가능한 창고가 복구,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N06,퀴즈 도중 학생 페이지 새로고침,현재 세트·문제·기지급 보상·남은 쿨타임이 보존,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N07,서로 순서가 뒤바뀐 스냅숏 전달,서버 틱·버전 기준 오래된 것을 무시하며 체력·위치가 과거로 되감기지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N08,재연결 직전 전투 이벤트를 중복 전달,event ID로 중복 이펙트·피해 숫자·처치 알림을 만들지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N09,전체 스냅숏 재요청,현재 지속 장판·투사체·구조물·사망 상태를 회복하며 이미 끝난 순간 효과는 재폭발하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N10,다른 경기 ID의 지연 명령·이벤트 전달,현재 경기에서 거부·무시하고 UI를 이전 단계로 돌리지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N11,비정상·만료·다른 참가자 세션으로 요청,"인증 오류, 타인 정보·권한·지갑 접근 불가",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N12,연결 중단 상태에서 구매 버튼 연타,"명확한 연결 안내와 보류 상태, 재전송 시 거래 1회 보장",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N13,전투 이벤트 수신 중 탭 백그라운드→복귀,전체 상태 재동기화로 따라잡고 누적된 수백 효과를 한꺼번에 폭발시키지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N14,방 종료 후 늦은 학생·봇 요청 도착,종료 상태를 반환하고 삭제한 방·타이머가 부활하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,N15,서버 프로세스를 강제 재시작,04의 영속 복구 규격대로 마지막 일관된 상태·보상·봇 예약을 복구; 미지원은 실패이며 가짜 경기 재개·보상 중복 금지,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V01,호스트 기본 관전 화면,좌우 끝 넥서스·두 라인·합류부·모든 타워가 한 화면에 있고 상단 스코어판 유지,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V02,호스트가 아무 조작 없이 대규모 교전 관전,자동 줌·자동 라인 전환·화면 흔들림 때문에 다른 전장이 사라지지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V03,같은 이벤트 스트림을 호스트·학생 렌더러에 공급,같은 의미의 공격·피격·투사체·장판·스킬 효과가 양쪽 모두 구현됨,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V04,호스트에서 화면 좌우 끝 동시 스킬 사용,끝부분 효과가 잘리지 않고 넥서스·수호 타워 주변 전투가 읽힘,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V05,학생의 영웅이 이동·넉백·돌진,추적 카메라가 부드럽게 따라가며 영웅과 근처 위협을 함께 보여 줌,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V06,학생 영웅 사망 후 정비·다른 라인 재출정,카메라가 사망 지점에 영구 고정되지 않고 새 영웅을 올바르게 추적,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V07,모든 영웅의 정지·이동·평타·스킬·피격·사망 재생,임시 도형·이모지만으로 대체되지 않고 구분 가능한 도트 포즈와 애니메이션 존재,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V08,영웅 18명을 이름·색상 설명 없이 실루엣 비교,무기·체형·자세·공격 표현으로 역할과 주요 영웅을 구분할 수 있음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V09,평타를 저속 재생하고 서버 hit 이벤트 겹쳐 보기,선딜→타격→후딜 순서와 시각적 적중이 서버 피해 시점에 맞음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V10,모든 해금 스킬과 전설 3종 전용 효과 실행,각 스킬의 범위·방향·발동·적중이 실제 판정과 맞고 빈 장식 효과가 아님,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V11,큰 스킬이 동시에 6개 이상 발동,HP·팀·실루엣·위험 구역을 읽을 수 있으며 화면 전체 불투명 번쩍임 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V12,서로 다른 배율·DPR·브라우저 확대에서 확인,스프라이트 필터링 번짐·atlas bleeding·서브픽셀 떨림이 허용 기준 안,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V13,피해 숫자·이름표가 한 곳에 모이는 장면,숫자 겹침은 정리하되 실제 공격·발사체·기능성 이펙트는 생략하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V14,낮은 성능 설정에서 호스트 관전,장식 입자·그림자 등만 줄고 실제 공격·효과·위험 표시가 모두 남음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,V15,학생 태블릿·작은 화면에서 퀴즈·정비 사용,주요 버튼·잔액·영웅·라인 선택이 겹치지 않고 터치로 끝까지 진행 가능,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R01,한 팀 넥서스 HP 0,승자와 종료 틱을 한 번 확정하고 양쪽 화면이 같은 결과 표시,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R02,킬 수가 높지만 넥서스가 파괴된 팀,킬 점수로 승리를 뒤집지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R03,13분을 넘겼으나 넥서스가 둘 다 생존,미승인 HP 비교·랜덤 승리·몰래 즉사 규칙을 적용하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R04,호스트가 시험 경기 중단,승리로 위장하지 않고 `호스트 중단` 상태로 명확히 구분,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R05,결과 확정 후 피해·치유·퀴즈 이벤트 도착,최종 통계와 수상자가 바뀌지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R06,지원 영웅만 사용한 학생,유효 치유·실드·CC 기여가 기록되어 킬 전용 평가에서 누락되지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R07,만피 회복·무효 실드·무적 대상 피해 반복,실제 유효량만 기록하고 허수 기여로 시상을 올리지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R08,타워·넥서스 공격에 참여한 학생,구조물 유효 피해·철거 기여를 실제 사건 기준 집계,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R09,퀴즈 정답·오답·재시도 로그 비교,학습상은 확정 정답 기록과 일치하고 중복 전송으로 오르지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R10,동점 수상 후보 생성,문서화된 동점 기준 또는 공동 수상을 적용하고 임의 실명 순서 우대 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R11,인간과 AI 혼합 경기,"팀 전적에는 모두 반영, 기본 학생 개인 시상은 AI를 제외하고 기록표에는 AI 여부를 명시",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R12,AI만 30명 경기,시상식이 비어 멈추지 않고 AI 시험 결과임을 표시,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R13,결과 화면에서 학생 재접속,확정 결과·본인 기록·시상을 동일하게 복구,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R14,같은 방에서 3회 연속 재경기,"매 경기 새 ID, 새 지갑·창고·퀴즈·타이머, 이전 승자 배너 잔존 없음",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,R15,결과 내보내기·최종 보고,실제 경기 데이터만 포함하며 미래 샘플·하드코딩 수상자·가짜 성공값 없음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P01,단일 방 AI 30명 정상 경기 15분 상한 관측,서버 정체·예외·무한루프 없이 진행하며 실제 종료 여부와 시간을 기록,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P02,F12 대표 부하에서 서버 5분 측정,"기준 장비에서 20Hz 틱 처리 p95 ≤15ms, p99 ≤30ms, 50ms 초과가 지속되지 않음",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P03,같은 장면을 기준 호스트 브라우저에서 5분 측정,실제 액션을 모두 켠 상태의 프레임 시간 p95 ≤20ms를 목표로 검증,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P04,기준 학생 태블릿의 추적 카메라·퀴즈 동시 사용,"프레임 시간 p95 ≤33.3ms, 터치·답 제출 UI가 멎지 않음",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P05,한 방 30개 독립 클라이언트 + 호스트 연결,각 클라이언트가 독립 인증·퀴즈·출정 명령을 보내며 서버 AI 30명 시험과 구분됨,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P06,30클라이언트 동시 초기 퀴즈 제출·뽑기,중복 거래·지갑 불일치·브로드캐스트 정체 없이 모두 확정 또는 사유 있는 실패,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P07,100ms 왕복 지연·30ms 지터·일시 중단 주입,표시 보간·재시도가 작동하고 실제 권위 상태·정비 규칙이 깨지지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P08,전체 경기와 3회 재경기 동안 메모리 측정,방당 타이머·소켓·이벤트 버퍼가 누적되지 않고 종료 후 기준 수준으로 회수,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P09,서버 이벤트 계수와 호스트 소비 계수 비교,"전달 대상의 기능성 전투 이벤트 누락 0, 중복 소비 0. 복구용 재투영은 별도 계수",NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P10,웨이브가 오래 살아남는 혼잡 장면,정당한 생존 유닛을 삭제하지 않으며 부하·정체 진단을 남김,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P11,동일 조건 40개 고정 시드의 균형 경기,종료 시간 분포와 편향·정체를 보고하고 아래 경기 길이 게이트 평가,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P12,인원 2·10·20·27·30명 조합 실행,화면·정원·진형·결과가 깨지지 않고 홀수 인원 불균형을 표시,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P13,준비→퀴즈→출정→사망→정비→종료 각 단계 화면 캡처,빈 배경·활성 버튼 없음·해결 불가능 로딩 등 진행 막힘 0건,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P14,네트워크/API 오류를 각 중요 명령에 주입,오류 메시지·재시도·상태 확인 경로가 있고 성공으로 위장하지 않음,NOT_RUN
+05_BOTS_AND_ACCEPTANCE.md,P15,신규 체크아웃 환경에서 README 절차대로 실행,설치→개발 실행→자동 시험→빌드가 재현되며 비밀 키를 소스에 넣지 않아도 로컬 완주 가능,NOT_RUN
