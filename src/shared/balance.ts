@@ -20,8 +20,8 @@ export const BALANCE = {
     ...proposed.structureStats,
     OUTER: {...proposed.structureStats.OUTER, hp: 9000},
     INNER: {...proposed.structureStats.INNER, hp: 12000},
-    GUARD: {...proposed.structureStats.GUARD, hp: 14000},
-    NEXUS: {...proposed.structureStats.NEXUS, hp: 22000},
+    GUARD: {...proposed.structureStats.GUARD, hp: 9000},
+    NEXUS: {...proposed.structureStats.NEXUS, hp: 12000},
   },
 };
 export default BALANCE;

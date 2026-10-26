@@ -3,6 +3,7 @@ dist/
 .tools/
 spec-source/
 *.zip
+*.bundle
 data/
 .env
 test-results/

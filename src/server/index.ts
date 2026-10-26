@@ -92,7 +92,9 @@ function wireSnapshot(r:RoomData,c:Client){
   }
   return snap;
 }
-function broadcast(r:RoomData){const started=performance.now();lastBroadcast.set(r.roomCode,started);for(const c of clients){if(c.roomCode!==r.roomCode)continue;if(c.socket.bufferedAmount>2_000_000){c.socket.close(1013,'Connection too slow; reconnect for full state');continue;}send(c.socket,{type:'SNAPSHOT',snapshot:wireSnapshot(r,c)});}reportSlow('broadcast',started,`${r.phase}/${r.tick}`);}
+function broadcast(r:RoomData){const started=performance.now();lastBroadcast.set(r.roomCode,started);for(const c of clients){if(c.roomCode!==r.roomCode)continue;// Skip obsolete snapshots while the previous one drains. Keep the connection and
+  // bounded event replay so command acknowledgements do not wait behind megabytes of old state.
+  if(c.socket.bufferedAmount>256*1024)continue;send(c.socket,{type:'SNAPSHOT',snapshot:wireSnapshot(r,c)});}reportSlow('broadcast',started,`${r.phase}/${r.tick}`);}
 const queue:{client:Client;command:ClientCommand}[]=[];
 wss.on('connection',(ws,req)=>{
   const origin=req.headers.origin;
