@@ -1,5 +1,5 @@
 import {createHash} from 'node:crypto';
-import {HEROES} from '../shared/heroes.js';
+import {HEROES,SKILLS} from '../shared/heroes.js';
 import {BALANCE} from '../shared/balance.js';
 import {BOT_TACTICS} from '../shared/bot-balance.js';
 
@@ -13,7 +13,7 @@ function canonical(value:unknown):string {
   return JSON.stringify(value);
 }
 export function fingerprint(value:unknown):string {return createHash('sha256').update(canonical(value)).digest('hex');}
-export const CURRENT_VERSIONS:Readonly<RuntimeVersions>=Object.freeze({rulesVersion:RULES_VERSION,contentHash:fingerprint(HEROES),balanceHash:fingerprint({balance:BALANCE,botTactics:BOT_TACTICS})});
+export const CURRENT_VERSIONS:Readonly<RuntimeVersions>=Object.freeze({rulesVersion:RULES_VERSION,contentHash:fingerprint({heroes:HEROES,skills:SKILLS}),balanceHash:fingerprint({balance:BALANCE,botTactics:BOT_TACTICS})});
 export function incompatibleVersions(stored:Partial<RuntimeVersions>|undefined):string[]{
   return (Object.keys(CURRENT_VERSIONS) as (keyof RuntimeVersions)[]).filter(key=>stored?.[key]!==CURRENT_VERSIONS[key]);
 }

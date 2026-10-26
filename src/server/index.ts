@@ -1,6 +1,6 @@
 import http from 'node:http';
-import { createReadStream, existsSync } from 'node:fs';
-import { readFile, stat } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import { readFile, readdir } from 'node:fs/promises';
 import { createHash, createHmac, randomBytes } from 'node:crypto';
 import { resolve, extname, sep } from 'node:path';
 import { performance } from 'node:perf_hooks';
@@ -9,6 +9,8 @@ import { addPlayer, command, createRoom, snapshot, tickRoom, type Actor, type Ro
 import { RuleError, requireRule } from './errors.js';
 import { Storage } from './storage.js';
 import type { ClientCommand, SessionInfo } from '../shared/types.js';
+import {CURRENT_VERSIONS} from './versions.js';
+import {heartbeatDecision,HEARTBEAT_INTERVAL_MS} from './heartbeat.js';
 
 const dev=process.argv.includes('--dev'),port=Number(process.env.PORT||3000),host=process.env.HOST||'127.0.0.1';
 // Test runner acceleration changes wall-clock scheduling only. Production never enables it.
@@ -23,10 +25,22 @@ function session(room:RoomData,actor:string,requestId:string):SessionInfo{return
 let vite:Awaited<ReturnType<typeof import('vite')['createServer']>>|undefined;
 if(dev){const {createServer}=await import('vite');vite=await createServer({server:{middlewareMode:true},appType:'spa'});}
 const webroot=resolve('dist/client');
+// The shipped assets are small. Preload before accepting clients so a synchronized
+// folder's disk latency cannot consume libuv workers while WebSocket zlib needs them.
+const staticFiles=new Map<string,Buffer>();
+async function preloadStatic(directory:string,cacheDirectory=directory):Promise<void>{
+  for(const entry of await readdir(directory,{withFileTypes:true})){
+    const path=resolve(directory,entry.name),cachePath=resolve(cacheDirectory,entry.name);
+    if(entry.isDirectory())await preloadStatic(path,cachePath);
+    else if(entry.isFile())staticFiles.set(cachePath,await readFile(path));
+  }
+}
+if(dev)await preloadStatic(resolve('public'),webroot);
+else if(existsSync(webroot))await preloadStatic(webroot);
 const server=http.createServer(async(req,res)=>{
   try{
     const url=new URL(req.url||'/',`http://${req.headers.host}`);
-    if(url.pathname==='/api/health'){json(res,200,{ok:true,rooms:rooms.size,storage:'sqlite-wal',version:'0.1.0',tickHz:20});return;}
+    if(url.pathname==='/api/health'){json(res,200,{ok:true,rooms:rooms.size,storage:'sqlite-wal',version:'0.1.0',tickHz:20,versions:CURRENT_VERSIONS});return;}
     if(req.method==='POST'&&(url.pathname==='/api/rooms'||/^\/api\/rooms\/[^/]+\/join$/.test(url.pathname))){
       const origin=req.headers.origin;if(origin)requireRule(origin===`http://${req.headers.host}`||origin===`https://${req.headers.host}`||origin===process.env.APP_ORIGIN,'NOT_AUTHORIZED');
       const data=await body(req),requestId=String(data.requestId||'');requireRule(requestId.length>=16&&requestId.length<=160,'INVALID_INPUT');
@@ -40,18 +54,19 @@ const server=http.createServer(async(req,res)=>{
       try{const p=addPlayer(r,String(data.name||''),sha(tokenFor(requestId,r.roomId)));storage.save(r,undefined,{id:requestId,fingerprint,actor:p.playerId});json(res,201,session(r,p.playerId,requestId));broadcast(r);return;}catch(e){rooms.set(code,before);throw e;}
     }
     if(url.pathname.startsWith('/api/')){json(res,404,{errorCode:'NOT_FOUND',message:'API 경로를 확인하세요.'});return;}
-    if(vite){vite.middlewares(req,res,()=>{res.writeHead(404);res.end();});return;}
     let path=resolve(webroot,'.'+decodeURIComponent(url.pathname));requireRule(path===webroot||path.startsWith(webroot+sep),'NOT_AUTHORIZED');
+    if(vite&&!staticFiles.has(path)){vite.middlewares(req,res,()=>{res.writeHead(404);res.end();});return;}
     if(!extname(path))path=resolve(webroot,'index.html');
-    if(!existsSync(path)){res.writeHead(404);res.end('Not found');return;}
-    if(!(await stat(path)).isFile()){res.writeHead(404);res.end();return;}
+    const file=staticFiles.get(path);if(!file){res.writeHead(404);res.end('Not found. Run npm run build before npm start.');return;}
     const types:Record<string,string>={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.png':'image/png','.json':'application/json','.svg':'image/svg+xml','.wav':'audio/wav'};
-    res.writeHead(200,{'Content-Type':types[extname(path)]||'application/octet-stream','X-Content-Type-Options':'nosniff'});createReadStream(path).pipe(res);
+    res.writeHead(200,{'Content-Type':types[extname(path)]||'application/octet-stream','Content-Length':file.length,'X-Content-Type-Options':'nosniff'});res.end(file);
   }catch(e){const error=e instanceof RuleError?e:new RuleError('STORAGE_UNAVAILABLE');if(!(e instanceof RuleError))console.error('HTTP failure:',(e as Error).message);json(res,400,{errorCode:error.code,message:error.message});}
 });
-interface Client { socket:WebSocket; roomCode:string; actor:Actor; epoch:number; alive:boolean; lastPongAt:number;lastEventSeq:number; rateAt:number; rate:number; lastSnapshot:number; lastMatchId?:string|null }
+interface Client { socket:WebSocket; roomCode:string; actor:Actor; epoch:number; alive:boolean; lastPongAt:number;pingSentAt:number|null;lastEventSeq:number; rateAt:number; rate:number; lastSnapshot:number; lastMatchId?:string|null }
 const clients=new Set<Client>();
-const wss=new WebSocketServer({server,path:'/ws',maxPayload:500000,perMessageDeflate:{threshold:1024}});
+const diagnostics=process.env.CLASH_DIAGNOSTICS==='1';
+function reportSlow(label:string,started:number,detail=''){const ms=performance.now()-started;if(diagnostics&&ms>50)console.error(JSON.stringify({diagnostic:label,ms:Math.round(ms),detail,at:new Date().toISOString()}));}
+const wss=new WebSocketServer({server,path:'/ws',maxPayload:500000,perMessageDeflate:{threshold:1024,concurrencyLimit:4,zlibDeflateOptions:{level:1}}});
 function send(ws:WebSocket,data:unknown){if(ws.readyState===WebSocket.OPEN)ws.send(JSON.stringify(data));}
 let seq=0;
 const lastBroadcast=new Map<string,number>();
@@ -77,13 +92,13 @@ function wireSnapshot(r:RoomData,c:Client){
   }
   return snap;
 }
-function broadcast(r:RoomData){lastBroadcast.set(r.roomCode,performance.now());for(const c of clients){if(c.roomCode!==r.roomCode)continue;if(c.socket.bufferedAmount>2_000_000){c.socket.close(1013,'Connection too slow; reconnect for full state');continue;}send(c.socket,{type:'SNAPSHOT',snapshot:wireSnapshot(r,c)});}}
+function broadcast(r:RoomData){const started=performance.now();lastBroadcast.set(r.roomCode,started);for(const c of clients){if(c.roomCode!==r.roomCode)continue;if(c.socket.bufferedAmount>2_000_000){c.socket.close(1013,'Connection too slow; reconnect for full state');continue;}send(c.socket,{type:'SNAPSHOT',snapshot:wireSnapshot(r,c)});}reportSlow('broadcast',started,`${r.phase}/${r.tick}`);}
 const queue:{client:Client;command:ClientCommand}[]=[];
 wss.on('connection',(ws,req)=>{
   const origin=req.headers.origin;
   if(origin&&origin!==`http://${req.headers.host}`&&origin!==`https://${req.headers.host}`&&origin!==process.env.APP_ORIGIN){ws.close(1008,'Origin rejected');return;}
   let client:Client|null=null;const authTimeout=setTimeout(()=>{if(!client)ws.close(1008,'Authentication required');},5000);
-  ws.on('pong',()=>{if(client){client.alive=true;client.lastPongAt=performance.now();}});
+  ws.on('pong',()=>{if(client){client.alive=true;client.lastPongAt=performance.now();client.pingSentAt=null;}});
   ws.on('message',raw=>{let receivedCommandId:string|undefined;try{
     const m=JSON.parse(raw.toString());
     if(typeof m.command?.commandId==='string')receivedCommandId=m.command.commandId;
@@ -92,7 +107,7 @@ wss.on('connection',(ws,req)=>{
       const p=r.players.find(p=>!p.isBot&&p.sessionHash===hash),actor:Actor=r.hostSessionHash===hash?'host':p?.playerId||'';requireRule(actor,'NOT_AUTHORIZED');
       const epoch=actor==='host'?++r.hostConnectionEpoch:++p!.connectionEpoch;if(p)p.online=true;
       for(const old of clients)if(old.roomCode===r.roomCode&&old.actor===actor){send(old.socket,{type:'REPLACED',message:'다른 창에서 연결되었습니다.'});old.socket.close(4001,'Replaced by another tab');}
-      client={socket:ws,roomCode:r.roomCode,actor,epoch,alive:true,lastPongAt:performance.now(),lastEventSeq:Number(m.lastEventSeq)||0,rateAt:performance.now(),rate:0,lastSnapshot:0};clients.add(client);clearTimeout(authTimeout);
+      client={socket:ws,roomCode:r.roomCode,actor,epoch,alive:true,lastPongAt:performance.now(),pingSentAt:null,lastEventSeq:Number(m.lastEventSeq)||0,rateAt:performance.now(),rate:0,lastSnapshot:0};clients.add(client);clearTimeout(authTimeout);
       storage.save(r);send(ws,{type:'WELCOME',connectionEpoch:epoch});send(ws,{type:'SNAPSHOT',snapshot:wireSnapshot(r,client)});return;
     }
     requireRule(client,'NOT_AUTHORIZED');
@@ -107,7 +122,7 @@ wss.on('connection',(ws,req)=>{
 let last=performance.now(),accumulator=0;
 const metrics:number[]=[];
 const timer=setInterval(()=>{
-  const now=performance.now();accumulator+=(now-last)*testSpeed;last=now;
+  const now=performance.now();if(diagnostics&&now-last>250)console.error(JSON.stringify({diagnostic:'event-loop-gap',ms:Math.round(now-last),at:new Date().toISOString()}));accumulator+=(now-last)*testSpeed;last=now;
   // The command pump remains active during pause, and applies in receive order before damage.
   const changed=new Set<string>();
   while(queue.length){const item=queue.shift()!,r=rooms.get(item.client.roomCode);if(!r)continue;const before=structuredClone(r),scope=r.matchId||`${r.roomId}/${r.lobbyEpoch}`;
@@ -116,12 +131,21 @@ const timer=setInterval(()=>{
   for(const code of changed){const r=rooms.get(code);if(r)broadcast(r);}
   let catchup=0;
   while(accumulator>=50&&catchup++<5){const begin=performance.now();for(const r of rooms.values()){
-      const previousPhase=r.phase;tickRoom(r);
-      if((r.tick%20===0&&!['LOBBY','RESULT','CANCELLED'].includes(r.phase))||previousPhase!==r.phase){try{storage.save(r);}catch(e){r.paused=true;console.error('Checkpoint failed; room paused:',(e as Error).message);}}
+      const previousPhase=r.phase,previousTick=r.tick,stepAt=performance.now();tickRoom(r);reportSlow('tickRoom',stepAt,`${r.phase}/${r.tick}`);
+      if((r.tick!==previousTick&&r.tick%20===0&&!['LOBBY','RESULT','CANCELLED'].includes(r.phase))||previousPhase!==r.phase){const saveAt=performance.now();try{storage.save(r);}catch(e){r.paused=true;console.error('Checkpoint failed; room paused:',(e as Error).message);}reportSlow('checkpoint',saveAt,`${r.phase}/${r.tick}`);}
       if(performance.now()-(lastBroadcast.get(r.roomCode)||0)>=100||previousPhase!==r.phase)broadcast(r);
     }metrics.push(performance.now()-begin);if(metrics.length>6000)metrics.shift();accumulator-=50;}
 },10);
-const heartbeat=setInterval(()=>{for(const c of clients){if(performance.now()-c.lastPongAt>=15000){c.socket.terminate();continue;}c.alive=false;c.socket.ping();}},5000);
+let lastHeartbeatCheck=performance.now();
+const heartbeat=setInterval(()=>{
+  const now=performance.now(),elapsed=now-lastHeartbeatCheck;lastHeartbeatCheck=now;
+  for(const c of clients){
+    if(c.socket.readyState!==WebSocket.OPEN)continue;
+    const decision=heartbeatDecision(c,now,elapsed);c.pingSentAt=decision.pingSentAt;
+    if(decision.action==='TERMINATE'){console.warn('Heartbeat timeout:',{room:c.roomCode,actor:c.actor,lastPongAgeMs:now-c.lastPongAt,pingAgeMs:now-c.pingSentAt!,loopGapMs:elapsed,bufferedAmount:c.socket.bufferedAmount});c.socket.terminate();}
+    else if(decision.action==='PING'){c.alive=false;c.socket.ping();}
+  }
+},HEARTBEAT_INTERVAL_MS);
 const cleanup=setInterval(()=>{
   const expired=[...rooms.values()].filter(r=>['LOBBY','RESULT','CANCELLED'].includes(r.phase)&&Date.now()-Date.parse(r.updatedAt)>86400000&&![...clients].some(c=>c.roomCode===r.roomCode)).map(r=>r.roomCode);
   if(expired.length){const removed=storage.expireInactive(expired);for(const code of removed){rooms.delete(code);lastBroadcast.delete(code);}}

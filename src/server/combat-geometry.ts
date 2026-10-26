@@ -109,13 +109,16 @@ export function findLocalPath(state:CombatState,u:CombatUnit,goal:Point):Point[]
   let found=-1,closest=key(start.x,start.y),best=distance(u,goal),loops=0;
   while(open.length&&loops++<2000){
     let idx=0;for(let i=1;i<open.length;i++)if(open[i]!.f<open[idx]!.f)idx=i;
-    const cur=open.splice(idx,1)[0]!,curKey=key(cur.x,cur.y),p=toPoint(cur.x,cur.y),dg=distance(p,goal);
+    const cur=open.splice(idx,1)[0]!,curKey=key(cur.x,cur.y),startNode=curKey===key(start.x,start.y);
+    // The virtual start is the unit's actual position, including when testing a
+    // nearby goal. Its grid center can see a goal through a different tangent.
+    const p:Point=startNode?u:toPoint(cur.x,cur.y),dg=distance(p,goal);
     if(dg<best){closest=curKey;best=dg;}
-    if((cur.x===finish.x&&cur.y===finish.y)||dg<22&&clearSegment(state,p,goal,u.radius,lane)){found=curKey;break;}
+    if(((cur.x===finish.x&&cur.y===finish.y)||dg<22)&&clearSegment(state,p,goal,u.radius,lane)){found=curKey;break;}
     // Near the rounded lane/tower intersection the current cell and its direct
     // neighbors can all be blocked, although a legal tangent reaches the next
     // row. A virtual start connects to visible nodes within three grid cells.
-    const startNode=curKey===key(start.x,start.y),reach=startNode?3:1;
+    const reach=startNode?3:1;
     for(let dy=-reach;dy<=reach;dy++)for(let dx=-reach;dx<=reach;dx++){
       if(!dx&&!dy)continue;const nx=cur.x+dx,ny=cur.y+dy;if(nx<0||ny<0||nx>=w||ny>=h)continue;
       const q=toPoint(nx,ny);if(!cells[key(nx,ny)])continue;

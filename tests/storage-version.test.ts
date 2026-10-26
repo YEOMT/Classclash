@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {Storage} from '../src/server/storage.js';
 import {createRoom,addPlayer,directCommand,type RoomData} from '../src/server/room.js';
 import {CURRENT_VERSIONS,RULES_VERSION,fingerprint,type RuntimeVersions} from '../src/server/versions.js';
-import {HEROES} from '../src/shared/heroes.js';
+import {HEROES,SKILLS} from '../src/shared/heroes.js';
 import {BALANCE} from '../src/shared/balance.js';
 import {BOT_TACTICS} from '../src/shared/bot-balance.js';
 
@@ -15,9 +15,9 @@ const stale=(r:RoomData)=>{r.updatedAt=new Date(Date.now()-25*60*60*1000).toISOS
 const storeRequest=(db:Storage,r:RoomData)=>db.save(r,undefined,{id:`request-${r.roomCode}`,fingerprint:'fingerprint',actor:'host'});
 
 test('runtime fingerprints cover exact hero content, balance and bot tactics with stable object ordering',()=>{
- assert.equal(CURRENT_VERSIONS.rulesVersion,RULES_VERSION);assert.equal(CURRENT_VERSIONS.contentHash,fingerprint(HEROES));assert.equal(CURRENT_VERSIONS.balanceHash,fingerprint({balance:BALANCE,botTactics:BOT_TACTICS}));assert.match(CURRENT_VERSIONS.contentHash,/^[a-f0-9]{64}$/);assert.match(CURRENT_VERSIONS.balanceHash,/^[a-f0-9]{64}$/);
+ assert.equal(CURRENT_VERSIONS.rulesVersion,RULES_VERSION);assert.equal(CURRENT_VERSIONS.contentHash,fingerprint({heroes:HEROES,skills:SKILLS}));assert.equal(CURRENT_VERSIONS.balanceHash,fingerprint({balance:BALANCE,botTactics:BOT_TACTICS}));assert.match(CURRENT_VERSIONS.contentHash,/^[a-f0-9]{64}$/);assert.match(CURRENT_VERSIONS.balanceHash,/^[a-f0-9]{64}$/);
  assert.equal(fingerprint({a:1,b:{y:2,x:3}}),fingerprint({b:{x:3,y:2},a:1}));assert.notEqual(fingerprint([1,2]),fingerprint([2,1]));
- const changed=structuredClone(HEROES);changed[0].baseStats.hp++;assert.notEqual(CURRENT_VERSIONS.contentHash,fingerprint(changed));assert.notEqual(CURRENT_VERSIONS.balanceHash,fingerprint({balance:BALANCE,botTactics:{...BOT_TACTICS,objectiveWeight:BOT_TACTICS.objectiveWeight+1}}));
+ const changed=structuredClone(HEROES);changed[0].baseStats.hp++;assert.notEqual(CURRENT_VERSIONS.contentHash,fingerprint({heroes:changed,skills:SKILLS}));const skills=structuredClone(SKILLS);skills['rune_mage.triple_rune'].hitTimesMs[1]++;assert.notEqual(CURRENT_VERSIONS.contentHash,fingerprint({heroes:HEROES,skills}));assert.notEqual(CURRENT_VERSIONS.balanceHash,fingerprint({balance:BALANCE,botTactics:{...BOT_TACTICS,objectiveWeight:BOT_TACTICS.objectiveWeight+1}}));
 });
 for(const phase of ['OPENING_QUIZ','INITIAL_MAINTENANCE','COUNTDOWN','BATTLE'] as const)for(const key of ['rulesVersion','contentHash','balanceHash'] as (keyof RuntimeVersions)[])test(`${phase}: incompatible ${key} refuses recovery without writing the checkpoint`,()=>{
  const db=new Storage(':memory:');try{const r=active();r.phase=phase;r.versions={...CURRENT_VERSIONS,[key]:'previous-version'};storeRequest(db,r);const before=stored(db,r.roomCode);assert.throws(()=>db.load(),new RegExp(`Incompatible active checkpoint.*${r.roomCode}.*${key}.*Database preserved`));assert.equal(stored(db,r.roomCode),before);assert.ok(db.request(`request-${r.roomCode}`));}finally{db.close();}

@@ -1,3 +1,4 @@
+import {cancelFixture} from './cleanup.js';
 import { test, expect } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 
@@ -41,12 +42,14 @@ test('host + human + 29 AI: real lobby, quiz, maintenance, combat and reconnect'
  await student.getByRole('button',{name:'준비 완료',exact:true}).click();
  await expect(host.getByRole('button',{name:'전투 시작 →',exact:true})).toBeEnabled({timeout:30000});
  await host.screenshot({path:'artifacts/screenshots/05-host-ready.png',fullPage:true});
+ await host.locator('[data-action=inspect-ai]').first().click();await expect(host.locator('#host-inspector')).toBeVisible();await expect(host.locator('#inspector-content')).toContainText('보유');await host.locator('#host-inspector [data-action=inspect-ai]').click();
  await host.getByRole('button',{name:'전투 시작 →',exact:true}).click();
  await expect.poll(()=>host.evaluate(()=>window.__classClash?.snapshot?.phase),{timeout:20000}).toBe('BATTLE');
  await expect.poll(()=>host.evaluate(()=>window.__classClash?.snapshot?.battle?.metrics?.firstHitTick),{timeout:40000}).not.toBeNull();
  await expect.poll(()=>host.evaluate(()=>window.__classClash?.rendererMetrics?.frames??0),{timeout:15000}).toBeGreaterThan(50);
  expect(await host.evaluate(()=>window.__classClash?.rendererMetrics?.assetErrors)).toEqual([]);
  await host.screenshot({path:'artifacts/screenshots/06-host-full-map-combat.png',fullPage:true});
+ await host.getByRole('button',{name:'AI 관찰',exact:true}).click();await expect(host.locator('#inspector-content .inspector-hero')).not.toHaveCount(0);await host.screenshot({path:'artifacts/screenshots/13-host-ai-observation.png',fullPage:true});await host.locator('#host-inspector [data-action=inspect-ai]').click();
  await student.screenshot({path:'artifacts/screenshots/07-student-follow-combat.png',fullPage:true});
  const before=await student.evaluate(()=>({id:window.__classClash?.snapshot?.self?.playerId,active:window.__classClash?.snapshot?.players.find((p:any)=>p.playerId===window.__classClash?.snapshot?.self?.playerId)?.activeEntityId}));
  await student.reload();
@@ -64,7 +67,7 @@ test('host + human + 29 AI: real lobby, quiz, maintenance, combat and reconnect'
  await student.screenshot({path:'artifacts/screenshots/09-student-mobile-quiz.png',fullPage:true});
  expect(await student.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  expect(errors).toEqual([]);
- }catch(error){console.error('UI smoke failed:',error);await student.screenshot({path:'artifacts/screenshots/ui-failure.png',fullPage:true}).catch(()=>{});throw error;}finally{await hostContext.close();await studentContext.close();}
+ }catch(error){console.error('UI smoke failed:',error);await student.screenshot({path:'artifacts/screenshots/ui-failure.png',fullPage:true}).catch(()=>{});throw error;}finally{await cancelFixture(host);await hostContext.close();await studentContext.close();}
 });
 
 declare global {interface Window {__classClash:any}}

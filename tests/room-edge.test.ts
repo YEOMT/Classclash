@@ -75,7 +75,13 @@ test('host closing opening quiz cancels bot pending answers without new rewards 
 });
 test('B14/Q15: bot reservations, full answer key, future random streams and session hashes stay off both public views',()=>{
  const r=createRoom('HIDE01','host-private-hash',17,true),human=addPlayer(r,'검사 학생','human-private-hash');apply(r,'host','ADD_BOTS',{count:1});apply(r,'host','START_OPENING_QUIZ');tick(r,1);const bot=r.players.find(p=>p.isBot)!;assert.ok(bot.bot!.pendingAnswer);
- for(const actor of['host',human.playerId]){const value=JSON.stringify(snapshot(r,actor));for(const secret of['correctOptionId','sessionHash','pendingAnswer','quizAccuracy','host-private-hash','human-private-hash',bot.bot!.pendingAnswer!.optionId])assert.ok(!value.includes(secret),`${actor} disclosed ${secret}`);}
+ const host=snapshot(r,'host'),student=snapshot(r,human.playerId),botView=host.hostStudents!.find(p=>p.playerId===bot.playerId)!;
+ for(const value of[JSON.stringify(host),JSON.stringify(student)])for(const secret of['correctOptionId','sessionHash','pendingAnswer','quizAccuracy','host-private-hash','human-private-hash',bot.quizAttempt!.items[1].id])assert.ok(!value.includes(secret),`disclosed private field or future question ${secret}`);
+ assert.equal(student.hostStudents,undefined);assert.ok(!JSON.stringify(student).includes(bot.bot!.pendingAnswer!.optionId));
+ // A read-only host may see the four current options, including whichever one the bot will choose,
+ // but receives no field identifying that scheduled choice or its timing.
+ assert.deepEqual(botView,snapshot(r,bot.playerId).self);assert.equal(botView.quiz!.question!.options.length,4);assert.ok(botView.quiz!.question!.options.some(o=>o.id===bot.bot!.pendingAnswer!.optionId));assert.equal(Object.hasOwn(botView.quiz!,'scheduledAnswer'),false);
+ const before=structuredClone({gold:bot.gold,quiz:bot.quizAttempt,inventory:bot.inventory});assert.equal(directCommand(r,'host','SUBMIT_ANSWER',{playerId:bot.playerId,...bot.bot!.pendingAnswer}).errorCode,'NOT_AUTHORIZED');assert.deepEqual({gold:bot.gold,quiz:bot.quizAttempt,inventory:bot.inventory},before);
 });
 test('Q14/R05: late quiz answer after final result cannot change wallet, stats or awards',()=>{
  const {r,a}=battle();apply(r,a.playerId,'START_QUIZ');const quiz=a.quizAttempt!,q=quiz.items[quiz.index],payload={attemptId:quiz.attemptId,questionId:q.id,optionId:q.correctOptionId};apply(r,'host','CANCEL_MATCH');const before=structuredClone({gold:a.gold,stats:a.stats,result:r.result});assert.equal(directCommand(r,a.playerId,'SUBMIT_ANSWER',payload).status,'REJECTED');tick(r,20);assert.deepEqual({gold:a.gold,stats:a.stats,result:r.result},before);

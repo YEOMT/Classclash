@@ -106,8 +106,8 @@ function apply(r:RoomData,actor:Actor,type:string,payload:Record<string,unknown>
     else if(type==='UPDATE_QUIZ_BANK'){requireRule(typeof payload.text==='string','INVALID_INPUT');try{r.quizBank=parseQuizBank(payload.text);}catch(e){throw new RuleError('INVALID_INPUT',(e as Error).message);}return {count:r.quizBank.length};}
     else if(type==='START_OPENING_QUIZ'){
       requireRule(['A','B'].every(t=>r.players.some(p=>p.team===t)),'ROSTER_NOT_READY');
+      if(payload.seed!==undefined){requireRule((typeof payload.seed==='number'&&Number.isInteger(payload.seed))||(typeof payload.seed==='string'&&payload.seed.trim().length>0&&payload.seed.length<=128),'INVALID_INPUT');r.seed=typeof payload.seed==='number'?payload.seed>>>0:hash32(String(payload.seed));}
       r.matchId=r.deterministicDraws?`match-sim-${r.seed}-${r.lobbyEpoch}`:`match-${randomUUID()}`;r.tick=0;r.battleStartTick=null;r.countdownEndTick=null;r.combat=null;r.result=null;r.paused=false;r.recovered=false;
-      if(typeof payload.seed==='number'&&Number.isInteger(payload.seed))r.seed=payload.seed>>>0;
       r.rng={value:hash32(`${r.seed}/quiz`)};r.drawRng={value:hash32(`${r.seed}/draw`)};
       for(const p of r.players){resetPlayer(p);startAttempt(r,p,'OPENING');}
       phase(r,'OPENING_QUIZ');
@@ -122,7 +122,7 @@ function apply(r:RoomData,actor:Actor,type:string,payload:Record<string,unknown>
     } else if(type==='CANCEL_MATCH'){
       requireRule(r.matchId&&!['RESULT','CANCELLED','LOBBY'].includes(r.phase),'INVALID_PHASE');finish(r,null,true);
     } else if(type==='REMATCH_TO_LOBBY'){
-      requireRule(['RESULT','CANCELLED'].includes(r.phase),'INVALID_PHASE');r.lobbyEpoch++;r.matchId=null;r.combat=null;r.result=null;r.tick=0;r.battleStartTick=null;r.countdownEndTick=null;r.paused=false;r.replies={};
+      requireRule(['RESULT','CANCELLED'].includes(r.phase),'INVALID_PHASE');r.lobbyEpoch++;r.matchId=null;r.combat=null;r.result=null;r.tick=0;r.battleStartTick=null;r.countdownEndTick=null;r.paused=false;r.replies={};r.botDiagnostics=[];
       for(const p of r.players)resetPlayer(p);phase(r,'LOBBY');
     }
     return {};

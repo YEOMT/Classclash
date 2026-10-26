@@ -3,10 +3,12 @@ import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 import { DEFAULT_BANK } from '../src/server/quiz.js';
 import type { RoomSnapshot, SessionInfo, CommandReply, ClientCommand } from '../src/shared/types.js';
 const port=Number(process.env.TEST_PORT||3102),base=`http://127.0.0.1:${port}`;
-const proc=spawn(process.execPath,['--import','tsx','src/server/index.ts'],{env:{...process.env,PORT:String(port),DATABASE_PATH:`data/load-${Date.now()}.sqlite`,NODE_ENV:'test',CLASH_TEST_SPEED:'1'},stdio:['ignore','pipe','pipe'],windowsHide:true});
+const proc=spawn(process.execPath,['dist/server.js'],{env:{...process.env,PORT:String(port),DATABASE_PATH:join(tmpdir(),`classclash-load-${Date.now()}.sqlite`),NODE_ENV:'test',CLASH_TEST_SPEED:'1'},stdio:['ignore','pipe','pipe'],windowsHide:true});
 let serverLog='';proc.stdout.on('data',x=>serverLog+=x);proc.stderr.on('data',x=>serverLog+=x);
 const sleep=(ms:number)=>new Promise(r=>setTimeout(r,ms));
 async function waitFor(fn:()=>boolean,ms=15000){const start=Date.now();while(!fn()){if(Date.now()-start>ms)throw new Error('Timed out');await sleep(25);}}
@@ -48,5 +50,5 @@ try{
   const result={status:'PASS',transport:'31 independent authenticated WebSocket connections, one reconnected participant; WebSocket permessage-deflate',players:30,host:1,elapsedSeconds:elapsed,snapshots:students.map(c=>c.snapshots),receivedWireKiBPerSecond:wireRates,receivedDecodedKiBPerSecond:students.map((c,i)=>(c.bytes-bytesBefore[i])/1024/elapsed),concurrentDraws:30,duplicateDrawReplays:30,duplicateDraw:'PASS',reconnect:'PASS',openingAnswers:600,battleEntities:host.snap!.battle!.units.length,serverDiagnostics:host.snap!.diagnostics,node:process.version,serverLog};
   assert.ok(Math.max(...wireRates)<=100,'Per-client mean wire bandwidth exceeds100KiB/s');
   mkdirSync('artifacts',{recursive:true});writeFileSync('artifacts/load-results.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));
-}catch(e){console.error(e);console.error(serverLog);process.exitCode=1;}finally{for(const c of clients)c.ws.close();proc.kill();}
+}catch(e){console.error(e);console.error(serverLog);mkdirSync('artifacts',{recursive:true});writeFileSync('artifacts/load-results.json',JSON.stringify({status:'FAIL',error:String(e),serverLog,at:new Date().toISOString()},null,2));process.exitCode=1;}finally{for(const c of clients)c.ws.close();proc.kill();}
 

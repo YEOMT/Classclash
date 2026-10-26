@@ -4,7 +4,7 @@ import { createCombat, deployHero, stepCombat, ticks, gap, inLane, updateStructu
 import type { CombatState, CombatUnit, Source } from '../src/shared/combat-types.js';
 import type { OwnedHero } from '../src/shared/types.js';
 import { HERO_BY_ID } from '../src/shared/heroes.js';
-import { circleHits, rectangleHits, coneHits, walkable } from '../src/server/combat-geometry.js';
+import { circleHits, rectangleHits, coneHits, walkable, findLocalPath, clearSegment } from '../src/server/combat-geometry.js';
 
 function owned(id:string,heroId:string,level=1):OwnedHero{return {ownedHeroInstanceId:id,heroDefinitionId:heroId,rarity:HERO_BY_ID[heroId]!.rarity,level,powerEnhancements:0,vitalityEnhancements:0,skillReadyAt:{},obtainedFrom:'STARTER'};}
 function fixture():CombatState{const s=createCombat('fixture',123);s.units=[];s.structures=[];s.events=[];s.nextWaveTick=1e9;return s;}
@@ -64,7 +64,17 @@ test('COM-018: hard CC caps at two seconds and supplies only cap immunity',()=>{
  const c=hero(s,'c','archer','A',720);applyStatus(s,c,'stun',100,0,source(b));run(s,3);assert.equal(c.hardCcImmuneUntilTick,0);
 });
 test('COM-043: late siege multipliers affect only the declared time intervals',()=>{
- const s=createCombat('late',3,10000);for(const [elapsed,expected]of [[479.95,1],[480,1.25],[600,1.5],[720,2]]){s.tick=s.battleStartTick+Math.round(elapsed!*20);assert.equal(minionSiegeMultiplier(s),expected);}
+ const s=createCombat('late',3,10000);for(const [elapsed,expected]of [[479.95,1],[480,2],[599.95,2],[600,8],[719.95,8],[720,16]]){s.tick=s.battleStartTick+Math.round(elapsed!*20);assert.equal(minionSiegeMultiplier(s),expected);}
+});
+test('COM-043: late minion siege scales real structure hits without scaling hero or minion damage',()=>{
+ const s=fixture();s.tick=12000;
+ const tower=hero(s,'tower-fixture','paladin','B',700),enemyHero=hero(s,'enemy-hero','paladin','B',850),enemyMinion=hero(s,'minion-fixture','paladin','B',1000);
+ tower.kind='OUTER';enemyMinion.kind='MELEE_MINION';s.units=s.units.filter(u=>u!==tower);s.structures=[tower];
+ for(const target of [tower,enemyHero,enemyMinion]){
+  target.hp=target.maxHp=1000;target.armor=0;target.power=0;target.speed=0;target.nextBasicReadyTick=1e9;
+  s.projectiles.push({entityId:`hit-${target.entityId}`,source:{entityId:'old-minion',deploymentId:'old-minion-life',team:'A',kind:'RANGED_MINION',power:100,maxHp:95},targetId:target.entityId,lastTarget:{x:target.x,y:target.y},x:target.x-10,y:target.y,direction:{x:1,y:0},speed:400,radius:3,remaining:200,createdTick:s.tick-1,effectId:'test',actionId:'siege-hit',mode:'HOMING',maxTargets:1,hitIds:[],payload:{skillId:null,coefficient:1,structureMultiplier:1,basic:true},falloff:0,minFalloff:0});
+ }
+ stepCombat(s);assert.equal(tower.hp,200);assert.equal(enemyHero.hp,900);assert.equal(enemyMinion.hp,900);
 });
 test('COM-044: melee surface-gap ring can actually hit a large structure',()=>{
  const s=createCombat('ring',4);s.units=[];s.nextWaveTick=1e9;const t=s.structures.find(t=>t.entityId.endsWith('B_TOP_OUTER'))!;
@@ -110,4 +120,15 @@ test('COM-007: a mage at the inner tower and corridor corner finds a valid depar
  const u=deployHero(s,{playerId:'mage',team:'B',lane:'TOP',hero:owned('mage-owned','pyromancer'),sharedSkillReadyAt:{}});
  Object.assign(u,{x:1214.9746788405403,y:205.58672775991658,state:'HOLD',createdTick:-10,nextAiTick:0,lateral:42});
  run(s,200);assert.ok(u.x<1100,`mage remained at ${u.x},${u.y} (${u.debugReason})`);assert.equal(s.metrics.stalledEvents,0);assert.equal(s.metrics.invalidPositions,0);
+});
+
+test('COM-007: a nearby ranged-minion goal cannot shortcut the tower tangent from its grid center',()=>{
+ const s=createCombat('minion-tangent-1010',1010);const u=s.units.find(u=>u.kind==='RANGED_MINION'&&u.team==='A'&&u.lane==='TOP')!;
+ s.units=[u];s.nextWaveTick=1e9;const goal={x:534.5924068296854,y:259.8812588496486};
+ Object.assign(u,{x:515.3242810526128,y:258.9889647221098,previousX:515.3242810526128,previousY:258.9889647221098,state:'APPROACH',createdTick:-10,nextAiTick:1e9,targetId:s.structures.find(t=>t.entityId.endsWith('B_TOP_OUTER'))!.entityId,goal,lastProgressX:515.3242810526128,lastProgressY:258.9889647221098,lastProgressTick:0});
+ assert.equal(walkable(s,u,u.radius,'TOP'),true);assert.equal(walkable(s,goal,u.radius,'TOP'),true);
+ assert.equal(clearSegment(s,u,goal,u.radius,'TOP'),false,'direct tangent crosses the solid tower');
+ u.path=findLocalPath(s,u,goal);assert.ok(u.path.length>0,'legal short detour must not be discarded by virtual start-cell termination');
+ const plannedPath=structuredClone(u.path);let previous={x:u.x,y:u.y};for(const point of u.path){assert.equal(clearSegment(s,previous,point,u.radius,'TOP'),true);previous=point;}
+ run(s,200);assert.ok(distanceSafe(u,goal)<3,'actual engine movement must reach the close goal: '+JSON.stringify({x:u.x,y:u.y,path:u.path,plannedPath,goal:u.goal,stalls:s.metrics.stalls}));assert.equal(s.metrics.stalledEvents,0);assert.equal(s.metrics.invalidPositions,0);
 });

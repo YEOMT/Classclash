@@ -8,6 +8,7 @@ import { randomUUID } from 'node:crypto';
 import { WebSocket } from 'ws';
 import type { ClientCommand, CommandReply, RoomSnapshot, SessionInfo } from '../src/shared/types.js';
 import { DEFAULT_BANK } from '../src/server/quiz.js';
+import { HEROES } from '../src/shared/heroes.js';
 
 const delay=(ms:number)=>new Promise(r=>setTimeout(r,ms));
 async function until(f:()=>boolean,limit=10000){const start=Date.now();while(!f()){assert.ok(Date.now()-start<limit,'Timed out waiting for server state');await delay(20);}}
@@ -27,7 +28,15 @@ test('actual HTTP/WS process: durable answer ACK survives forced restart, duplic
   await start();const createId=randomUUID(),hostSession=await post('/api/rooms',{requestId:createId});assert.deepEqual(await post('/api/rooms',{requestId:createId}),hostSession);
   const joinId=randomUUID(),studentSession=await post(`/api/rooms/${hostSession.roomCode}/join`,{requestId:joinId,name:'복구 학생'});assert.deepEqual(await post(`/api/rooms/${hostSession.roomCode}/join`,{requestId:joinId,name:'복구 학생'}),studentSession);
   const host=await connect(hostSession),student=await connect(studentSession);
-  assert.equal((await host.send('ADD_BOTS',{count:1})).reply.status,'APPLIED');assert.equal((await host.send('START_OPENING_QUIZ')).reply.status,'APPLIED');await until(()=>student.snap.phase==='OPENING_QUIZ');
+  // Regression: first battle assets must not starve command ACKs or health responses.
+  const assetsStarted=Date.now();
+  const [pngs,health,assetConcurrentCommand]=await Promise.all([
+    Promise.all(HEROES.map(async hero=>{const response=await fetch(`${base}/assets/heroes/${hero.id}.png`);assert.equal(response.status,200,hero.id);const bytes=Buffer.from(await response.arrayBuffer());assert.deepEqual([...bytes.subarray(0,8)],[137,80,78,71,13,10,26,10],hero.id);assert.ok(bytes.length>32,hero.id);return{hero:hero.id,bytes:bytes.length};})),
+    fetch(base+'/api/health').then(async response=>{assert.equal(response.status,200);return response.json();}),
+    host.send('ADD_BOTS',{count:1})
+  ]);
+  assert.equal(pngs.length,18);assert.equal(health.ok,true);assert.equal(assetConcurrentCommand.reply.status,'APPLIED');assert.ok(Date.now()-assetsStarted<10000,'18 PNG downloads, health and authenticated ACK must all complete within 10s');t.diagnostic(`18 concurrent hero PNGs: ${pngs.reduce((n,p)=>n+p.bytes,0)} bytes, health + ADD_BOTS ACK in ${Date.now()-assetsStarted}ms`);
+  assert.equal((await host.send('START_OPENING_QUIZ')).reply.status,'APPLIED');await until(()=>student.snap.phase==='OPENING_QUIZ');
   const quiz=student.snap.self!.quiz!,q=quiz.question!,correct=DEFAULT_BANK.find(x=>x.text===q.text)!.answers[0],option=q.options.find(o=>o.text===correct)!;
   const original=await student.send('SUBMIT_ANSWER',{attemptId:quiz.attemptId,questionId:q.id,optionId:option.id});assert.equal(original.reply.status,'APPLIED');assert.equal(student.snap.self!.gold,1);
   const before={id:student.snap.self!.playerId,attempt:student.snap.self!.quiz!.attemptId,index:student.snap.self!.quiz!.index,gold:student.snap.self!.gold};
@@ -39,4 +48,17 @@ test('actual HTTP/WS process: durable answer ACK survives forced restart, duplic
   assert.ok(!JSON.stringify(newest.snap).includes('correctOptionId'));assert.ok(!JSON.stringify(newest.snap).includes('sessionHash'));
   assert.equal((await restoredHost.send('PAUSE_ROOM')).reply.status,'APPLIED');const pausedTick=restoredHost.snap.tick;await delay(250);assert.equal(restoredHost.snap.tick,pausedTick);
   assert.equal((await restoredHost.send('RESUME_ROOM')).reply.status,'APPLIED');assert.equal((await restoredHost.send('CANCEL_MATCH')).reply.status,'APPLIED');assert.equal(restoredHost.snap.result!.cancelled,true);
+  // L05: independent lobby, one remaining seat, actual HTTP join races authenticated WS ADD_BOTS.
+  const raceSession=await post('/api/rooms',{requestId:randomUUID()}),raceHost=await connect(raceSession);
+  assert.equal((await raceHost.send('ADD_BOTS',{count:29,profile:'STANDARD'})).reply.status,'APPLIED');await until(()=>raceHost.snap.players.length===29);
+  const racingJoinId=randomUUID();
+  const [joinResponse,botResponse]=await Promise.all([
+    fetch(`${base}/api/rooms/${raceSession.roomCode}/join`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({requestId:racingJoinId,name:'마지막 학생'})}),
+    raceHost.send('ADD_BOTS',{count:1,profile:'STANDARD'})
+  ]);
+  const joinBody=await joinResponse.json() as SessionInfo|{errorCode?:string};
+  assert.equal(Number(joinResponse.ok)+Number(botResponse.reply.status==='APPLIED'),1,'exactly one of the human and AI may claim the last seat');
+  if(joinResponse.ok){assert.equal(botResponse.reply.errorCode,'ROOM_FULL');assert.deepEqual(await post(`/api/rooms/${raceSession.roomCode}/join`,{requestId:racingJoinId,name:'마지막 학생'}),joinBody);}
+  else{assert.ok(JSON.stringify(joinBody).includes('ROOM_FULL'));assert.equal(botResponse.reply.status,'APPLIED');}
+  await until(()=>raceHost.snap.players.length===30);assert.equal(new Set(raceHost.snap.players.map(p=>p.playerId)).size,30);assert.equal(raceHost.snap.players.filter(p=>p.team==='A').length,15);assert.equal(raceHost.snap.players.filter(p=>p.team==='B').length,15);assert.equal(raceHost.snap.players.filter(p=>!p.isBot).length,Number(joinResponse.ok));
 });

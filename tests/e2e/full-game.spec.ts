@@ -1,5 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import {cancelActiveTestMatch} from './cleanup.js';
 
 async function phase(page:Page){return page.evaluate(()=>window.__classClash?.snapshot?.phase);}
 async function startBotRound(host:Page,round:number){
@@ -11,25 +12,29 @@ async function startBotRound(host:Page,round:number){
   await expect.poll(()=>host.evaluate(()=>window.__classClash?.rendererMetrics?.frames||0)).toBeGreaterThan(10);
   if(round===0){await host.waitForTimeout(4000);await host.screenshot({path:'artifacts/screenshots/10-ai30-real-battle.png',fullPage:true});}
   await expect.poll(()=>phase(host),{timeout:300000,intervals:[500]}).toBe('RESULT');
-  await host.waitForTimeout(7600);
+  if(round===0){await host.screenshot({path:'artifacts/screenshots/17-nexus-winner.png',fullPage:true});await host.waitForTimeout(3300);await host.screenshot({path:'artifacts/screenshots/18-team-summary.png',fullPage:true});await host.waitForTimeout(4400);}else await host.waitForTimeout(7600);
   const result=await host.evaluate(()=>window.__classClash.snapshot.result);
   expect(result.cancelled).toBe(false);expect(['A','B','DRAW']).toContain(result.winner);expect(result.awards).toHaveLength(7);expect(result.players).toHaveLength(30);
   expect(result.players.every((p:any)=>p.stats.earned===p.stats.correct)).toBe(true);
+  expect(await host.evaluate(()=>window.__classClash.snapshot.battle.structures.some((s:any)=>s.kind==='NEXUS'&&s.hp<=0))).toBe(true);
+  await expect(host.locator('.award-card')).toHaveCount(7);
   await host.screenshot({path:`artifacts/screenshots/11-ai30-awards-round-${round+1}.png`,fullPage:true});
   return result;
 }
-test('AI30 completes three consecutive real nexus-destruction matches and all awards',async({page})=>{
-  test.setTimeout(950000);await mkdir('artifacts/screenshots',{recursive:true});const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+test('AI30 completes an initial match plus three consecutive real nexus-destruction rematches and all awards',async({page})=>{
+  test.setTimeout(1400000);await mkdir('artifacts/screenshots',{recursive:true});const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/');await page.getByRole('button',{name:'새 방 만들기'}).click();await page.getByRole('button',{name:'30명 채우기'}).click();await expect(page.locator('.player-row')).toHaveCount(30);
-  const results=[];
-  for(let i=0;i<3;i++){
+  const results=[],heaps:number[]=[];const cdp=await page.context().newCDPSession(page);await cdp.send('Performance.enable');
+  for(let i=0;i<4;i++){
     results.push(await startBotRound(page,i));
-    if(i<2){await page.getByRole('button',{name:/같은 참가자로 재경기/}).click();await expect.poll(()=>phase(page)).toBe('LOBBY');
-      const cleared=await page.evaluate(()=>window.__classClash.snapshot);expect(cleared.result).toBeNull();expect(cleared.battle).toBeNull();expect(cleared.matchId).toBeNull();expect(cleared.players.every((p:any)=>p.state==='WAITING'&&p.level===0&&!p.activeEntityId)).toBe(true);
+    await cdp.send('HeapProfiler.collectGarbage');const memory=await cdp.send('Performance.getMetrics');heaps.push(memory.metrics.find((m:any)=>m.name==='JSHeapUsedSize')?.value||0);
+    if(i===0){const downloadEvent=page.waitForEvent('download');await page.getByRole('button',{name:'실제 기록 JSON 저장'}).click();const download=await downloadEvent;await download.saveAs('artifacts/downloaded-match-result.json');expect(JSON.parse(await readFile('artifacts/downloaded-match-result.json','utf8'))).toEqual(results[0]);}
+    if(i<3){await page.getByRole('button',{name:/같은 참가자로 재경기/}).click();await expect.poll(()=>phase(page)).toBe('LOBBY');
+      const cleared=await page.evaluate(()=>window.__classClash.snapshot);expect(cleared.result).toBeNull();expect(cleared.battle).toBeNull();expect(cleared.matchId).toBeNull();expect(cleared.players.every((p:any)=>p.state==='WAITING'&&p.level===0&&!p.activeEntityId)).toBe(true);expect(cleared.hostStudents.every((p:any)=>p.gold===0&&p.inventory.length===0&&p.quiz===null&&p.deathId===null&&p.stats.deployments===0&&Object.keys(p.sharedSkillReadyAt).length===0)).toBe(true);
     }
   }
-  expect(new Set(results.map(x=>x.matchId)).size).toBe(3);expect(errors).toEqual([]);
-  await writeFile('artifacts/browser-three-rematches.json',JSON.stringify({status:'PASS',mode:'actual browser, server-authoritative, test scheduler acceleration visibly labeled',results,errors},null,2));
+  expect(new Set(results.map(x=>x.matchId)).size).toBe(4);expect(errors).toEqual([]);
+  await writeFile('artifacts/browser-three-rematches.json',JSON.stringify({status:'PASS',initialMatches:1,consecutiveRematches:3,totalMatches:4,gpuMode:process.env.CLASH_TEST_GPU||'default',mode:'actual browser, server-authoritative, test scheduler acceleration visibly labeled',postResultHeapBytesAfterGC:heaps,results,errors},null,2));
 });
 
 test('one human +29 AI completes quiz, manual redeployment and human awards',async({browser,baseURL})=>{
@@ -68,6 +73,7 @@ test('one human +29 AI completes quiz, manual redeployment and human awards',asy
     expect(result.cancelled).toBe(false);expect(result.players).toHaveLength(30);expect(result.awards).toHaveLength(7);expect(human.stats.answered).toBe(30);expect(human.stats.deployments).toBe(2);
     expect(result.awards.every((a:any)=>a.playerIds.every((id:string)=>id===playerId))).toBe(true);expect(errors).toEqual([]);
     await host.screenshot({path:'artifacts/screenshots/16-human-and-29-ai-awards.png',fullPage:true});
+    await student.reload();await expect.poll(()=>phase(student)).toBe('RESULT');expect(await student.evaluate(()=>window.__classClash.snapshot.result)).toEqual(result);
     await writeFile('artifacts/browser-human29.json',JSON.stringify({status:'PASS',mode:'real browser UI; same engine; visibly labeled accelerated scheduler',playerId,attemptId,deathDuringQuiz:true,reconnected:true,manualDeployments:2,result,errors},null,2));
-  }finally{await hc.close();await sc.close();}
+  }finally{await cancelActiveTestMatch(host).catch(()=>{});await hc.close();await sc.close();}
 });
