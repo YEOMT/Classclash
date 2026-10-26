@@ -1,0 +1,18 @@
+[WebServer] (node:17916) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:16220) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\e2e\full-game.spec.ts:43:1 › one human +29 AI completes quiz, manual redeployment and human awards (0ms)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) tests\e2e\full-game.spec.ts:43:1 › one human +29 AI completes quiz, manual redeployment and human awards 
+
+    Error: worker process exited unexpectedly (code=1, signal=null)
+
+  1 failed
+    tests\e2e\full-game.spec.ts:43:1 › one human +29 AI completes quiz, manual redeployment and human awards 
+  1 error was not a part of any test, see above for details

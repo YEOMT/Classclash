@@ -1,0 +1,19 @@
+{
+  "status": "FAIL",
+  "stage": "FAILED: battle 7/10: submit",
+  "state": {
+    "phase": "BATTLE",
+    "tick": 4337,
+    "playerState": "DEAD_MAINTENANCE",
+    "answered": 26,
+    "deployments": 1,
+    "quiz": {
+      "attemptId": "quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8",
+      "index": 6,
+      "completed": false,
+      "questionId": "question-4aa9fd7f-1cb3-4b98-8e43-baaaa1e1f203"
+    }
+  },
+  "errors": [],
+  "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m27\u001b[39m\nReceived: \u001b[31m26\u001b[39m\n\nCall Log:\n- Timeout 20000ms exceeded while waiting on the predicate"
+}

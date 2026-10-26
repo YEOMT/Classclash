@@ -1,0 +1,245 @@
+{
+  "testId": "P03-browser-headless",
+  "status": "PASS",
+  "endedEarly": false,
+  "command": "node scripts/run-physical-perf.mjs",
+  "serverVersions": {
+    "rulesVersion": "classclash-rules-1",
+    "contentHash": "cd06e6a814d58f4eac2925c622939d6ff9636d5220e51871145278d07a17c6b0",
+    "balanceHash": "d1ff44f2fa560d35ec775aff67396a2ff10318776d554bafe22c36a86e185f02"
+  },
+  "environment": {
+    "os": "10.0.26200",
+    "platform": "win32",
+    "cpu": "13th Gen Intel(R) Core(TM) i5-1340P",
+    "memoryBytes": 16718413824,
+    "node": "v24.19.0",
+    "browser": "156.0.8078.4",
+    "viewport": "1366x768",
+    "dpr": 1,
+    "gpu": {
+      "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "vendor": "Google Inc. (Intel)"
+    },
+    "requestedGpu": "d3d11",
+    "mode": "Production bundle; normal speed; headless Chromium; SQLite in OS temporary directory"
+  },
+  "fixture": "30 STANDARD AI, 15 per team, 0 human participants; actual authoritative combat; five wall-clock minutes",
+  "start": {
+    "tick": 1814,
+    "matchId": "match-fccb8818-837c-4342-8f35-3c6d74296746",
+    "roomCode": "24E341",
+    "events": 56
+  },
+  "end": {
+    "tick": 7820,
+    "phase": "BATTLE",
+    "units": 43,
+    "projectiles": 2,
+    "effects": 0,
+    "events": 19629,
+    "renderer": {
+      "frames": 19022,
+      "eventsReceived": 19629,
+      "eventsConsumed": 19629,
+      "eventsPresented": 19629,
+      "recoveryEvents": 0,
+      "recoveryEventsSkipped": 0,
+      "replayedCurrent": 0,
+      "duplicates": 0,
+      "assetErrors": []
+    }
+  },
+  "server": {
+    "diagnostics": {
+      "tickP50": 6.77390000000014,
+      "tickP95": 57.10000000000582,
+      "tickP99": 132.07319999998435,
+      "backlogMs": 56.10930000001372,
+      "clients": 1,
+      "bots": [
+        {
+          "playerId": "bot-001",
+          "lastAction": "DEPLOY_HERO",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-002",
+          "lastAction": "DEPLOY_HERO",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-003",
+          "lastAction": "SELECT_HERO_AND_LANE",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-004",
+          "lastAction": "SELECT_HERO_AND_LANE",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-005",
+          "lastAction": "START_QUIZ",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-006",
+          "lastAction": "SUBMIT_ANSWER",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-007",
+          "lastAction": "SELECT_HERO_AND_LANE",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-008",
+          "lastAction": "SELECT_HERO_AND_LANE",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-009",
+          "lastAction": "SELECT_HERO_AND_LANE",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-010",
+          "lastAction": "SUBMIT_ANSWER",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-011",
+          "lastAction": "DEPLOY_HERO",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-012",
+          "lastAction": "SUBMIT_ANSWER",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-013",
+          "lastAction": "SUBMIT_ANSWER",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-014",
+          "lastAction": "SELECT_HERO_AND_LANE",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-015",
+          "lastAction": "SELECT_HERO_AND_LANE",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-016",
+          "lastAction": "SUBMIT_ANSWER",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-017",
+          "lastAction": "SUBMIT_ANSWER",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-018",
+          "lastAction": "SUBMIT_ANSWER",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-019",
+          "lastAction": "SUBMIT_ANSWER",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-020",
+          "lastAction": "DEPLOY_HERO",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-021",
+          "lastAction": "START_QUIZ",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-022",
+          "lastAction": "SELECT_HERO_AND_LANE",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-023",
+          "lastAction": "ENHANCE_HERO",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-024",
+          "lastAction": "SUBMIT_ANSWER",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-025",
+          "lastAction": "SUBMIT_ANSWER",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-026",
+          "lastAction": "SUBMIT_ANSWER",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-027",
+          "lastAction": "DEPLOY_HERO",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-028",
+          "lastAction": "SUBMIT_ANSWER",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-029",
+          "lastAction": "SUBMIT_ANSWER",
+          "lastError": null
+        },
+        {
+          "playerId": "bot-030",
+          "lastAction": "DEPLOY_HERO",
+          "lastError": null
+        }
+      ],
+      "stalls": []
+    },
+    "p95TargetMs": 15,
+    "p99TargetMs": 30,
+    "status": "FAIL",
+    "scope": "P02 server timings reported separately from P03 browser frame target"
+  },
+  "cpu": {
+    "sceneUpdateMs": {
+      "samples": 18000,
+      "p50": 0.9000000357627869,
+      "p95": 1.899999976158142,
+      "p99": 2.600000023841858
+    },
+    "renderSubmissionMs": {
+      "samples": 18000,
+      "p50": 1.5999999642372131,
+      "p95": 2.800000011920929,
+      "p99": 3.900000035762787
+    },
+    "scope": "JavaScript scene update and WebGL command submission measured separately; excludes asynchronous GPU/compositor cost."
+  },
+  "frames": 18001,
+  "frameMs": {
+    "p50": 16.699999999982538,
+    "p95": 16.79999999998836,
+    "p99": 16.800000000017462,
+    "max": 33.40000000002328
+  },
+  "targetP95Ms": 20,
+  "targetMet": true,
+  "errors": [],
+  "limitations": "Headless Chromium on the development computer using the reported graphics adapter. RAF intervals and renderer submissions are measured; display scanout is not externally measured. Not a school-device test. Server is a single local room during measurement."
+}

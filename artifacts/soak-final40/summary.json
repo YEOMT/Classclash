@@ -1,0 +1,186 @@
+{
+  "status": "INCOMPLETE",
+  "manifestId": "8ec3b64b653d48646bcbdf8b6b3f462e42d2444aee0e634e4999fc02755d38a0",
+  "matchesRecorded": 10,
+  "completed": 10,
+  "inTarget": 6,
+  "requiredInTarget": 28,
+  "targetSeconds": [
+    600,
+    780
+  ],
+  "screen": {
+    "recorded": 10,
+    "completed": 10,
+    "inTarget": 6,
+    "median": 685.075,
+    "status": "FAIL"
+  },
+  "below10Minutes": 3,
+  "after13Minutes": 1,
+  "unfinished": [],
+  "missingSeeds": [
+    1011,
+    1012,
+    1013,
+    1014,
+    1015,
+    1016,
+    1017,
+    1018,
+    1019,
+    1020,
+    1021,
+    1022,
+    1023,
+    1024,
+    1025,
+    1026,
+    1027,
+    1028,
+    1029,
+    1030,
+    1031,
+    1032,
+    1033,
+    1034,
+    1035,
+    1036,
+    1037,
+    1038,
+    1039,
+    1040
+  ],
+  "durationSeconds": {
+    "count": 10,
+    "min": 491.2,
+    "p10": 531.3399999999999,
+    "p25": 590.0124999999999,
+    "median": 685.075,
+    "p75": 736.5125,
+    "p90": 782.3199999999999,
+    "max": 836.95,
+    "mean": 666.5949999999999
+  },
+  "gate": {
+    "exactly40Distinct": false,
+    "all40Completed": false,
+    "atLeast28InTarget": false,
+    "median600To780": true,
+    "noInvariantViolations": false
+  },
+  "invariantViolations": [
+    {
+      "seed": 1010,
+      "kind": "navigationStalls"
+    }
+  ],
+  "metrics": {
+    "meanLivingUnits": {
+      "count": 10,
+      "min": 44.99038820455394,
+      "p10": 45.05428108429904,
+      "p25": 45.29235065888852,
+      "median": 45.6673793866057,
+      "p75": 46.35203776750208,
+      "p90": 46.7085041953036,
+      "max": 48.04099072034181,
+      "mean": 45.91777978741376
+    },
+    "maxUnits": 84,
+    "firstOuterDestroyedSeconds": {
+      "count": 10,
+      "min": 86.3,
+      "p10": 94.985,
+      "p25": 158.1,
+      "median": 225.55,
+      "p75": 283.1,
+      "p90": 297.755,
+      "max": 345.05,
+      "mean": 216.49
+    },
+    "firstInnerDestroyedSeconds": {
+      "count": 10,
+      "min": 191.15,
+      "p10": 211.445,
+      "p25": 266.975,
+      "median": 333.575,
+      "p75": 382.1625,
+      "p90": 462.88,
+      "max": 463.15,
+      "mean": 332.335
+    },
+    "firstGuardDestroyedSeconds": {
+      "count": 10,
+      "min": 278.85,
+      "p10": 326.41499999999996,
+      "p25": 361.3875,
+      "median": 407.8,
+      "p75": 512.8125,
+      "p90": 536.915,
+      "max": 585.2,
+      "mean": 431.4599999999999
+    },
+    "firstGuardApproachSeconds": {
+      "count": 10,
+      "min": 194.2,
+      "p10": 211.75,
+      "p25": 268.4,
+      "median": 333.575,
+      "p75": 383.9,
+      "p90": 463.015,
+      "max": 463.15,
+      "mean": 333.08000000000004
+    },
+    "firstNexusDamageSeconds": {
+      "count": 10,
+      "min": 426.45,
+      "p10": 431.35499999999996,
+      "p25": 471.65000000000003,
+      "median": 541.525,
+      "p75": 619.6,
+      "p90": 694.73,
+      "max": 706.7,
+      "mean": 554.1099999999999
+    },
+    "legendaryAcquisitions": {
+      "count": 10,
+      "min": 7,
+      "p10": 9.7,
+      "p25": 16.25,
+      "median": 17.5,
+      "p75": 18.75,
+      "p90": 23,
+      "max": 23,
+      "mean": 16.8
+    },
+    "heroDeaths": {
+      "count": 10,
+      "min": 231,
+      "p10": 275.1,
+      "p25": 293,
+      "median": 337,
+      "p75": 375.75,
+      "p90": 410,
+      "max": 446,
+      "mean": 338.2
+    },
+    "meanCompletedMaintenanceSeconds": {
+      "count": 10,
+      "min": 21.59425287356322,
+      "p10": 21.68817238712431,
+      "p25": 21.732005217146096,
+      "median": 21.877413323471057,
+      "p75": 21.945809739217232,
+      "p90": 21.99666002763657,
+      "max": 22.300158227848097,
+      "mean": 21.871032274683404
+    },
+    "censoredUnfinishedMaintenanceCount": 101,
+    "navigationStalls": 1,
+    "invalidPositions": 0,
+    "botStalls": 0
+  },
+  "performanceCaveat": "Fixed-tick acceleration. Parallel workers and historical machine contention affect tick/wall timings; this is not a normal-speed browser or school-device performance benchmark.",
+  "historicalEvidence": "Seeds1001–1004 have original balance metadata and preserved file hash; their source hashes were not recorded at execution. Current source fingerprints apply to continuation seeds1005–1040."
+}

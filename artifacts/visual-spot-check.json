@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Host forced early opening-quiz close confirmation",
+    "30 AI starter readiness with earned assets only",
+    "Real combat first hit",
+    "Read-only AI quiz/inventory pane",
+    "Canvas backing size follows observer panel layout",
+    "All 18 real atlas gallery canvases",
+    "No page errors"
+  ],
+  "note": "Short visual fixture deliberately closes the opening quiz early using the host command. Not a duration/performance fixture.",
+  "errors": [],
+  "wire": [
+    {
+      "at": "2026-10-26T09:38:32.525Z",
+      "phase": "LOBBY",
+      "tick": 0,
+      "seq": 1,
+      "epoch": 1
+    },
+    {
+      "at": "2026-10-26T09:38:32.716Z",
+      "phase": "OPENING_QUIZ",
+      "tick": 0,
+      "seq": 4,
+      "epoch": 1
+    },
+    {
+      "at": "2026-10-26T09:38:32.884Z",
+      "phase": "INITIAL_MAINTENANCE",
+      "tick": 3,
+      "seq": 6,
+      "epoch": 1
+    },
+    {
+      "at": "2026-10-26T09:38:35.911Z",
+      "phase": "COUNTDOWN",
+      "tick": 63,
+      "seq": 29,
+      "epoch": 1
+    },
+    {
+      "at": "2026-10-26T09:38:41.143Z",
+      "phase": "BATTLE",
+      "tick": 163,
+      "seq": 71,
+      "epoch": 1
+    },
+    {
+      "at": "2026-10-26T09:38:56.980Z",
+      "phase": "CANCELLED",
+      "tick": 480,
+      "seq": 168,
+      "epoch": 1
+    }
+  ]
+}

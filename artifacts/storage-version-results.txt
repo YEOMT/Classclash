@@ -1,0 +1,28 @@
+✔ runtime fingerprints cover exact hero content, balance and bot tactics with stable object ordering (10.5797ms)
+✔ OPENING_QUIZ: incompatible rulesVersion refuses recovery without writing the checkpoint (7.1385ms)
+✔ OPENING_QUIZ: incompatible contentHash refuses recovery without writing the checkpoint (2.492ms)
+✔ OPENING_QUIZ: incompatible balanceHash refuses recovery without writing the checkpoint (1.9909ms)
+✔ INITIAL_MAINTENANCE: incompatible rulesVersion refuses recovery without writing the checkpoint (1.4659ms)
+✔ INITIAL_MAINTENANCE: incompatible contentHash refuses recovery without writing the checkpoint (1.7131ms)
+✔ INITIAL_MAINTENANCE: incompatible balanceHash refuses recovery without writing the checkpoint (1.2663ms)
+✔ COUNTDOWN: incompatible rulesVersion refuses recovery without writing the checkpoint (1.1444ms)
+✔ COUNTDOWN: incompatible contentHash refuses recovery without writing the checkpoint (1.1486ms)
+✔ COUNTDOWN: incompatible balanceHash refuses recovery without writing the checkpoint (2.1925ms)
+✔ BATTLE: incompatible rulesVersion refuses recovery without writing the checkpoint (2.0156ms)
+✔ BATTLE: incompatible contentHash refuses recovery without writing the checkpoint (1.4776ms)
+✔ BATTLE: incompatible balanceHash refuses recovery without writing the checkpoint (1.5918ms)
+✔ legacy active checkpoint without version metadata fails explicitly; valid checkpoint restores absolute game time (2.842ms)
+✔ incompatible finalized result or lobby remains inspectable without changing settled result data (2.3396ms)
+✔ unsupported checkpoint schema fails before attempting a running engine restore (1.6594ms)
+✔ safe legacy lobby restores newly added bot diagnostics defaults without overwriting existing values or saved rows (1.1663ms)
+✔ inactive expiry removes only requested old lobby/results and their join/create requests, preserving match records (3.0603ms)
+✔ expiry is atomic when a database deletion fails; original rooms and request tokens stay recoverable (2.158ms)
+✔ expiry preserves malformed or mismatched identity records for diagnosis instead of deleting them (1.3871ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 882.8521

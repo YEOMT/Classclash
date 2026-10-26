@@ -1,0 +1,201 @@
+[WebServer] (node:9328) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:30972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[human29 2026-10-26T10:46:09.363Z] opening 1/20: choose {"phase":"LOBBY","tick":0,"playerState":"WAITING","answered":0,"deployments":0,"quiz":null}
+[human29 2026-10-26T10:46:09.868Z] opening 1/20: accepted {"phase":"OPENING_QUIZ","tick":32,"playerState":"WAITING","answered":1,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":1,"completed":false,"questionId":"question-a3968e08-3516-4698-8527-3cda1d8e5cf3"}}
+[human29 2026-10-26T10:46:09.871Z] opening 1/20: next {"phase":"OPENING_QUIZ","tick":32,"playerState":"WAITING","answered":1,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":1,"completed":false,"questionId":"question-a3968e08-3516-4698-8527-3cda1d8e5cf3"}}
+[human29 2026-10-26T10:46:09.927Z] opening 2/20: choose {"phase":"OPENING_QUIZ","tick":45,"playerState":"WAITING","answered":1,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":1,"completed":false,"questionId":"question-a3968e08-3516-4698-8527-3cda1d8e5cf3"}}
+[human29 2026-10-26T10:46:10.136Z] opening 2/20: accepted {"phase":"OPENING_QUIZ","tick":53,"playerState":"WAITING","answered":2,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":2,"completed":false,"questionId":"question-1e08a828-ec0b-4a03-a742-915421c5ad8c"}}
+[human29 2026-10-26T10:46:10.141Z] opening 2/20: next {"phase":"OPENING_QUIZ","tick":53,"playerState":"WAITING","answered":2,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":2,"completed":false,"questionId":"question-1e08a828-ec0b-4a03-a742-915421c5ad8c"}}
+[human29 2026-10-26T10:46:10.196Z] opening 3/20: choose {"phase":"OPENING_QUIZ","tick":65,"playerState":"WAITING","answered":2,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":2,"completed":false,"questionId":"question-1e08a828-ec0b-4a03-a742-915421c5ad8c"}}
+[human29 2026-10-26T10:46:10.415Z] opening 3/20: accepted {"phase":"OPENING_QUIZ","tick":75,"playerState":"WAITING","answered":3,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":3,"completed":false,"questionId":"question-f8dcf4ae-4346-41cb-83fc-239f7ba75af6"}}
+[human29 2026-10-26T10:46:10.421Z] opening 3/20: next {"phase":"OPENING_QUIZ","tick":75,"playerState":"WAITING","answered":3,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":3,"completed":false,"questionId":"question-f8dcf4ae-4346-41cb-83fc-239f7ba75af6"}}
+[human29 2026-10-26T10:46:10.484Z] opening 4/20: choose {"phase":"OPENING_QUIZ","tick":87,"playerState":"WAITING","answered":3,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":3,"completed":false,"questionId":"question-f8dcf4ae-4346-41cb-83fc-239f7ba75af6"}}
+[human29 2026-10-26T10:46:10.710Z] opening 4/20: accepted {"phase":"OPENING_QUIZ","tick":99,"playerState":"WAITING","answered":4,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":4,"completed":false,"questionId":"question-3c05e2b9-0cc1-476c-8cae-0dd413692e8c"}}
+[human29 2026-10-26T10:46:10.713Z] opening 4/20: next {"phase":"OPENING_QUIZ","tick":99,"playerState":"WAITING","answered":4,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":4,"completed":false,"questionId":"question-3c05e2b9-0cc1-476c-8cae-0dd413692e8c"}}
+[human29 2026-10-26T10:46:10.762Z] opening 5/20: choose {"phase":"OPENING_QUIZ","tick":111,"playerState":"WAITING","answered":4,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":4,"completed":false,"questionId":"question-3c05e2b9-0cc1-476c-8cae-0dd413692e8c"}}
+[human29 2026-10-26T10:46:10.988Z] opening 5/20: accepted {"phase":"OPENING_QUIZ","tick":121,"playerState":"WAITING","answered":5,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":5,"completed":false,"questionId":"question-2dae04ca-9e64-43e7-9017-80cba05a3129"}}
+[human29 2026-10-26T10:46:10.993Z] opening 5/20: next {"phase":"OPENING_QUIZ","tick":121,"playerState":"WAITING","answered":5,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":5,"completed":false,"questionId":"question-2dae04ca-9e64-43e7-9017-80cba05a3129"}}
+[human29 2026-10-26T10:46:11.046Z] opening 6/20: choose {"phase":"OPENING_QUIZ","tick":133,"playerState":"WAITING","answered":5,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":5,"completed":false,"questionId":"question-2dae04ca-9e64-43e7-9017-80cba05a3129"}}
+[human29 2026-10-26T10:46:11.294Z] opening 6/20: accepted {"phase":"OPENING_QUIZ","tick":144,"playerState":"WAITING","answered":6,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":6,"completed":false,"questionId":"question-29580d68-463e-4ba8-9cca-c778fb1a662f"}}
+[human29 2026-10-26T10:46:11.300Z] opening 6/20: next {"phase":"OPENING_QUIZ","tick":155,"playerState":"WAITING","answered":6,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":6,"completed":false,"questionId":"question-29580d68-463e-4ba8-9cca-c778fb1a662f"}}
+[human29 2026-10-26T10:46:11.370Z] opening 7/20: choose {"phase":"OPENING_QUIZ","tick":155,"playerState":"WAITING","answered":6,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":6,"completed":false,"questionId":"question-29580d68-463e-4ba8-9cca-c778fb1a662f"}}
+[human29 2026-10-26T10:46:11.634Z] opening 7/20: accepted {"phase":"OPENING_QUIZ","tick":172,"playerState":"WAITING","answered":7,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":7,"completed":false,"questionId":"question-c160aba8-a788-453d-8756-ce421c422d83"}}
+[human29 2026-10-26T10:46:11.640Z] opening 7/20: next {"phase":"OPENING_QUIZ","tick":172,"playerState":"WAITING","answered":7,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":7,"completed":false,"questionId":"question-c160aba8-a788-453d-8756-ce421c422d83"}}
+[human29 2026-10-26T10:46:11.732Z] opening 8/20: choose {"phase":"OPENING_QUIZ","tick":187,"playerState":"WAITING","answered":7,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":7,"completed":false,"questionId":"question-c160aba8-a788-453d-8756-ce421c422d83"}}
+[human29 2026-10-26T10:46:12.048Z] opening 8/20: accepted {"phase":"OPENING_QUIZ","tick":205,"playerState":"WAITING","answered":8,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":8,"completed":false,"questionId":"question-d310b3bc-ef68-4dd3-9fe5-ebc495afb840"}}
+[human29 2026-10-26T10:46:12.054Z] opening 8/20: next {"phase":"OPENING_QUIZ","tick":205,"playerState":"WAITING","answered":8,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":8,"completed":false,"questionId":"question-d310b3bc-ef68-4dd3-9fe5-ebc495afb840"}}
+[human29 2026-10-26T10:46:12.124Z] opening 9/20: choose {"phase":"OPENING_QUIZ","tick":218,"playerState":"WAITING","answered":8,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":8,"completed":false,"questionId":"question-d310b3bc-ef68-4dd3-9fe5-ebc495afb840"}}
+[human29 2026-10-26T10:46:12.389Z] opening 9/20: accepted {"phase":"OPENING_QUIZ","tick":233,"playerState":"WAITING","answered":9,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":9,"completed":false,"questionId":"question-eaf189b4-f40f-472e-9132-9c3cbdd21883"}}
+[human29 2026-10-26T10:46:12.394Z] opening 9/20: next {"phase":"OPENING_QUIZ","tick":233,"playerState":"WAITING","answered":9,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":9,"completed":false,"questionId":"question-eaf189b4-f40f-472e-9132-9c3cbdd21883"}}
+[human29 2026-10-26T10:46:12.459Z] opening 10/20: choose {"phase":"OPENING_QUIZ","tick":245,"playerState":"WAITING","answered":9,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":9,"completed":false,"questionId":"question-eaf189b4-f40f-472e-9132-9c3cbdd21883"}}
+[human29 2026-10-26T10:46:12.702Z] opening 10/20: accepted {"phase":"OPENING_QUIZ","tick":258,"playerState":"WAITING","answered":10,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":10,"completed":false,"questionId":"question-085d3523-fd59-498c-a0e4-d4a85ea7dd97"}}
+[human29 2026-10-26T10:46:12.707Z] opening 10/20: next {"phase":"OPENING_QUIZ","tick":258,"playerState":"WAITING","answered":10,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":10,"completed":false,"questionId":"question-085d3523-fd59-498c-a0e4-d4a85ea7dd97"}}
+[human29 2026-10-26T10:46:12.778Z] opening 11/20: choose {"phase":"OPENING_QUIZ","tick":271,"playerState":"WAITING","answered":10,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":10,"completed":false,"questionId":"question-085d3523-fd59-498c-a0e4-d4a85ea7dd97"}}
+[human29 2026-10-26T10:46:13.059Z] opening 11/20: accepted {"phase":"OPENING_QUIZ","tick":285,"playerState":"WAITING","answered":11,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":11,"completed":false,"questionId":"question-8ce0114f-fdc6-46eb-a3fd-9f6b571641d4"}}
+[human29 2026-10-26T10:46:13.067Z] opening 11/20: next {"phase":"OPENING_QUIZ","tick":285,"playerState":"WAITING","answered":11,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":11,"completed":false,"questionId":"question-8ce0114f-fdc6-46eb-a3fd-9f6b571641d4"}}
+[human29 2026-10-26T10:46:13.135Z] opening 12/20: choose {"phase":"OPENING_QUIZ","tick":297,"playerState":"WAITING","answered":11,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":11,"completed":false,"questionId":"question-8ce0114f-fdc6-46eb-a3fd-9f6b571641d4"}}
+[human29 2026-10-26T10:46:13.397Z] opening 12/20: accepted {"phase":"OPENING_QUIZ","tick":313,"playerState":"WAITING","answered":12,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":12,"completed":false,"questionId":"question-3974d227-8c41-4132-8577-fccb1452e720"}}
+[human29 2026-10-26T10:46:13.402Z] opening 12/20: next {"phase":"OPENING_QUIZ","tick":313,"playerState":"WAITING","answered":12,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":12,"completed":false,"questionId":"question-3974d227-8c41-4132-8577-fccb1452e720"}}
+[human29 2026-10-26T10:46:13.474Z] opening 13/20: choose {"phase":"OPENING_QUIZ","tick":325,"playerState":"WAITING","answered":12,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":12,"completed":false,"questionId":"question-3974d227-8c41-4132-8577-fccb1452e720"}}
+[human29 2026-10-26T10:46:13.723Z] opening 13/20: accepted {"phase":"OPENING_QUIZ","tick":339,"playerState":"WAITING","answered":13,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":13,"completed":false,"questionId":"question-6c987322-ae3f-4839-9141-248ca6cdb20c"}}
+[human29 2026-10-26T10:46:13.729Z] opening 13/20: next {"phase":"OPENING_QUIZ","tick":339,"playerState":"WAITING","answered":13,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":13,"completed":false,"questionId":"question-6c987322-ae3f-4839-9141-248ca6cdb20c"}}
+[human29 2026-10-26T10:46:13.811Z] opening 14/20: choose {"phase":"OPENING_QUIZ","tick":353,"playerState":"WAITING","answered":13,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":13,"completed":false,"questionId":"question-6c987322-ae3f-4839-9141-248ca6cdb20c"}}
+[human29 2026-10-26T10:46:14.065Z] opening 14/20: accepted {"phase":"OPENING_QUIZ","tick":366,"playerState":"WAITING","answered":14,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":14,"completed":false,"questionId":"question-a6f7ba4f-0e3a-4956-b40d-8662ceca8b5a"}}
+[human29 2026-10-26T10:46:14.072Z] opening 14/20: next {"phase":"OPENING_QUIZ","tick":366,"playerState":"WAITING","answered":14,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":14,"completed":false,"questionId":"question-a6f7ba4f-0e3a-4956-b40d-8662ceca8b5a"}}
+[human29 2026-10-26T10:46:14.141Z] opening 15/20: choose {"phase":"OPENING_QUIZ","tick":379,"playerState":"WAITING","answered":14,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":14,"completed":false,"questionId":"question-a6f7ba4f-0e3a-4956-b40d-8662ceca8b5a"}}
+[human29 2026-10-26T10:46:14.392Z] opening 15/20: accepted {"phase":"OPENING_QUIZ","tick":393,"playerState":"WAITING","answered":15,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":15,"completed":false,"questionId":"question-b33aeec7-2338-496d-8b90-4e3038205ab7"}}
+[human29 2026-10-26T10:46:14.408Z] opening 15/20: next {"phase":"OPENING_QUIZ","tick":393,"playerState":"WAITING","answered":15,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":15,"completed":false,"questionId":"question-b33aeec7-2338-496d-8b90-4e3038205ab7"}}
+[human29 2026-10-26T10:46:14.475Z] opening 16/20: choose {"phase":"OPENING_QUIZ","tick":406,"playerState":"WAITING","answered":15,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":15,"completed":false,"questionId":"question-b33aeec7-2338-496d-8b90-4e3038205ab7"}}
+[human29 2026-10-26T10:46:14.733Z] opening 16/20: accepted {"phase":"OPENING_QUIZ","tick":422,"playerState":"WAITING","answered":16,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":16,"completed":false,"questionId":"question-57477d22-27cc-4383-ab7c-b96d801fe68b"}}
+[human29 2026-10-26T10:46:14.738Z] opening 16/20: next {"phase":"OPENING_QUIZ","tick":422,"playerState":"WAITING","answered":16,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":16,"completed":false,"questionId":"question-57477d22-27cc-4383-ab7c-b96d801fe68b"}}
+[human29 2026-10-26T10:46:14.816Z] opening 17/20: choose {"phase":"OPENING_QUIZ","tick":436,"playerState":"WAITING","answered":16,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":16,"completed":false,"questionId":"question-57477d22-27cc-4383-ab7c-b96d801fe68b"}}
+[human29 2026-10-26T10:46:15.067Z] opening 17/20: accepted {"phase":"OPENING_QUIZ","tick":447,"playerState":"WAITING","answered":17,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":17,"completed":false,"questionId":"question-376cda87-d864-4e05-8a02-6044443c389e"}}
+[human29 2026-10-26T10:46:15.071Z] opening 17/20: next {"phase":"OPENING_QUIZ","tick":447,"playerState":"WAITING","answered":17,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":17,"completed":false,"questionId":"question-376cda87-d864-4e05-8a02-6044443c389e"}}
+[human29 2026-10-26T10:46:15.138Z] opening 18/20: choose {"phase":"OPENING_QUIZ","tick":459,"playerState":"WAITING","answered":17,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":17,"completed":false,"questionId":"question-376cda87-d864-4e05-8a02-6044443c389e"}}
+[human29 2026-10-26T10:46:15.368Z] opening 18/20: accepted {"phase":"OPENING_QUIZ","tick":471,"playerState":"WAITING","answered":18,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":18,"completed":false,"questionId":"question-262f7ca9-7e7d-470b-b0f0-887ee83c792d"}}
+[human29 2026-10-26T10:46:15.375Z] opening 18/20: next {"phase":"OPENING_QUIZ","tick":471,"playerState":"WAITING","answered":18,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":18,"completed":false,"questionId":"question-262f7ca9-7e7d-470b-b0f0-887ee83c792d"}}
+[human29 2026-10-26T10:46:15.443Z] opening 19/20: choose {"phase":"OPENING_QUIZ","tick":484,"playerState":"WAITING","answered":18,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":18,"completed":false,"questionId":"question-262f7ca9-7e7d-470b-b0f0-887ee83c792d"}}
+[human29 2026-10-26T10:46:15.698Z] opening 19/20: accepted {"phase":"OPENING_QUIZ","tick":497,"playerState":"WAITING","answered":19,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":19,"completed":false,"questionId":"question-fd011759-c649-4913-804b-990a7f905224"}}
+[human29 2026-10-26T10:46:15.705Z] opening 19/20: next {"phase":"OPENING_QUIZ","tick":497,"playerState":"WAITING","answered":19,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":19,"completed":false,"questionId":"question-fd011759-c649-4913-804b-990a7f905224"}}
+[human29 2026-10-26T10:46:15.776Z] opening 20/20: choose {"phase":"OPENING_QUIZ","tick":509,"playerState":"WAITING","answered":19,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":19,"completed":false,"questionId":"question-fd011759-c649-4913-804b-990a7f905224"}}
+[human29 2026-10-26T10:46:16.095Z] opening 20/20: accepted {"phase":"OPENING_QUIZ","tick":538,"playerState":"WAITING","answered":20,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":20,"completed":true}}
+[human29 2026-10-26T10:46:16.104Z] starter and ready {"phase":"OPENING_QUIZ","tick":538,"playerState":"WAITING","answered":20,"deployments":0,"quiz":{"attemptId":"quiz-ff855a5f-f68f-42ff-8d93-eef7fdbe8c0d","index":20,"completed":true}}
+[human29 2026-10-26T10:46:30.287Z] battle 1/10: choose {"phase":"BATTLE","tick":1660,"playerState":"ACTIVE","answered":20,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":0,"completed":false,"questionId":"question-40976246-f085-4fdc-9f16-f4e4c65df6aa"}}
+[human29 2026-10-26T10:46:30.825Z] battle 1/10: accepted {"phase":"BATTLE","tick":1705,"playerState":"ACTIVE","answered":21,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":1,"completed":false,"questionId":"question-58bbde71-8558-4cf4-a37e-1e69d38a2139"}}
+[human29 2026-10-26T10:46:30.830Z] battle 1/10: next {"phase":"BATTLE","tick":1705,"playerState":"ACTIVE","answered":21,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":1,"completed":false,"questionId":"question-58bbde71-8558-4cf4-a37e-1e69d38a2139"}}
+[human29 2026-10-26T10:46:30.910Z] battle 2/10: choose {"phase":"BATTLE","tick":1717,"playerState":"ACTIVE","answered":21,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":1,"completed":false,"questionId":"question-58bbde71-8558-4cf4-a37e-1e69d38a2139"}}
+[human29 2026-10-26T10:46:31.961Z] battle 2/10: accepted {"phase":"BATTLE","tick":1763,"playerState":"ACTIVE","answered":22,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":2,"completed":false,"questionId":"question-4a7f2bd6-858f-4404-b455-fec13a49b00b"}}
+[human29 2026-10-26T10:46:31.966Z] battle 2/10: next {"phase":"BATTLE","tick":1763,"playerState":"ACTIVE","answered":22,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":2,"completed":false,"questionId":"question-4a7f2bd6-858f-4404-b455-fec13a49b00b"}}
+[human29 2026-10-26T10:46:32.065Z] battle 3/10: choose {"phase":"BATTLE","tick":1777,"playerState":"ACTIVE","answered":22,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":2,"completed":false,"questionId":"question-4a7f2bd6-858f-4404-b455-fec13a49b00b"}}
+[human29 2026-10-26T10:46:34.189Z] battle 3/10: accepted {"phase":"BATTLE","tick":1898,"playerState":"ACTIVE","answered":23,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":3,"completed":false,"questionId":"question-905e6772-2f52-4967-86d3-457e0bc05f1e"}}
+[human29 2026-10-26T10:46:34.202Z] battle 3/10: next {"phase":"BATTLE","tick":1898,"playerState":"ACTIVE","answered":23,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":3,"completed":false,"questionId":"question-905e6772-2f52-4967-86d3-457e0bc05f1e"}}
+[human29 2026-10-26T10:46:34.299Z] battle 4/10: choose {"phase":"BATTLE","tick":1898,"playerState":"ACTIVE","answered":23,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":3,"completed":false,"questionId":"question-905e6772-2f52-4967-86d3-457e0bc05f1e"}}
+[human29 2026-10-26T10:46:38.564Z] battle 4/10: accepted {"phase":"BATTLE","tick":2300,"playerState":"DEAD_MAINTENANCE","answered":24,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":4,"completed":false,"questionId":"question-ae974875-9c05-47ab-a5ac-d430a15f3006"}}
+[human29 2026-10-26T10:46:38.568Z] battle 4/10: next {"phase":"BATTLE","tick":2300,"playerState":"DEAD_MAINTENANCE","answered":24,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":4,"completed":false,"questionId":"question-ae974875-9c05-47ab-a5ac-d430a15f3006"}}
+[human29 2026-10-26T10:46:38.663Z] battle 5/10: choose {"phase":"BATTLE","tick":2319,"playerState":"DEAD_MAINTENANCE","answered":24,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":4,"completed":false,"questionId":"question-ae974875-9c05-47ab-a5ac-d430a15f3006"}}
+[human29 2026-10-26T10:46:39.248Z] battle 5/10: accepted {"phase":"BATTLE","tick":2385,"playerState":"DEAD_MAINTENANCE","answered":25,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":5,"completed":false,"questionId":"question-dc1617fa-53d8-4119-8db5-c8bd0affb388"}}
+[human29 2026-10-26T10:46:39.253Z] battle 5/10: next {"phase":"BATTLE","tick":2385,"playerState":"DEAD_MAINTENANCE","answered":25,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":5,"completed":false,"questionId":"question-dc1617fa-53d8-4119-8db5-c8bd0affb388"}}
+[human29 2026-10-26T10:46:39.350Z] battle 6/10: choose {"phase":"BATTLE","tick":2394,"playerState":"DEAD_MAINTENANCE","answered":25,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":5,"completed":false,"questionId":"question-dc1617fa-53d8-4119-8db5-c8bd0affb388"}}
+[human29 2026-10-26T10:46:39.883Z] battle 6/10: accepted {"phase":"BATTLE","tick":2424,"playerState":"DEAD_MAINTENANCE","answered":26,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":6,"completed":false,"questionId":"question-4aa9fd7f-1cb3-4b98-8e43-baaaa1e1f203"}}
+[human29 2026-10-26T10:46:39.889Z] battle 6/10: next {"phase":"BATTLE","tick":2424,"playerState":"DEAD_MAINTENANCE","answered":26,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":6,"completed":false,"questionId":"question-4aa9fd7f-1cb3-4b98-8e43-baaaa1e1f203"}}
+[human29 2026-10-26T10:46:39.971Z] wait for death on question 7 {"phase":"BATTLE","tick":2424,"playerState":"DEAD_MAINTENANCE","answered":26,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":6,"completed":false,"questionId":"question-4aa9fd7f-1cb3-4b98-8e43-baaaa1e1f203"}}
+[human29 2026-10-26T10:46:41.539Z] reload and resume question 7 {"phase":"BATTLE","tick":2504,"playerState":"DEAD_MAINTENANCE","answered":26,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":6,"completed":false,"questionId":"question-4aa9fd7f-1cb3-4b98-8e43-baaaa1e1f203"}}
+[human29 2026-10-26T10:46:41.967Z] battle 7/10: choose {"phase":"BATTLE","tick":2506,"playerState":"DEAD_MAINTENANCE","answered":26,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":6,"completed":false,"questionId":"question-4aa9fd7f-1cb3-4b98-8e43-baaaa1e1f203"}}
+[human29 failed at battle 7/10: submit] ExpectError: expect(received).toBe(expected) // Object.is equality
+
+Expected: 27
+Received: 26
+
+Call Log:
+- Timeout 20000ms exceeded while waiting on the predicate
+    at answer (C:\Users\jarsc\OneDrive\바탕 화면\코딩게임\클래스클래시\tests\e2e\full-game.spec.ts:58:348)
+    at C:\Users\jarsc\OneDrive\바탕 화면\코딩게임\클래스클래시\tests\e2e\full-game.spec.ts:76:27 {
+  matcherResult: {
+    pass: false,
+    message: '\x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoBe\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // Object.is equality\x1B[22m\n' +
+      '\n' +
+      'Expected: \x1B[32m27\x1B[39m\n' +
+      'Received: \x1B[31m26\x1B[39m\n' +
+      '\n' +
+      'Call Log:\n' +
+      '- Timeout 20000ms exceeded while waiting on the predicate',
+    name: 'toBe'
+  },
+  Symbol(step): {
+    category: 'expect',
+    title: 'Expect "poll toBe"',
+    subtitle: undefined,
+    stack: [ [Object], [Object] ],
+    params: { expected: 27 },
+    stepId: 'zeuw@413',
+    group: undefined,
+    boxedStack: undefined,
+    steps: [
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object]
+    ],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'zeuw@413',
+      _title: 'Expect "poll toBe"',
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1793011623676,
+    error: {
+      message: 'Error: \x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoBe\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // Object.is equality\x1B[22m\n' +
+        '\n' +
+        'Expected: \x1B[32m27\x1B[39m\n' +
+        'Received: \x1B[31m26\x1B[39m\n' +
+        '\n' +
+        'Call Log:\n' +
+        '- Timeout 20000ms exceeded while waiting on the predicate',
+      stack: 'Error: \x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoBe\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // Object.is equality\x1B[22m\n' +
+        '\n' +
+        'Expected: \x1B[32m27\x1B[39m\n' +
+        'Received: \x1B[31m26\x1B[39m\n' +
+        '\n' +
+        'Call Log:\n' +
+        '- Timeout 20000ms exceeded while waiting on the predicate\n' +
+        '    at answer (C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\tests\\e2e\\full-game.spec.ts:58:348)\n' +
+        '    at C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\tests\\e2e\\full-game.spec.ts:76:27',
+      cause: undefined
+    }
+  }
+}
+[human29 2026-10-26T10:47:03.698Z] FAILED: battle 7/10: submit {"phase":"BATTLE","tick":4337,"playerState":"DEAD_MAINTENANCE","answered":26,"deployments":1,"quiz":{"attemptId":"quiz-ae3d251b-8f6a-43e1-846b-a2e75eae2fc8","index":6,"completed":false,"questionId":"question-4aa9fd7f-1cb3-4b98-8e43-baaaa1e1f203"}}
+[human29 cleanup] FAILED: battle 7/10: submit
+  x  1 tests\e2e\full-game.spec.ts:43:1 › one human +29 AI completes quiz, manual redeployment and human awards (1.0m)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) tests\e2e\full-game.spec.ts:43:1 › one human +29 AI completes quiz, manual redeployment and human awards 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 27
+    Received: 26
+
+    Call Log:
+    - Timeout 20000ms exceeded while waiting on the predicate
+
+      56 |     await host.getByRole('button',{name:'30명 채우기'}).click();await expect(host.locator('.player-row')).toHaveCount(30);
+      57 |     await host.getByRole('button',{name:'시작 퀴즈 시작'}).click();
+    > 58 |     const answer=async(label:string)=>{const before=await progress(`${label}: choose`);await student.locator('.quiz-choice').first().click();stage=`${label}: submit`;await student.getByRole('button',{name:'답안 확정',exact:true}).click();await expect.poll(()=>student.evaluate(()=>window.__classClash?.snapshot?.self?.stats.answered),{timeout:20000}).toBe((before.answered??0)+1);await progress(`${label}: accepted`);};
+         |                                                                                                                                                                                                                                                                                                                                                            ^
+      59 |     const next=async(label:string)=>{await progress(`${label}: next`);await student.getByRole('button',{name:'다음 문제 →',exact:true}).click();};
+      60 |     for(let i=0;i<20;i++){await answer(`opening ${i+1}/20`);if(i<19)await next(`opening ${i+1}/20`);}
+      61 |     await progress('starter and ready');
+        at answer (C:\Users\jarsc\OneDrive\바탕 화면\코딩게임\클래스클래시\tests\e2e\full-game.spec.ts:58:348)
+        at C:\Users\jarsc\OneDrive\바탕 화면\코딩게임\클래스클래시\tests\e2e\full-game.spec.ts:76:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\..\AppData\Local\Temp\classclash-browser-1793011564927\browser-results\full-game-one-human-29-AI--e6e25-deployment-and-human-awards\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\..\AppData\Local\Temp\classclash-browser-1793011564927\browser-results\full-game-one-human-29-AI--e6e25-deployment-and-human-awards\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\..\AppData\Local\Temp\classclash-browser-1793011564927\browser-results\full-game-one-human-29-AI--e6e25-deployment-and-human-awards\error-context.md
+
+  1 failed
+    tests\e2e\full-game.spec.ts:43:1 › one human +29 AI completes quiz, manual redeployment and human awards 
+  1 error was not a part of any test, see above for details

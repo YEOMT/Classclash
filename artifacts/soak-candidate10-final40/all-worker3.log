@@ -1,0 +1,14 @@
+{"seed":1003,"seconds":100,"units":78,"destroyed":0,"wallSeconds":9.700383300000002}
+{"seed":1003,"seconds":200,"units":69,"destroyed":0,"wallSeconds":66.24306849999999}
+{"seed":1003,"seconds":300,"units":59,"destroyed":0,"wallSeconds":120.6847624}
+{"seed":1003,"seconds":400,"units":65,"destroyed":0,"wallSeconds":184.9376272}
+{"seed":1003,"seconds":500,"units":65,"destroyed":2,"wallSeconds":235.5188229}
+{"seed":1003,"seconds":600,"units":71,"destroyed":4,"wallSeconds":283.26488}
+{"seed":1003,"seconds":700,"units":65,"destroyed":5,"wallSeconds":319.43686560000003}
+{"seed":1003,"seconds":800,"units":67,"destroyed":6,"wallSeconds":335.7315098}
+{"seed":1003,"seconds":900,"units":63,"destroyed":7,"wallSeconds":344.511147}
+{"seed":1003,"phase":"BATTLE","battleSeconds":900,"wallSeconds":344.527554,"navStalls":0,"meanLivingUnits":45.91688888888889}
+{"seed":1006,"seconds":100,"units":69,"destroyed":0,"wallSeconds":32.641922599999994}
+{"seed":1006,"seconds":200,"units":76,"destroyed":2,"wallSeconds":60.598752199999986}
+{"seed":1006,"seconds":300,"units":48,"destroyed":4,"wallSeconds":79.0364985}
+{"seed":1006,"seconds":400,"units":52,"destroyed":4,"wallSeconds":92.98002970000002}

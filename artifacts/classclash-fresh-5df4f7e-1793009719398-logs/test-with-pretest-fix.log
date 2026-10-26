@@ -1,0 +1,198 @@
+npm notice run class-clash@0.1.0 pretest
+npm notice run npm run build
+npm notice run class-clash@0.1.0 build
+npm notice run node scripts/build-sprites.mjs && vite build && esbuild src/server/index.ts --platform=node --packages=external --bundle --format=esm --outfile=dist/server.js
+Built 18 original hero atlases: 5184 frames, 1024x1152 each. Eight directions and all action streams validated.
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 753 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/client/index.html                                     1.44 kB │ gzip:   0.65 kB
+dist/client/assets/index-CKyrUiIp.css                     21.87 kB │ gzip:   5.81 kB
+dist/client/assets/webworkerAll-koEfqExN.js                0.05 kB │ gzip:   0.06 kB
+dist/client/assets/getTextureBatchBindGroup-CckcnH94.js    0.34 kB │ gzip:   0.26 kB
+dist/client/assets/Cache-fEtFvAzf.js                       1.10 kB │ gzip:   0.55 kB
+dist/client/assets/canvasUtils-BlnLdLY1.js                 6.01 kB │ gzip:   2.04 kB
+dist/client/assets/getTexelRangeRects-Bt1M-OmZ.js         11.35 kB │ gzip:   2.99 kB
+dist/client/assets/init-BTS9MrDS.js                       14.84 kB │ gzip:   4.59 kB
+dist/client/assets/GCManagedHash-DAvwKUzM.js              19.31 kB │ gzip:   6.27 kB
+dist/client/assets/Filter-B0XMl_yL.js                     41.95 kB │ gzip:  12.02 kB
+dist/client/assets/browserAll-BfYXzrIp.js                 43.50 kB │ gzip:  11.24 kB
+dist/client/assets/RenderTargetSystem-9obqq6wg.js         58.80 kB │ gzip:  16.47 kB
+dist/client/assets/GraphicsContext-DJRE2111.js            61.68 kB │ gzip:  20.62 kB
+dist/client/assets/CanvasPool-BZ0sA3Gt.js                 71.20 kB │ gzip:  23.30 kB
+dist/client/assets/index-LyHz7rtN.js                     387.39 kB │ gzip: 121.57 kB
+
+✓ built in 670ms
+
+  dist\server.js  184.7kb
+
+Done in 32ms
+npm notice run class-clash@0.1.0 test
+npm notice run tsx --test tests/*.test.ts
+✔ L12: an empty team and a team without READY both block start, including allowUnready (9.6061ms)
+✔ L13: exactly two standard AI complete all 40 graded answers, choose and grow, then READY before host starts (12.6056ms)
+✔ B05: 2000 wrong-intent choices across real shuffled items reach every distractor and never the answer (3.4615ms)
+✔ Q04: 0, 1, 10 and 20 correct answers earn exact assets; every score retains the free starter (6.3708ms)
+✔ Q12: one minute without answering leaves assets and attempt unchanged while real attacks continue (52.4507ms)
+✔ B08/B12: active AI cannot buy or swap, and bot profile never changes identical automatic combat (1144.395ms)
+✔ M07/M09: actual death and A→B→A deployments restore each owned hero growth and full HP (88.614ms)
+✔ B07: an AI starts its next real quiz no earlier than 600 ticks after answer ten (49.6023ms)
+✔ B09: a zero-asset AI returns with its existing free hero after a real death without shopping forever (32.1867ms)
+✔ R03: 13 minutes of real server ticks with unequal surviving nexus HP never creates a time-limit winner (8584.9603ms)
+✔ late unready AI takes its legal first maintenance path without a fabricated death or lost opening assets (451.6684ms)
+✔ R03/R05: simultaneous actual projectile nexus kills make one DRAW ceremony and freeze all late student mutations (14.8277ms)
+✔ B03/B04 BASIC: actual managers schedule and submit 10,200 answers within rate and delay gates (575.7367ms)
+ℹ {"profile":"BASIC","answers":10200,"correct":5555,"observedRate":0.5446078431372549,"expectedRate":0.55,"meanDelaySeconds":4.520519607843135,"expectedMidpointSeconds":4.5,"minimumTicks":60,"maximumTicks":120}
+✔ B03/B04 STANDARD: actual managers schedule and submit 10,200 answers within rate and delay gates (406.9752ms)
+ℹ {"profile":"STANDARD","answers":10200,"correct":7551,"observedRate":0.7402941176470588,"expectedRate":0.75,"meanDelaySeconds":3.0218970588235234,"expectedMidpointSeconds":3,"minimumTicks":40,"maximumTicks":80}
+✔ B03/B04 SKILLED: actual managers schedule and submit 10,200 answers within rate and delay gates (236.026ms)
+ℹ {"profile":"SKILLED","answers":10200,"correct":9105,"observedRate":0.8926470588235295,"expectedRate":0.9,"meanDelaySeconds":1.9229215686274366,"expectedMidpointSeconds":1.9,"minimumTicks":24,"maximumTicks":52}
+✔ B01: repeated real managers reproduce learning plans and maintenance decisions through READY (57.0744ms)
+✔ G05/G08/G09: every legal pool reaches every weighted hero; grade boundaries are never rerolled (2.0717ms)
+✔ G06/G07/G09: all ten valid ticket/pool combinations preserve unconditional rarity probabilities (210.2424ms)
+✔ G08: 30,000 actual legendary selections contain only the three equally weighted definitions (7.727ms)
+✔ slow live delivery keeps every committed combat event (7.6297ms)
+✔ recovery limits historical replay while retaining current hit frames (0.4803ms)
+✔ restart accepts reset sequence only for the authenticated new epoch (2.4791ms)
+✔ COM-001/002/047: exact opening and 20-second waves with a monotonic match clock (592.4672ms)
+✔ COM-045: millisecond timelines ceil to exact integer ticks (4.0904ms)
+✔ COM-011: melee windup misses when the locked target escapes the hit range (2.2724ms)
+✔ COM-012/014: arrows do no pre-release damage and persist after the archer dies (6.3587ms)
+✔ COM-015: homing projectiles never reassign after target death (5.1968ms)
+✔ COM-016: both already-started impacts resolve despite same-tick lethal damage (1.5831ms)
+✔ COM-017: concurrent damage and healing are batched from tick-start HP (1.3593ms)
+✔ COM-027/028/029: lane-specific siege dependency graph and nexus lock (1.3939ms)
+✔ COM-018: hard CC caps at two seconds and supplies only cap immunity (5.5506ms)
+✔ COM-043: late siege multipliers affect only the declared time intervals (1.0584ms)
+✔ COM-043: late minion siege scales real structure hits without scaling hero or minion damage (2.2666ms)
+✔ COM-044: melee surface-gap ring can actually hit a large structure (11.0854ms)
+✔ COM-003/020: corridor and ability shapes include collision radii (1.7514ms)
+✔ COM-033: dead human units remain dead without an explicit deployment command (5.1457ms)
+✔ COM-037: identical seed and input reproduce every event and final unit state (3450.5034ms)
+✔ COM-039/040: double nexus destruction is a draw and further steps freeze (15.4974ms)
+✔ COM-049: concurrent 90 and 60 damage is credited 60 and 40 on a 100 HP victim (2.0205ms)
+✔ COM-006: eight melee attackers reserve distinct ring positions instead of the target center (224.9396ms)
+✔ COM-007: a tank adjacent to its own tower navigates around the solid obstacle (93.3084ms)
+✔ COM-007: a mage at the inner tower and corridor corner finds a valid departure edge (222.1428ms)
+✔ COM-007: a nearby ranged-minion goal cannot shortcut the tower tangent from its grid center (212.4894ms)
+✔ 18 heroes preserve reference stats, rarity pools and exactly two unlock skills (4.0669ms)
+✔ growth rounds once, remains independent and does not change speed/range/timing (0.62ms)
+✔ 36 timelines have tick-aligned starts and distinct mechanisms (0.7041ms)
+✔ all original PNGs contain visible 8-direction, 8-state frames and valid sockets (2039.2857ms)
+✔ G01/G02/G10 NORMAL: exact earned price adds one independent stored hero and no active unit (13.0695ms)
+✔ G01/G02/G10 PREMIUM: exact earned price adds one independent stored hero and no active unit (2.1612ms)
+✔ G03: balances one below either ticket price reject without consuming RNG, wallet revision or inventory (4.5345ms)
+✔ G11/G12: earned funds level one instance from1to5 at exact costs and never buy a sixth level or third skill (8.059ms)
+✔ G13/M08: all eight legal three-enhancement mixes obey costs, independent growth, exact stats and fourth-purchase cap (18.7117ms)
+✔ G09/M11: invalid premium role and another participant hero cannot spend or change ownership (1.8657ms)
+✔ heartbeat: ordinary timely pongs keep a healthy connection alive and each probe is distinct (3.7698ms)
+✔ heartbeat: an unanswered probe expires at15s, not before, without repeated ping resets (0.3526ms)
+✔ heartbeat: a stalled server gives queued healthy pongs a fresh grace instead of a false1006 termination (1.3385ms)
+✔ heartbeat: a genuinely dead peer still expires15s after the server becomes responsive again (0.2814ms)
+✔ heartbeat: normal timer jitter cannot repeatedly extend a dead peer deadline (0.2544ms)
+✔ heartbeat: an initially stalled loop probes both new and previously waiting clients before judging them (0.2347ms)
+✔ paladin.shield_bash: real AI reserves cooldown, produces impact and applies its mechanic (31.8945ms)
+✔ paladin.sanctuary_shield: real AI reserves cooldown, produces impact and applies its mechanic (10.4104ms)
+✔ swordsman.parry: real AI reserves cooldown, produces impact and applies its mechanic (10.0959ms)
+✔ swordsman.flash_cut: real AI reserves cooldown, produces impact and applies its mechanic (7.1523ms)
+✔ brawler.flurry: real AI reserves cooldown, produces impact and applies its mechanic (6.4905ms)
+✔ brawler.uppercut: real AI reserves cooldown, produces impact and applies its mechanic (6.5281ms)
+✔ archer.piercing_arrow: real AI reserves cooldown, produces impact and applies its mechanic (6.5389ms)
+✔ archer.arrow_rain: real AI reserves cooldown, produces impact and applies its mechanic (7.8613ms)
+✔ pyromancer.fire_burst: real AI reserves cooldown, produces impact and applies its mechanic (5.0267ms)
+✔ pyromancer.flame_wall: real AI reserves cooldown, produces impact and applies its mechanic (5.7214ms)
+✔ cryomancer.frost_fan: real AI reserves cooldown, produces impact and applies its mechanic (16.1194ms)
+✔ cryomancer.ice_prison: real AI reserves cooldown, produces impact and applies its mechanic (4.493ms)
+✔ priest.healing_light: real AI reserves cooldown, produces impact and applies its mechanic (5.1498ms)
+✔ priest.healing_prayer: real AI reserves cooldown, produces impact and applies its mechanic (5.817ms)
+✔ barbarian.spin_slash: real AI reserves cooldown, produces impact and applies its mechanic (5.716ms)
+✔ barbarian.leap_slam: real AI reserves cooldown, produces impact and applies its mechanic (5.6562ms)
+✔ monk.repelling_staff: real AI reserves cooldown, produces impact and applies its mechanic (15.6565ms)
+✔ monk.cleansing_bell: real AI reserves cooldown, produces impact and applies its mechanic (4.4059ms)
+✔ iron_knight.armored_charge: real AI reserves cooldown, produces impact and applies its mechanic (6.3089ms)
+✔ iron_knight.iron_wall: real AI reserves cooldown, produces impact and applies its mechanic (6.3066ms)
+✔ guardian_golem.earth_slam: real AI reserves cooldown, produces impact and applies its mechanic (6.2254ms)
+✔ guardian_golem.guard_roar: real AI reserves cooldown, produces impact and applies its mechanic (5.0491ms)
+✔ assassin.shadow_leap: real AI reserves cooldown, produces impact and applies its mechanic (10.674ms)
+✔ assassin.vital_combo: real AI reserves cooldown, produces impact and applies its mechanic (4.1915ms)
+✔ crossbowman.steel_bolt: real AI reserves cooldown, produces impact and applies its mechanic (4.3718ms)
+✔ crossbowman.binding_bolt: real AI reserves cooldown, produces impact and applies its mechanic (4.4457ms)
+✔ stormcaller.chain_lightning: real AI reserves cooldown, produces impact and applies its mechanic (4.6542ms)
+✔ stormcaller.thunder_strike: real AI reserves cooldown, produces impact and applies its mechanic (3.9225ms)
+✔ bard.marching_melody: real AI reserves cooldown, produces impact and applies its mechanic (3.9876ms)
+✔ bard.dissonance: real AI reserves cooldown, produces impact and applies its mechanic (4.1493ms)
+✔ rune_mage.triple_rune: real AI reserves cooldown, produces impact and applies its mechanic (4.8553ms)
+✔ rune_mage.rune_resonance: real AI reserves cooldown, produces impact and applies its mechanic (3.789ms)
+✔ ancient_one.shatter_sigil: real AI reserves cooldown, produces impact and applies its mechanic (4.4412ms)
+✔ ancient_one.primordial_fissure: real AI reserves cooldown, produces impact and applies its mechanic (5.9975ms)
+✔ guardian_spirit.soul_guard: real AI reserves cooldown, produces impact and applies its mechanic (4.8305ms)
+✔ guardian_spirit.guardian_barrier: real AI reserves cooldown, produces impact and applies its mechanic (3.909ms)
+✔ rune marks belong to the caster and resonance consumes only its own marks (5.6712ms)
+✔ rune resonance overlap caps one target at 150% damage (4.3997ms)
+✔ ancient sigil stacks do not combine across owned hero instances (2.9002ms)
+✔ strong CC stops unfinished casts; cooldown remains reserved (2.5414ms)
+✔ root allows a started ranged skill; it does not grant hard CC immunity (2.6192ms)
+✔ guardian barrier is fixed in place and ends when its caster dies (2.1142ms)
+✔ two low-level heroes never cast locked skills (6.7219ms)
+✔ binding bolt hits the intercepting minion instead of the chosen hero (3.012ms)
+✔ chain lightning stops when the next enemy is 100 units away (2.5713ms)
+✔ monk cannot begin cleansing while stunned, then clears root without granting immunity (3.5199ms)
+✔ third own sigil consumes three stacks and applies one extra burst (2.1339ms)
+✔ three bard buffs preserve one 15 percent maximum and a started attack hit time (3.0815ms)
+✔ F14/Q10/COM-034: seventh-question death preserves attempt; resume and duplicate answer pay once (33.3652ms)
+✔ COM-033/041: no human automatic respawn after 30s; configured wait boundary and maintenance remain legal (80.8518ms)
+✔ allowUnready first deployment preserves earned gold and starter without a false death or redeploy wait (5.9473ms)
+✔ COM-005: four identical deployments replay one entity/deployment; different IDs cannot double summon (46.2287ms)
+✔ death generation rejects delayed previous-life and missing-generation deployment requests (66.9633ms)
+✔ death generation guards every maintenance mutation before spending or changing a selected hero (39.0669ms)
+✔ Q11: redeploying during an unfinished quiz preserves its exact next question and reward ledger (32.2864ms)
+✔ replaying an old starter ACK returns the original immutable hero result after later growth (1.9006ms)
+✔ COM-026: same-type duplicate swap retains server skill cooldown and independent growth (38.2577ms)
+✔ host closing opening quiz cancels bot pending answers without new rewards or ghost bot requests (3.1842ms)
+✔ B14/Q15: bot reservations, full answer key, future random streams and session hashes stay off both public views (1.9759ms)
+✔ Q14/R05: late quiz answer after final result cannot change wallet, stats or awards (6.5476ms)
+✔ L05-L11: roster atomic capacity, both teams, lock after opening (25.7389ms)
+✔ Q01-Q02: bank validation includes BOM, CRLF, duplicate choices and line errors (1.5564ms)
+✔ Q03-Q07: opening 20 distinct questions, authoritative one-time rewards and zero correct starter (4.0386ms)
+✔ G01-G04 G11-G14 M08-M13: independent growth and replay safe economy (3.6337ms)
+✔ G05-G09: exact boundaries, valid role pools and 100000 sample distributions (53.7565ms)
+✔ M01-M03 C01-C02: first deployment and t0 wave; live mutation rejected (7.6238ms)
+✔ Q08-Q09 Q13: incomplete attempt resume and exactly 30s cooldown after tenth (1023.2928ms)
+✔ N10-N11: actors, epochs, stale matches, private snapshot and client-provided gold denied (1.7773ms)
+✔ pause preserves all game clocks, and resume command does not deadlock (3.6289ms)
+✔ R04-R05 R14: cancellation locks input; repeated rematches clear all match state (3.1818ms)
+✔ N15: SQLite command checkpoint, replay and pending quiz survive restore (3.5475ms)
+✔ B03-B04: specified independent seeded RNG golden vectors and learning probabilities (2.0441ms)
+✔ R09-R12: all seven awards, actual contribution, ties, human candidate separation (1.3885ms)
+✔ actual HTTP/WS process: durable answer ACK survives forced restart, duplicate request, epoch and auth isolation (4381.9899ms)
+ℹ 18 concurrent hero PNGs: 851175 bytes, health + ADD_BOTS ACK in 123ms
+✔ runtime fingerprints cover exact hero content, balance and bot tactics with stable object ordering (29.2548ms)
+✔ OPENING_QUIZ: incompatible rulesVersion refuses recovery without writing the checkpoint (14.0919ms)
+✔ OPENING_QUIZ: incompatible contentHash refuses recovery without writing the checkpoint (3.5129ms)
+✔ OPENING_QUIZ: incompatible balanceHash refuses recovery without writing the checkpoint (3.7773ms)
+✔ INITIAL_MAINTENANCE: incompatible rulesVersion refuses recovery without writing the checkpoint (3.1435ms)
+✔ INITIAL_MAINTENANCE: incompatible contentHash refuses recovery without writing the checkpoint (3.6167ms)
+✔ INITIAL_MAINTENANCE: incompatible balanceHash refuses recovery without writing the checkpoint (10.0849ms)
+✔ COUNTDOWN: incompatible rulesVersion refuses recovery without writing the checkpoint (4.067ms)
+✔ COUNTDOWN: incompatible contentHash refuses recovery without writing the checkpoint (3.0782ms)
+✔ COUNTDOWN: incompatible balanceHash refuses recovery without writing the checkpoint (3.029ms)
+✔ BATTLE: incompatible rulesVersion refuses recovery without writing the checkpoint (5.0118ms)
+✔ BATTLE: incompatible contentHash refuses recovery without writing the checkpoint (8.2734ms)
+✔ BATTLE: incompatible balanceHash refuses recovery without writing the checkpoint (3.8053ms)
+✔ legacy active checkpoint without version metadata fails explicitly; valid checkpoint restores absolute game time (8.0757ms)
+✔ incompatible finalized result or lobby remains inspectable without changing settled result data (20.4826ms)
+✔ unsupported checkpoint schema fails before attempting a running engine restore (4.2636ms)
+✔ safe legacy lobby restores newly added bot diagnostics defaults without overwriting existing values or saved rows (4.6197ms)
+✔ inactive expiry removes only requested old lobby/results and their join/create requests, preserving match records (6.7376ms)
+✔ expiry is atomic when a database deletion fails; original rooms and request tokens stay recoverable (2.5194ms)
+✔ expiry preserves malformed or mismatched identity records for diagnosis instead of deleting them (1.8004ms)
+ℹ tests 153
+ℹ suites 0
+ℹ pass 153
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10817.4137

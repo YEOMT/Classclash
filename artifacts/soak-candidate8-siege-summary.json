@@ -1,0 +1,10 @@
+{
+  "status": "ABORTED_EXPLORATORY_BATCH",
+  "matchesPlanned": 10,
+  "matchesExecuted": 8,
+  "completed": 6,
+  "inTarget": 3,
+  "after13": 3,
+  "unfinishedAt900Seconds": 2,
+  "reason": "Rejected candidate: inadequate target distribution. Stopped during seed1009 to free CPU for the next candidate and browser E2E. Only completed match-run records in the results file are counted; seeds1009 and1010 are not executed results."
+}

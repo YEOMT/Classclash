@@ -1,0 +1,31 @@
+{
+  "name": "production-http-ws-two-ai-smoke",
+  "status": "PASS",
+  "baseURL": "http://127.0.0.1:3197",
+  "logPath": "C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\classclash-fresh-5df4f7e-1793009719398-logs\\production-smoke.json",
+  "elapsedMs": 3955,
+  "staticAssetBytes": 46569,
+  "pngMagicValid": true,
+  "createdRoomStatus": 201,
+  "roomId": "room-9d91a07d-e9e7-4246-b36f-9929894b6d1b",
+  "roomCode": "1E77BA",
+  "aiPlayers": 2,
+  "teams": [
+    "A",
+    "B"
+  ],
+  "openingTick": 74,
+  "gradedQuizProgress": [
+    {
+      "isBot": true,
+      "team": "A",
+      "quizProgress": 1
+    },
+    {
+      "isBot": true,
+      "team": "B",
+      "quizProgress": 1
+    }
+  ],
+  "cleanupPhase": "CANCELLED"
+}

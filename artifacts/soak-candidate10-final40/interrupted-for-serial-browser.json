@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-26T10:20:21.874Z",
+  "reason": "Parent requested serial resource-intensive validation after concurrent browser timeout; preserve completed seed checkpoints and restart unfinished seeds from initial quiz with unchanged manifest.",
+  "manifestId": "49e0548cbdfc16e12a1809c40d9d80c23de28eab525b4ff50d07e7b44421b59b",
+  "launcherPid": 30560,
+  "launcherExit": null,
+  "workerTails": [
+    {
+      "worker": 1,
+      "tail": [
+        "{\"seed\":1004,\"seconds\":100,\"units\":72,\"destroyed\":0,\"wallSeconds\":33.39937769999995}",
+        "{\"seed\":1004,\"seconds\":200,\"units\":62,\"destroyed\":0,\"wallSeconds\":58.915509199999974}",
+        "{\"seed\":1004,\"seconds\":300,\"units\":62,\"destroyed\":2,\"wallSeconds\":77.8563456}"
+      ]
+    },
+    {
+      "worker": 2,
+      "tail": [
+        "{\"seed\":1005,\"seconds\":400,\"units\":70,\"destroyed\":4,\"wallSeconds\":115.49738200000004}",
+        "{\"seed\":1005,\"seconds\":500,\"units\":61,\"destroyed\":5,\"wallSeconds\":130.97278520000003}",
+        "{\"seed\":1005,\"seconds\":600,\"units\":62,\"destroyed\":5,\"wallSeconds\":146.54742230000002}"
+      ]
+    },
+    {
+      "worker": 3,
+      "tail": [
+        "{\"seed\":1006,\"seconds\":100,\"units\":69,\"destroyed\":0,\"wallSeconds\":32.641922599999994}",
+        "{\"seed\":1006,\"seconds\":200,\"units\":76,\"destroyed\":2,\"wallSeconds\":60.598752199999986}",
+        "{\"seed\":1006,\"seconds\":300,\"units\":48,\"destroyed\":4,\"wallSeconds\":79.0364985}"
+      ]
+    }
+  ],
+  "completedFiles": [
+    "seed-1001.json",
+    "seed-1002.json",
+    "seed-1003.json"
+  ],
+  "stoppedAt": "2026-10-26T10:20:39.590Z",
+  "termination": {
+    "code": 0,
+    "stdout": "����: PID 17396�� ���μ���(PID 18716�� �ڽ� ���μ���)�� ����Ǿ����ϴ�.\r\n����: PID 27124�� ���μ���(PID 20024�� �ڽ� ���μ���)�� ����Ǿ����ϴ�.\r\n����: PID 24484�� ���μ���(PID 8268�� �ڽ� ���μ���)�� ����Ǿ����ϴ�.\r\n����: PID 20024�� ���μ���(PID 30560�� �ڽ� ���μ���)�� ����Ǿ����ϴ�.\r\n����: PID 18716�� ���μ���(PID 30560�� �ڽ� ���μ���)�� ����Ǿ����ϴ�.\r\n����: PID 8268�� ���μ���(PID 30560�� �ڽ� ���μ���)�� ����Ǿ����ϴ�.\r\n����: PID 30560�� ���μ���(PID 29940�� �ڽ� ���μ���)�� ����Ǿ����ϴ�.\r\n",
+    "stderr": ""
+  },
+  "resumeCommand": "node scripts/soak-final.mjs --stage=all --batch=soak-candidate10-final40 --workers=3",
+  "partialSeedsExcluded": [
+    1004,
+    1005,
+    1006
+  ],
+  "recordedMatches": [
+    {
+      "seed": 1001,
+      "phase": "BATTLE",
+      "battleSeconds": 900,
+      "navStalls": 0
+    },
+    {
+      "seed": 1002,
+      "phase": "RESULT",
+      "battleSeconds": 784.55,
+      "navStalls": 0
+    },
+    {
+      "seed": 1003,
+      "phase": "BATTLE",
+      "battleSeconds": 900,
+      "navStalls": 0
+    }
+  ],
+  "completedWithinLimitCount": 1,
+  "observationLimitUnfinishedCount": 2,
+  "terminatedOwnedPids": [
+    30560,
+    20024,
+    18716,
+    8268,
+    17396,
+    27124,
+    24484
+  ]
+}

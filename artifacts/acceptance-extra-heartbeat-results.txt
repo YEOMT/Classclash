@@ -1,0 +1,26 @@
+✔ L12: an empty team and a team without READY both block start, including allowUnready (10.8453ms)
+✔ L13: exactly two standard AI complete all 40 graded answers, choose and grow, then READY before host starts (12.0602ms)
+✔ B05: 2000 wrong-intent choices across real shuffled items reach every distractor and never the answer (2.7786ms)
+✔ Q04: 0, 1, 10 and 20 correct answers earn exact assets; every score retains the free starter (10.6153ms)
+✔ Q12: one minute without answering leaves assets and attempt unchanged while real attacks continue (60.2796ms)
+✔ B08/B12: active AI cannot buy or swap, and bot profile never changes identical automatic combat (671.9591ms)
+✔ M07/M09: actual death and A→B→A deployments restore each owned hero growth and full HP (50.9143ms)
+✔ B07: an AI starts its next real quiz no earlier than 600 ticks after answer ten (34.5138ms)
+✔ B09: a zero-asset AI returns with its existing free hero after a real death without shopping forever (22.8872ms)
+✔ R03: 13 minutes of real server ticks with unequal surviving nexus HP never creates a time-limit winner (4774.6655ms)
+✔ late unready AI takes its legal first maintenance path without a fabricated death or lost opening assets (585.5048ms)
+✔ R03/R05: simultaneous actual projectile nexus kills make one DRAW ceremony and freeze all late student mutations (172.0173ms)
+✔ heartbeat: ordinary timely pongs keep a healthy connection alive and each probe is distinct (1.164ms)
+✔ heartbeat: an unanswered probe expires at15s, not before, without repeated ping resets (0.1867ms)
+✔ heartbeat: a stalled server gives queued healthy pongs a fresh grace instead of a false1006 termination (0.8424ms)
+✔ heartbeat: a genuinely dead peer still expires15s after the server becomes responsive again (0.18ms)
+✔ heartbeat: normal timer jitter cannot repeatedly extend a dead peer deadline (0.1763ms)
+✔ heartbeat: an initially stalled loop probes both new and previously waiting clients before judging them (0.2133ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7228.7155

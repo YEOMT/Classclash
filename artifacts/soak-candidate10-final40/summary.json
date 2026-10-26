@@ -1,0 +1,217 @@
+{
+  "status": "ABORTED_EXPLORATORY_BATCH",
+  "manifestId": "49e0548cbdfc16e12a1809c40d9d80c23de28eab525b4ff50d07e7b44421b59b",
+  "matchesRecorded": 3,
+  "completed": 1,
+  "inTarget": 0,
+  "requiredInTarget": 28,
+  "targetSeconds": [
+    600,
+    780
+  ],
+  "screen": {
+    "recorded": 3,
+    "completed": 1,
+    "inTarget": 0,
+    "median": 784.55,
+    "status": "INCOMPLETE"
+  },
+  "below10Minutes": 0,
+  "after13Minutes": 1,
+  "unfinished": [
+    1001,
+    1003
+  ],
+  "missingSeeds": [
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009,
+    1010,
+    1011,
+    1012,
+    1013,
+    1014,
+    1015,
+    1016,
+    1017,
+    1018,
+    1019,
+    1020,
+    1021,
+    1022,
+    1023,
+    1024,
+    1025,
+    1026,
+    1027,
+    1028,
+    1029,
+    1030,
+    1031,
+    1032,
+    1033,
+    1034,
+    1035,
+    1036,
+    1037,
+    1038,
+    1039,
+    1040
+  ],
+  "durationSeconds": {
+    "count": 1,
+    "min": 784.55,
+    "p10": 784.55,
+    "p25": 784.55,
+    "median": 784.55,
+    "p75": 784.55,
+    "p90": 784.55,
+    "max": 784.55,
+    "mean": 784.55
+  },
+  "gate": {
+    "exactly40Distinct": false,
+    "all40Completed": false,
+    "atLeast28InTarget": false,
+    "median600To780": false,
+    "noInvariantViolations": true
+  },
+  "invariantViolations": [],
+  "metrics": {
+    "meanLivingUnits": {
+      "count": 3,
+      "min": 40.57446944108087,
+      "p10": 41.64295333064248,
+      "p25": 43.24567916498488,
+      "median": 45.91688888888889,
+      "p75": 45.97958333333334,
+      "p90": 46.0172,
+      "max": 46.04227777777778,
+      "mean": 44.17787870258251
+    },
+    "maxUnits": 86,
+    "firstOuterDestroyedSeconds": {
+      "count": 3,
+      "min": 100.4,
+      "p10": 159.81,
+      "p25": 248.92499999999998,
+      "median": 397.45,
+      "p75": 418.65,
+      "p90": 431.37,
+      "max": 439.85,
+      "mean": 312.56666666666666
+    },
+    "firstInnerDestroyedSeconds": {
+      "count": 3,
+      "min": 213.6,
+      "p10": 276.8,
+      "p25": 371.6,
+      "median": 529.6,
+      "p75": 547.725,
+      "p90": 558.6,
+      "max": 565.85,
+      "mean": 436.3500000000001
+    },
+    "firstGuardDestroyedSeconds": {
+      "count": 3,
+      "min": 392.65,
+      "p10": 441.71,
+      "p25": 515.3,
+      "median": 637.95,
+      "p75": 687.075,
+      "p90": 716.5500000000001,
+      "max": 736.2,
+      "mean": 588.9333333333333
+    },
+    "firstGuardApproachSeconds": {
+      "count": 3,
+      "min": 213.6,
+      "p10": 276.8,
+      "p25": 371.6,
+      "median": 529.6,
+      "p75": 547.725,
+      "p90": 558.6,
+      "max": 565.85,
+      "mean": 436.3500000000001
+    },
+    "firstNexusDamageSeconds": {
+      "count": 2,
+      "min": 646.75,
+      "p10": 669.735,
+      "p25": 704.2125,
+      "median": 761.675,
+      "p75": 819.1375,
+      "p90": 853.615,
+      "max": 876.6,
+      "mean": 761.675
+    },
+    "legendaryAcquisitions": {
+      "count": 3,
+      "min": 21,
+      "p10": 21.4,
+      "p25": 22,
+      "median": 23,
+      "p75": 26,
+      "p90": 27.8,
+      "max": 29,
+      "mean": 24.333333333333332
+    },
+    "heroDeaths": {
+      "count": 3,
+      "min": 382,
+      "p10": 400,
+      "p25": 427,
+      "median": 472,
+      "p75": 474.5,
+      "p90": 476,
+      "max": 477,
+      "mean": 443.6666666666667
+    },
+    "meanCompletedMaintenanceSeconds": {
+      "count": 3,
+      "min": 21.93376344086023,
+      "p10": 21.941989200964052,
+      "p25": 21.954327841119785,
+      "median": 21.97489224137934,
+      "p75": 22.026349864005184,
+      "p90": 22.05722443758069,
+      "max": 22.077807486631027,
+      "mean": 21.995487722956867
+    },
+    "censoredUnfinishedMaintenanceCount": 28,
+    "navigationStalls": 0,
+    "invalidPositions": 0,
+    "botStalls": 0
+  },
+  "performanceCaveat": "Fixed-tick acceleration. Parallel workers and historical machine contention affect tick/wall timings; this is not a normal-speed browser or school-device performance benchmark.",
+  "historicalEvidence": "Fresh40: all seeds1001–1040 run after this source/balance fingerprint; no historical matches are imported.",
+  "aborted": {
+    "status": "ABORTED_EXPLORATORY_BATCH",
+    "candidate": 10,
+    "plannedMatches": 40,
+    "recordedMatches": 3,
+    "completedWithinObservationLimit": 1,
+    "inTarget": 0,
+    "unfinishedAt900Seconds": [
+      1001,
+      1003
+    ],
+    "completedSeedResults": [
+      {
+        "seed": 1002,
+        "battleSeconds": 784.55
+      }
+    ],
+    "partialSeedsExcluded": [
+      1004,
+      1005,
+      1006
+    ],
+    "reason": "After resource-isolation interruption, all three preserved observations were reviewed. Two remained BATTLE at900s and the only completed match exceeded780s. Original14000/22000 terminal durability delayed final siege too far. Candidate rejected before additional samples; no result is merged into candidate11.",
+    "abortedAt": "2026-10-26T10:25:35.262Z",
+    "originalManifestId": "49e0548cbdfc16e12a1809c40d9d80c23de28eab525b4ff50d07e7b44421b59b"
+  }
+}

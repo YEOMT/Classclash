@@ -1,0 +1,26 @@
+{
+  "status": "ABORTED_EXPLORATORY_BATCH",
+  "candidate": 10,
+  "plannedMatches": 40,
+  "recordedMatches": 3,
+  "completedWithinObservationLimit": 1,
+  "inTarget": 0,
+  "unfinishedAt900Seconds": [
+    1001,
+    1003
+  ],
+  "completedSeedResults": [
+    {
+      "seed": 1002,
+      "battleSeconds": 784.55
+    }
+  ],
+  "partialSeedsExcluded": [
+    1004,
+    1005,
+    1006
+  ],
+  "reason": "After resource-isolation interruption, all three preserved observations were reviewed. Two remained BATTLE at900s and the only completed match exceeded780s. Original14000/22000 terminal durability delayed final siege too far. Candidate rejected before additional samples; no result is merged into candidate11.",
+  "abortedAt": "2026-10-26T10:25:35.262Z",
+  "originalManifestId": "49e0548cbdfc16e12a1809c40d9d80c23de28eab525b4ff50d07e7b44421b59b"
+}

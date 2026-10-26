@@ -1,0 +1,7 @@
+{"stage":"probe","worker":1,"pid":20016,"seeds":[1001],"logPath":"C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\soak-candidate11-final40\\probe-worker1.log"}
+{"stage":"probe","worker":2,"pid":15348,"seeds":[1002],"logPath":"C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\soak-candidate11-final40\\probe-worker2.log"}
+{"stage":"probe","worker":3,"pid":17352,"seeds":[1003],"logPath":"C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\soak-candidate11-final40\\probe-worker3.log"}
+{"status":"INCOMPLETE","recorded":1,"completed":1,"inTarget":1,"median":612.85,"missing":39,"invariantViolations":0}
+{"status":"INCOMPLETE","recorded":2,"completed":2,"inTarget":1,"median":715.9000000000001,"missing":38,"invariantViolations":0}
+{"status":"INCOMPLETE","recorded":3,"completed":2,"inTarget":1,"median":715.9000000000001,"missing":37,"invariantViolations":0}
+{"status":"INCOMPLETE","recorded":3,"completed":2,"inTarget":1,"median":715.9000000000001,"missing":37,"invariantViolations":0}

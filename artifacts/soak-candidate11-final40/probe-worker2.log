@@ -1,0 +1,7 @@
+{"seed":1002,"seconds":100,"units":86,"destroyed":0,"wallSeconds":9.793210700000001}
+{"seed":1002,"seconds":200,"units":65,"destroyed":2,"wallSeconds":20.9759532}
+{"seed":1002,"seconds":300,"units":57,"destroyed":4,"wallSeconds":26.4255416}
+{"seed":1002,"seconds":400,"units":48,"destroyed":6,"wallSeconds":28.690031199999996}
+{"seed":1002,"seconds":500,"units":48,"destroyed":6,"wallSeconds":30.7234123}
+{"seed":1002,"seconds":600,"units":66,"destroyed":8,"wallSeconds":33.3505892}
+{"seed":1002,"phase":"RESULT","battleSeconds":612.85,"wallSeconds":33.7393401,"navStalls":0,"meanLivingUnits":42.91417149384026}

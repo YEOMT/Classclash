@@ -1,0 +1,5 @@
+{"stage":"screen","worker":1,"pid":11932,"seeds":[1005,1007,1009],"logPath":"C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\soak-final40\\screen-worker1.log"}
+{"stage":"screen","worker":2,"pid":12264,"seeds":[1006,1008,1010],"logPath":"C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\soak-final40\\screen-worker2.log"}
+{"status":"INCOMPLETE","recorded":9,"completed":9,"inTarget":5,"median":675.35,"missing":31,"invariantViolations":0}
+{"status":"INCOMPLETE","recorded":10,"completed":10,"inTarget":6,"median":685.075,"missing":30,"invariantViolations":1}
+{"status":"INCOMPLETE","recorded":10,"completed":10,"inTarget":6,"median":685.075,"missing":30,"invariantViolations":1}

@@ -1,0 +1,29 @@
+npm notice run class-clash@0.1.0 build
+npm notice run node scripts/build-sprites.mjs && vite build && esbuild src/server/index.ts --platform=node --packages=external --bundle --format=esm --outfile=dist/server.js
+Built 18 original hero atlases: 5184 frames, 1024x1152 each. Eight directions and all action streams validated.
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 753 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/client/index.html                                     1.44 kB │ gzip:   0.65 kB
+dist/client/assets/index-CKyrUiIp.css                     21.87 kB │ gzip:   5.81 kB
+dist/client/assets/webworkerAll-koEfqExN.js                0.05 kB │ gzip:   0.06 kB
+dist/client/assets/getTextureBatchBindGroup-CckcnH94.js    0.34 kB │ gzip:   0.26 kB
+dist/client/assets/Cache-fEtFvAzf.js                       1.10 kB │ gzip:   0.55 kB
+dist/client/assets/canvasUtils-BlnLdLY1.js                 6.01 kB │ gzip:   2.04 kB
+dist/client/assets/getTexelRangeRects-Bt1M-OmZ.js         11.35 kB │ gzip:   2.99 kB
+dist/client/assets/init-BTS9MrDS.js                       14.84 kB │ gzip:   4.59 kB
+dist/client/assets/GCManagedHash-DAvwKUzM.js              19.31 kB │ gzip:   6.27 kB
+dist/client/assets/Filter-B0XMl_yL.js                     41.95 kB │ gzip:  12.02 kB
+dist/client/assets/browserAll-BfYXzrIp.js                 43.50 kB │ gzip:  11.24 kB
+dist/client/assets/RenderTargetSystem-9obqq6wg.js         58.80 kB │ gzip:  16.47 kB
+dist/client/assets/GraphicsContext-DJRE2111.js            61.68 kB │ gzip:  20.62 kB
+dist/client/assets/CanvasPool-BZ0sA3Gt.js                 71.20 kB │ gzip:  23.30 kB
+dist/client/assets/index-LyHz7rtN.js                     387.39 kB │ gzip: 121.57 kB
+
+✓ built in 638ms
+
+  dist\server.js  184.7kb
+
+Done in 61ms

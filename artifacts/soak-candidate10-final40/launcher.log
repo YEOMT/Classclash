@@ -1,0 +1,3 @@
+{"stage":"all","worker":1,"pid":20024,"seeds":[1001,1004,1007,1010,1013,1016,1019,1022,1025,1028,1031,1034,1037,1040],"logPath":"C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\soak-candidate10-final40\\all-worker1.log"}
+{"stage":"all","worker":2,"pid":18716,"seeds":[1002,1005,1008,1011,1014,1017,1020,1023,1026,1029,1032,1035,1038],"logPath":"C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\soak-candidate10-final40\\all-worker2.log"}
+{"stage":"all","worker":3,"pid":8268,"seeds":[1003,1006,1009,1012,1015,1018,1021,1024,1027,1030,1033,1036,1039],"logPath":"C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\soak-candidate10-final40\\all-worker3.log"}

@@ -1,0 +1,21 @@
+{
+  "status": "FAIL",
+  "mode": "actual browser, 1 human +29 AI, testSpeed4, D3D11, trace off",
+  "reason": "Browser flow stalled after the first battle quiz answer; worker explicitly terminated for diagnosis. This is not a passed full-game test.",
+  "serverResult": {
+    "winner": "B",
+    "battleSeconds": 780.45,
+    "nexusHp": [
+      0,
+      6110.349999999999
+    ],
+    "awards": 7
+  },
+  "human": {
+    "answered": 21,
+    "openingAnswered": 20,
+    "deployments": 1,
+    "quizIndex": 1
+  },
+  "manualRedeploymentVerified": false
+}

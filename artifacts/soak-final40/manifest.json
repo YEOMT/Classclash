@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "basePath": "artifacts/soak-candidate9-terminals-results.json",
+  "baseFileHash": "b92184fff9199ea2812ce22cd421dca4e509233243f888f57487ad1c0f755758",
+  "sourceHashes": {
+    "src/server/combat.ts": "ad60687cfad5e3b8f4a1bfbb443dc0cbcb02ce3dd241f12433189522f28a0e2f",
+    "src/server/combat-geometry.ts": "df030cc6e7f07cff0a8f6c8b31d6c34b7dc653a769ab1d2eb0143ca1dc72a319",
+    "src/server/room.ts": "bf3c64b43e9de2a81e1f34608adfdc792448dcfe176afe8fe839468cca4303ae",
+    "src/server/quiz.ts": "61b7394637b5a1059851061314eee16c52caff3142219ebc9dba752cc8b950ed",
+    "src/server/awards.ts": "35a3f9eaab20f18a6abdbb37cb5db7e69357bd7aae6618e35d34834363902f70",
+    "src/server/errors.ts": "f3e1276695d80f21ab1a71cfbe609686512bacf9560fa14eb55e1b7565837291",
+    "src/server/versions.ts": "1e837ba626bfb0a5cdfc174947eaa9a3ec14305294841f9118601f72657585d5",
+    "src/shared/heroes.ts": "c221f885c62141d3b7fcb75037642e99d094c3d6b09fdcc01890e3371b0ded9e",
+    "src/shared/balance.ts": "86c26e6f30cb483e75681f53c2cd98dcb1b1aa9108f774c74efbd584ddb4c9e4",
+    "src/shared/bot-balance.ts": "5889994587de1439a255f8880d0e05b511f4c7c560460c366c63d203ef2a567e",
+    "src/shared/random.ts": "4e2464f2cd6bc248e61dcd2df549eb3d3487e7c65cfe10d2613bff3a717e8f57",
+    "src/shared/types.ts": "f4d7b62a073769d5d23ebfed13c5c750a9c9a542817d1d875e4ebb13f7d33f88",
+    "src/shared/combat-types.ts": "ab81a8e77c04426e33df67a19fba36dc0d79206e3a94cc4977b4cc0d614e02db",
+    "docs/specification/balance.defaults.json": "bcf48d08c14ed0f17c6d6a9c1bc75347c8ed7dfae3ee1aee81522dab02c8bc6a",
+    "scripts/simulate.ts": "316ffc86676632ef254348498284f47fe30b0bcabb2af9af3ff08a8037cda2c7"
+  },
+  "balance": {
+    "structureStats": {
+      "OUTER": {
+        "hp": 9000,
+        "armor": 20,
+        "power": 75,
+        "attackIntervalMs": 1200,
+        "range": 180,
+        "windupMs": 250,
+        "projectileSpeed": 360,
+        "radius": 28
+      },
+      "INNER": {
+        "hp": 12000,
+        "armor": 25,
+        "power": 90,
+        "attackIntervalMs": 1100,
+        "range": 180,
+        "windupMs": 250,
+        "projectileSpeed": 380,
+        "radius": 30
+      },
+      "GUARD": {
+        "hp": 8000,
+        "armor": 30,
+        "power": 125,
+        "attackIntervalMs": 1100,
+        "range": 240,
+        "windupMs": 350,
+        "projectileSpeed": 400,
+        "radius": 32
+      },
+      "NEXUS": {
+        "hp": 10000,
+        "armor": 20,
+        "power": 0,
+        "attackIntervalMs": null,
+        "range": 0,
+        "windupMs": null,
+        "projectileSpeed": null,
+        "radius": 42
+      }
+    },
+    "minimumDeadWaitSeconds": 20,
+    "structureDamagePhases": [
+      {
+        "fromBattleSecond": 0,
+        "multiplier": 1
+      },
+      {
+        "fromBattleSecond": 480,
+        "multiplier": 2
+      },
+      {
+        "fromBattleSecond": 600,
+        "multiplier": 4
+      },
+      {
+        "fromBattleSecond": 720,
+        "multiplier": 8
+      }
+    ]
+  },
+  "firstSeed": 1001,
+  "lastSeed": 1040,
+  "matchLimitSeconds": 900,
+  "profile": "STANDARD",
+  "players": 30,
+  "tickRate": 20,
+  "manifestId": "8ec3b64b653d48646bcbdf8b6b3f462e42d2444aee0e634e4999fc02755d38a0",
+  "preparedAt": "2026-10-26T09:46:56.117Z",
+  "historicalEvidence": "Seeds1001–1004 have original balance metadata and preserved file hash; their source hashes were not recorded at execution. Current source fingerprints apply to continuation seeds1005–1040."
+}

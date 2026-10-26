@@ -1,0 +1,4 @@
+{
+  "runDirectory": "C:\\Users\\jarsc\\AppData\\Local\\Temp\\classclash-browser-1793012012133",
+  "reason": "Keep SQLite WAL and active browser recording outside cloud-synced source folders; final screenshots/reports remain in artifacts."
+}

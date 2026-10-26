@@ -1,0 +1,11 @@
+✔ COM-007: a tank adjacent to its own tower navigates around the solid obstacle (64.2203ms)
+✔ COM-007: a mage at the inner tower and corridor corner finds a valid departure edge (70.4569ms)
+✔ COM-007: a nearby ranged-minion goal cannot shortcut the tower tangent from its grid center (55.414ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 619.8133

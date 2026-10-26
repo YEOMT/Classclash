@@ -1,0 +1,29 @@
+✔ COM-001/002/047: exact opening and 20-second waves with a monotonic match clock (365.7048ms)
+✔ COM-045: millisecond timelines ceil to exact integer ticks (7.937ms)
+✔ COM-011: melee windup misses when the locked target escapes the hit range (5.8629ms)
+✔ COM-012/014: arrows do no pre-release damage and persist after the archer dies (5.0129ms)
+✔ COM-015: homing projectiles never reassign after target death (6.2447ms)
+✔ COM-016: both already-started impacts resolve despite same-tick lethal damage (2.1222ms)
+✔ COM-017: concurrent damage and healing are batched from tick-start HP (1.7082ms)
+✔ COM-027/028/029: lane-specific siege dependency graph and nexus lock (0.8495ms)
+✔ COM-018: hard CC caps at two seconds and supplies only cap immunity (5.997ms)
+✔ COM-043: late siege multipliers affect only the declared time intervals (1.0207ms)
+✔ COM-043: late minion siege scales real structure hits without scaling hero or minion damage (1.4229ms)
+✔ COM-044: melee surface-gap ring can actually hit a large structure (11.1987ms)
+✔ COM-003/020: corridor and ability shapes include collision radii (1.1634ms)
+✔ COM-033: dead human units remain dead without an explicit deployment command (3.9172ms)
+✔ COM-037: identical seed and input reproduce every event and final unit state (2428.3073ms)
+✔ COM-039/040: double nexus destruction is a draw and further steps freeze (18.8477ms)
+✔ COM-049: concurrent 90 and 60 damage is credited 60 and 40 on a 100 HP victim (2.2374ms)
+✔ COM-006: eight melee attackers reserve distinct ring positions instead of the target center (112.3262ms)
+✔ COM-007: a tank adjacent to its own tower navigates around the solid obstacle (64.5274ms)
+✔ COM-007: a mage at the inner tower and corridor corner finds a valid departure edge (81.8721ms)
+✔ COM-007: a nearby ranged-minion goal cannot shortcut the tower tangent from its grid center (72.4675ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4035.4494

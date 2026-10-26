@@ -1,0 +1,30 @@
+✔ B03/B04 BASIC: actual managers schedule and submit 10,200 answers within rate and delay gates (289.6864ms)
+ℹ {"profile":"BASIC","answers":10200,"correct":5555,"observedRate":0.5446078431372549,"expectedRate":0.55,"meanDelaySeconds":4.520519607843135,"expectedMidpointSeconds":4.5,"minimumTicks":60,"maximumTicks":120}
+✔ B03/B04 STANDARD: actual managers schedule and submit 10,200 answers within rate and delay gates (252.4406ms)
+ℹ {"profile":"STANDARD","answers":10200,"correct":7551,"observedRate":0.7402941176470588,"expectedRate":0.75,"meanDelaySeconds":3.0218970588235234,"expectedMidpointSeconds":3,"minimumTicks":40,"maximumTicks":80}
+✔ B03/B04 SKILLED: actual managers schedule and submit 10,200 answers within rate and delay gates (204.8004ms)
+ℹ {"profile":"SKILLED","answers":10200,"correct":9105,"observedRate":0.8926470588235295,"expectedRate":0.9,"meanDelaySeconds":1.9229215686274366,"expectedMidpointSeconds":1.9,"minimumTicks":24,"maximumTicks":52}
+✔ B01: repeated real managers reproduce learning plans and maintenance decisions through READY (35.2581ms)
+✔ G05/G08/G09: every legal pool reaches every weighted hero; grade boundaries are never rerolled (0.9532ms)
+✔ G06/G07/G09: all ten valid ticket/pool combinations preserve unconditional rarity probabilities (154.2456ms)
+✔ G08: 30,000 actual legendary selections contain only the three equally weighted definitions (4.3789ms)
+✔ F14/Q10/COM-034: seventh-question death preserves attempt; resume and duplicate answer pay once (19.4609ms)
+✔ COM-033/041: no human automatic respawn after 30s; configured wait boundary and maintenance remain legal (43.8236ms)
+✔ allowUnready first deployment preserves earned gold and starter without a false death or redeploy wait (4.2839ms)
+✔ COM-005: four identical deployments replay one entity/deployment; different IDs cannot double summon (23.6065ms)
+✔ death generation rejects delayed previous-life and missing-generation deployment requests (48.9017ms)
+✔ death generation guards every maintenance mutation before spending or changing a selected hero (27.1397ms)
+✔ Q11: redeploying during an unfinished quiz preserves its exact next question and reward ledger (25.2791ms)
+✔ replaying an old starter ACK returns the original immutable hero result after later growth (1.3374ms)
+✔ COM-026: same-type duplicate swap retains server skill cooldown and independent growth (40.3974ms)
+✔ host closing opening quiz cancels bot pending answers without new rewards or ghost bot requests (3.2848ms)
+✔ B14/Q15: bot reservations, full answer key, future random streams and session hashes stay off both public views (1.3162ms)
+✔ Q14/R05: late quiz answer after final result cannot change wallet, stats or awards (2.5512ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1629.6379

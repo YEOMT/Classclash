@@ -1,0 +1,12 @@
+{
+  "status": "INTERRUPTED_FOR_BROWSER_RESOURCE_ISOLATION",
+  "matchesPlanned": 10,
+  "matchesExecuted": 4,
+  "completed": 4,
+  "inTarget": 3,
+  "below10Minutes": 1,
+  "unfinishedAt900Seconds": 0,
+  "completedSeeds": [1001, 1002, 1003, 1004],
+  "resumeSeed": 1005,
+  "reason": "Stopped during seed1005 to clear host contention before browser measurements. The partial seed1005 run is not counted. Completed results are preserved in soak-candidate9-terminals-results.json; all remaining seeds still require execution. Wall-clock and CPU timings from this overlapping exploratory batch are not isolated performance evidence."
+}

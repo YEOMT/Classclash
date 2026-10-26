@@ -1,0 +1,1090 @@
+{
+  "status": "FAIL",
+  "stage": "FAILED: battle 4/10: submit",
+  "state": {
+    "phase": "BATTLE",
+    "tick": 3514,
+    "playerState": "DEAD_MAINTENANCE",
+    "answered": 23,
+    "deployments": 1,
+    "quiz": {
+      "attemptId": "quiz-9d59e635-5a0c-4b69-8544-688135e1811c",
+      "index": 3,
+      "completed": false,
+      "questionId": "question-0673976f-d39d-4480-85e1-73688ffabc09"
+    }
+  },
+  "errors": [],
+  "wire": [
+    {
+      "at": "2026-10-26T10:49:23.988Z",
+      "stage": "create-and-join",
+      "direction": "received",
+      "message": {
+        "type": "WELCOME",
+        "connectionEpoch": 1
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:24.653Z",
+      "stage": "opening 1/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "732f9a83-537e-44ac-b668-a5f94a5a02ea",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-1c95098d-552c-447f-b2eb-56b08f14e6cf",
+            "optionId": "option-4c916fd6-130f-47b5-9baa-c71f1a6e84cc"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:24.699Z",
+      "stage": "opening 1/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "732f9a83-537e-44ac-b668-a5f94a5a02ea",
+          "status": "APPLIED",
+          "serverTick": 29,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "환경",
+            "gold": 0
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:25.003Z",
+      "stage": "opening 2/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "9f51a4f9-da9a-4261-ab74-31b0c8ba5ed0",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-375ec18c-5643-4867-9374-5934baa29396",
+            "optionId": "option-ae499388-d236-4d7e-9cd9-4d6a447f24b1"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:25.066Z",
+      "stage": "opening 2/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "9f51a4f9-da9a-4261-ab74-31b0c8ba5ed0",
+          "status": "APPLIED",
+          "serverTick": 58,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "나는 네 의견에 동의한다.",
+            "gold": 0
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:25.331Z",
+      "stage": "opening 3/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "473785ba-da97-47c6-90ea-d1e3cda52c4e",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-0fcb1021-e7e1-46d2-941a-85941833fd34",
+            "optionId": "option-3d1bcd53-a64c-47a9-bee6-24b1dc2461b6"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:25.369Z",
+      "stage": "opening 3/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "473785ba-da97-47c6-90ea-d1e3cda52c4e",
+          "status": "APPLIED",
+          "serverTick": 84,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "중요한",
+            "gold": 0
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:25.688Z",
+      "stage": "opening 4/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "8c1b8d0d-d207-454c-aad6-d67f071dea5d",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-76439dab-d7dc-422e-97f2-f78c0f30e9fc",
+            "optionId": "option-87e68584-64e6-441f-bd61-fdeaeac1e1ec"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:25.741Z",
+      "stage": "opening 4/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "8c1b8d0d-d207-454c-aad6-d67f071dea5d",
+          "status": "APPLIED",
+          "serverTick": 112,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "아름다운",
+            "gold": 0
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:26.038Z",
+      "stage": "opening 5/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "33e67b98-d91b-4307-8edc-b1ad960e4fa3",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-dc9ee170-9315-45a8-9247-7c8a41a7daa4",
+            "optionId": "option-f3249ccc-0d8f-4567-8290-b93bb5030a29"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:26.126Z",
+      "stage": "opening 5/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "33e67b98-d91b-4307-8edc-b1ad960e4fa3",
+          "status": "APPLIED",
+          "serverTick": 144,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": true,
+            "correctText": "습관",
+            "gold": 1
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:26.368Z",
+      "stage": "opening 6/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "c8f6ecf1-a9dd-41c3-9cbc-a4905ff7cec0",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-184f9eac-5dea-4c96-98ec-ba649ea41879",
+            "optionId": "option-3b7c4441-34da-4d72-9c65-3bba82cf907b"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:26.416Z",
+      "stage": "opening 6/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "c8f6ecf1-a9dd-41c3-9cbc-a4905ff7cec0",
+          "status": "APPLIED",
+          "serverTick": 167,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "가능한",
+            "gold": 1
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:26.820Z",
+      "stage": "opening 7/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "66ab2104-12ae-45f7-bde9-05d25e4ed219",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-cf23b4b5-c566-4784-853a-15aa1980bc40",
+            "optionId": "option-fa7e5ab3-34eb-4479-8a0f-71afa528670c"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:26.863Z",
+      "stage": "opening 7/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "66ab2104-12ae-45f7-bde9-05d25e4ed219",
+          "status": "APPLIED",
+          "serverTick": 203,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "믿다",
+            "gold": 1
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:27.189Z",
+      "stage": "opening 8/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "a1fe65c2-df5a-4356-8975-354d8e28b14c",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-b0ecea78-b61f-4377-95c4-170c2aed5dfc",
+            "optionId": "option-f4f3594e-dd1f-4eb2-9748-aadaa8e6d219"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:27.259Z",
+      "stage": "opening 8/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "a1fe65c2-df5a-4356-8975-354d8e28b14c",
+          "status": "APPLIED",
+          "serverTick": 232,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "돌려주다",
+            "gold": 1
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:27.497Z",
+      "stage": "opening 9/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "ca60c396-c923-4072-bc55-5f824b011045",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-81e00366-4c69-4629-887f-716e848c3d3e",
+            "optionId": "option-5c47ea39-2ee4-471a-a805-25a6029fe873"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:27.552Z",
+      "stage": "opening 9/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "ca60c396-c923-4072-bc55-5f824b011045",
+          "status": "APPLIED",
+          "serverTick": 257,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "진정시키다",
+            "gold": 1
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:27.786Z",
+      "stage": "opening 10/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "932b04b3-f29f-4427-9676-fd7cc6ae9316",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-5158f968-9b56-4f24-b8db-446340faa2ee",
+            "optionId": "option-e879d12f-dc57-4f94-98d4-e482acfff4fb"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:27.864Z",
+      "stage": "opening 10/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "932b04b3-f29f-4427-9676-fd7cc6ae9316",
+          "status": "APPLIED",
+          "serverTick": 282,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": true,
+            "correctText": "그는 수영을 잘한다.",
+            "gold": 2
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:28.105Z",
+      "stage": "opening 11/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "d61de9a5-047f-4e44-a017-1d7312daa38c",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-64b8a6eb-3a90-4c74-b84a-76be226c0d1c",
+            "optionId": "option-b1f6832d-a9b9-4869-a29b-6f9a2b25e35b"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:28.143Z",
+      "stage": "opening 11/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "d61de9a5-047f-4e44-a017-1d7312daa38c",
+          "status": "APPLIED",
+          "serverTick": 305,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "준비하다",
+            "gold": 2
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:28.416Z",
+      "stage": "opening 12/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "9e9dd6f6-63c7-48e9-afc7-f6d2e0b11270",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-dadea264-ca7c-4092-be67-4b422d37caad",
+            "optionId": "option-8ea8550d-c2f2-4a9c-8472-312371375857"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:28.445Z",
+      "stage": "opening 12/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "9e9dd6f6-63c7-48e9-afc7-f6d2e0b11270",
+          "status": "APPLIED",
+          "serverTick": 330,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": true,
+            "correctText": "이웃",
+            "gold": 3
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:28.736Z",
+      "stage": "opening 13/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "6569674b-8d93-4d62-a5c4-33d8e25152f6",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-f40c8410-606a-424c-ad6c-0e97a85c10e6",
+            "optionId": "option-81796511-3f20-4e9e-a087-effac95c0a66"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:28.826Z",
+      "stage": "opening 13/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "6569674b-8d93-4d62-a5c4-33d8e25152f6",
+          "status": "APPLIED",
+          "serverTick": 356,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "정직한",
+            "gold": 3
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:29.098Z",
+      "stage": "opening 14/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "c7b2c360-f533-4515-afc0-59fafdd01040",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-9b99a496-eed3-428e-a97f-b641d3e38b25",
+            "optionId": "option-ab5bfdde-32d0-4a74-bef3-4544e5e38617"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:29.137Z",
+      "stage": "opening 14/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "c7b2c360-f533-4515-afc0-59fafdd01040",
+          "status": "APPLIED",
+          "serverTick": 385,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "너는 할 수 있다.",
+            "gold": 3
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:29.423Z",
+      "stage": "opening 15/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "3dee32a3-b0f6-4d84-ba9c-721044851bc6",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-d25ec055-282b-476d-aa7a-b8c4c94e25a6",
+            "optionId": "option-1b533715-416f-4b83-be9c-d110a3a03f46"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:29.489Z",
+      "stage": "opening 15/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "3dee32a3-b0f6-4d84-ba9c-721044851bc6",
+          "status": "APPLIED",
+          "serverTick": 411,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": true,
+            "correctText": "그녀는 개를 돌본다.",
+            "gold": 4
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:29.824Z",
+      "stage": "opening 16/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "d5a4ac7f-447b-48d0-99d6-cc498ed2bbb5",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-c2ee5650-e6a6-409d-ac6c-8fd8f5ded39c",
+            "optionId": "option-0acead09-0cc2-4b07-bc47-7bdc59c54504"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:29.889Z",
+      "stage": "opening 16/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "d5a4ac7f-447b-48d0-99d6-cc498ed2bbb5",
+          "status": "APPLIED",
+          "serverTick": 443,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": true,
+            "correctText": "기차는 정시에 온다.",
+            "gold": 5
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:30.169Z",
+      "stage": "opening 17/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "6d1f4e97-9a64-4aa7-9c7b-0c3685f535bc",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-8b1db2cd-9094-4e8c-bc97-8a415d3a868e",
+            "optionId": "option-74ece573-adc2-41d6-9345-2e4a10b42441"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:30.230Z",
+      "stage": "opening 17/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "6d1f4e97-9a64-4aa7-9c7b-0c3685f535bc",
+          "status": "APPLIED",
+          "serverTick": 470,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "여정",
+            "gold": 5
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:30.485Z",
+      "stage": "opening 18/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "c8b53186-cbc0-4135-b033-322538b0dc91",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-1629dbaa-1ca2-4124-9404-c87ada28acc1",
+            "optionId": "option-f1edd81e-62c6-4761-b9b4-ccc38736090b"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:30.565Z",
+      "stage": "opening 18/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "c8b53186-cbc0-4135-b033-322538b0dc91",
+          "status": "APPLIED",
+          "serverTick": 496,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "약속하다",
+            "gold": 5
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:30.805Z",
+      "stage": "opening 19/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "708acd59-4ae4-4362-b2f0-7d80eee773d3",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-ce32847b-8c11-4479-8c66-2e8e4941cd27",
+            "optionId": "option-6ef2d41a-7ebe-4e94-bb54-69ede624e156"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:30.885Z",
+      "stage": "opening 19/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "708acd59-4ae4-4362-b2f0-7d80eee773d3",
+          "status": "APPLIED",
+          "serverTick": 523,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "불을 꺼 주세요.",
+            "gold": 5
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:31.152Z",
+      "stage": "opening 20/20: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "7dbbdb32-227c-4d9b-8d14-9c5c4bf26df3",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 1,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-d22d113a-6171-4e4a-89c1-a302901485e8",
+            "questionId": "question-fec56170-9a76-444a-bee0-598bf1ff6ae9",
+            "optionId": "option-5e3b397e-937e-423c-b5e8-86bacbab27bb"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:31.224Z",
+      "stage": "opening 20/20: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "7dbbdb32-227c-4d9b-8d14-9c5c4bf26df3",
+          "status": "APPLIED",
+          "serverTick": 550,
+          "phaseRevision": 1,
+          "publicResult": {
+            "correct": false,
+            "correctText": "용기",
+            "gold": 5
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:41.403Z",
+      "stage": "starter and ready",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "db550393-d50b-486f-b4bf-d882e2d4cd37",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 2,
+          "connectionEpoch": 1,
+          "type": "CLAIM_STARTER",
+          "payload": {
+            "heroDefinitionId": "archer"
+          },
+          "ledgerRevision": 20
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:41.475Z",
+      "stage": "starter and ready",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "db550393-d50b-486f-b4bf-d882e2d4cd37",
+          "status": "APPLIED",
+          "serverTick": 1369,
+          "phaseRevision": 2,
+          "publicResult": {
+            "ownedHeroInstanceId": "owned-95dd7534-1a37-44f5-9818-d91b1e5640a7",
+            "heroDefinitionId": "archer",
+            "rarity": "COMMON",
+            "level": 1,
+            "powerEnhancements": 0,
+            "vitalityEnhancements": 0,
+            "skillReadyAt": {},
+            "obtainedFrom": "STARTER"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:41.583Z",
+      "stage": "starter and ready",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "7710735f-0aa3-4bdf-ad21-38e3ae038256",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 2,
+          "connectionEpoch": 1,
+          "type": "SET_READY",
+          "payload": {
+            "ready": true
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:41.676Z",
+      "stage": "starter and ready",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "7710735f-0aa3-4bdf-ad21-38e3ae038256",
+          "status": "APPLIED",
+          "serverTick": 1384,
+          "phaseRevision": 2,
+          "publicResult": {}
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:44.538Z",
+      "stage": "starter and ready",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "298209d0-b976-4c0d-b1bc-88c6c98c6b1f",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 4,
+          "connectionEpoch": 1,
+          "type": "START_QUIZ",
+          "payload": {}
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:44.736Z",
+      "stage": "starter and ready",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "298209d0-b976-4c0d-b1bc-88c6c98c6b1f",
+          "status": "APPLIED",
+          "serverTick": 1626,
+          "phaseRevision": 4,
+          "publicResult": {
+            "attemptId": "quiz-9d59e635-5a0c-4b69-8544-688135e1811c",
+            "kind": "BATTLE",
+            "index": 0,
+            "total": 10,
+            "completed": false,
+            "lastAnswer": null,
+            "question": {
+              "id": "question-bb158170-a1e8-4f42-bfe6-d43a9b05214e",
+              "text": "It is raining outside.",
+              "options": [
+                {
+                  "id": "option-5ea02d1a-8910-435f-b945-3b41840bc8e3",
+                  "text": "초대하다"
+                },
+                {
+                  "id": "option-4ea42743-f38d-49f2-bec3-f8d85744c596",
+                  "text": "빌리다"
+                },
+                {
+                  "id": "option-06eef717-f589-4c24-b681-092e172f6de8",
+                  "text": "연습하다"
+                },
+                {
+                  "id": "option-ae7f2f4c-7290-4caf-bcf1-376dbaa29e74",
+                  "text": "밖에 비가 오고 있다."
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:45.085Z",
+      "stage": "battle 1/10: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "a3ed7cab-1616-46dc-ae21-9745518a60f9",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 4,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-9d59e635-5a0c-4b69-8544-688135e1811c",
+            "questionId": "question-bb158170-a1e8-4f42-bfe6-d43a9b05214e",
+            "optionId": "option-5ea02d1a-8910-435f-b945-3b41840bc8e3"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:45.218Z",
+      "stage": "battle 1/10: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "a3ed7cab-1616-46dc-ae21-9745518a60f9",
+          "status": "APPLIED",
+          "serverTick": 1667,
+          "phaseRevision": 4,
+          "publicResult": {
+            "correct": false,
+            "correctText": "밖에 비가 오고 있다.",
+            "gold": 5
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:45.841Z",
+      "stage": "battle 2/10: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "409ec57b-b034-414c-ab5a-5be3d45c5643",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 4,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-9d59e635-5a0c-4b69-8544-688135e1811c",
+            "questionId": "question-9a43c267-7f3f-4c91-829a-391424d09cd5",
+            "optionId": "option-37b2d098-4bbc-4b5f-92bb-74f89ee05e7d"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:46.849Z",
+      "stage": "battle 2/10: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "409ec57b-b034-414c-ab5a-5be3d45c5643",
+          "status": "APPLIED",
+          "serverTick": 1738,
+          "phaseRevision": 4,
+          "publicResult": {
+            "correct": false,
+            "correctText": "참을성 있는",
+            "gold": 5
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:48.016Z",
+      "stage": "battle 3/10: submit",
+      "direction": "sent",
+      "message": {
+        "type": "COMMAND",
+        "command": {
+          "commandId": "8a4dad05-3560-40d1-aa35-422fe20c274b",
+          "matchId": "match-390b2cd6-be53-44b3-b35e-527fdd8a4eed",
+          "expectedPhaseRevision": 4,
+          "connectionEpoch": 1,
+          "type": "SUBMIT_ANSWER",
+          "payload": {
+            "attemptId": "quiz-9d59e635-5a0c-4b69-8544-688135e1811c",
+            "questionId": "question-c44218d3-1dba-44c6-8afe-0968dbd60b5a",
+            "optionId": "option-6e100e5e-9091-4029-993a-deab0992938c"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:50.536Z",
+      "stage": "battle 3/10: submit",
+      "direction": "received",
+      "message": {
+        "type": "ACK",
+        "reply": {
+          "commandId": "8a4dad05-3560-40d1-aa35-422fe20c274b",
+          "status": "APPLIED",
+          "serverTick": 1918,
+          "phaseRevision": 4,
+          "publicResult": {
+            "correct": false,
+            "correctText": "위험한",
+            "gold": 5
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-26T10:49:52.842Z",
+      "stage": "battle 4/10: submit",
+      "direction": "received",
+      "message": {
+        "type": "WELCOME",
+        "connectionEpoch": 2
+      }
+    },
+    {
+      "at": "2026-10-26T10:50:04.700Z",
+      "stage": "battle 4/10: submit",
+      "direction": "received",
+      "message": {
+        "type": "WELCOME",
+        "connectionEpoch": 3
+      }
+    },
+    {
+      "at": "2026-10-26T10:50:08.266Z",
+      "stage": "battle 4/10: submit",
+      "direction": "received",
+      "message": {
+        "type": "WELCOME",
+        "connectionEpoch": 4
+      }
+    }
+  ],
+  "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m24\u001b[39m\nReceived: \u001b[31m23\u001b[39m\n\nCall Log:\n- Timeout 20000ms exceeded while waiting on the predicate"
+}

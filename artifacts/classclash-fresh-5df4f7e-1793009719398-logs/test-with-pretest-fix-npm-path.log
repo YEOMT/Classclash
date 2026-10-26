@@ -1,0 +1,38 @@
+npm notice run class-clash@0.1.0 pretest
+npm notice run npm run build
+node:internal/modules/cjs/loader:1520
+  throw err;
+  ^
+
+Error: Cannot find module 'C:\Users\jarsc\OneDrive\바탕 화면\코딩게임\클래스클래시\.tools\package\bin\node_modules\npm\bin\npm-prefix.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v24.19.0
+node:internal/modules/cjs/loader:1520
+  throw err;
+  ^
+
+Error: Cannot find module 'C:\Users\jarsc\OneDrive\바탕 화면\코딩게임\클래스클래시\.tools\package\bin\node_modules\npm\bin\npm-cli.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v24.19.0

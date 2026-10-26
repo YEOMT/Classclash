@@ -1,0 +1,593 @@
+[
+  {
+    "wall": 0.312,
+    "kind": "server",
+    "data": "Class Clash production: http://127.0.0.1:3199 (Node v24.19.0, SQLite WAL)\n"
+  },
+  {
+    "wall": 0.438,
+    "kind": "snapshot",
+    "data": {
+      "phase": "LOBBY",
+      "tick": 0,
+      "bytes": 506
+    }
+  },
+  {
+    "wall": 1.433,
+    "kind": "snapshot",
+    "data": {
+      "phase": "INITIAL_MAINTENANCE",
+      "tick": 18,
+      "bytes": 37615
+    }
+  },
+  {
+    "wall": 2.43,
+    "kind": "snapshot",
+    "data": {
+      "phase": "INITIAL_MAINTENANCE",
+      "tick": 38,
+      "bytes": 37444
+    }
+  },
+  {
+    "wall": 3.383,
+    "kind": "snapshot",
+    "data": {
+      "phase": "COUNTDOWN",
+      "tick": 57,
+      "bytes": 37031
+    }
+  },
+  {
+    "wall": 4.345,
+    "kind": "snapshot",
+    "data": {
+      "phase": "COUNTDOWN",
+      "tick": 76,
+      "bytes": 37031
+    }
+  },
+  {
+    "wall": 5.383,
+    "kind": "snapshot",
+    "data": {
+      "phase": "COUNTDOWN",
+      "tick": 97,
+      "bytes": 37031
+    }
+  },
+  {
+    "wall": 6.293,
+    "kind": "snapshot",
+    "data": {
+      "phase": "COUNTDOWN",
+      "tick": 115,
+      "bytes": 37032
+    }
+  },
+  {
+    "wall": 7.195,
+    "kind": "snapshot",
+    "data": {
+      "phase": "COUNTDOWN",
+      "tick": 133,
+      "bytes": 37034
+    }
+  },
+  {
+    "wall": 8.234,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 153,
+      "entities": 58,
+      "bytes": 95952
+    }
+  },
+  {
+    "wall": 8.262,
+    "kind": "battle-start",
+    "data": {
+      "tick": 153
+    }
+  },
+  {
+    "wall": 8.29,
+    "kind": "server-error",
+    "data": "{\"diagnostic\":\"tickRoom\",\"ms\":58,\"detail\":\"BATTLE/154\",\"at\":\"2026-10-26T09:35:39.254Z\"}\n"
+  },
+  {
+    "wall": 9.148,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 172,
+      "entities": 58,
+      "bytes": 102524
+    }
+  },
+  {
+    "wall": 10.088,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 191,
+      "entities": 58,
+      "bytes": 103351
+    }
+  },
+  {
+    "wall": 11.095,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 211,
+      "entities": 58,
+      "bytes": 104720
+    }
+  },
+  {
+    "wall": 11.996,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 229,
+      "entities": 58,
+      "bytes": 105677
+    }
+  },
+  {
+    "wall": 12.999,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 249,
+      "entities": 58,
+      "bytes": 106033
+    }
+  },
+  {
+    "wall": 14.039,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 270,
+      "entities": 58,
+      "bytes": 106165
+    }
+  },
+  {
+    "wall": 14.943,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 288,
+      "entities": 58,
+      "bytes": 106307
+    }
+  },
+  {
+    "wall": 15.857,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 306,
+      "entities": 58,
+      "bytes": 106547
+    }
+  },
+  {
+    "wall": 16.762,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 324,
+      "entities": 58,
+      "bytes": 106427
+    }
+  },
+  {
+    "wall": 17.696,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 343,
+      "entities": 58,
+      "bytes": 106136
+    }
+  },
+  {
+    "wall": 18.766,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 364,
+      "entities": 58,
+      "bytes": 106264
+    }
+  },
+  {
+    "wall": 19.696,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 383,
+      "entities": 58,
+      "bytes": 109276
+    }
+  },
+  {
+    "wall": 20.689,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 403,
+      "entities": 58,
+      "bytes": 110921
+    }
+  },
+  {
+    "wall": 21.592,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 421,
+      "entities": 58,
+      "bytes": 115650
+    }
+  },
+  {
+    "wall": 22.577,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 440,
+      "entities": 58,
+      "bytes": 117171
+    }
+  },
+  {
+    "wall": 23.505,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 459,
+      "entities": 58,
+      "bytes": 117188
+    }
+  },
+  {
+    "wall": 24.5,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 479,
+      "entities": 57,
+      "bytes": 118874
+    }
+  },
+  {
+    "wall": 25.458,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 498,
+      "entities": 55,
+      "bytes": 116141
+    }
+  },
+  {
+    "wall": 26.372,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 516,
+      "entities": 54,
+      "bytes": 115758
+    }
+  },
+  {
+    "wall": 26.6,
+    "kind": "server-error",
+    "data": "{\"diagnostic\":\"checkpoint\",\"ms\":53,\"detail\":\"BATTLE/520\",\"at\":\"2026-10-26T09:35:57.564Z\"}\n"
+  },
+  {
+    "wall": 27.357,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 536,
+      "entities": 54,
+      "bytes": 118023
+    }
+  },
+  {
+    "wall": 28.287,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 554,
+      "entities": 82,
+      "bytes": 132928
+    }
+  },
+  {
+    "wall": 29.197,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 571,
+      "entities": 79,
+      "bytes": 138150
+    }
+  },
+  {
+    "wall": 30.103,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 591,
+      "entities": 75,
+      "bytes": 136194
+    }
+  },
+  {
+    "wall": 31.098,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 611,
+      "entities": 73,
+      "bytes": 135184
+    }
+  },
+  {
+    "wall": 32.004,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 629,
+      "entities": 73,
+      "bytes": 135085
+    }
+  },
+  {
+    "wall": 32.09,
+    "kind": "server-error",
+    "data": "{\"diagnostic\":\"tickRoom\",\"ms\":53,\"detail\":\"BATTLE/630\",\"at\":\"2026-10-26T09:36:03.054Z\"}\n"
+  },
+  {
+    "wall": 32.997,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 649,
+      "entities": 72,
+      "bytes": 131269
+    }
+  },
+  {
+    "wall": 33.946,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 668,
+      "entities": 71,
+      "bytes": 131220
+    }
+  },
+  {
+    "wall": 34.956,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 688,
+      "entities": 69,
+      "bytes": 128601
+    }
+  },
+  {
+    "wall": 35.95,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 708,
+      "entities": 69,
+      "bytes": 132428
+    }
+  },
+  {
+    "wall": 36.856,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 726,
+      "entities": 67,
+      "bytes": 125731
+    }
+  },
+  {
+    "wall": 37.905,
+    "kind": "server-error",
+    "data": "{\"diagnostic\":\"tickRoom\",\"ms\":115,\"detail\":\"BATTLE/745\",\"at\":\"2026-10-26T09:36:08.869Z\"}\n"
+  },
+  {
+    "wall": 37.911,
+    "kind": "snapshot",
+    "data": {
+      "phase": "BATTLE",
+      "tick": 745,
+      "entities": 67,
+      "bytes": 121435
+    }
+  },
+  {
+    "wall": 38.272,
+    "kind": "PASS",
+    "data": {
+      "tick": 753,
+      "diagnostics": {
+        "tickP50": 5.646099999999933,
+        "tickP95": 31.269899999999325,
+        "tickP99": 53.39809999999852,
+        "backlogMs": 65.00109999999796,
+        "clients": 1,
+        "bots": [
+          {
+            "playerId": "bot-001",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-002",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-003",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-004",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-005",
+            "lastAction": "SELECT_HERO_AND_LANE",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-006",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-007",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-008",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-009",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-010",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-011",
+            "lastAction": "DRAW_HERO",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-012",
+            "lastAction": "DRAW_HERO",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-013",
+            "lastAction": "DRAW_HERO",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-014",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-015",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-016",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-017",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-018",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-019",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-020",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-021",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-022",
+            "lastAction": "DRAW_HERO",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-023",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-024",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-025",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-026",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-027",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-028",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-029",
+            "lastAction": "LEVEL_UP",
+            "lastError": null
+          },
+          {
+            "playerId": "bot-030",
+            "lastAction": "SUBMIT_ANSWER",
+            "lastError": null
+          }
+        ],
+        "stalls": []
+      }
+    }
+  }
+]

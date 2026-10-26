@@ -1,0 +1,15 @@
+✔ restart accepts reset sequence only for the authenticated new epoch (0.857ms)
+✔ G01/G02/G10 NORMAL: exact earned price adds one independent stored hero and no active unit (10.2085ms)
+✔ G01/G02/G10 PREMIUM: exact earned price adds one independent stored hero and no active unit (2.0176ms)
+✔ G03: balances one below either ticket price reject without consuming RNG, wallet revision or inventory (4.4211ms)
+✔ G11/G12: earned funds level one instance from1to5 at exact costs and never buy a sixth level or third skill (4.0028ms)
+✔ G13/M08: all eight legal three-enhancement mixes obey costs, independent growth, exact stats and fourth-purchase cap (9.291ms)
+✔ G09/M11: invalid premium role and another participant hero cannot spend or change ownership (3.3841ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 627.9136

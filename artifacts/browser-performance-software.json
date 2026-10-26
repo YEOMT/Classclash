@@ -1,0 +1,65 @@
+{
+  "testId": "P03-browser-headless",
+  "status": "FAIL",
+  "endedEarly": false,
+  "command": "node node_modules/@playwright/test/cli.js test --config tests/e2e/performance.config.ts",
+  "environment": {
+    "os": "10.0.26200",
+    "platform": "win32",
+    "cpu": "13th Gen Intel(R) Core(TM) i5-1340P",
+    "memoryBytes": 16718413824,
+    "node": "v24.19.0",
+    "browser": "156.0.8078.4",
+    "viewport": "1366x768",
+    "dpr": 1,
+    "mode": "Production bundle; normal speed; headless Chromium; SQLite in OS temporary directory"
+  },
+  "fixture": "30 STANDARD AI, 15 per team, 0 human participants; actual authoritative combat; five wall-clock minutes",
+  "start": {
+    "tick": 1769,
+    "matchId": "match-70437b09-ca1d-47c6-aa65-4200dbc7ba2c",
+    "roomCode": "B6EBB0",
+    "events": 45
+  },
+  "end": {
+    "tick": 7360,
+    "phase": "BATTLE",
+    "units": 39,
+    "projectiles": 4,
+    "effects": 0,
+    "events": 20413,
+    "renderer": {
+      "frames": 5488,
+      "eventsReceived": 20413,
+      "eventsConsumed": 20362,
+      "duplicates": 0,
+      "assetErrors": []
+    }
+  },
+  "cpu": {
+    "sceneUpdateMs": {
+      "samples": 5488,
+      "p50": 0.800000011920929,
+      "p95": 1.800000011920929,
+      "p99": 4.199999988079071
+    },
+    "renderSubmissionMs": {
+      "samples": 5488,
+      "p50": 1.5,
+      "p95": 4.700000047683716,
+      "p99": 10.600000023841858
+    },
+    "scope": "JavaScript scene update and WebGL command submission measured separately; excludes asynchronous GPU/compositor cost."
+  },
+  "frames": 5113,
+  "frameMs": {
+    "p50": 50,
+    "p95": 116.79999999998836,
+    "p99": 133.39999999999418,
+    "max": 183.39999999999418
+  },
+  "targetP95Ms": 20,
+  "targetMet": false,
+  "errors": [],
+  "limitations": "Headless Chromium on development computer. Not a school tablet or proof of physical GPU FPS. Server is a single local room during measurement."
+}

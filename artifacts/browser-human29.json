@@ -1,0 +1,947 @@
+{
+  "status": "PASS",
+  "mode": "real browser UI; same engine; visibly labeled accelerated scheduler",
+  "playerId": "player-a1f019b9-3e31-4247-8956-34f3b5cf0996",
+  "attemptId": "quiz-c96a638b-2d2d-4c19-affb-344b8b3b68c2",
+  "deathDuringQuiz": true,
+  "reconnected": true,
+  "manualDeployments": 2,
+  "result": {
+    "matchId": "match-57dc1703-07a6-426c-baf0-75e7382ac190",
+    "winner": "A",
+    "cancelled": false,
+    "battleSeconds": 688.65,
+    "players": [
+      {
+        "playerId": "player-a1f019b9-3e31-4247-8956-34f3b5cf0996",
+        "name": "완주 검증 학생",
+        "team": "A",
+        "isBot": false,
+        "stats": {
+          "answered": 30,
+          "correct": 9,
+          "openingAnswered": 20,
+          "openingCorrect": 6,
+          "earned": 9,
+          "spent": 0,
+          "deployments": 2,
+          "kills": 3,
+          "assists": 4,
+          "deaths": 2,
+          "heroDamage": 1213.272257734563,
+          "structureDamage": 0,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 850.4761904761905,
+          "ccSeconds": 0,
+          "towerKills": 0,
+          "heroesUsed": [
+            "archer"
+          ],
+          "minionDamage": 116.85444444444445
+        }
+      },
+      {
+        "playerId": "bot-002",
+        "name": "AI 별빛 02",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 133,
+          "correct": 99,
+          "openingAnswered": 20,
+          "openingCorrect": 13,
+          "earned": 99,
+          "spent": 89,
+          "deployments": 10,
+          "kills": 7,
+          "assists": 32,
+          "deaths": 10,
+          "heroDamage": 7677.815125247276,
+          "structureDamage": 5603.579448717957,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 6118.986200414833,
+          "ccSeconds": 75.15,
+          "towerKills": 0,
+          "heroesUsed": [
+            "cryomancer"
+          ],
+          "minionDamage": 2777.4235477582833
+        }
+      },
+      {
+        "playerId": "bot-003",
+        "name": "AI 별빛 03",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 97,
+          "openingAnswered": 20,
+          "openingCorrect": 13,
+          "earned": 97,
+          "spent": 79,
+          "deployments": 11,
+          "kills": 10,
+          "assists": 26,
+          "deaths": 10,
+          "heroDamage": 14914.146238622632,
+          "structureDamage": 3993.694512820515,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 4305.557522123895,
+          "ccSeconds": 0,
+          "towerKills": 0,
+          "heroesUsed": [
+            "pyromancer"
+          ],
+          "minionDamage": 3894.919208523594
+        }
+      },
+      {
+        "playerId": "bot-004",
+        "name": "AI 별빛 04",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 100,
+          "openingAnswered": 20,
+          "openingCorrect": 19,
+          "earned": 100,
+          "spent": 79,
+          "deployments": 11,
+          "kills": 1,
+          "assists": 17,
+          "deaths": 10,
+          "heroDamage": 1916.5856413464078,
+          "structureDamage": 0,
+          "healing": 0,
+          "shielding": 627.9000000000001,
+          "damageTaken": 9024.228344454492,
+          "ccSeconds": 10,
+          "towerKills": 0,
+          "heroesUsed": [
+            "monk"
+          ],
+          "minionDamage": 299.85185185185185
+        }
+      },
+      {
+        "playerId": "bot-005",
+        "name": "AI 별빛 05",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 91,
+          "openingAnswered": 20,
+          "openingCorrect": 16,
+          "earned": 91,
+          "spent": 79,
+          "deployments": 16,
+          "kills": 8,
+          "assists": 28,
+          "deaths": 15,
+          "heroDamage": 13728.245527392466,
+          "structureDamage": 1246.5952884615394,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 14441.163292573494,
+          "ccSeconds": 32.5,
+          "towerKills": 1,
+          "heroesUsed": [
+            "barbarian"
+          ],
+          "minionDamage": 3149.3185185185184
+        }
+      },
+      {
+        "playerId": "bot-006",
+        "name": "AI 별빛 06",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 120,
+          "correct": 87,
+          "openingAnswered": 20,
+          "openingCorrect": 13,
+          "earned": 87,
+          "spent": 79,
+          "deployments": 16,
+          "kills": 7,
+          "assists": 21,
+          "deaths": 16,
+          "heroDamage": 6263.710342370842,
+          "structureDamage": 0,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 11328.133420023018,
+          "ccSeconds": 10.400000000000002,
+          "towerKills": 0,
+          "heroesUsed": [
+            "brawler"
+          ],
+          "minionDamage": 1727.194554411894
+        }
+      },
+      {
+        "playerId": "bot-007",
+        "name": "AI 별빛 07",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 97,
+          "openingAnswered": 20,
+          "openingCorrect": 18,
+          "earned": 97,
+          "spent": 79,
+          "deployments": 15,
+          "kills": 12,
+          "assists": 17,
+          "deaths": 14,
+          "heroDamage": 11289.900696890783,
+          "structureDamage": 3244.6950833333353,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 9567.618446147892,
+          "ccSeconds": 32.55,
+          "towerKills": 0,
+          "heroesUsed": [
+            "barbarian"
+          ],
+          "minionDamage": 2411.79560162863
+        }
+      },
+      {
+        "playerId": "bot-008",
+        "name": "AI 별빛 08",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 128,
+          "correct": 97,
+          "openingAnswered": 20,
+          "openingCorrect": 17,
+          "earned": 97,
+          "spent": 87,
+          "deployments": 15,
+          "kills": 10,
+          "assists": 18,
+          "deaths": 14,
+          "heroDamage": 6374.372065061229,
+          "structureDamage": 1896.4083333333326,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 10484.827036766961,
+          "ccSeconds": 9.100000000000001,
+          "towerKills": 0,
+          "heroesUsed": [
+            "brawler"
+          ],
+          "minionDamage": 1101.2037037037037
+        }
+      },
+      {
+        "playerId": "bot-009",
+        "name": "AI 별빛 09",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 127,
+          "correct": 91,
+          "openingAnswered": 20,
+          "openingCorrect": 14,
+          "earned": 91,
+          "spent": 79,
+          "deployments": 14,
+          "kills": 1,
+          "assists": 26,
+          "deaths": 14,
+          "heroDamage": 4452.0976618902405,
+          "structureDamage": 1993.1846153846163,
+          "healing": 0,
+          "shielding": 3695.3577091646875,
+          "damageTaken": 14290.660971888574,
+          "ccSeconds": 13.199999999999996,
+          "towerKills": 0,
+          "heroesUsed": [
+            "paladin"
+          ],
+          "minionDamage": 313
+        }
+      },
+      {
+        "playerId": "bot-010",
+        "name": "AI 별빛 10",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 128,
+          "correct": 87,
+          "openingAnswered": 20,
+          "openingCorrect": 14,
+          "earned": 87,
+          "spent": 69,
+          "deployments": 14,
+          "kills": 4,
+          "assists": 23,
+          "deaths": 14,
+          "heroDamage": 4799.779324406621,
+          "structureDamage": 506.4263333333334,
+          "healing": 0,
+          "shielding": 3003.437686879355,
+          "damageTaken": 17928.67895525686,
+          "ccSeconds": 12.599999999999996,
+          "towerKills": 0,
+          "heroesUsed": [
+            "paladin"
+          ],
+          "minionDamage": 576.6666666666666
+        }
+      },
+      {
+        "playerId": "bot-011",
+        "name": "AI 별빛 11",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 95,
+          "openingAnswered": 20,
+          "openingCorrect": 14,
+          "earned": 95,
+          "spent": 79,
+          "deployments": 12,
+          "kills": 15,
+          "assists": 49,
+          "deaths": 11,
+          "heroDamage": 17713.996504295534,
+          "structureDamage": 1823.8701025641021,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 5323.023869448728,
+          "ccSeconds": 0,
+          "towerKills": 0,
+          "heroesUsed": [
+            "archer"
+          ],
+          "minionDamage": 4787.925993238616
+        }
+      },
+      {
+        "playerId": "bot-012",
+        "name": "AI 별빛 12",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 98,
+          "openingAnswered": 20,
+          "openingCorrect": 16,
+          "earned": 98,
+          "spent": 89,
+          "deployments": 9,
+          "kills": 11,
+          "assists": 39,
+          "deaths": 9,
+          "heroDamage": 13772.325386387705,
+          "structureDamage": 7349.523971153802,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 3258.6841438662004,
+          "ccSeconds": 0,
+          "towerKills": 2,
+          "heroesUsed": [
+            "archer"
+          ],
+          "minionDamage": 13143.867566021887
+        }
+      },
+      {
+        "playerId": "bot-013",
+        "name": "AI 별빛 13",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 129,
+          "correct": 93,
+          "openingAnswered": 20,
+          "openingCorrect": 17,
+          "earned": 93,
+          "spent": 79,
+          "deployments": 10,
+          "kills": 5,
+          "assists": 34,
+          "deaths": 9,
+          "heroDamage": 6578.5593636199,
+          "structureDamage": 4741.380051282025,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 3923.758361420792,
+          "ccSeconds": 56.10000000000002,
+          "towerKills": 1,
+          "heroesUsed": [
+            "cryomancer"
+          ],
+          "minionDamage": 2965.6612185760896
+        }
+      },
+      {
+        "playerId": "bot-014",
+        "name": "AI 별빛 14",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 129,
+          "correct": 99,
+          "openingAnswered": 20,
+          "openingCorrect": 15,
+          "earned": 99,
+          "spent": 89,
+          "deployments": 11,
+          "kills": 18,
+          "assists": 32,
+          "deaths": 10,
+          "heroDamage": 12350.873669238808,
+          "structureDamage": 4123.434429487186,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 4885.476637431455,
+          "ccSeconds": 0,
+          "towerKills": 1,
+          "heroesUsed": [
+            "pyromancer"
+          ],
+          "minionDamage": 3420.1621659424627
+        }
+      },
+      {
+        "playerId": "bot-015",
+        "name": "AI 별빛 15",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 126,
+          "correct": 95,
+          "openingAnswered": 20,
+          "openingCorrect": 15,
+          "earned": 95,
+          "spent": 79,
+          "deployments": 15,
+          "kills": 2,
+          "assists": 14,
+          "deaths": 14,
+          "heroDamage": 7617.748961617587,
+          "structureDamage": 3523.295221768977,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 7766.338239666961,
+          "ccSeconds": 24,
+          "towerKills": 0,
+          "heroesUsed": [
+            "barbarian"
+          ],
+          "minionDamage": 6748.079042233601
+        }
+      },
+      {
+        "playerId": "bot-016",
+        "name": "AI 별빛 16",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 125,
+          "correct": 95,
+          "openingAnswered": 20,
+          "openingCorrect": 17,
+          "earned": 95,
+          "spent": 79,
+          "deployments": 14,
+          "kills": 4,
+          "assists": 18,
+          "deaths": 14,
+          "heroDamage": 8378.56202322709,
+          "structureDamage": 1368.840820512803,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 10972.368497954416,
+          "ccSeconds": 27,
+          "towerKills": 1,
+          "heroesUsed": [
+            "barbarian"
+          ],
+          "minionDamage": 1668.777482625143
+        }
+      },
+      {
+        "playerId": "bot-017",
+        "name": "AI 별빛 17",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 97,
+          "openingAnswered": 20,
+          "openingCorrect": 15,
+          "earned": 97,
+          "spent": 89,
+          "deployments": 13,
+          "kills": 6,
+          "assists": 21,
+          "deaths": 13,
+          "heroDamage": 3766.490483651089,
+          "structureDamage": 1871.0821025641042,
+          "healing": 0,
+          "shielding": 3555.762927324222,
+          "damageTaken": 11298.321312572843,
+          "ccSeconds": 11.399999999999997,
+          "towerKills": 0,
+          "heroesUsed": [
+            "paladin"
+          ],
+          "minionDamage": 61.29629629629629
+        }
+      },
+      {
+        "playerId": "bot-018",
+        "name": "AI 별빛 18",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 98,
+          "openingAnswered": 20,
+          "openingCorrect": 17,
+          "earned": 98,
+          "spent": 89,
+          "deployments": 14,
+          "kills": 1,
+          "assists": 19,
+          "deaths": 14,
+          "heroDamage": 3802.125313292116,
+          "structureDamage": 1215.2446025641027,
+          "healing": 0,
+          "shielding": 3276.6329750590016,
+          "damageTaken": 15106.7291776952,
+          "ccSeconds": 10.799999999999997,
+          "towerKills": 0,
+          "heroesUsed": [
+            "paladin"
+          ],
+          "minionDamage": 244.0037037037037
+        }
+      },
+      {
+        "playerId": "bot-019",
+        "name": "AI 별빛 19",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 100,
+          "openingAnswered": 20,
+          "openingCorrect": 15,
+          "earned": 100,
+          "spent": 89,
+          "deployments": 10,
+          "kills": 9,
+          "assists": 42,
+          "deaths": 10,
+          "heroDamage": 13317.287007255054,
+          "structureDamage": 6170.7545128205165,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 3730.4586622020247,
+          "ccSeconds": 0,
+          "towerKills": 0,
+          "heroesUsed": [
+            "archer"
+          ],
+          "minionDamage": 4274.530822178193
+        }
+      },
+      {
+        "playerId": "bot-020",
+        "name": "AI 별빛 20",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 97,
+          "openingAnswered": 20,
+          "openingCorrect": 15,
+          "earned": 97,
+          "spent": 79,
+          "deployments": 11,
+          "kills": 14,
+          "assists": 29,
+          "deaths": 10,
+          "heroDamage": 12977.435532968584,
+          "structureDamage": 4864.461000000003,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 5940.045753507013,
+          "ccSeconds": 0,
+          "towerKills": 0,
+          "heroesUsed": [
+            "archer"
+          ],
+          "minionDamage": 8339.563986459581
+        }
+      },
+      {
+        "playerId": "bot-021",
+        "name": "AI 별빛 21",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 99,
+          "openingAnswered": 20,
+          "openingCorrect": 17,
+          "earned": 99,
+          "spent": 89,
+          "deployments": 11,
+          "kills": 12,
+          "assists": 35,
+          "deaths": 11,
+          "heroDamage": 13971.143775169343,
+          "structureDamage": 5519.128153846156,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 4665.221115326578,
+          "ccSeconds": 0,
+          "towerKills": 1,
+          "heroesUsed": [
+            "pyromancer"
+          ],
+          "minionDamage": 5427.769621306706
+        }
+      },
+      {
+        "playerId": "bot-022",
+        "name": "AI 별빛 22",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 129,
+          "correct": 97,
+          "openingAnswered": 20,
+          "openingCorrect": 17,
+          "earned": 97,
+          "spent": 79,
+          "deployments": 11,
+          "kills": 4,
+          "assists": 24,
+          "deaths": 10,
+          "heroDamage": 5307.9133017747,
+          "structureDamage": 3823.8351666666663,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 5262.554673321236,
+          "ccSeconds": 45.95000000000001,
+          "towerKills": 0,
+          "heroesUsed": [
+            "cryomancer"
+          ],
+          "minionDamage": 2638.89608072308
+        }
+      },
+      {
+        "playerId": "bot-023",
+        "name": "AI 별빛 23",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 97,
+          "openingAnswered": 20,
+          "openingCorrect": 11,
+          "earned": 97,
+          "spent": 79,
+          "deployments": 10,
+          "kills": 0,
+          "assists": 10,
+          "deaths": 9,
+          "heroDamage": 557.1780851090484,
+          "structureDamage": 0,
+          "healing": 0,
+          "shielding": 1118.9360655737705,
+          "damageTaken": 5620.801958452175,
+          "ccSeconds": 5.6,
+          "towerKills": 0,
+          "heroesUsed": [
+            "monk"
+          ],
+          "minionDamage": 0
+        }
+      },
+      {
+        "playerId": "bot-024",
+        "name": "AI 별빛 24",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 99,
+          "openingAnswered": 20,
+          "openingCorrect": 17,
+          "earned": 99,
+          "spent": 79,
+          "deployments": 9,
+          "kills": 3,
+          "assists": 34,
+          "deaths": 8,
+          "heroDamage": 2594.440077568043,
+          "structureDamage": 1595.41282051282,
+          "healing": 14016.253385457454,
+          "shielding": 0,
+          "damageTaken": 5806.5046798029625,
+          "ccSeconds": 0,
+          "towerKills": 0,
+          "heroesUsed": [
+            "priest"
+          ],
+          "minionDamage": 883.7414041767623
+        }
+      },
+      {
+        "playerId": "bot-025",
+        "name": "AI 별빛 25",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 128,
+          "correct": 101,
+          "openingAnswered": 20,
+          "openingCorrect": 16,
+          "earned": 101,
+          "spent": 89,
+          "deployments": 16,
+          "kills": 7,
+          "assists": 18,
+          "deaths": 15,
+          "heroDamage": 11368.896233754002,
+          "structureDamage": 2975.8172948717956,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 10714.559861884409,
+          "ccSeconds": 45.7,
+          "towerKills": 0,
+          "heroesUsed": [
+            "barbarian"
+          ],
+          "minionDamage": 4411.780874511719
+        }
+      },
+      {
+        "playerId": "bot-026",
+        "name": "AI 별빛 26",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 122,
+          "correct": 95,
+          "openingAnswered": 20,
+          "openingCorrect": 14,
+          "earned": 95,
+          "spent": 87,
+          "deployments": 15,
+          "kills": 10,
+          "assists": 19,
+          "deaths": 14,
+          "heroDamage": 11495.602029393536,
+          "structureDamage": 858.7413333333334,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 13394.242197395068,
+          "ccSeconds": 33,
+          "towerKills": 0,
+          "heroesUsed": [
+            "barbarian"
+          ],
+          "minionDamage": 3029.086481481482
+        }
+      },
+      {
+        "playerId": "bot-027",
+        "name": "AI 별빛 27",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 126,
+          "correct": 94,
+          "openingAnswered": 20,
+          "openingCorrect": 11,
+          "earned": 94,
+          "spent": 79,
+          "deployments": 14,
+          "kills": 2,
+          "assists": 14,
+          "deaths": 13,
+          "heroDamage": 3161.702359626057,
+          "structureDamage": 570.976282051282,
+          "healing": 0,
+          "shielding": 3221.8380845509337,
+          "damageTaken": 13416.487938580764,
+          "ccSeconds": 8.399999999999999,
+          "towerKills": 0,
+          "heroesUsed": [
+            "paladin"
+          ],
+          "minionDamage": 405.1797688099058
+        }
+      },
+      {
+        "playerId": "bot-028",
+        "name": "AI 별빛 28",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 111,
+          "openingAnswered": 20,
+          "openingCorrect": 20,
+          "earned": 111,
+          "spent": 89,
+          "deployments": 13,
+          "kills": 6,
+          "assists": 22,
+          "deaths": 12,
+          "heroDamage": 5507.794926078082,
+          "structureDamage": 316.6443333333333,
+          "healing": 0,
+          "shielding": 3523.7026753775635,
+          "damageTaken": 15100.259428473504,
+          "ccSeconds": 14.699999999999996,
+          "towerKills": 0,
+          "heroesUsed": [
+            "paladin"
+          ],
+          "minionDamage": 624.7777777777777
+        }
+      },
+      {
+        "playerId": "bot-029",
+        "name": "AI 별빛 29",
+        "team": "A",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 96,
+          "openingAnswered": 20,
+          "openingCorrect": 16,
+          "earned": 96,
+          "spent": 89,
+          "deployments": 10,
+          "kills": 12,
+          "assists": 41,
+          "deaths": 10,
+          "heroDamage": 13310.372684982922,
+          "structureDamage": 8019.765400025901,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 3862.9048074623297,
+          "ccSeconds": 0,
+          "towerKills": 1,
+          "heroesUsed": [
+            "archer"
+          ],
+          "minionDamage": 8553.367515876236
+        }
+      },
+      {
+        "playerId": "bot-030",
+        "name": "AI 별빛 30",
+        "team": "B",
+        "isBot": true,
+        "stats": {
+          "answered": 130,
+          "correct": 104,
+          "openingAnswered": 20,
+          "openingCorrect": 17,
+          "earned": 104,
+          "spent": 89,
+          "deployments": 8,
+          "kills": 8,
+          "assists": 39,
+          "deaths": 7,
+          "heroDamage": 10558.01779186664,
+          "structureDamage": 8816.46606089746,
+          "healing": 0,
+          "shielding": 0,
+          "damageTaken": 2349.3186952479805,
+          "ccSeconds": 0,
+          "towerKills": 0,
+          "heroesUsed": [
+            "archer"
+          ],
+          "minionDamage": 6577.204683615819
+        }
+      }
+    ],
+    "awards": [
+      {
+        "id": "learning",
+        "name": "학습왕",
+        "playerIds": [
+          "player-a1f019b9-3e31-4247-8956-34f3b5cf0996"
+        ],
+        "value": 9,
+        "aiOnly": false
+      },
+      {
+        "id": "siege",
+        "name": "공성왕",
+        "playerIds": [],
+        "value": 0,
+        "aiOnly": false
+      },
+      {
+        "id": "sword",
+        "name": "전장의 검",
+        "playerIds": [
+          "player-a1f019b9-3e31-4247-8956-34f3b5cf0996"
+        ],
+        "value": 1213.272257734563,
+        "aiOnly": false
+      },
+      {
+        "id": "wall",
+        "name": "수호의 벽",
+        "playerIds": [
+          "player-a1f019b9-3e31-4247-8956-34f3b5cf0996"
+        ],
+        "value": 850.4761904761905,
+        "aiOnly": false
+      },
+      {
+        "id": "healing",
+        "name": "구원의 손",
+        "playerIds": [],
+        "value": 0,
+        "aiOnly": false
+      },
+      {
+        "id": "control",
+        "name": "전술 지원",
+        "playerIds": [],
+        "value": 0,
+        "aiOnly": false
+      },
+      {
+        "id": "mvp",
+        "name": "팀 기여 MVP",
+        "playerIds": [
+          "player-a1f019b9-3e31-4247-8956-34f3b5cf0996"
+        ],
+        "value": 0.6000000000000001,
+        "aiOnly": false
+      }
+    ]
+  },
+  "errors": []
+}

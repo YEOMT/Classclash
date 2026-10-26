@@ -1,0 +1,14 @@
+{
+  "status": "FAIL",
+  "reason": "300 second result wait timed out at battle263.55s during simultaneous soak/fresh-install and full Playwright trace; fixture cancelled in finally, trace collection exceeded 11000 screencast JPEG files and was explicitly stopped.",
+  "runDirectory": "C:\\Users\\jarsc\\AppData\\Local\\Temp/classclash-browser-1793009584731",
+  "trace": "retain-on-failure",
+  "video": "off",
+  "testSpeed": 4,
+  "otherWork": "three soak workers and fresh checkout validation",
+  "nexusHp": [
+    22000,
+    22000
+  ],
+  "notACompletedMatch": true
+}

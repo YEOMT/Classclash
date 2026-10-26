@@ -1,0 +1,170 @@
+{
+  "testId": "P15-fresh-checkout",
+  "status": "FAIL",
+  "sourceCommit": "5df4f7e7ab71f651331eb139c4dccadc9a93e273",
+  "workspaceVersion": "0.1.0",
+  "startedAt": "2026-10-26T10:19:04.898Z",
+  "sourceRoot": "C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시",
+  "checkout": "C:\\Users\\jarsc\\AppData\\Local\\Temp\\classclash-fresh-5df4f7e-1793009719398\\checkout",
+  "archive": "C:\\Users\\jarsc\\AppData\\Local\\Temp\\classclash-fresh-5df4f7e-1793009719398\\source-5df4f7e.zip",
+  "archiveSha256": "f667313f7b0b6bf68aedb85dae852d3d2b978f9bb8a2c0e569ccd7be4fe6deb9",
+  "environment": {
+    "platform": "win32",
+    "node": "v24.19.0",
+    "nodeExecutable": "C:\\Users\\jarsc\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "npmCli": "C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\.tools\\package\\bin\\npm-cli.js",
+    "host": "127.0.0.1",
+    "devPort": 3196,
+    "productionPort": 3197,
+    "npmVersion": "12.2.1"
+  },
+  "isolation": {
+    "newOsTempDirectory": true,
+    "gitArchiveExactCommit": true,
+    "existingNodeModulesCopied": false,
+    "nodeModulesExistedBefore": false,
+    "defaultDatabaseExistedBefore": false,
+    "deletionsPerformed": false
+  },
+  "lockfileBefore": "a42c0d6298ea072d7a249b6135fb192138205d1a6e15374b268f37e6e9863012",
+  "steps": [
+    {
+      "name": "install-npm-ci",
+      "command": "\"C:\\\\Users\\\\jarsc\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\node\\\\bin\\\\node.exe\" \"C:\\\\Users\\\\jarsc\\\\OneDrive\\\\바탕 화면\\\\코딩게임\\\\클래스클래시\\\\.tools\\\\package\\\\bin\\\\npm-cli.js\" \"ci\"",
+      "cwd": "C:\\Users\\jarsc\\AppData\\Local\\Temp\\classclash-fresh-5df4f7e-1793009719398\\checkout",
+      "logPath": "C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\classclash-fresh-5df4f7e-1793009719398-logs\\install-npm-ci.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "elapsedMs": 101014
+    },
+    {
+      "name": "dev-startup",
+      "command": "\"C:\\\\Users\\\\jarsc\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\node\\\\bin\\\\node.exe\" \"C:\\\\Users\\\\jarsc\\\\OneDrive\\\\바탕 화면\\\\코딩게임\\\\클래스클래시\\\\.tools\\\\package\\\\bin\\\\npm-cli.js\" \"run\" \"dev\"",
+      "cwd": "C:\\Users\\jarsc\\AppData\\Local\\Temp\\classclash-fresh-5df4f7e-1793009719398\\checkout",
+      "environment": {
+        "HOST": "127.0.0.1",
+        "PORT": "3196",
+        "DATABASE_PATH": "C:\\Users\\jarsc\\AppData\\Local\\Temp\\classclash-fresh-5df4f7e-1793009719398\\dev-startup.sqlite"
+      },
+      "logPath": "C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\classclash-fresh-5df4f7e-1793009719398-logs\\dev-startup.log",
+      "status": "PASS",
+      "startupMs": 2396,
+      "health": {
+        "ok": true,
+        "storage": "sqlite-wal",
+        "tickHz": 20,
+        "version": "0.1.0"
+      },
+      "indexStatus": 200,
+      "indexBytes": 654,
+      "ownedPid": 28028,
+      "cleanup": {
+        "ownedPid": 28028,
+        "command": "taskkill.exe /PID 28028 /T /F",
+        "exitCode": 0
+      }
+    },
+    {
+      "name": "typecheck",
+      "command": "\"C:\\\\Users\\\\jarsc\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\node\\\\bin\\\\node.exe\" \"C:\\\\Users\\\\jarsc\\\\OneDrive\\\\바탕 화면\\\\코딩게임\\\\클래스클래시\\\\.tools\\\\package\\\\bin\\\\npm-cli.js\" \"run\" \"typecheck\"",
+      "cwd": "C:\\Users\\jarsc\\AppData\\Local\\Temp\\classclash-fresh-5df4f7e-1793009719398\\checkout",
+      "logPath": "C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\classclash-fresh-5df4f7e-1793009719398-logs\\typecheck.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "elapsedMs": 3059
+    },
+    {
+      "name": "test",
+      "command": "\"C:\\\\Users\\\\jarsc\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\node\\\\bin\\\\node.exe\" \"C:\\\\Users\\\\jarsc\\\\OneDrive\\\\바탕 화면\\\\코딩게임\\\\클래스클래시\\\\.tools\\\\package\\\\bin\\\\npm-cli.js\" \"test\"",
+      "cwd": "C:\\Users\\jarsc\\AppData\\Local\\Temp\\classclash-fresh-5df4f7e-1793009719398\\checkout",
+      "logPath": "C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\classclash-fresh-5df4f7e-1793009719398-logs\\test.log",
+      "status": "FAIL",
+      "exitCode": 1,
+      "elapsedMs": 12852
+    },
+    {
+      "name": "build",
+      "command": "\"C:\\\\Users\\\\jarsc\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\node\\\\bin\\\\node.exe\" \"C:\\\\Users\\\\jarsc\\\\OneDrive\\\\바탕 화면\\\\코딩게임\\\\클래스클래시\\\\.tools\\\\package\\\\bin\\\\npm-cli.js\" \"run\" \"build\"",
+      "cwd": "C:\\Users\\jarsc\\AppData\\Local\\Temp\\classclash-fresh-5df4f7e-1793009719398\\checkout",
+      "logPath": "C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\classclash-fresh-5df4f7e-1793009719398-logs\\build.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "elapsedMs": 5579
+    },
+    {
+      "name": "production-startup",
+      "command": "\"C:\\\\Users\\\\jarsc\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\node\\\\bin\\\\node.exe\" \"C:\\\\Users\\\\jarsc\\\\OneDrive\\\\바탕 화면\\\\코딩게임\\\\클래스클래시\\\\.tools\\\\package\\\\bin\\\\npm-cli.js\" \"start\"",
+      "cwd": "C:\\Users\\jarsc\\AppData\\Local\\Temp\\classclash-fresh-5df4f7e-1793009719398\\checkout",
+      "environment": {
+        "HOST": "127.0.0.1",
+        "PORT": "3197",
+        "DATABASE_PATH": "C:\\Users\\jarsc\\AppData\\Local\\Temp\\classclash-fresh-5df4f7e-1793009719398\\production-startup.sqlite"
+      },
+      "logPath": "C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\classclash-fresh-5df4f7e-1793009719398-logs\\production-startup.log",
+      "status": "PASS",
+      "startupMs": 1652,
+      "health": {
+        "ok": true,
+        "storage": "sqlite-wal",
+        "tickHz": 20,
+        "version": "0.1.0"
+      },
+      "indexStatus": 200,
+      "indexBytes": 1448,
+      "ownedPid": 30840,
+      "cleanup": {
+        "ownedPid": 30840,
+        "command": "taskkill.exe /PID 30840 /T /F",
+        "exitCode": 0
+      }
+    },
+    {
+      "name": "production-http-ws-two-ai-smoke",
+      "status": "PASS",
+      "baseURL": "http://127.0.0.1:3197",
+      "logPath": "C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\classclash-fresh-5df4f7e-1793009719398-logs\\production-smoke.json",
+      "elapsedMs": 3955,
+      "staticAssetBytes": 46569,
+      "pngMagicValid": true,
+      "createdRoomStatus": 201,
+      "roomId": "room-9d91a07d-e9e7-4246-b36f-9929894b6d1b",
+      "roomCode": "1E77BA",
+      "aiPlayers": 2,
+      "teams": [
+        "A",
+        "B"
+      ],
+      "openingTick": 74,
+      "gradedQuizProgress": [
+        {
+          "isBot": true,
+          "team": "A",
+          "quizProgress": 1
+        },
+        {
+          "isBot": true,
+          "team": "B",
+          "quizProgress": 1
+        }
+      ],
+      "cleanupPhase": "CANCELLED"
+    },
+    {
+      "name": "test-after-build",
+      "command": "\"C:\\\\Users\\\\jarsc\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\node\\\\bin\\\\node.exe\" \"C:\\\\Users\\\\jarsc\\\\OneDrive\\\\바탕 화면\\\\코딩게임\\\\클래스클래시\\\\.tools\\\\package\\\\bin\\\\npm-cli.js\" \"test\"",
+      "cwd": "C:\\Users\\jarsc\\AppData\\Local\\Temp\\classclash-fresh-5df4f7e-1793009719398\\checkout",
+      "logPath": "C:\\Users\\jarsc\\OneDrive\\바탕 화면\\코딩게임\\클래스클래시\\artifacts\\classclash-fresh-5df4f7e-1793009719398-logs\\test-after-build.log",
+      "status": "PASS",
+      "exitCode": 0,
+      "elapsedMs": 6283
+    }
+  ],
+  "scope": "Fresh lockfile installation, actual dev HTTP startup, typecheck, all automatic tests, production build, actual production HTTP/WS 2-AI lobby and first graded quiz answer. No browser/GPU/full-match rerun in this fresh checkout.",
+  "lockfileAfter": "a42c0d6298ea072d7a249b6135fb192138205d1a6e15374b268f37e6e9863012",
+  "error": "Error: test exited 1",
+  "endedAt": "2026-10-26T10:24:22.469Z",
+  "resumeStartedAt": "2026-10-26T10:24:04.341Z",
+  "orderIssue": "The documented test-before-build order fails one server integration test: dist/client hero PNGs are absent. Build followed by npm test passes, if reflected in steps.",
+  "remainingRuntimeValidation": "PASS",
+  "noOwnedServerJobsRemain": true
+}

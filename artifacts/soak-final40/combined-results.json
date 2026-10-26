@@ -1,0 +1,4173 @@
+{
+  "manifest": {
+    "schemaVersion": 1,
+    "basePath": "artifacts/soak-candidate9-terminals-results.json",
+    "baseFileHash": "b92184fff9199ea2812ce22cd421dca4e509233243f888f57487ad1c0f755758",
+    "sourceHashes": {
+      "src/server/combat.ts": "ad60687cfad5e3b8f4a1bfbb443dc0cbcb02ce3dd241f12433189522f28a0e2f",
+      "src/server/combat-geometry.ts": "df030cc6e7f07cff0a8f6c8b31d6c34b7dc653a769ab1d2eb0143ca1dc72a319",
+      "src/server/room.ts": "bf3c64b43e9de2a81e1f34608adfdc792448dcfe176afe8fe839468cca4303ae",
+      "src/server/quiz.ts": "61b7394637b5a1059851061314eee16c52caff3142219ebc9dba752cc8b950ed",
+      "src/server/awards.ts": "35a3f9eaab20f18a6abdbb37cb5db7e69357bd7aae6618e35d34834363902f70",
+      "src/server/errors.ts": "f3e1276695d80f21ab1a71cfbe609686512bacf9560fa14eb55e1b7565837291",
+      "src/server/versions.ts": "1e837ba626bfb0a5cdfc174947eaa9a3ec14305294841f9118601f72657585d5",
+      "src/shared/heroes.ts": "c221f885c62141d3b7fcb75037642e99d094c3d6b09fdcc01890e3371b0ded9e",
+      "src/shared/balance.ts": "86c26e6f30cb483e75681f53c2cd98dcb1b1aa9108f774c74efbd584ddb4c9e4",
+      "src/shared/bot-balance.ts": "5889994587de1439a255f8880d0e05b511f4c7c560460c366c63d203ef2a567e",
+      "src/shared/random.ts": "4e2464f2cd6bc248e61dcd2df549eb3d3487e7c65cfe10d2613bff3a717e8f57",
+      "src/shared/types.ts": "f4d7b62a073769d5d23ebfed13c5c750a9c9a542817d1d875e4ebb13f7d33f88",
+      "src/shared/combat-types.ts": "ab81a8e77c04426e33df67a19fba36dc0d79206e3a94cc4977b4cc0d614e02db",
+      "docs/specification/balance.defaults.json": "bcf48d08c14ed0f17c6d6a9c1bc75347c8ed7dfae3ee1aee81522dab02c8bc6a",
+      "scripts/simulate.ts": "316ffc86676632ef254348498284f47fe30b0bcabb2af9af3ff08a8037cda2c7"
+    },
+    "balance": {
+      "structureStats": {
+        "OUTER": {
+          "hp": 9000,
+          "armor": 20,
+          "power": 75,
+          "attackIntervalMs": 1200,
+          "range": 180,
+          "windupMs": 250,
+          "projectileSpeed": 360,
+          "radius": 28
+        },
+        "INNER": {
+          "hp": 12000,
+          "armor": 25,
+          "power": 90,
+          "attackIntervalMs": 1100,
+          "range": 180,
+          "windupMs": 250,
+          "projectileSpeed": 380,
+          "radius": 30
+        },
+        "GUARD": {
+          "hp": 8000,
+          "armor": 30,
+          "power": 125,
+          "attackIntervalMs": 1100,
+          "range": 240,
+          "windupMs": 350,
+          "projectileSpeed": 400,
+          "radius": 32
+        },
+        "NEXUS": {
+          "hp": 10000,
+          "armor": 20,
+          "power": 0,
+          "attackIntervalMs": null,
+          "range": 0,
+          "windupMs": null,
+          "projectileSpeed": null,
+          "radius": 42
+        }
+      },
+      "minimumDeadWaitSeconds": 20,
+      "structureDamagePhases": [
+        {
+          "fromBattleSecond": 0,
+          "multiplier": 1
+        },
+        {
+          "fromBattleSecond": 480,
+          "multiplier": 2
+        },
+        {
+          "fromBattleSecond": 600,
+          "multiplier": 4
+        },
+        {
+          "fromBattleSecond": 720,
+          "multiplier": 8
+        }
+      ]
+    },
+    "firstSeed": 1001,
+    "lastSeed": 1040,
+    "matchLimitSeconds": 900,
+    "profile": "STANDARD",
+    "players": 30,
+    "tickRate": 20,
+    "manifestId": "8ec3b64b653d48646bcbdf8b6b3f462e42d2444aee0e634e4999fc02755d38a0",
+    "preparedAt": "2026-10-26T09:46:56.117Z",
+    "historicalEvidence": "Seeds1001–1004 have original balance metadata and preserved file hash; their source hashes were not recorded at execution. Current source fingerprints apply to continuation seeds1005–1040."
+  },
+  "records": [
+    {
+      "source": "artifacts/soak-candidate9-terminals-results.json",
+      "historical": true,
+      "result": {
+        "seed": 1001,
+        "matchId": "match-sim-1001-0",
+        "phase": "RESULT",
+        "winner": "B",
+        "battleSeconds": 776.25,
+        "wallSeconds": 113.2790211,
+        "tickP50": 2.890200000000732,
+        "tickP95": 19.66120000000228,
+        "tickP99": 42.37410000000091,
+        "maxUnits": 84,
+        "meanLivingUnits": 45.24921095008052,
+        "firstOuterDestroyedSeconds": 272,
+        "firstInnerDestroyedSeconds": 370.05,
+        "firstGuardDestroyedSeconds": 513.6,
+        "firstGuardApproachSeconds": 370.1,
+        "firstNexusDamageSeconds": 706.7,
+        "legendaryAcquisitions": 23,
+        "heroDeaths": 406,
+        "meanCompletedMaintenanceSeconds": 21.705710659898493,
+        "completedMaintenanceCount": 394,
+        "unfinishedMaintenanceCount": 12,
+        "botStalls": [],
+        "metrics": {
+          "firstHitTick": 1742,
+          "destroyed": [
+            {
+              "id": "match-sim-1001-0:A_BOTTOM_OUTER",
+              "tick": 6976,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1001-0:B_TOP_OUTER",
+              "tick": 7301,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1001-0:A_BOTTOM_INNER",
+              "tick": 8937,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1001-0:B_TOP_INNER",
+              "tick": 10249,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1001-0:A_GUARD_2",
+              "tick": 11808,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1001-0:B_GUARD_1",
+              "tick": 13394,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1001-0:A_GUARD_1",
+              "tick": 15661,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1001-0:B_GUARD_2",
+              "tick": 16909,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1001-0:A_NEXUS",
+              "tick": 17061,
+              "kind": "NEXUS"
+            }
+          ],
+          "wavesSpawned": 39,
+          "spawnedMinions": 1092,
+          "maxUnits": 84,
+          "stalledEvents": 0,
+          "invalidPositions": 0,
+          "tickCount": 15525,
+          "stalls": []
+        },
+        "structures": [
+          {
+            "id": "match-sim-1001-0:A_NEXUS",
+            "hp": 0,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1001-0:A_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1001-0:A_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1001-0:A_TOP_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1001-0:A_TOP_OUTER",
+            "hp": 6764.881666666665,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1001-0:A_BOTTOM_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1001-0:A_BOTTOM_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1001-0:B_NEXUS",
+            "hp": 7165.154166666665,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1001-0:B_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1001-0:B_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1001-0:B_TOP_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1001-0:B_TOP_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1001-0:B_BOTTOM_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1001-0:B_BOTTOM_OUTER",
+            "hp": 8560.127083333335,
+            "maxHp": 9000
+          }
+        ],
+        "positions": [
+          {
+            "hero": "cryomancer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1291,
+            "y": 319,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "monk",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1318,
+            "y": 373,
+            "state": "HOLD",
+            "reason": "후열 호위"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1291,
+            "y": 358,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1401,
+            "y": 349,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1402,
+            "y": 447,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1414,
+            "y": 323,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 256,
+            "y": 494,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "priest",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1260,
+            "y": 371,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 241,
+            "y": 451,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "brawler",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 139,
+            "y": 427,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1247,
+            "y": 332,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 155,
+            "y": 408,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 129,
+            "y": 321,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 262,
+            "y": 462,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1474,
+            "y": 464,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "swordsman",
+            "team": "A",
+            "lane": "TOP",
+            "x": 156,
+            "y": 378,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1384,
+            "y": 432,
+            "state": "WINDUP",
+            "reason": "근접 위협으로부터 사거리 확보"
+          },
+          {
+            "hero": "brawler",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1399,
+            "y": 415,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          }
+        ],
+        "earned": 3260,
+        "spent": 2862,
+        "deployments": 424,
+        "negativeGold": false,
+        "activeHeroDuplicates": false,
+        "awards": [
+          {
+            "id": "learning",
+            "name": "학습왕",
+            "playerIds": [
+              "bot-005"
+            ],
+            "value": 118,
+            "aiOnly": true
+          },
+          {
+            "id": "siege",
+            "name": "공성왕",
+            "playerIds": [
+              "bot-003"
+            ],
+            "value": 6953.158769230764,
+            "aiOnly": true
+          },
+          {
+            "id": "sword",
+            "name": "전장의 검",
+            "playerIds": [
+              "bot-003"
+            ],
+            "value": 23130.062874978503,
+            "aiOnly": true
+          },
+          {
+            "id": "wall",
+            "name": "수호의 벽",
+            "playerIds": [
+              "bot-018"
+            ],
+            "value": 21189.458222535217,
+            "aiOnly": true
+          },
+          {
+            "id": "healing",
+            "name": "구원의 손",
+            "playerIds": [
+              "bot-024"
+            ],
+            "value": 14433.07324310253,
+            "aiOnly": true
+          },
+          {
+            "id": "control",
+            "name": "전술 지원",
+            "playerIds": [
+              "bot-022"
+            ],
+            "value": 114.64999999999992,
+            "aiOnly": true
+          },
+          {
+            "id": "mvp",
+            "name": "팀 기여 MVP",
+            "playerIds": [
+              "bot-003"
+            ],
+            "value": 0.8245762711864407,
+            "aiOnly": true
+          }
+        ]
+      }
+    },
+    {
+      "source": "artifacts/soak-candidate9-terminals-results.json",
+      "historical": true,
+      "result": {
+        "seed": 1002,
+        "matchId": "match-sim-1002-0",
+        "phase": "RESULT",
+        "winner": "B",
+        "battleSeconds": 576.3,
+        "wallSeconds": 33.720251499999996,
+        "tickP50": 2.158800000004703,
+        "tickP95": 6.689700000002631,
+        "tickP99": 11.365200000000186,
+        "maxUnits": 82,
+        "meanLivingUnits": 45.85814679854243,
+        "firstOuterDestroyedSeconds": 95.95,
+        "firstInnerDestroyedSeconds": 213.7,
+        "firstGuardDestroyedSeconds": 331.7,
+        "firstGuardApproachSeconds": 213.7,
+        "firstNexusDamageSeconds": 431.9,
+        "legendaryAcquisitions": 19,
+        "heroDeaths": 283,
+        "meanCompletedMaintenanceSeconds": 21.932789855072468,
+        "completedMaintenanceCount": 276,
+        "unfinishedMaintenanceCount": 7,
+        "botStalls": [],
+        "metrics": {
+          "firstHitTick": 1716,
+          "destroyed": [
+            {
+              "id": "match-sim-1002-0:A_TOP_OUTER",
+              "tick": 3438,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1002-0:B_BOTTOM_OUTER",
+              "tick": 3724,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1002-0:A_TOP_INNER",
+              "tick": 5793,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1002-0:B_BOTTOM_INNER",
+              "tick": 6169,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1002-0:A_GUARD_1",
+              "tick": 8153,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1002-0:A_GUARD_2",
+              "tick": 10125,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1002-0:B_GUARD_2",
+              "tick": 10263,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1002-0:A_NEXUS",
+              "tick": 13045,
+              "kind": "NEXUS"
+            }
+          ],
+          "wavesSpawned": 29,
+          "spawnedMinions": 812,
+          "maxUnits": 82,
+          "stalledEvents": 0,
+          "invalidPositions": 0,
+          "tickCount": 11526,
+          "stalls": []
+        },
+        "structures": [
+          {
+            "id": "match-sim-1002-0:A_NEXUS",
+            "hp": 0,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1002-0:A_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1002-0:A_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1002-0:A_TOP_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1002-0:A_TOP_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1002-0:A_BOTTOM_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1002-0:A_BOTTOM_OUTER",
+            "hp": 8583.333333333334,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1002-0:B_NEXUS",
+            "hp": 10000,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1002-0:B_GUARD_1",
+            "hp": 3813.3630769230795,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1002-0:B_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1002-0:B_TOP_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1002-0:B_TOP_OUTER",
+            "hp": 9000,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1002-0:B_BOTTOM_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1002-0:B_BOTTOM_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          }
+        ],
+        "positions": [
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1230,
+            "y": 472,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "priest",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1227,
+            "y": 381,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1205,
+            "y": 404,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 292,
+            "y": 278,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 257,
+            "y": 394,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "TOP",
+            "x": 157,
+            "y": 389,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 183,
+            "y": 280,
+            "state": "REPOSITION",
+            "reason": "근접 위협으로부터 사거리 확보"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1242,
+            "y": 353,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 300,
+            "y": 351,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "monk",
+            "team": "B",
+            "lane": "TOP",
+            "x": 232,
+            "y": 352,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1177,
+            "y": 406,
+            "state": "WINDUP",
+            "reason": "근접 위협으로부터 사거리 확보"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1191,
+            "y": 460,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1157,
+            "y": 406,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "priest",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1167,
+            "y": 428,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 298,
+            "y": 371,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1279,
+            "y": 413,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "brawler",
+            "team": "B",
+            "lane": "TOP",
+            "x": 151,
+            "y": 360,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "priest",
+            "team": "B",
+            "lane": "TOP",
+            "x": 307,
+            "y": 324,
+            "state": "REPOSITION",
+            "reason": "근접 위협으로부터 사거리 확보"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "TOP",
+            "x": 1282,
+            "y": 375,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 201,
+            "y": 324,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 157,
+            "y": 426,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "B",
+            "lane": "TOP",
+            "x": 1260,
+            "y": 388,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "swordsman",
+            "team": "B",
+            "lane": "TOP",
+            "x": 1362,
+            "y": 376,
+            "state": "WINDUP",
+            "reason": "유효 표적 접근"
+          }
+        ],
+        "earned": 2516,
+        "spent": 2116,
+        "deployments": 306,
+        "negativeGold": false,
+        "activeHeroDuplicates": false,
+        "awards": [
+          {
+            "id": "learning",
+            "name": "학습왕",
+            "playerIds": [
+              "bot-012"
+            ],
+            "value": 93,
+            "aiOnly": true
+          },
+          {
+            "id": "siege",
+            "name": "공성왕",
+            "playerIds": [
+              "bot-020"
+            ],
+            "value": 8992.026205128219,
+            "aiOnly": true
+          },
+          {
+            "id": "sword",
+            "name": "전장의 검",
+            "playerIds": [
+              "bot-011"
+            ],
+            "value": 14650.371119779147,
+            "aiOnly": true
+          },
+          {
+            "id": "wall",
+            "name": "수호의 벽",
+            "playerIds": [
+              "bot-009"
+            ],
+            "value": 15678.86353989434,
+            "aiOnly": true
+          },
+          {
+            "id": "healing",
+            "name": "구원의 손",
+            "playerIds": [
+              "bot-003"
+            ],
+            "value": 13825.206088782757,
+            "aiOnly": true
+          },
+          {
+            "id": "control",
+            "name": "전술 지원",
+            "playerIds": [
+              "bot-001"
+            ],
+            "value": 92.09999999999994,
+            "aiOnly": true
+          },
+          {
+            "id": "mvp",
+            "name": "팀 기여 MVP",
+            "playerIds": [
+              "bot-020"
+            ],
+            "value": 0.7190172122823217,
+            "aiOnly": true
+          }
+        ]
+      }
+    },
+    {
+      "source": "artifacts/soak-candidate9-terminals-results.json",
+      "historical": true,
+      "result": {
+        "seed": 1003,
+        "matchId": "match-sim-1003-0",
+        "phase": "RESULT",
+        "winner": "A",
+        "battleSeconds": 631.15,
+        "wallSeconds": 37.891593399999984,
+        "tickP50": 2.065499999996973,
+        "tickP95": 7.288299999985611,
+        "tickP99": 12.854200000001583,
+        "maxUnits": 76,
+        "meanLivingUnits": 45.42176978531253,
+        "firstOuterDestroyedSeconds": 286.8,
+        "firstInnerDestroyedSeconds": 386.2,
+        "firstGuardDestroyedSeconds": 510.45,
+        "firstGuardApproachSeconds": 388.5,
+        "firstNexusDamageSeconds": 564,
+        "legendaryAcquisitions": 17,
+        "heroDeaths": 323,
+        "meanCompletedMaintenanceSeconds": 22.300158227848097,
+        "completedMaintenanceCount": 316,
+        "unfinishedMaintenanceCount": 7,
+        "botStalls": [],
+        "metrics": {
+          "firstHitTick": 1819,
+          "destroyed": [
+            {
+              "id": "match-sim-1003-0:B_TOP_OUTER",
+              "tick": 7303,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1003-0:A_BOTTOM_OUTER",
+              "tick": 7916,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1003-0:B_TOP_INNER",
+              "tick": 9291,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1003-0:A_BOTTOM_INNER",
+              "tick": 9934,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1003-0:B_GUARD_1",
+              "tick": 11776,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1003-0:A_GUARD_2",
+              "tick": 11911,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1003-0:B_GUARD_2",
+              "tick": 12580,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1003-0:A_GUARD_1",
+              "tick": 14005,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1003-0:B_NEXUS",
+              "tick": 14190,
+              "kind": "NEXUS"
+            }
+          ],
+          "wavesSpawned": 32,
+          "spawnedMinions": 896,
+          "maxUnits": 76,
+          "stalledEvents": 0,
+          "invalidPositions": 0,
+          "tickCount": 12623,
+          "stalls": []
+        },
+        "structures": [
+          {
+            "id": "match-sim-1003-0:A_NEXUS",
+            "hp": 6198.218749999992,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1003-0:A_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1003-0:A_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1003-0:A_TOP_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1003-0:A_TOP_OUTER",
+            "hp": 8978.827916666667,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1003-0:A_BOTTOM_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1003-0:A_BOTTOM_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1003-0:B_NEXUS",
+            "hp": 0,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1003-0:B_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1003-0:B_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1003-0:B_TOP_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1003-0:B_TOP_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1003-0:B_BOTTOM_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1003-0:B_BOTTOM_OUTER",
+            "hp": 8669.953541666668,
+            "maxHp": 9000
+          }
+        ],
+        "positions": [
+          {
+            "hero": "priest",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 252,
+            "y": 457,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 251,
+            "y": 391,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 252,
+            "y": 434,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "monk",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 211,
+            "y": 411,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 296,
+            "y": 407,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "priest",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1225,
+            "y": 418,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1316,
+            "y": 274,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1281,
+            "y": 319,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1286,
+            "y": 275,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 287,
+            "y": 385,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1343,
+            "y": 407,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "priest",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1247,
+            "y": 419,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 141,
+            "y": 432,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 143,
+            "y": 404,
+            "state": "CONTROLLED",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 207,
+            "y": 321,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "brawler",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1403,
+            "y": 337,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1324,
+            "y": 381,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1212,
+            "y": 340,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "TOP",
+            "x": 150,
+            "y": 379,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "TOP",
+            "x": 207,
+            "y": 361,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 164,
+            "y": 352,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "A",
+            "lane": "TOP",
+            "x": 187,
+            "y": 345,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1392,
+            "y": 413,
+            "state": "WINDUP",
+            "reason": "근접 위협으로부터 사거리 확보"
+          }
+        ],
+        "earned": 2685,
+        "spent": 2256,
+        "deployments": 346,
+        "negativeGold": false,
+        "activeHeroDuplicates": false,
+        "awards": [
+          {
+            "id": "learning",
+            "name": "학습왕",
+            "playerIds": [
+              "bot-020"
+            ],
+            "value": 102,
+            "aiOnly": true
+          },
+          {
+            "id": "siege",
+            "name": "공성왕",
+            "playerIds": [
+              "bot-017"
+            ],
+            "value": 8256.812139102509,
+            "aiOnly": true
+          },
+          {
+            "id": "sword",
+            "name": "전장의 검",
+            "playerIds": [
+              "bot-018"
+            ],
+            "value": 17287.00645863324,
+            "aiOnly": true
+          },
+          {
+            "id": "wall",
+            "name": "수호의 벽",
+            "playerIds": [
+              "bot-006"
+            ],
+            "value": 22227.10171485119,
+            "aiOnly": true
+          },
+          {
+            "id": "healing",
+            "name": "구원의 손",
+            "playerIds": [
+              "bot-012"
+            ],
+            "value": 11743.895219204545,
+            "aiOnly": true
+          },
+          {
+            "id": "control",
+            "name": "전술 지원",
+            "playerIds": [
+              "bot-019"
+            ],
+            "value": 86.44999999999999,
+            "aiOnly": true
+          },
+          {
+            "id": "mvp",
+            "name": "팀 기여 MVP",
+            "playerIds": [
+              "bot-017"
+            ],
+            "value": 0.7696019134963527,
+            "aiOnly": true
+          }
+        ]
+      }
+    },
+    {
+      "source": "artifacts/soak-candidate9-terminals-results.json",
+      "historical": true,
+      "result": {
+        "seed": 1004,
+        "matchId": "match-sim-1004-0",
+        "phase": "RESULT",
+        "winner": "B",
+        "battleSeconds": 694.8,
+        "wallSeconds": 378.858739,
+        "tickP50": 22.338900000002468,
+        "tickP95": 79.13740000000689,
+        "tickP99": 162.3021000000008,
+        "maxUnits": 80,
+        "meanLivingUnits": 45.47661197466897,
+        "firstOuterDestroyedSeconds": 220.1,
+        "firstInnerDestroyedSeconds": 337.65,
+        "firstGuardDestroyedSeconds": 416.75,
+        "firstGuardApproachSeconds": 337.65,
+        "firstNexusDamageSeconds": 619.85,
+        "legendaryAcquisitions": 17,
+        "heroDeaths": 357,
+        "meanCompletedMaintenanceSeconds": 21.59425287356322,
+        "completedMaintenanceCount": 348,
+        "unfinishedMaintenanceCount": 9,
+        "botStalls": [],
+        "metrics": {
+          "firstHitTick": 1812,
+          "destroyed": [
+            {
+              "id": "match-sim-1004-0:A_BOTTOM_OUTER",
+              "tick": 5987,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1004-0:B_TOP_OUTER",
+              "tick": 6799,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1004-0:A_BOTTOM_INNER",
+              "tick": 8338,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1004-0:B_TOP_INNER",
+              "tick": 9179,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1004-0:A_GUARD_2",
+              "tick": 9920,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1004-0:B_GUARD_1",
+              "tick": 11945,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1004-0:A_GUARD_1",
+              "tick": 13931,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1004-0:A_NEXUS",
+              "tick": 15481,
+              "kind": "NEXUS"
+            }
+          ],
+          "wavesSpawned": 35,
+          "spawnedMinions": 980,
+          "maxUnits": 80,
+          "stalledEvents": 0,
+          "invalidPositions": 0,
+          "tickCount": 13896,
+          "stalls": []
+        },
+        "structures": [
+          {
+            "id": "match-sim-1004-0:A_NEXUS",
+            "hp": 0,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1004-0:A_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1004-0:A_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1004-0:A_TOP_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1004-0:A_TOP_OUTER",
+            "hp": 8930,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1004-0:A_BOTTOM_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1004-0:A_BOTTOM_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1004-0:B_NEXUS",
+            "hp": 10000,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1004-0:B_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1004-0:B_GUARD_2",
+            "hp": 4639.160769230765,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1004-0:B_TOP_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1004-0:B_TOP_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1004-0:B_BOTTOM_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1004-0:B_BOTTOM_OUTER",
+            "hp": 9000,
+            "maxHp": 9000
+          }
+        ],
+        "positions": [
+          {
+            "hero": "priest",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 221,
+            "y": 445,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 233,
+            "y": 469,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 214,
+            "y": 465,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1153,
+            "y": 318,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1136,
+            "y": 257,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1160,
+            "y": 337,
+            "state": "RECOVERY",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "barbarian",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 156,
+            "y": 414,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "monk",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1240,
+            "y": 277,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "monk",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1258,
+            "y": 315,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "swordsman",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 137,
+            "y": 429,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1140,
+            "y": 278,
+            "state": "REPOSITION",
+            "reason": "근접 위협으로부터 사거리 확보"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1120,
+            "y": 282,
+            "state": "REPOSITION",
+            "reason": "근접 위협으로부터 사거리 확보"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 254,
+            "y": 485,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "brawler",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 149,
+            "y": 354,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "priest",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 265,
+            "y": 446,
+            "state": "RECOVERY",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 395,
+            "y": 551,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1221,
+            "y": 312,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1384,
+            "y": 408,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "TOP",
+            "x": 147,
+            "y": 374,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1398,
+            "y": 424,
+            "state": "WINDUP",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 129,
+            "y": 337,
+            "state": "WINDUP",
+            "reason": "등장"
+          }
+        ],
+        "earned": 2925,
+        "spent": 2546,
+        "deployments": 378,
+        "negativeGold": false,
+        "activeHeroDuplicates": false,
+        "awards": [
+          {
+            "id": "learning",
+            "name": "학습왕",
+            "playerIds": [
+              "bot-016"
+            ],
+            "value": 109,
+            "aiOnly": true
+          },
+          {
+            "id": "siege",
+            "name": "공성왕",
+            "playerIds": [
+              "bot-013"
+            ],
+            "value": 6247.810081410187,
+            "aiOnly": true
+          },
+          {
+            "id": "sword",
+            "name": "전장의 검",
+            "playerIds": [
+              "bot-005"
+            ],
+            "value": 20779.389389586846,
+            "aiOnly": true
+          },
+          {
+            "id": "wall",
+            "name": "수호의 벽",
+            "playerIds": [
+              "bot-030"
+            ],
+            "value": 19638.216050542385,
+            "aiOnly": true
+          },
+          {
+            "id": "healing",
+            "name": "구원의 손",
+            "playerIds": [
+              "bot-006"
+            ],
+            "value": 12316.564819276455,
+            "aiOnly": true
+          },
+          {
+            "id": "control",
+            "name": "전술 지원",
+            "playerIds": [
+              "bot-015"
+            ],
+            "value": 72.6,
+            "aiOnly": true
+          },
+          {
+            "id": "mvp",
+            "name": "팀 기여 MVP",
+            "playerIds": [
+              "bot-003"
+            ],
+            "value": 0.7315454722084103,
+            "aiOnly": true
+          }
+        ]
+      }
+    },
+    {
+      "source": "artifacts/soak-final40/seeds/seed-1005.json",
+      "historical": false,
+      "result": {
+        "seed": 1005,
+        "matchId": "match-sim-1005-0",
+        "phase": "RESULT",
+        "winner": "B",
+        "battleSeconds": 535.8,
+        "wallSeconds": 40.180319,
+        "tickP50": 2.693699999999808,
+        "tickP95": 9.209600000000137,
+        "tickP99": 17.618800000000192,
+        "maxUnits": 78,
+        "meanLivingUnits": 44.99038820455394,
+        "firstOuterDestroyedSeconds": 186.6,
+        "firstInnerDestroyedSeconds": 319.7,
+        "firstGuardDestroyedSeconds": 398.85,
+        "firstGuardApproachSeconds": 319.7,
+        "firstNexusDamageSeconds": 462.85,
+        "legendaryAcquisitions": 7,
+        "heroDeaths": 280,
+        "meanCompletedMaintenanceSeconds": 21.89307116104869,
+        "completedMaintenanceCount": 267,
+        "unfinishedMaintenanceCount": 13,
+        "botStalls": [],
+        "metrics": {
+          "firstHitTick": 1782,
+          "destroyed": [
+            {
+              "id": "match-sim-1005-0:A_BOTTOM_OUTER",
+              "tick": 5279,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1005-0:B_TOP_OUTER",
+              "tick": 5837,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1005-0:A_BOTTOM_INNER",
+              "tick": 7941,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1005-0:B_TOP_INNER",
+              "tick": 8186,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1005-0:A_GUARD_2",
+              "tick": 9524,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1005-0:B_GUARD_1",
+              "tick": 10048,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1005-0:A_GUARD_1",
+              "tick": 10063,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1005-0:A_NEXUS",
+              "tick": 12263,
+              "kind": "NEXUS"
+            }
+          ],
+          "wavesSpawned": 27,
+          "spawnedMinions": 756,
+          "maxUnits": 78,
+          "stalledEvents": 0,
+          "invalidPositions": 0,
+          "tickCount": 10716,
+          "stalls": []
+        },
+        "structures": [
+          {
+            "id": "match-sim-1005-0:A_NEXUS",
+            "hp": 0,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1005-0:A_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1005-0:A_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1005-0:A_TOP_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1005-0:A_TOP_OUTER",
+            "hp": 8672.499999999998,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1005-0:A_BOTTOM_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1005-0:A_BOTTOM_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1005-0:B_NEXUS",
+            "hp": 10000,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1005-0:B_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1005-0:B_GUARD_2",
+            "hp": 1565.1384615384443,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1005-0:B_TOP_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1005-0:B_TOP_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1005-0:B_BOTTOM_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1005-0:B_BOTTOM_OUTER",
+            "hp": 9000,
+            "maxHp": 9000
+          }
+        ],
+        "positions": [
+          {
+            "hero": "pyromancer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1177,
+            "y": 322,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 231,
+            "y": 483,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 261,
+            "y": 494,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1156,
+            "y": 326,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 143,
+            "y": 406,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 140,
+            "y": 432,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "swordsman",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 140,
+            "y": 361,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 152,
+            "y": 339,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 244,
+            "y": 390,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "monk",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1274,
+            "y": 402,
+            "state": "HOLD",
+            "reason": "아군 전열 이동 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1336,
+            "y": 342,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1312,
+            "y": 347,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "priest",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1301,
+            "y": 392,
+            "state": "HOLD",
+            "reason": "아군 전열 이동 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1320,
+            "y": 377,
+            "state": "ADVANCE",
+            "reason": "전열 뒤 배정 라인 이동"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1338,
+            "y": 396,
+            "state": "ADVANCE",
+            "reason": "전열 뒤 배정 라인 이동"
+          },
+          {
+            "hero": "barbarian",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1220,
+            "y": 370,
+            "state": "ADVANCE",
+            "reason": "배정 라인 전진"
+          },
+          {
+            "hero": "barbarian",
+            "team": "B",
+            "lane": "TOP",
+            "x": 1236,
+            "y": 358,
+            "state": "WINDUP",
+            "reason": "유효 표적 접근"
+          }
+        ],
+        "earned": 2403,
+        "spent": 2054,
+        "deployments": 297,
+        "negativeGold": false,
+        "activeHeroDuplicates": false,
+        "awards": [
+          {
+            "id": "learning",
+            "name": "학습왕",
+            "playerIds": [
+              "bot-016"
+            ],
+            "value": 91,
+            "aiOnly": true
+          },
+          {
+            "id": "siege",
+            "name": "공성왕",
+            "playerIds": [
+              "bot-014"
+            ],
+            "value": 7145.485300598506,
+            "aiOnly": true
+          },
+          {
+            "id": "sword",
+            "name": "전장의 검",
+            "playerIds": [
+              "bot-006"
+            ],
+            "value": 15446.342562031306,
+            "aiOnly": true
+          },
+          {
+            "id": "wall",
+            "name": "수호의 벽",
+            "playerIds": [
+              "bot-023"
+            ],
+            "value": 16907.361693683742,
+            "aiOnly": true
+          },
+          {
+            "id": "healing",
+            "name": "구원의 손",
+            "playerIds": [
+              "bot-028"
+            ],
+            "value": 12048.491295517175,
+            "aiOnly": true
+          },
+          {
+            "id": "control",
+            "name": "전술 지원",
+            "playerIds": [
+              "bot-008"
+            ],
+            "value": 88.20000000000002,
+            "aiOnly": true
+          },
+          {
+            "id": "mvp",
+            "name": "팀 기여 MVP",
+            "playerIds": [
+              "bot-006"
+            ],
+            "value": 0.8325660438067055,
+            "aiOnly": true
+          }
+        ]
+      }
+    },
+    {
+      "source": "artifacts/soak-final40/seeds/seed-1006.json",
+      "historical": false,
+      "result": {
+        "seed": 1006,
+        "matchId": "match-sim-1006-0",
+        "phase": "RESULT",
+        "winner": "A",
+        "battleSeconds": 748.95,
+        "wallSeconds": 63.7676454,
+        "tickP50": 2.993000000000393,
+        "tickP95": 9.846399999998539,
+        "tickP99": 31.93769999999995,
+        "maxUnits": 79,
+        "meanLivingUnits": 48.04099072034181,
+        "firstOuterDestroyedSeconds": 292.5,
+        "firstInnerDestroyedSeconds": 463.15,
+        "firstGuardDestroyedSeconds": 531.55,
+        "firstGuardApproachSeconds": 463.15,
+        "firstNexusDamageSeconds": 618.85,
+        "legendaryAcquisitions": 18,
+        "heroDeaths": 382,
+        "meanCompletedMaintenanceSeconds": 21.962938005390843,
+        "completedMaintenanceCount": 371,
+        "unfinishedMaintenanceCount": 11,
+        "botStalls": [],
+        "metrics": {
+          "firstHitTick": 1833,
+          "destroyed": [
+            {
+              "id": "match-sim-1006-0:B_TOP_OUTER",
+              "tick": 7432,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1006-0:A_BOTTOM_OUTER",
+              "tick": 7644,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1006-0:B_TOP_INNER",
+              "tick": 10845,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1006-0:A_BOTTOM_INNER",
+              "tick": 10902,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1006-0:B_GUARD_1",
+              "tick": 12213,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1006-0:A_GUARD_2",
+              "tick": 13482,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1006-0:B_GUARD_2",
+              "tick": 13952,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1006-0:A_GUARD_1",
+              "tick": 16337,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1006-0:B_NEXUS",
+              "tick": 16561,
+              "kind": "NEXUS"
+            }
+          ],
+          "wavesSpawned": 38,
+          "spawnedMinions": 1064,
+          "maxUnits": 79,
+          "stalledEvents": 0,
+          "invalidPositions": 0,
+          "tickCount": 14979,
+          "stalls": []
+        },
+        "structures": [
+          {
+            "id": "match-sim-1006-0:A_NEXUS",
+            "hp": 5700.009166666662,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1006-0:A_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1006-0:A_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1006-0:A_TOP_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1006-0:A_TOP_OUTER",
+            "hp": 6867.844166666661,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1006-0:A_BOTTOM_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1006-0:A_BOTTOM_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1006-0:B_NEXUS",
+            "hp": 0,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1006-0:B_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1006-0:B_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1006-0:B_TOP_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1006-0:B_TOP_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1006-0:B_BOTTOM_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1006-0:B_BOTTOM_OUTER",
+            "hp": 5754.812500000001,
+            "maxHp": 9000
+          }
+        ],
+        "positions": [
+          {
+            "hero": "priest",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 249,
+            "y": 431,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 140,
+            "y": 336,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 259,
+            "y": 468,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 270,
+            "y": 450,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1380,
+            "y": 361,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1264,
+            "y": 304,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1289,
+            "y": 309,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 273,
+            "y": 485,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1414,
+            "y": 320,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1376,
+            "y": 386,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "brawler",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1400,
+            "y": 427,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1403,
+            "y": 347,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 146,
+            "y": 425,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 290,
+            "y": 431,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1442,
+            "y": 317,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "priest",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1286,
+            "y": 287,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 325,
+            "y": 516,
+            "state": "WINDUP",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1257,
+            "y": 346,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "swordsman",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1373,
+            "y": 419,
+            "state": "SPAWNING",
+            "reason": "등장"
+          }
+        ],
+        "earned": 3117,
+        "spent": 2732,
+        "deployments": 401,
+        "negativeGold": false,
+        "activeHeroDuplicates": false,
+        "awards": [
+          {
+            "id": "learning",
+            "name": "학습왕",
+            "playerIds": [
+              "bot-010"
+            ],
+            "value": 114,
+            "aiOnly": true
+          },
+          {
+            "id": "siege",
+            "name": "공성왕",
+            "playerIds": [
+              "bot-018"
+            ],
+            "value": 7232.322571794863,
+            "aiOnly": true
+          },
+          {
+            "id": "sword",
+            "name": "전장의 검",
+            "playerIds": [
+              "bot-007"
+            ],
+            "value": 23878.138357722066,
+            "aiOnly": true
+          },
+          {
+            "id": "wall",
+            "name": "수호의 벽",
+            "playerIds": [
+              "bot-016"
+            ],
+            "value": 23155.234591910033,
+            "aiOnly": true
+          },
+          {
+            "id": "healing",
+            "name": "구원의 손",
+            "playerIds": [
+              "bot-011"
+            ],
+            "value": 16484.51185715052,
+            "aiOnly": true
+          },
+          {
+            "id": "control",
+            "name": "전술 지원",
+            "playerIds": [
+              "bot-029"
+            ],
+            "value": 125.1499999999999,
+            "aiOnly": true
+          },
+          {
+            "id": "mvp",
+            "name": "팀 기여 MVP",
+            "playerIds": [
+              "bot-007"
+            ],
+            "value": 0.7767559080123497,
+            "aiOnly": true
+          }
+        ]
+      }
+    },
+    {
+      "source": "artifacts/soak-final40/seeds/seed-1007.json",
+      "historical": false,
+      "result": {
+        "seed": 1007,
+        "matchId": "match-sim-1007-0",
+        "phase": "RESULT",
+        "winner": "A",
+        "battleSeconds": 491.2,
+        "wallSeconds": 39.753303599999995,
+        "tickP50": 2.7995000000009895,
+        "tickP95": 9.81919999999809,
+        "tickP99": 18.471799999999348,
+        "maxUnits": 83,
+        "meanLivingUnits": 45.06138029315961,
+        "firstOuterDestroyedSeconds": 86.3,
+        "firstInnerDestroyedSeconds": 191.15,
+        "firstGuardDestroyedSeconds": 278.85,
+        "firstGuardApproachSeconds": 194.2,
+        "firstNexusDamageSeconds": 426.45,
+        "legendaryAcquisitions": 10,
+        "heroDeaths": 231,
+        "meanCompletedMaintenanceSeconds": 21.8108888888889,
+        "completedMaintenanceCount": 225,
+        "unfinishedMaintenanceCount": 6,
+        "botStalls": [],
+        "metrics": {
+          "firstHitTick": 1749,
+          "destroyed": [
+            {
+              "id": "match-sim-1007-0:B_TOP_OUTER",
+              "tick": 3249,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1007-0:A_BOTTOM_OUTER",
+              "tick": 3337,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1007-0:B_TOP_INNER",
+              "tick": 5346,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1007-0:A_BOTTOM_INNER",
+              "tick": 5568,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1007-0:B_GUARD_1",
+              "tick": 7100,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1007-0:A_GUARD_2",
+              "tick": 7160,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1007-0:B_GUARD_2",
+              "tick": 9965,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1007-0:A_GUARD_1",
+              "tick": 11160,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1007-0:B_NEXUS",
+              "tick": 11347,
+              "kind": "NEXUS"
+            }
+          ],
+          "wavesSpawned": 25,
+          "spawnedMinions": 700,
+          "maxUnits": 83,
+          "stalledEvents": 0,
+          "invalidPositions": 0,
+          "tickCount": 9824,
+          "stalls": []
+        },
+        "structures": [
+          {
+            "id": "match-sim-1007-0:A_NEXUS",
+            "hp": 7265.550833333332,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1007-0:A_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1007-0:A_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1007-0:A_TOP_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1007-0:A_TOP_OUTER",
+            "hp": 9000,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1007-0:A_BOTTOM_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1007-0:A_BOTTOM_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1007-0:B_NEXUS",
+            "hp": 0,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1007-0:B_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1007-0:B_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1007-0:B_TOP_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1007-0:B_TOP_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1007-0:B_BOTTOM_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1007-0:B_BOTTOM_OUTER",
+            "hp": 9000,
+            "maxHp": 9000
+          }
+        ],
+        "positions": [
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1307,
+            "y": 275,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "priest",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1286,
+            "y": 275,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "priest",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 262,
+            "y": 415,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1393,
+            "y": 406,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1429,
+            "y": 331,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1388,
+            "y": 379,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1335,
+            "y": 351,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1411,
+            "y": 444,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1231,
+            "y": 368,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 271,
+            "y": 436,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 284,
+            "y": 465,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 290,
+            "y": 445,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 155,
+            "y": 356,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1396,
+            "y": 346,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "priest",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1275,
+            "y": 309,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 294,
+            "y": 426,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 1263,
+            "y": 328,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1372,
+            "y": 440,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "brawler",
+            "team": "A",
+            "lane": "TOP",
+            "x": 146,
+            "y": 380,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1355,
+            "y": 407,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "swordsman",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1362,
+            "y": 376,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "TOP",
+            "x": 188,
+            "y": 361,
+            "state": "REPOSITION",
+            "reason": "근접 위협으로부터 사거리 확보"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 184,
+            "y": 408,
+            "state": "WINDUP",
+            "reason": "등장"
+          },
+          {
+            "hero": "monk",
+            "team": "B",
+            "lane": "BOTTOM",
+            "x": 1384,
+            "y": 472,
+            "state": "WINDUP",
+            "reason": "등장"
+          }
+        ],
+        "earned": 2273,
+        "spent": 1854,
+        "deployments": 255,
+        "negativeGold": false,
+        "activeHeroDuplicates": false,
+        "awards": [
+          {
+            "id": "learning",
+            "name": "학습왕",
+            "playerIds": [
+              "bot-029"
+            ],
+            "value": 84,
+            "aiOnly": true
+          },
+          {
+            "id": "siege",
+            "name": "공성왕",
+            "playerIds": [
+              "bot-028"
+            ],
+            "value": 6201.771878205142,
+            "aiOnly": true
+          },
+          {
+            "id": "sword",
+            "name": "전장의 검",
+            "playerIds": [
+              "bot-007"
+            ],
+            "value": 9987.964531861257,
+            "aiOnly": true
+          },
+          {
+            "id": "wall",
+            "name": "수호의 벽",
+            "playerIds": [
+              "bot-014"
+            ],
+            "value": 14228.064258169425,
+            "aiOnly": true
+          },
+          {
+            "id": "healing",
+            "name": "구원의 손",
+            "playerIds": [
+              "bot-010"
+            ],
+            "value": 9924.537931034483,
+            "aiOnly": true
+          },
+          {
+            "id": "control",
+            "name": "전술 지원",
+            "playerIds": [
+              "bot-017"
+            ],
+            "value": 46.500000000000014,
+            "aiOnly": true
+          },
+          {
+            "id": "mvp",
+            "name": "팀 기여 MVP",
+            "playerIds": [
+              "bot-006"
+            ],
+            "value": 0.7853443864651088,
+            "aiOnly": true
+          }
+        ]
+      }
+    },
+    {
+      "source": "artifacts/soak-final40/seeds/seed-1008.json",
+      "historical": false,
+      "result": {
+        "seed": 1008,
+        "matchId": "match-sim-1008-0",
+        "phase": "RESULT",
+        "winner": "A",
+        "battleSeconds": 675.35,
+        "wallSeconds": 58.549814299999994,
+        "tickP50": 2.8919999999925494,
+        "tickP95": 10.234399999986636,
+        "tickP99": 33.76589999999851,
+        "maxUnits": 76,
+        "meanLivingUnits": 46.56045013696602,
+        "firstOuterDestroyedSeconds": 148.6,
+        "firstInnerDestroyedSeconds": 249.4,
+        "firstGuardDestroyedSeconds": 348.95,
+        "firstGuardApproachSeconds": 251.3,
+        "firstNexusDamageSeconds": 498.05,
+        "legendaryAcquisitions": 18,
+        "heroDeaths": 328,
+        "meanCompletedMaintenanceSeconds": 21.861755485893422,
+        "completedMaintenanceCount": 319,
+        "unfinishedMaintenanceCount": 9,
+        "botStalls": [],
+        "metrics": {
+          "firstHitTick": 1771,
+          "destroyed": [
+            {
+              "id": "match-sim-1008-0:B_BOTTOM_OUTER",
+              "tick": 4511,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1008-0:A_TOP_OUTER",
+              "tick": 4928,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1008-0:A_TOP_INNER",
+              "tick": 6527,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1008-0:B_BOTTOM_INNER",
+              "tick": 7811,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1008-0:A_GUARD_1",
+              "tick": 8518,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1008-0:B_GUARD_2",
+              "tick": 10916,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1008-0:A_GUARD_2",
+              "tick": 11388,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1008-0:B_GUARD_1",
+              "tick": 11551,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1008-0:B_NEXUS",
+              "tick": 15046,
+              "kind": "NEXUS"
+            }
+          ],
+          "wavesSpawned": 34,
+          "spawnedMinions": 952,
+          "maxUnits": 76,
+          "stalledEvents": 0,
+          "invalidPositions": 0,
+          "tickCount": 13507,
+          "stalls": []
+        },
+        "structures": [
+          {
+            "id": "match-sim-1008-0:A_NEXUS",
+            "hp": 1824.0708333333362,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1008-0:A_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1008-0:A_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1008-0:A_TOP_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1008-0:A_TOP_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1008-0:A_BOTTOM_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1008-0:A_BOTTOM_OUTER",
+            "hp": 9000,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1008-0:B_NEXUS",
+            "hp": 0,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1008-0:B_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1008-0:B_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1008-0:B_TOP_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1008-0:B_TOP_OUTER",
+            "hp": 8934.666666666666,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1008-0:B_BOTTOM_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1008-0:B_BOTTOM_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          }
+        ],
+        "positions": [
+          {
+            "hero": "priest",
+            "team": "B",
+            "lane": "TOP",
+            "x": 252,
+            "y": 343,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 243,
+            "y": 282,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 299,
+            "y": 340,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 278,
+            "y": 307,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 229,
+            "y": 299,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "TOP",
+            "x": 155,
+            "y": 410,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "priest",
+            "team": "B",
+            "lane": "TOP",
+            "x": 281,
+            "y": 374,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 262,
+            "y": 293,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1250,
+            "y": 411,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "priest",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1279,
+            "y": 466,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1261,
+            "y": 450,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1288,
+            "y": 491,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 280,
+            "y": 354,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1378,
+            "y": 382,
+            "state": "CONTROLLED",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1266,
+            "y": 494,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1277,
+            "y": 403,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "priest",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 302,
+            "y": 512,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1289,
+            "y": 424,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 184,
+            "y": 408,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 164,
+            "y": 438,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "brawler",
+            "team": "B",
+            "lane": "TOP",
+            "x": 1352,
+            "y": 360,
+            "state": "RECOVERY",
+            "reason": "등장"
+          }
+        ],
+        "earned": 2862,
+        "spent": 2370,
+        "deployments": 349,
+        "negativeGold": false,
+        "activeHeroDuplicates": false,
+        "awards": [
+          {
+            "id": "learning",
+            "name": "학습왕",
+            "playerIds": [
+              "bot-019"
+            ],
+            "value": 106,
+            "aiOnly": true
+          },
+          {
+            "id": "siege",
+            "name": "공성왕",
+            "playerIds": [
+              "bot-007"
+            ],
+            "value": 7099.618871794877,
+            "aiOnly": true
+          },
+          {
+            "id": "sword",
+            "name": "전장의 검",
+            "playerIds": [
+              "bot-015"
+            ],
+            "value": 19021.960826806007,
+            "aiOnly": true
+          },
+          {
+            "id": "wall",
+            "name": "수호의 벽",
+            "playerIds": [
+              "bot-024"
+            ],
+            "value": 22454.157664036447,
+            "aiOnly": true
+          },
+          {
+            "id": "healing",
+            "name": "구원의 손",
+            "playerIds": [
+              "bot-018"
+            ],
+            "value": 14335.275648458935,
+            "aiOnly": true
+          },
+          {
+            "id": "control",
+            "name": "전술 지원",
+            "playerIds": [
+              "bot-016"
+            ],
+            "value": 94.04999999999991,
+            "aiOnly": true
+          },
+          {
+            "id": "mvp",
+            "name": "팀 기여 MVP",
+            "playerIds": [
+              "bot-015"
+            ],
+            "value": 0.7537387266873281,
+            "aiOnly": true
+          }
+        ]
+      }
+    },
+    {
+      "source": "artifacts/soak-final40/seeds/seed-1009.json",
+      "historical": false,
+      "result": {
+        "seed": 1009,
+        "matchId": "match-sim-1009-0",
+        "phase": "RESULT",
+        "winner": "B",
+        "battleSeconds": 836.95,
+        "wallSeconds": 73.2510938,
+        "tickP50": 3.0571000000054482,
+        "tickP95": 10.075700000001234,
+        "tickP99": 22.29790000000503,
+        "maxUnits": 79,
+        "meanLivingUnits": 46.074197980763486,
+        "firstOuterDestroyedSeconds": 345.05,
+        "firstInnerDestroyedSeconds": 462.85,
+        "firstGuardDestroyedSeconds": 585.2,
+        "firstGuardApproachSeconds": 463,
+        "firstNexusDamageSeconds": 693.4,
+        "legendaryAcquisitions": 23,
+        "heroDeaths": 446,
+        "meanCompletedMaintenanceSeconds": 21.6986078886311,
+        "completedMaintenanceCount": 431,
+        "unfinishedMaintenanceCount": 15,
+        "botStalls": [],
+        "metrics": {
+          "firstHitTick": 1808,
+          "destroyed": [
+            {
+              "id": "match-sim-1009-0:B_BOTTOM_OUTER",
+              "tick": 8517,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1009-0:A_TOP_OUTER",
+              "tick": 9232,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1009-0:B_BOTTOM_INNER",
+              "tick": 10873,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1009-0:A_TOP_INNER",
+              "tick": 11165,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1009-0:B_GUARD_2",
+              "tick": 13320,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1009-0:A_GUARD_1",
+              "tick": 13683,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1009-0:B_GUARD_1",
+              "tick": 15453,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1009-0:A_GUARD_2",
+              "tick": 16896,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1009-0:A_NEXUS",
+              "tick": 18355,
+              "kind": "NEXUS"
+            }
+          ],
+          "wavesSpawned": 42,
+          "spawnedMinions": 1176,
+          "maxUnits": 79,
+          "stalledEvents": 0,
+          "invalidPositions": 0,
+          "tickCount": 16739,
+          "stalls": []
+        },
+        "structures": [
+          {
+            "id": "match-sim-1009-0:A_NEXUS",
+            "hp": 0,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1009-0:A_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1009-0:A_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1009-0:A_TOP_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1009-0:A_TOP_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1009-0:A_BOTTOM_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1009-0:A_BOTTOM_OUTER",
+            "hp": 8900.825000000003,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1009-0:B_NEXUS",
+            "hp": 76.45124999999088,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1009-0:B_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1009-0:B_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1009-0:B_TOP_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1009-0:B_TOP_OUTER",
+            "hp": 6369.421666666671,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1009-0:B_BOTTOM_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1009-0:B_BOTTOM_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          }
+        ],
+        "positions": [
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 292,
+            "y": 335,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 262,
+            "y": 305,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "swordsman",
+            "team": "B",
+            "lane": "TOP",
+            "x": 139,
+            "y": 357,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "swordsman",
+            "team": "B",
+            "lane": "TOP",
+            "x": 154,
+            "y": 371,
+            "state": "WINDUP",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 278,
+            "y": 319,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 258,
+            "y": 486,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "brawler",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 148,
+            "y": 409,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "brawler",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 178,
+            "y": 404,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 194,
+            "y": 386,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "brawler",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 160,
+            "y": 390,
+            "state": "RECOVERY",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 184,
+            "y": 363,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "B",
+            "lane": "TOP",
+            "x": 1355,
+            "y": 408,
+            "state": "ADVANCE",
+            "reason": "배정 라인 전진"
+          },
+          {
+            "hero": "monk",
+            "team": "B",
+            "lane": "TOP",
+            "x": 1359,
+            "y": 344,
+            "state": "HOLD",
+            "reason": "아군 전열 이동 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 1385,
+            "y": 326,
+            "state": "HOLD",
+            "reason": "아군 전열 이동 대기"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 186,
+            "y": 442,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          }
+        ],
+        "earned": 3358,
+        "spent": 3016,
+        "deployments": 461,
+        "negativeGold": false,
+        "activeHeroDuplicates": false,
+        "awards": [
+          {
+            "id": "learning",
+            "name": "학습왕",
+            "playerIds": [
+              "bot-003"
+            ],
+            "value": 128,
+            "aiOnly": true
+          },
+          {
+            "id": "siege",
+            "name": "공성왕",
+            "playerIds": [
+              "bot-013"
+            ],
+            "value": 8283.040874358976,
+            "aiOnly": true
+          },
+          {
+            "id": "sword",
+            "name": "전장의 검",
+            "playerIds": [
+              "bot-016"
+            ],
+            "value": 23877.551766665405,
+            "aiOnly": true
+          },
+          {
+            "id": "wall",
+            "name": "수호의 벽",
+            "playerIds": [
+              "bot-011"
+            ],
+            "value": 25388.58353919931,
+            "aiOnly": true
+          },
+          {
+            "id": "healing",
+            "name": "구원의 손",
+            "playerIds": [
+              "bot-025"
+            ],
+            "value": 18388.694025706936,
+            "aiOnly": true
+          },
+          {
+            "id": "control",
+            "name": "전술 지원",
+            "playerIds": [
+              "bot-023"
+            ],
+            "value": 154.59999999999982,
+            "aiOnly": true
+          },
+          {
+            "id": "mvp",
+            "name": "팀 기여 MVP",
+            "playerIds": [
+              "bot-013"
+            ],
+            "value": 0.7821561947906162,
+            "aiOnly": true
+          }
+        ]
+      }
+    },
+    {
+      "source": "artifacts/soak-final40/seeds/seed-1010.json",
+      "historical": false,
+      "result": {
+        "seed": 1010,
+        "matchId": "match-sim-1010-0",
+        "phase": "RESULT",
+        "winner": "B",
+        "battleSeconds": 699.2,
+        "wallSeconds": 51.10110859999999,
+        "tickP50": 2.619799999985844,
+        "tickP95": 8.823000000003958,
+        "tickP99": 15.678799999994226,
+        "maxUnits": 82,
+        "meanLivingUnits": 46.444651029748286,
+        "firstOuterDestroyedSeconds": 231,
+        "firstInnerDestroyedSeconds": 329.5,
+        "firstGuardDestroyedSeconds": 398.7,
+        "firstGuardApproachSeconds": 329.5,
+        "firstNexusDamageSeconds": 519.05,
+        "legendaryAcquisitions": 16,
+        "heroDeaths": 346,
+        "meanCompletedMaintenanceSeconds": 21.950149700598818,
+        "completedMaintenanceCount": 334,
+        "unfinishedMaintenanceCount": 12,
+        "botStalls": [],
+        "metrics": {
+          "firstHitTick": 1763,
+          "destroyed": [
+            {
+              "id": "match-sim-1010-0:A_TOP_OUTER",
+              "tick": 6140,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1010-0:B_BOTTOM_OUTER",
+              "tick": 6782,
+              "kind": "OUTER"
+            },
+            {
+              "id": "match-sim-1010-0:B_BOTTOM_INNER",
+              "tick": 8110,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1010-0:A_TOP_INNER",
+              "tick": 8484,
+              "kind": "INNER"
+            },
+            {
+              "id": "match-sim-1010-0:A_GUARD_1",
+              "tick": 9494,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1010-0:B_GUARD_2",
+              "tick": 11599,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1010-0:A_GUARD_2",
+              "tick": 11863,
+              "kind": "GUARD"
+            },
+            {
+              "id": "match-sim-1010-0:A_NEXUS",
+              "tick": 15504,
+              "kind": "NEXUS"
+            }
+          ],
+          "wavesSpawned": 35,
+          "spawnedMinions": 980,
+          "maxUnits": 82,
+          "stalledEvents": 1,
+          "invalidPositions": 0,
+          "tickCount": 13984,
+          "stalls": [
+            {
+              "tick": 3884,
+              "entityId": "match-sim-1010-0:unit:1876",
+              "heroId": "",
+              "kind": "RANGED_MINION",
+              "x": 515.3242810526128,
+              "y": 258.9889647221098,
+              "goal": {
+                "x": 534.5924068296854,
+                "y": 259.8812588496486
+              },
+              "reason": "유효 표적 접근"
+            }
+          ]
+        },
+        "structures": [
+          {
+            "id": "match-sim-1010-0:A_NEXUS",
+            "hp": 0,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1010-0:A_GUARD_1",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1010-0:A_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1010-0:A_TOP_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1010-0:A_TOP_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1010-0:A_BOTTOM_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1010-0:A_BOTTOM_OUTER",
+            "hp": 8915.91895833333,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1010-0:B_NEXUS",
+            "hp": 10000,
+            "maxHp": 10000
+          },
+          {
+            "id": "match-sim-1010-0:B_GUARD_1",
+            "hp": 2032.055384615376,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1010-0:B_GUARD_2",
+            "hp": 0,
+            "maxHp": 8000
+          },
+          {
+            "id": "match-sim-1010-0:B_TOP_INNER",
+            "hp": 12000,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1010-0:B_TOP_OUTER",
+            "hp": 8980,
+            "maxHp": 9000
+          },
+          {
+            "id": "match-sim-1010-0:B_BOTTOM_INNER",
+            "hp": 0,
+            "maxHp": 12000
+          },
+          {
+            "id": "match-sim-1010-0:B_BOTTOM_OUTER",
+            "hp": 0,
+            "maxHp": 9000
+          }
+        ],
+        "positions": [
+          {
+            "hero": "priest",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 1123,
+            "y": 477,
+            "state": "RETREAT",
+            "reason": "미니언 / 전열 공성 대기"
+          },
+          {
+            "hero": "cryomancer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 295,
+            "y": 330,
+            "state": "RECOVERY",
+            "reason": "근접 위협으로부터 사거리 확보"
+          },
+          {
+            "hero": "priest",
+            "team": "B",
+            "lane": "TOP",
+            "x": 232,
+            "y": 277,
+            "state": "WINDUP",
+            "reason": "근접 위협으로부터 사거리 확보"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "TOP",
+            "x": 123,
+            "y": 430,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 1187,
+            "y": 263,
+            "state": "ADVANCE",
+            "reason": "전열 뒤 배정 라인 이동"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 1224,
+            "y": 258,
+            "state": "ADVANCE",
+            "reason": "전열 뒤 배정 라인 이동"
+          },
+          {
+            "hero": "priest",
+            "team": "B",
+            "lane": "TOP",
+            "x": 1197,
+            "y": 275,
+            "state": "ADVANCE",
+            "reason": "전열 뒤 배정 라인 이동"
+          },
+          {
+            "hero": "barbarian",
+            "team": "B",
+            "lane": "TOP",
+            "x": 227,
+            "y": 379,
+            "state": "RECOVERY",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "brawler",
+            "team": "B",
+            "lane": "TOP",
+            "x": 183,
+            "y": 330,
+            "state": "RECOVERY",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 893,
+            "y": 226,
+            "state": "HOLD",
+            "reason": "전열 뒤 배정 라인 이동"
+          },
+          {
+            "hero": "paladin",
+            "team": "B",
+            "lane": "TOP",
+            "x": 310,
+            "y": 277,
+            "state": "APPROACH",
+            "reason": "유효 표적 접근"
+          },
+          {
+            "hero": "pyromancer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 905,
+            "y": 208,
+            "state": "ADVANCE",
+            "reason": "전열 뒤 배정 라인 이동"
+          },
+          {
+            "hero": "swordsman",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 149,
+            "y": 407,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "monk",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 164,
+            "y": 439,
+            "state": "WINDUP",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "archer",
+            "team": "B",
+            "lane": "TOP",
+            "x": 1288,
+            "y": 363,
+            "state": "ADVANCE",
+            "reason": "전열 뒤 배정 라인 이동"
+          },
+          {
+            "hero": "paladin",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 200,
+            "y": 408,
+            "state": "HOLD",
+            "reason": "사거리 내 다음 공격 대기"
+          },
+          {
+            "hero": "barbarian",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 233,
+            "y": 350,
+            "state": "RECOVERY",
+            "reason": "등장"
+          },
+          {
+            "hero": "barbarian",
+            "team": "A",
+            "lane": "BOTTOM",
+            "x": 220,
+            "y": 332,
+            "state": "WINDUP",
+            "reason": "등장"
+          }
+        ],
+        "earned": 2899,
+        "spent": 2540,
+        "deployments": 364,
+        "negativeGold": false,
+        "activeHeroDuplicates": false,
+        "awards": [
+          {
+            "id": "learning",
+            "name": "학습왕",
+            "playerIds": [
+              "bot-030"
+            ],
+            "value": 110,
+            "aiOnly": true
+          },
+          {
+            "id": "siege",
+            "name": "공성왕",
+            "playerIds": [
+              "bot-006"
+            ],
+            "value": 8058.176971794871,
+            "aiOnly": true
+          },
+          {
+            "id": "sword",
+            "name": "전장의 검",
+            "playerIds": [
+              "bot-028"
+            ],
+            "value": 20385.5835288508,
+            "aiOnly": true
+          },
+          {
+            "id": "wall",
+            "name": "수호의 벽",
+            "playerIds": [
+              "bot-025"
+            ],
+            "value": 22522.307908091527,
+            "aiOnly": true
+          },
+          {
+            "id": "healing",
+            "name": "구원의 손",
+            "playerIds": [
+              "bot-009"
+            ],
+            "value": 18794.016922652845,
+            "aiOnly": true
+          },
+          {
+            "id": "control",
+            "name": "전술 지원",
+            "playerIds": [
+              "bot-017"
+            ],
+            "value": 89.29999999999997,
+            "aiOnly": true
+          },
+          {
+            "id": "mvp",
+            "name": "팀 기여 MVP",
+            "playerIds": [
+              "bot-028"
+            ],
+            "value": 0.8018141639245404,
+            "aiOnly": true
+          }
+        ]
+      }
+    }
+  ]
+}
