@@ -4,7 +4,7 @@ $projectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 if ([IO.Path]::GetFileName($OutputName) -ne $OutputName -or -not $OutputName.EndsWith('.zip')) { throw 'OutputName must be a ZIP filename in the project root.' }
 $outputPath = Join-Path $projectRoot $OutputName
 if (Test-Path -LiteralPath $outputPath) { throw 'Refusing to overwrite an existing preservation archive.' }
-$listed = @(& git -C $projectRoot ls-files -c -o --exclude-standard)
+$listed = @(& git -c core.quotepath=false -C $projectRoot ls-files -c -o --exclude-standard)
 if ($LASTEXITCODE -ne 0) { throw 'Git file inventory failed.' }
 $videoRoot = Join-Path $projectRoot 'artifacts/v02'
 if (Test-Path -LiteralPath $videoRoot) { $listed += @(Get-ChildItem -LiteralPath $videoRoot -Recurse -File | Where-Object { $_.Extension -in '.webm','.mp4' } | ForEach-Object { [IO.Path]::GetRelativePath($projectRoot,$_.FullName).Replace('\','/') }) }

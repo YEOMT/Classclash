@@ -9,20 +9,16 @@
       "sha256": "589e78f45f75b500ef2963e15eb66e7119e0ab358ee0a00f2380f9c1825bfaa2"
     },
     {
-      "file": "scripts/balance-candidate.ts",
-      "sha256": "d98ccb02a94310b1445f2a6ce3044deea7522f9960e1a90e30868abfe1f7ff5e"
+      "file": "docs/class-clash-0.2/tests/ACCEPTANCE.results.csv",
+      "sha256": "fe6624982643200157d95a2cf676781928e38731e196d8e4293ac2bb7ab4d42c"
     },
     {
-      "file": "scripts/report-v02.mjs",
-      "sha256": "24f1c03da7ea16f98a3a45d0ba8b3889ca66d6cc81c2f688ca74d2a19153478a"
+      "file": "docs/class-clash-0.2/tests/ACCEPTANCE.results.json",
+      "sha256": "fa0230b1761dbf2eed9d5b9e256cfaab3303f81d2c531d3467071ef0e899df12"
     },
     {
-      "file": "scripts/verify-engine-populations.ts",
-      "sha256": "e774c5f0332b505a227bdc87d48f779790014fc1700b13fb9f072b6f6a6520de"
-    },
-    {
-      "file": "scripts/verify-v02-responsive.mjs",
-      "sha256": "ad310d4591717f6840b9253b10888ff6380cec99b904544053e7246589081d39"
+      "file": "scripts/verify-local-package.ps1",
+      "sha256": "fed7b0b4db279fd2bc728de45d1ccec3463adfad69cdeeb4159cfea9e875aef9"
     },
     {
       "file": ".dockerignore",
@@ -54,11 +50,11 @@
     },
     {
       "file": "BALANCE_CHANGELOG.md",
-      "sha256": "8b645cab115312449df92382a5a60c3352d09ff5e0c156e3468a597e0a1684ba"
+      "sha256": "ed4fdd2d42db3ef103f0c79d986d03ae7b1e891e4336e1a87596c82e5f31ac85"
     },
     {
       "file": "BASELINE_AUDIT.md",
-      "sha256": "b6550c7aede6be7f438b0fae18dfedaafbe7d63b0b67b14b3a289d0a9542eef7"
+      "sha256": "b15a51ec1b5789a9e0b410b23a420a11f6bbc4f40936239c4254227564e6a634"
     },
     {
       "file": "CHANGELOG.md",
@@ -66,11 +62,11 @@
     },
     {
       "file": "DEPLOYMENT.md",
-      "sha256": "2c74ea95b9d0b635df0ac0ad6ec13e2b8d7c0d2e62c51e2374ca79ec0be3cbd8"
+      "sha256": "9d8d361bea96957984895c0941f76b34f205979282a370e060c364b26ce61b59"
     },
     {
       "file": "DEPLOYMENT_REPORT.json",
-      "sha256": "905852012b80f27d21314da6a9ef6c49fd6197f4ca2580a24e5a86c0ae5589e1"
+      "sha256": "a2cb46c32f5156d6ce5254155f7c90d65b31aa251136a17a9b222faf593ca211"
     },
     {
       "file": "Dockerfile",
@@ -78,19 +74,19 @@
     },
     {
       "file": "ENGINE_CHANGELOG.md",
-      "sha256": "f459961fad4d1eedd13c219e267fffdfe6fa40072e614f76062ab98efe21c346"
+      "sha256": "5ae1dc4ed4c33333788673e8ec6e4845b880f71a7abcb858126f038d8f531528"
     },
     {
       "file": "PROGRESS.md",
-      "sha256": "a2f3c3d50fc19325762392e4becede9e2f2903fa0299ebeb7a3680123a053803"
+      "sha256": "3ab9fe39179934939187cb32c36db56bdc01a4fafd421153ee8bfa8e14d3712a"
     },
     {
       "file": "README.md",
-      "sha256": "38deadea0d7107130eee6689adcdc0d357cdc91c70752dcd1d8704df180d14bb"
+      "sha256": "734f954d81a3d51c1de5db691be9e918ee31d566972708b807e2952f250dc00f"
     },
     {
       "file": "TEST_REPORT.md",
-      "sha256": "f744ea856175fa7f82c900a5765aa087fbeef96b2f09fd93242c722e32f51c38"
+      "sha256": "ff855c612e8ecca09cc553f58a701841e354c488d995bf2ed8df39b783aa1946"
     },
     {
       "file": "assets/art-source/source-lock.json",
@@ -685,6 +681,10 @@
       "sha256": "1845aeff5c21eb82372989c55ad7d0192d778a3605c557a99348c96668fa6c87"
     },
     {
+      "file": "scripts/balance-candidate.ts",
+      "sha256": "fec56db9d7c8292fa9ee3673f5e21f28ad0d9ab29c3a07ffae738ebd5d1c8650"
+    },
+    {
       "file": "scripts/build-sprites.mjs",
       "sha256": "ffc233315d871cebf14dc171dc8a13200e7d8133c02803df9aede881e7b1ca69"
     },
@@ -730,7 +730,7 @@
     },
     {
       "file": "scripts/load-test.ts",
-      "sha256": "d719754106e4abcc558d23c7b46ed69e2e627a05ca2f8c31eaaa5c53b165f226"
+      "sha256": "cef1716ae241f4fa4b47b0679885a007ad6f69b38ec1d0c6a08572e3c8811021"
     },
     {
       "file": "scripts/measure-motion-room.mjs",
@@ -746,11 +746,15 @@
     },
     {
       "file": "scripts/package-local.ps1",
-      "sha256": "60f360543c359c1acff21edcb15f161914e24fd464bb53b6730763d689de7257"
+      "sha256": "b35cc6e08b2c508f38e3cf6628b474fd48116909bf60b7e5e47139c8924f3dcc"
     },
     {
       "file": "scripts/render-baseline.mjs",
       "sha256": "594e02e5aa027e860b437f67ffbf82fb9055b3e432baafdd806b52e85749fc5a"
+    },
+    {
+      "file": "scripts/report-v02.mjs",
+      "sha256": "6f097394a546437e1ba4418d42c846828cc4a7d8842239ac1b3aea616ff7d6bd"
     },
     {
       "file": "scripts/review-compact-art.mjs",
@@ -825,12 +829,20 @@
       "sha256": "07887178a8ed0b8e897f89730129e4d6e180ada01ebc78117f7ccbf6cbeec779"
     },
     {
+      "file": "scripts/verify-engine-populations.ts",
+      "sha256": "e774c5f0332b505a227bdc87d48f779790014fc1700b13fb9f072b6f6a6520de"
+    },
+    {
       "file": "scripts/verify-motion-viewers.mjs",
       "sha256": "0c56ccda3b42b999e6612d27437c8eade0c84b9beeb0e3fdf7e5ca312d36da54"
     },
     {
       "file": "scripts/verify-v02-realtime.mjs",
       "sha256": "21b9fca2a57ce21f4d37fba9d7fbaa932ee034bf74c6769a3e6a0774049fb182"
+    },
+    {
+      "file": "scripts/verify-v02-responsive.mjs",
+      "sha256": "974c2da72afe300ee71a6cfdf321879bb35133fca60c9c9a682c07cde2f58c1b"
     },
     {
       "file": "scripts/verify-world-render.mjs",
@@ -914,7 +926,7 @@
     },
     {
       "file": "src/client/style.css",
-      "sha256": "6ce679d8851b7450b3f6ba16d6ce8b57a6d390b9939d54fd0a0c47602be035fb"
+      "sha256": "81ff088b764a97f41919535da19df080e80309e6bca63b38c3c71d8db7f05d41"
     },
     {
       "file": "src/client/vite-env.d.ts",
@@ -954,7 +966,7 @@
     },
     {
       "file": "src/server/index.ts",
-      "sha256": "b780ff267c6e223043649df1d832cf728eda8df5fa6ca277392090c5ba63f2de"
+      "sha256": "725a5641ea4dd54fa4ec147fa45ab37a4a89016ba6862cda4d191655f33ffdda"
     },
     {
       "file": "src/server/jungle.ts",
@@ -979,6 +991,10 @@
     {
       "file": "src/server/versions.ts",
       "sha256": "95d6ded763bee2faf9c33b04bcd34548d92a819e94a7d794df5092c5e39fecf8"
+    },
+    {
+      "file": "src/server/wire-projection.ts",
+      "sha256": "e3ddc05070bf952368302c065816c97f89edce7a644412e5ca5135434f0da443"
     },
     {
       "file": "src/shared/balance.ts",
@@ -1110,7 +1126,7 @@
     },
     {
       "file": "tests/e2e/v02.spec.ts",
-      "sha256": "9ce22aa20687f41c37ba9198afd0c9f68118b7567be888e142f1558a45992fb3"
+      "sha256": "76284387a25b1c43411e55ea193062658d7a2bf002ee02617a6ee697444d81e2"
     },
     {
       "file": "tests/e2e/visual-performance.spec.ts",
@@ -1171,6 +1187,14 @@
     {
       "file": "tests/websocket-malformed.test.ts",
       "sha256": "5955e008114151e5f63fc4e1fc8f7dca8888f798aec086ea2ccf1c7b8d7fc116"
+    },
+    {
+      "file": "tests/wire-private-network.test.ts",
+      "sha256": "e9a858d33c1307594f91952a22e0a7e9b0ee0df0d86f6232ff2854a54436d6e3"
+    },
+    {
+      "file": "tests/wire-projection.test.ts",
+      "sha256": "f965f10b545a5e3d2002365587fd31e9f735934f5ff80325157c22b8b2b2d661"
     },
     {
       "file": "tests/world-assets.test.ts",

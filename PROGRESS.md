@@ -1,12 +1,16 @@
-# 0.2 통합 진행 · 2026-10-28
+# Class Clash 0.2 진행 기록 · 2026-10-29
 
-상태: IN_PROGRESS. 현재 기준HEAD70987cb7181e8f5eda29735927efcf96c997a24e, 브랜치 codex/class-clash-0.2. 최신 사용자 확정은 LOL3라인+정글 유지. 별도 리워크 방의2라인 시도는 취소·백업했고 현재 기준으로 대체했다.
+현재 브랜치: codex/class-clash-0.2. 검증 런타임 커밋: 9f8601ec31ee1b84a670f52467855a2ca08da8a8. 문서와 검증 증거는 후속 커밋으로 보존한다. 사용자 확정 기준은 이 채팅의 LOL 3라인+정글, 18종 챔피언 native 외형·애니메이션이다. 기존 작업과 취소한 시도는 별도 ZIP에 보존했다.
 
-완료: 원본/미추적/취소본 ZIP 보존,185개 기준 시험 재현, 원본 검증·패킹 build(365파일 해시 보존),18챔피언 native 동작/실제효과 층 통합, 정글 경로 경계 정체 수정, 표적/접근 슬롯/거리 유지 개선, 퀴즈 새로고침 선택 복원 및 쿨타임 버튼 갱신, 운영 인증/origin/영구 SQLite 배치 저장·백업·버전 확인.
+완료: 원본 365개 해시를 보존하는 검증·패킹 빌드, 18영웅·36스킬 통합, 전투 이동·표적·슬롯·정글 정체 수정, 퀴즈 선택/쿨타임 복구, 모바일 UI, Node 권위 판정·SQLite 원자적 저장·복구·버전 확인, 운영 인증/origin/배포 구성. 자동 테스트 231/231, 새 설치·빌드, 공개 소스 검사 201/201 통과.
 
-진행 중: 최종 건물 체력 후보 후40시드, 브라우저4경기/3재경기, 실제1배속13분과 독립30WS 성능, 시각자료와214행 인수판정, 공개 소스만 분리한 PR. 배포는 권한 있는 Node호스트/공개origin 부재 및 비배포 자산 조건으로 BLOCKED_DEPLOYMENT.
+실제 측정: 30개 독립 학생 WS의 기능·ACK·전송량 통과, 서버 틱 성능 실패. 정상 1배속 전투 781.024초에서 호스트/학생 프레임·답안 응답·오류 검사 통과, 서버 틱 성능 실패. 표준 AI 40시드 중 38완주·목표 시간 9개로 분포 실패. 원본은 2시점이며 8개 독립 원화와 정밀 프레임별 소켓은 미완성이다. 상세 수치·실패·미실행은 TEST_REPORT.md와 인수 CSV에 보존한다.
 
-다음 명령: npm run build; npm run typecheck; npm test; npm run test:v02; npm run test:soak:parallel. 무거운 시험 종료 후 npm run test:load, npm run test:realtime. artifacts/v02의 실제 로그를 확인하고 실패·미실행을 통과로 올리지 않는다.
+진행 중: 최종 첫 경기+3연속 재경기 브라우저 검증, 전체 개인 보존 ZIP/번들, 최종 공개 소스 브랜치 갱신. 공개 소스만 분리한 codex/class-clash-0.2-source의 실제 SHA는 artifacts/v02/publishing.json에 기록한다. 원격 main d060b535c49b63d219f851c431e0294e9dbcb157은 변경하지 않았다. PR 생성 연결은403으로 미생성.
+
+공개 배포: BLOCKED_DEPLOYMENT. 권한 있는 지속 Node 호스트와 실제 HTTPS origin이 없고 선택 자산은 학교 내 비배포 용도다. 공개 플레이 URL은 null. 실제 학교 기기·외부 학생 네트워크 검증은 NOT_RUN.
+
+다음 실행 명령: npm run test:v02; node scripts/report-v02.mjs --check. 성능 또는 밸런스를 수정한 뒤에만 npm run test:load, npm run test:realtime, npm run test:soak:parallel을 다시 실행한다. 서로 동시에 실행하지 않는다. 13분 강제 승리나 테스트 임계값 완화로 실패를 감추지 않는다.
 
 ---
 

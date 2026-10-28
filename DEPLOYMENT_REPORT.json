@@ -68,11 +68,11 @@
     },
     "independentClients": {
       "status": "PASS",
-      "evidence": "artifacts/v02/load-30clients.json: 30 students and1 host, 600 opening answers,30 concurrent purchases/replays, reconnect,30 seconds actual combat. Functional result only."
+      "evidence": "artifacts/v02/load-30clients-isolated.json: exact committed 9f8601e build; 30 students and 1 host; 600 opening answers, 30 concurrent purchases and 30 duplicate replays, same-session reconnect, 30.013 seconds of actual combat at 1x. Functional result only."
     },
     "concurrentWorkloadPerformance": {
       "status": "FAIL",
-      "evidence": "artifacts/v02/load-30clients.json: ACK p95 2615.84ms; full tick p95 109.69ms/p99 179.23ms. Other engine simulations ran concurrently. Isolated rerun pending."
+      "evidence": "artifacts/v02/load-30clients.json: earlier ACK p95 2615.84ms; tick p95 109.69ms/p99 179.23ms while other simulations ran. This earlier diagnostic is retained separately from the final isolated run."
     },
     "atomicCommandBatch": {
       "status": "PASS",
@@ -80,7 +80,7 @@
     },
     "freshInstall": {
       "status": "PASS",
-      "evidence": "artifacts/v02/fresh-install.json: local clone + npm ci, typecheck/build, actual 2 AI quiz-to-battle flow and Vite dev browser on a1454cb8ecc976d7736bb6c7a027c2f558e27602; 365 original files unchanged; 50 runtime file hashes and manifest bba2f909... match. Test speed 10; not a 1x performance or external deployment claim."
+      "evidence": "artifacts/v02/fresh-install.json: independent clone and npm ci without copied dependencies, then fast-forward to 9f8601e with unchanged dependency lockfile. Final typecheck/build/actual HTTP version and 50 runtime asset hashes PASS; 365 original files unchanged. Prior a1454cb actual 2 AI quiz-to-battle and dev browser smoke are separately labelled. This is not a 1x performance or external deployment result."
     },
     "actualWriteFailure": {
       "status": "PASS",
@@ -89,6 +89,115 @@
     "malformedWebSocket": {
       "status": "PASS",
       "evidence": "tests/websocket-malformed.test.ts and artifacts/v02/websocket-malformed.log: illegal WebSocket opcode closes only offending peer; health remains 200"
+    },
+    "isolatedClientPerformance": {
+      "status": "FAIL",
+      "evidence": "artifacts/v02/load-30clients-isolated.json and .log",
+      "runtimeCommit": "9f8601ec31ee1b84a670f52467855a2ca08da8a8",
+      "scope": "Loopback; 31 authenticated connections; 30 seconds of battle at 1x; no concurrent engine/browser workload. Not a 13-minute or school-device result.",
+      "exitCode": 1,
+      "checks": {
+        "commandAckP95": true,
+        "fullTickP95": false,
+        "fullTickP99": false,
+        "perClientWireBandwidth": true
+      },
+      "commandAckP95Ms": 200.20650000000023,
+      "tickP95Ms": 46.679800000001705,
+      "tickP99Ms": 72.99749999999767,
+      "backlogMs": 64.11619999999937,
+      "maximumClientWireKiBPerSecond": 92.71971728917468
+    },
+    "protocolMismatch": {
+      "status": "PASS",
+      "evidence": "artifacts/v02/protocol-mismatch.json: obsolete protocol gets VERSION_MISMATCH and reload guidance, supported protocol reconnects with original session and room preserved"
+    },
+    "snapshotProjectionRegression": {
+      "status": "PASS",
+      "tests": 4,
+      "evidence": "artifacts/v02/wire-serialization-tests.log; tests/wire-projection.test.ts and tests/wire-private-network.test.ts: authoritative values unchanged, event/cursor JSON equivalent, actual two students keep separate wallet, quiz and reconnect epoch."
+    },
+    "realtime13Minutes": {
+      "status": "FAIL",
+      "evidence": "artifacts/v02/realtime/result.json",
+      "runtimeCommit": "9f8601ec31ee1b84a670f52467855a2ca08da8a8",
+      "scope": "Local headless Chromium on the development PC, host plus one human-controlled student and 29 STANDARD AI; D3D11 hardware renderer; loopback; normal 1x. Cumulative battle time spans one completed match and the following rematch, not one uninterrupted 13-minute match. Separate from the 31 independent WebSocket load test.",
+      "targetBattleWallSeconds": 780,
+      "battleWallSeconds": 781.0238878000006,
+      "completedMatches": 1,
+      "checks": {
+        "duration": true,
+        "hostFrame": true,
+        "studentFrame": true,
+        "commandAck": true,
+        "fullServerTick": false,
+        "assetErrors": true,
+        "jsErrors": true
+      },
+      "failureReasons": [
+        "fullServerTick"
+      ],
+      "environment": {
+        "cpu": "13th Gen Intel(R) Core(TM) i5-1340P",
+        "logicalCpus": 16,
+        "ramBytes": 16718413824,
+        "os": "10.0.26200",
+        "node": "v24.19.0",
+        "network": "loopback; no RTT injection",
+        "speedMultiplier": 1,
+        "browser": "156.0.8078.4"
+      },
+      "host": {
+        "resolution": "1920x1080",
+        "gpu": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "frameMs": {
+          "count": 46240,
+          "p50": 16.699999999953434,
+          "p95": 16.79999999993015,
+          "p99": 33.29999999993015,
+          "max": 299.9000000000233
+        }
+      },
+      "student": {
+        "resolution": "1280x900",
+        "gpu": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x0000A7A0) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "frameMs": {
+          "count": 46858,
+          "p50": 16.699999999953434,
+          "p95": 16.70000000006985,
+          "p99": 16.800000000046566,
+          "max": 316.69999999995343
+        }
+      },
+      "commandAckMs": {
+        "count": 60,
+        "p50": 107.37129999999888,
+        "p95": 383.2825000000885,
+        "p99": 401.1075000000419,
+        "max": 405.28879999998026
+      },
+      "serverTickSampleSummary": {
+        "sampleCount": 72,
+        "maximumReportedP95Ms": 58.19470000002184,
+        "maximumReportedP99Ms": 186.41549999988638,
+        "lastReportedP95Ms": 41.825899999937974,
+        "lastReportedP99Ms": 179.36280000011902,
+        "maximumObservedBacklogMs": 65.99800000005348,
+        "interpretation": "Maxima of the reported cumulative percentiles at sampled times, not newly recomputed whole-run percentiles. Backlog is observed data, not a separate drift-stability assertion."
+      },
+      "assetManifestHash": "bba2f9090927e34c8c670e0d8ccc681603f07d22accffbd160de4670485f9d09",
+      "assetFilesMatch": true,
+      "assetErrors": {
+        "host": 0,
+        "student": 0
+      },
+      "jsErrors": 0,
+      "limitations": [
+        "Full server tick acceptance targets remain unmet.",
+        "Host and student maximum frame gaps were approximately 300ms and 317ms even though percentile gates passed.",
+        "External HTTPS/WSS, public hosting and school physical-device checks remain NOT_RUN."
+      ],
+      "commandAckMeasurement": "Time from the student answer click to visible quiz feedback, including the durable server response; not raw transport RTT."
     }
   },
   "supportedConcurrentRooms": null,
@@ -111,5 +220,6 @@
     "Local HTTP/WS checks are not external HTTPS/WSS checks.",
     "GitHub push, main merge, public deployment and school-device validation are independent states.",
     "Do not upload restricted local assets or their history as part of a public source push."
-  ]
+  ],
+  "pullRequestUrl": null
 }

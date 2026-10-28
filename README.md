@@ -107,11 +107,18 @@ npm run test:e2e
 
 각 팀·라인의 첫 웨이브는 근접 3 + 원거리 4기입니다. 웨이브 간격 35초, 8/10/12분부터 생성되는 양 팀 미니언의 체력 배수 3/8/12, 공격 배수 2/4/6을 balance 설정에 기록했습니다. 기존 공성 피해 페이즈도 적용됩니다. 미리 정한 시간이 되어 승리하거나 구조물 HP가 자동 감소하지 않습니다.
 
-이전 아트와 보고서는 보존했습니다. art-gallery.html, artifacts/asset-motion, artifacts/world-assets의 결과는 이전 버전 기록입니다. 현재 리워크 증거는 artifacts/jungle-rework와 TEST_REPORT.md의 최신 항목을 확인하세요. 추가 통합 시험: npm run build 후 npm run test:jungle.
+이전 아트와 보고서는 보존했습니다. art-gallery.html, artifacts/asset-motion, artifacts/world-assets의 결과는 이전 버전 기록입니다. 현재 0.2 증거는 artifacts/v02와 TEST_REPORT.md의 최신 항목을 확인하세요. LOL 리워크 당시 증거는 artifacts/jungle-rework에 별도로 남아 있습니다.
 
-SQLite WAL 파일은 `data/class-clash-jungle.sqlite`에 저장합니다. 기존 `data/class-clash.sqlite`는 그대로 보존하며 새 지형에서 이어서 재생하지 않습니다. 서버 재시작 시 일관된 체크포인트를 복구하고, 꺼져 있던 동안 전투 시간을 진행시키지 않습니다. `DATABASE_PATH`, `PORT`, `HOST`, `APP_ORIGIN`은 환경 변수로 설정합니다. `.env.example`은 설정 예시이며 자동으로 읽지 않습니다. 로컬 데이터에는 닉네임·학습·경기 기록이 저장되므로 학교의 보관 정책에 맞춰 관리하세요.
+SQLite WAL 파일의 기본 경로는 `data/class-clash-0.2.sqlite`입니다. 기존 `data/class-clash.sqlite`와 `data/class-clash-jungle.sqlite`는 그대로 보존합니다. 서버 재시작 시 일관된 체크포인트를 복구하고, 꺼져 있던 동안 전투 시간을 진행시키지 않습니다. `DATABASE_PATH`, `PORT`, `HOST`, `APP_ORIGIN`은 환경 변수로 설정합니다. `.env.example`은 설정 예시이며 자동으로 읽지 않습니다. 로컬 데이터에는 닉네임·학습·경기 기록이 저장되므로 학교의 보관 정책에 맞춰 관리하세요.
 
 구조와 복구 방식은 ARCHITECTURE.md, 실제 실행 결과와 미검증 항목은 TEST_REPORT.md, 이어서 작업할 상태는 PROGRESS.md에 기록합니다.
+
+전체 소스·승인 자산·검증 영상을 개인 보존용 ZIP으로 만들고 원본 해시를 확인하려면 PowerShell 7에서 실행합니다. DB·비밀 설정·의존성 폴더는 제외하며 기존 ZIP은 덮어쓰지 않습니다.
+
+```powershell
+./scripts/package-local.ps1 -OutputName Class_Clash_0.2_Local.zip
+./scripts/verify-local-package.ps1 -Archive ./Class_Clash_0.2_Local.zip
+```
 
 ## 지속 실행 배포
 

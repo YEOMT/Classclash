@@ -67,4 +67,22 @@ node scripts/backup-database.mjs /data/class-clash.sqlite /data/backups/backup-Y
 3. health SHA·자산 해시·기존 학생 재접속을 확인하고 drain 파일을 제거합니다.
 4. 롤백 시 이전 이미지와 **그 버전에 맞는 보존 DB**를 함께 사용합니다. SQLite 단일 볼륨에서 무중단 배포를 보장하지 않습니다.
 
-최신 실제 결과는 `DEPLOYMENT_REPORT.json`과 `artifacts/v02/`에 기록합니다. 공개 URL·외부 학교 기기 확인은 현재 미실행입니다.
+## 최종 로컬 실시간 계측
+
+커밋 `9f8601ec31ee1b84a670f52467855a2ca08da8a8`에서 호스트 브라우저와 학생 1명+표준 AI 29명으로 **1배속 전투 누적 781.024초**를 실행했습니다. 한 경기를 완주한 뒤 재경기에 들어간 시간을 합친 결과이며, 하나의 경기가 13분 동안 계속됐다는 뜻은 아닙니다. 별도 독립 학생 30명+호스트 WebSocket 시험과 구분합니다. 근거는 `artifacts/v02/realtime/result.json`입니다.
+
+개발 PC는 Intel i5-1340P·RAM 약 16GB·Windows(10.0.26200)이며, headless Chromium 156에서 Intel Iris Xe D3D11 렌더러가 확인됐습니다. 호스트는 1920×1080, 학생은 1280×900이고 네트워크는 지연 주입 없는 loopback입니다.
+
+| 검사 | 실제 결과 | 판정 |
+|---|---|---|
+| 호스트 프레임 간격 | p95 16.80ms, p99 33.30ms | PASS |
+| 학생 프레임 간격 | p95 16.70ms, p99 16.80ms | PASS |
+| 퀴즈 응답 표시 지연 60회 | p95 383.28ms, p99 401.11ms | PASS |
+| 전체 서버 틱 | 관측한 누적 p95 최댓값 58.19ms, 누적 p99 최댓값 186.42ms | **FAIL** — 목표 40/50ms 초과 |
+| 자산·JavaScript 오류 | 각각 0건, 자산 50개 해시 일치 | PASS |
+
+서버 틱 수치는 72개 표본에서 보고된 누적 백분위의 최댓값입니다. 최종 표본은 p95 41.83ms/p99 179.36ms였고, 관측한 backlog 최댓값은 66.00ms입니다. 이를 별도 누적 지연 안정성 검사 통과로 해석하지 않습니다. 프레임 백분위 기준은 통과했지만 최대 프레임 간격은 호스트 299.90ms, 학생 316.70ms로 순간적인 지연도 남아 있습니다. 따라서 이 실행의 전체 판정은 **FAIL(fullServerTick)**이며, 운영 성능 보증으로 제출하지 않습니다.
+
+별도의 최종 독립 WebSocket 시험은 30학생+호스트, 1배속 실전 30.013초에서 기능·ACK p95 200.21ms·최대 학생 대역폭 92.72KiB/s를 통과했습니다. 이 시험도 전체 틱 p95 46.68ms/p99 73.00ms는 목표 미달입니다. `artifacts/v02/load-30clients-isolated.json`에 기록했습니다.
+
+최신 실제 결과는 `DEPLOYMENT_REPORT.json`과 `artifacts/v02/`에 기록합니다. **공개 배포는 여전히 BLOCKED_DEPLOYMENT**이며 공개 플레이 URL과 PR URL은 없습니다. 외부 HTTPS/WSS 및 학교 실기기 확인은 미실행입니다.

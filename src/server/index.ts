@@ -13,6 +13,7 @@ import {CURRENT_VERSIONS} from './versions.js';
 import {heartbeatDecision,HEARTBEAT_INTERVAL_MS} from './heartbeat.js';
 import {serverConfig,allowedOrigin,validHostCode,RequestLimiter} from './production-config.js';
 import {runtimeBuildInfo} from './build-info.js';
+import {displayUnitNumbers,snapshotEncoder} from './wire-projection.js';
 
 const config=serverConfig(),dev=process.argv.includes('--dev'),port=config.port,host=config.host;
 // Test runner acceleration changes wall-clock scheduling only. Production never enables it.
@@ -89,7 +90,7 @@ function publicBattle(r:RoomData):RoomSnapshot['battle']{
   const project=(u:Record<string,unknown>)=>{
     const fields=['entityId','deploymentId','kind','team','lane','position','jungle','monsterKind','campId','debugReason','ownerPlayerId','ownedHeroInstanceId','heroDefinitionId','level','role','hp','maxHp','radius','range','x','y','previousX','previousY','projectileSpeed','vx','vy','facingX','facingY','state','createdTick','deathTick','shield','statuses','marks','protected','actionId','actionStartTick','impactTick','recoveryEndTick','targetId'];
     const result:Record<string,unknown>={};for(const key of fields)if(u[key]!==undefined)result[key]=u[key];
-    const action=u.action as Record<string,unknown>|null;result.action=action?Object.fromEntries(['skillId','startTick','impactTicks','recoveryEndTick','origin','point','direction'].map(k=>[k,action[k]])):null;return result;
+    const action=u.action as Record<string,unknown>|null;result.action=action?Object.fromEntries(['skillId','startTick','impactTicks','recoveryEndTick','origin','point','direction'].map(k=>[k,action[k]])):null;return displayUnitNumbers(result);
   };
   battle.units=battle.units.map(u=>project(u as unknown as Record<string,unknown>)) as unknown as typeof battle.units;
   battle.structures=battle.structures.map(u=>project(u as unknown as Record<string,unknown>)) as unknown as typeof battle.structures;
@@ -107,9 +108,9 @@ function wireSnapshot(r:RoomData,c:Client,battle:RoomSnapshot['battle']=publicBa
   if(testSpeed!==1)snap.testSpeed=testSpeed;
   return snap;
 }
-function broadcast(r:RoomData){const started=performance.now();lastBroadcast.set(r.roomCode,started);const battle=[...clients].some(c=>c.roomCode===r.roomCode)?publicBattle(r):null;for(const c of clients){if(c.roomCode!==r.roomCode)continue;// Skip obsolete snapshots while the previous one drains. Keep the connection and
+function broadcast(r:RoomData){const started=performance.now();lastBroadcast.set(r.roomCode,started);const battle=[...clients].some(c=>c.roomCode===r.roomCode)?publicBattle(r):null,encode=snapshotEncoder(battle,r.tick);for(const c of clients){if(c.roomCode!==r.roomCode)continue;// Skip obsolete snapshots while the previous one drains. Keep the connection and
   // bounded event replay so command acknowledgements do not wait behind megabytes of old state.
-  if(c.socket.bufferedAmount>256*1024)continue;send(c.socket,{type:'SNAPSHOT',snapshot:wireSnapshot(r,c,battle)});}reportSlow('broadcast',started,`${r.phase}/${r.tick}`);}
+  if(c.socket.bufferedAmount>256*1024)continue;const snap=wireSnapshot(r,c,null);if(c.socket.readyState===WebSocket.OPEN)c.socket.send(encode(snap,c.lastEventSeq));}reportSlow('broadcast',started,`${r.phase}/${r.tick}`);}
 const queue:{client:Client;command:ClientCommand}[]=[];
 wss.on('connection',(ws,req)=>{
   // Protocol errors (oversized/invalid frames) belong to this peer, not the authority process.
