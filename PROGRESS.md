@@ -6,11 +6,11 @@
 
 실제 측정: 30개 독립 학생 WS의 기능·ACK·전송량 통과, 서버 틱 성능 실패. 정상 1배속 전투 781.024초에서 호스트/학생 프레임·답안 응답·오류 검사 통과, 서버 틱 성능 실패. 표준 AI 40시드 중 38완주·목표 시간 9개로 분포 실패. 원본은 2시점이며 8개 독립 원화와 정밀 프레임별 소켓은 미완성이다. 상세 수치·실패·미실행은 TEST_REPORT.md와 인수 CSV에 보존한다.
 
-진행 중: 최종 첫 경기+3연속 재경기 브라우저 검증, 전체 개인 보존 ZIP/번들, 최종 공개 소스 브랜치 갱신. 공개 소스만 분리한 codex/class-clash-0.2-source의 실제 SHA는 artifacts/v02/publishing.json에 기록한다. 원격 main d060b535c49b63d219f851c431e0294e9dbcb157은 변경하지 않았다. PR 생성 연결은403으로 미생성.
+최종 브라우저 검증 PASS: 첫 경기+3연속 재경기 모두 실제 넥서스 파괴·30명 기록·7종 시상 완료. 경기 시간 402 / 803.7 / 581.1 / 427.65초, JS 오류0. 퀴즈 중 사망·새로고침·독립 성장·수동 정글 재출진을 매 경기 확인했다. 개인 보존 ZIP은 실제 파일 감사에서 원본365개 해시 일치·제외 대상 파일0개를 확인했다. 최종 ZIP/번들 파일과 SHA는 DELIVERY_REPORT.json 및 각 ZIP.json에 기록한다. 게임 기능 연결은 완료했으나 위 품질 실패·미구현·미실행을 포함하므로 0.2 전체 완료로 선언하지 않는다. 공개 소스만 분리한 codex/class-clash-0.2-source의 실제 SHA는 artifacts/v02/publishing.json에 기록한다. 원격 main d060b535c49b63d219f851c431e0294e9dbcb157은 변경하지 않았다. PR 생성 연결은403으로 미생성.
 
 공개 배포: BLOCKED_DEPLOYMENT. 권한 있는 지속 Node 호스트와 실제 HTTPS origin이 없고 선택 자산은 학교 내 비배포 용도다. 공개 플레이 URL은 null. 실제 학교 기기·외부 학생 네트워크 검증은 NOT_RUN.
 
-다음 실행 명령: npm run test:v02; node scripts/report-v02.mjs --check. 성능 또는 밸런스를 수정한 뒤에만 npm run test:load, npm run test:realtime, npm run test:soak:parallel을 다시 실행한다. 서로 동시에 실행하지 않는다. 13분 강제 승리나 테스트 임계값 완화로 실패를 감추지 않는다.
+다음 실행 명령: npm ci; npm run build; npm start. 현재 인수 상태 확인: node scripts/report-v02.mjs --check. 성능 또는 밸런스를 수정한 뒤에만 npm run test:load, npm run test:realtime, npm run test:soak:parallel을 다시 실행한다. 서로 동시에 실행하지 않는다. 13분 강제 승리나 테스트 임계값 완화로 실패를 감추지 않는다.
 
 ---
 

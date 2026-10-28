@@ -198,6 +198,33 @@
         "External HTTPS/WSS, public hosting and school physical-device checks remain NOT_RUN."
       ],
       "commandAckMeasurement": "Time from the student answer click to visible quiz feedback, including the durable server response; not raw transport RTT."
+    },
+    "browserFullFlow": {
+      "status": "PASS",
+      "runtimeCommit": "9f8601ec31ee1b84a670f52467855a2ca08da8a8",
+      "completedMatches": 4,
+      "consecutiveRematches": 3,
+      "battleSeconds": [
+        402,
+        803.7,
+        581.1,
+        427.65
+      ],
+      "playersPerMatch": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "awardsPerMatch": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "jsErrors": 0,
+      "evidence": "artifacts/v02/e2e/result.json",
+      "mode": "Actual local HTTP/WS and Chromium; test scheduler4x, not external deployment or 1x performance"
     }
   },
   "supportedConcurrentRooms": null,

@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-28T16:19:56.856Z",
+  "generatedAt": "2026-10-28T16:27:03.022Z",
   "counts": {
-    "PASS": 86,
-    "NOT_RUN": 108,
+    "PASS": 99,
     "NOT_APPLICABLE": 3,
+    "NOT_RUN": 95,
     "FAIL": 6,
     "BLOCKED": 11
   },
@@ -109,9 +109,9 @@
       "action": "비밀 파일·DB·학생 데이터 커밋 검사",
       "expected": "배포 소스/패키지에 포함되지 않는다",
       "method": "정적/파일 비교",
-      "status": "NOT_RUN",
-      "evidence": "",
-      "notes": "Full criterion has not been independently established by the recorded runs."
+      "status": "PASS",
+      "evidence": "artifacts/v02/local-package-audit.json; artifacts/v02/public-source-audit.json",
+      "notes": "Executed ZIP audit found0 excluded runtime/private-file paths and verified all365 locked source hashes. Public source audit found0 new binary/restricted paths. The school-use artwork ZIP remains private."
     },
     {
       "id": "RULE-01",
@@ -1773,9 +1773,9 @@
       "action": "사람1+AI29 경기",
       "expected": "사람 퀴즈/사망정비/재접속을 포함해 완주",
       "method": "로비+완주",
-      "status": "NOT_RUN",
-      "evidence": "",
-      "notes": "Full criterion has not been independently established by the recorded runs."
+      "status": "PASS",
+      "evidence": "artifacts/v02/e2e/result.json; tests/e2e/v02.spec.ts",
+      "notes": "Actual HTTP/WS+Chromium: first match+three complete rematches, death during quiz, refresh, independent growth and manual jungle redeploy. Test scheduler4x; not a performance run."
     },
     {
       "id": "UI-01",
@@ -1851,9 +1851,9 @@
       "action": "학생 퀴즈 동시노출",
       "expected": "본문·보기·제출이 전투와 함께 작동",
       "method": "브라우저 시각·입력",
-      "status": "NOT_RUN",
-      "evidence": "",
-      "notes": "Full criterion has not been independently established by the recorded runs."
+      "status": "PASS",
+      "evidence": "artifacts/v02/e2e/result.json; tests/e2e/v02.spec.ts",
+      "notes": "Actual HTTP/WS+Chromium: first match+three complete rematches, death during quiz, refresh, independent growth and manual jungle redeploy. Test scheduler4x; not a performance run."
     },
     {
       "id": "UI-07",
@@ -1864,9 +1864,9 @@
       "action": "사망중 퀴즈입력",
       "expected": "강제모달이 선택을 없애지 않음",
       "method": "브라우저 시각·입력",
-      "status": "NOT_RUN",
-      "evidence": "",
-      "notes": "Full criterion has not been independently established by the recorded runs."
+      "status": "PASS",
+      "evidence": "artifacts/v02/e2e/result.json; tests/e2e/v02.spec.ts",
+      "notes": "Actual HTTP/WS+Chromium: first match+three complete rematches, death during quiz, refresh, independent growth and manual jungle redeploy. Test scheduler4x; not a performance run."
     },
     {
       "id": "UI-08",
@@ -1877,9 +1877,9 @@
       "action": "정비 카드/비용/라인/출정",
       "expected": "정보가 명확하고 터치 영역 확보",
       "method": "브라우저 시각·입력",
-      "status": "NOT_RUN",
-      "evidence": "",
-      "notes": "Full criterion has not been independently established by the recorded runs."
+      "status": "PASS",
+      "evidence": "artifacts/v02/e2e/result.json; tests/e2e/v02.spec.ts",
+      "notes": "Actual HTTP/WS+Chromium: first match+three complete rematches, death during quiz, refresh, independent growth and manual jungle redeploy. Test scheduler4x; not a performance run."
     },
     {
       "id": "UI-09",
@@ -1942,9 +1942,9 @@
       "action": "시상식 탱커/지원/학습 성과",
       "expected": "실제 유효기록을 구분해 표시",
       "method": "브라우저 시각·입력",
-      "status": "NOT_RUN",
-      "evidence": "",
-      "notes": "Full criterion has not been independently established by the recorded runs."
+      "status": "PASS",
+      "evidence": "artifacts/v02/e2e/result.json; tests/e2e/v02.spec.ts",
+      "notes": "Actual HTTP/WS+Chromium: first match+three complete rematches, death during quiz, refresh, independent growth and manual jungle redeploy. Test scheduler4x; not a performance run."
     },
     {
       "id": "UI-14",
@@ -1981,9 +1981,9 @@
       "action": "학생새로고침",
       "expected": "동일학생 지갑/창고/퀴즈/영웅 복구",
       "method": "장애주입+독립클라이언트",
-      "status": "NOT_RUN",
-      "evidence": "artifacts/v02/server-acceptance-tests.log; tests/server.test.ts",
-      "notes": "WS reconnect/restart restores wallet+quiz; full browser refresh including active hero/warehouse left to root evidence."
+      "status": "PASS",
+      "evidence": "artifacts/v02/e2e/result.json; tests/e2e/v02.spec.ts",
+      "notes": "Actual HTTP/WS+Chromium: first match+three complete rematches, death during quiz, refresh, independent growth and manual jungle redeploy. Test scheduler4x; not a performance run."
     },
     {
       "id": "NET-03",
@@ -2137,9 +2137,9 @@
       "action": "독립3연속재경기",
       "expected": "이전matchId 사건·사망·구독 잔류없음",
       "method": "장애주입+독립클라이언트",
-      "status": "NOT_RUN",
-      "evidence": "",
-      "notes": "No complete current execution evidence for every part of this acceptance row. Root may merge additional browser/engine evidence."
+      "status": "PASS",
+      "evidence": "artifacts/v02/e2e/result.json; tests/e2e/v02.spec.ts",
+      "notes": "Actual HTTP/WS+Chromium: first match+three complete rematches, death during quiz, refresh, independent growth and manual jungle redeploy. Test scheduler4x; not a performance run."
     },
     {
       "id": "NET-15",
@@ -2488,9 +2488,9 @@
       "action": "전체수정본·자산·설정",
       "expected": "새clone에서 실행가능·원본출처 포함",
       "method": "결과물 확인",
-      "status": "NOT_RUN",
-      "evidence": "",
-      "notes": "Full criterion has not been independently established by the recorded runs."
+      "status": "PASS",
+      "evidence": "artifacts/v02/fresh-install.json; README.md; assets/art-source/source-lock.json",
+      "notes": "Complete local approved-art project; fresh clone/install/build and runtime asset identity verified. Public source omits school-only artwork."
     },
     {
       "id": "OUT-02",
@@ -2501,9 +2501,9 @@
       "action": "변경로그/기준캡처",
       "expected": "AI/수치/아트 수정과 보존구간 추적가능",
       "method": "결과물 확인",
-      "status": "NOT_RUN",
-      "evidence": "",
-      "notes": "Full criterion has not been independently established by the recorded runs."
+      "status": "PASS",
+      "evidence": "ENGINE_CHANGELOG.md; BALANCE_CHANGELOG.md; BASELINE_AUDIT.md; artifacts/v02/art/02-source-pipeline-comparison.png",
+      "notes": "Changes and preserved source separated; rejected balance candidates and baseline evidence retained."
     },
     {
       "id": "OUT-03",
@@ -2514,9 +2514,9 @@
       "action": "인수CSV·TEST_REPORT",
       "expected": "각실행결과·명령·증거·미실행 기록",
       "method": "결과물 확인",
-      "status": "NOT_RUN",
-      "evidence": "",
-      "notes": "Full criterion has not been independently established by the recorded runs."
+      "status": "PASS",
+      "evidence": "TEST_REPORT.md; docs/class-clash-0.2/tests/ACCEPTANCE.results.csv",
+      "notes": "Executed results, failures, unrun checks and commands recorded separately. This row confirms delivery of the report, not universal acceptance."
     },
     {
       "id": "OUT-04",
@@ -2540,9 +2540,9 @@
       "action": "공개배포보고",
       "expected": "실제URL·커밋·해시·외부확인·미검증 구분",
       "method": "결과물 확인",
-      "status": "NOT_RUN",
-      "evidence": "",
-      "notes": "Full criterion has not been independently established by the recorded runs."
+      "status": "PASS",
+      "evidence": "DEPLOYMENT_REPORT.json; DEPLOYMENT.md",
+      "notes": "Deployment report explicitly BLOCKED_DEPLOYMENT, public URL null, hosting/assets prerequisites and unrun external checks. No deployed-server success claimed."
     },
     {
       "id": "OUT-06",
@@ -2553,9 +2553,9 @@
       "action": "최종완료 문구",
       "expected": "구현/GitHub/배포/학교실기기를 별도로 판정",
       "method": "결과물 확인",
-      "status": "NOT_RUN",
-      "evidence": "",
-      "notes": "Full criterion has not been independently established by the recorded runs."
+      "status": "PASS",
+      "evidence": "TEST_REPORT.md; PROGRESS.md; DEPLOYMENT_REPORT.json",
+      "notes": "Functional integration, unmet quality targets, GitHub branch publication, blocked public deployment and school devices are separate states."
     },
     {
       "id": "HERO-01",

@@ -1,6 +1,6 @@
 # Class Clash 0.2 검증 보고서
 
-기록일: 2026. 10. 29. 오전 1:19:57 KST. 검증 런타임 커밋: **9f8601ec31ee1b84a670f52467855a2ca08da8a8**. 원본 자산 manifest SHA-256: **bba2f9090927e34c8c670e0d8ccc681603f07d22accffbd160de4670485f9d09**.
+기록일: 2026. 10. 29. 오전 1:27:03 KST. 검증 런타임 커밋: **9f8601ec31ee1b84a670f52467855a2ca08da8a8**. 원본 자산 manifest SHA-256: **bba2f9090927e34c8c670e0d8ccc681603f07d22accffbd160de4670485f9d09**.
 
 최종 사용자 확정은 **이 채팅의 LOL 3라인 + 정글**과 18챔피언의 외형·native 애니메이션이다. 첨부 문서의 2라인 조항을 대체한 근거는 docs/class-clash-0.2/00_USER_OVERRIDES.md에 있다. 실행 가능한 통합본이며, **0.2 품질 인수를 모두 통과한 상태는 아니다.** 실패·미실행·공개 배포를 기능 구현과 구별한다.
 
@@ -15,11 +15,11 @@
 |새 설치 복제본|PASS|npm ci로 69개 패키지를 새로 설치함(기존 node_modules 복사 없음). 최종 SHA의 build/health와 자산 50개의 해시가 일치함. 이전 a1454cb에서 실제 2AI의 개막·HIT·Vite 브라우저도 확인함. fresh-install.json에서 검증 시점을 구별함|
 |18챔피언·36스킬|부분 PASS|서버 스킬 회귀·native 재생·이미지 누락 복구 PASS. 8개 독립 원화·정밀 손 소켓·전체 시각 조합은 아래 제한 참조|
 |모바일·태블릿 UI|PASS|390×844/1024×768에서 실제 퀴즈 4보기·제출 ACK, 가로 잘림, zoom/mute/volume, host 관찰 패널 9/9. artifacts/v02/ui/responsive-report.json|
-|사람 1 + AI 29·3연속 재경기|NOT_RUN|최종 연속 4경기 검증 대기. 이전에 다른 부하와 함께 실행한 시험은 첫 경기만 완료했고, 두 번째 경기의 707 게임초 시점에 실제 시간 기준 대기 한도를 초과하여 FAIL로 기록했다.|
+|사람 1 + AI 29·3연속 재경기|PASS|4회 실제 넥서스 파괴, 3회 연속 재경기, 경기 초: 402, 803.7, 581.1, 427.65. JS 오류 0.|
 |독립 학생 30 + host 1|기능 PASS / 성능 FAIL|개막 답안 600개, 30건 동시 구매, 30건 중복 재전송, 재접속, 1배속 30초 실전. ACK p95 200.21ms; wire 최대 92.72KiB/s. full tick p95/p99 46.68/73.00ms. artifacts/v02/load-30clients-isolated.json|
 |실제 1배속 13분|FAIL|호스트 프레임 p95/p99 16.80/33.30ms, 학생 16.70/16.80ms, 답안 응답 p95 383.28ms. 서버 전체 틱(DB·방송 포함)의 샘플별 p95/p99 최댓값 58.19/186.42ms(72개 샘플). 전투 중 실제 경과 시간 781.0초.|
 |표준 30AI·40시드|FAIL|38/40 완주, 9/40이 600~780초, 2개는 900초 관찰 시 미종료. artifacts/v02-final2-results.json|
-|GitHub 반영|브랜치 PUSH 확인|f4ceb668350389a290be2e09c5ee54bd8e14bc9e / codex/class-clash-0.2-source. 원본 이미지·영상·private 이력 제외. main은 d060b53 그대로, PR 미생성(연결 403)|
+|GitHub 반영|검증된 코드 커밋|f55307f62ddef53d9cd87fe62a5b707d0ea2be5e / codex/class-clash-0.2-source. 원본 이미지·영상·private 이력 제외. main은 d060b53 그대로, PR 미생성(연결 403)|
 |공개 배포|BLOCKED_DEPLOYMENT|publicPlayUrl=null. 권한 있는 지속 실행 Node 호스트와 실제 HTTPS origin 부재. 로컬 교육용 비배포 자산. DEPLOYMENT_REPORT.json|
 |학교 실기기 / 외부 학생망|NOT_RUN|개발 노트북의 실제 D3D11 브라우저와 loopback에서 검증. 실제 학교 30기기·무선망·외부 HTTPS/WSS는 미실행|
 
@@ -51,7 +51,7 @@
 
 ## 인수·공개범위
 
-214개 원문은 docs/class-clash-0.2/tests/ACCEPTANCE.csv에 보존하고, 실제 판정은 ACCEPTANCE.results.csv/json에 별도로 쓴다. 현재 집계: {"PASS":86,"NOT_RUN":108,"NOT_APPLICABLE":3,"FAIL":6,"BLOCKED":11}. 불완전하거나 증거가 없는 항목은 NOT_RUN이며, 앞선 실패 로그도 보존한다.
+214개 원문은 docs/class-clash-0.2/tests/ACCEPTANCE.csv에 보존하고, 실제 판정은 ACCEPTANCE.results.csv/json에 별도로 쓴다. 현재 집계: {"PASS":99,"NOT_APPLICABLE":3,"NOT_RUN":95,"FAIL":6,"BLOCKED":11}. 불완전하거나 증거가 없는 항목은 NOT_RUN이며, 앞선 실패 로그도 보존한다.
 
 공개 소스는 이미지·원본 아카이브·영상·DB·비밀 파일을 제외한 별도 main 기반 브랜치다. 공개 소스만 복제하면 승인된 로컬 아트 묶음을 복원해야 하며, test:source는 전체 아트·브라우저 시험의 대체물이 아니다. 저장소 주소는 공개 플레이 주소가 아니다. PR 생성 커넥터의 403과 브라우저 도구 초기화 실패를 기록했다. 인증 정보를 추출하는 우회는 자동 승인 검토에서 거절되어 실행하지 않았다. 일부 로그만으로 완료 PASS 범위를 넓히는 보고서 변경 역시 실행하지 않았다.
 

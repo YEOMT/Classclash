@@ -10,11 +10,11 @@
     },
     {
       "file": "docs/class-clash-0.2/tests/ACCEPTANCE.results.csv",
-      "sha256": "fe6624982643200157d95a2cf676781928e38731e196d8e4293ac2bb7ab4d42c"
+      "sha256": "34fe8ffc08ec25a33acbaee40fd7eff8760a01a90bef072f1d2a4b618c4a8639"
     },
     {
       "file": "docs/class-clash-0.2/tests/ACCEPTANCE.results.json",
-      "sha256": "fa0230b1761dbf2eed9d5b9e256cfaab3303f81d2c531d3467071ef0e899df12"
+      "sha256": "f8815dfdccf8d1f9b59cd0a5acc08f1b17c1121f3ad191ff39a3b02fb805a3d0"
     },
     {
       "file": "scripts/verify-local-package.ps1",
@@ -66,7 +66,7 @@
     },
     {
       "file": "DEPLOYMENT_REPORT.json",
-      "sha256": "a2cb46c32f5156d6ce5254155f7c90d65b31aa251136a17a9b222faf593ca211"
+      "sha256": "c4175a9c8789c76a1a46bb9c5151555080b93fdfe4dc050cf0ca1aff103ae555"
     },
     {
       "file": "Dockerfile",
@@ -78,7 +78,7 @@
     },
     {
       "file": "PROGRESS.md",
-      "sha256": "3ab9fe39179934939187cb32c36db56bdc01a4fafd421153ee8bfa8e14d3712a"
+      "sha256": "fbf9d7469fab8bf3f7031edb5a17a11f5eafdf8b9d27bcb79fd1a30973797e4a"
     },
     {
       "file": "README.md",
@@ -86,7 +86,7 @@
     },
     {
       "file": "TEST_REPORT.md",
-      "sha256": "ff855c612e8ecca09cc553f58a701841e354c488d995bf2ed8df39b783aa1946"
+      "sha256": "8bede844cce5004ad883c833970cd765706a44595a073a0791e11730fdb3e4e4"
     },
     {
       "file": "assets/art-source/source-lock.json",
