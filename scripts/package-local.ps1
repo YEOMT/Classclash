@@ -13,7 +13,7 @@ Add-Type -AssemblyName System.IO.Compression
 $stream = [IO.File]::Open($outputPath,[IO.FileMode]::CreateNew)
 $zip = [IO.Compression.ZipArchive]::new($stream,[IO.Compression.ZipArchiveMode]::Create)
 try {
- foreach ($relative in $files) { $absolute = Join-Path $projectRoot $relative; $entry = $zip.CreateEntry($relative.Replace('\','/'),[IO.Compression.CompressionLevel]::Optimal); $dest = $entry.Open(); $input = [IO.File]::OpenRead($absolute); try { $input.CopyTo($dest) } finally { $input.Dispose(); $dest.Dispose() } }
+ foreach ($relative in $files) { $absolute = Join-Path $projectRoot $relative; $entry = $zip.CreateEntry($relative.Replace('\','/'),[IO.Compression.CompressionLevel]::Optimal); $dest = $entry.Open(); $input = [IO.File]::Open($absolute,[IO.FileMode]::Open,[IO.FileAccess]::Read,[IO.FileShare]::ReadWrite); try { $input.CopyTo($dest) } finally { $input.Dispose(); $dest.Dispose() } }
 } finally { $zip.Dispose(); $stream.Dispose() }
 $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $outputPath).Hash.ToLowerInvariant()
 $result = [ordered]@{ path=$outputPath; files=$files.Count; bytes=(Get-Item -LiteralPath $outputPath).Length; sha256=$hash; purpose='Private school-use full source/assets and local evidence; no database, secrets or dependencies'; }

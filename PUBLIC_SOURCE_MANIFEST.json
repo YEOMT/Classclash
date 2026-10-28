@@ -746,7 +746,7 @@
     },
     {
       "file": "scripts/package-local.ps1",
-      "sha256": "b35cc6e08b2c508f38e3cf6628b474fd48116909bf60b7e5e47139c8924f3dcc"
+      "sha256": "dfcc8830af088ff682b2da4faa273d56e0612085479d0f843f13d6c173876768"
     },
     {
       "file": "scripts/render-baseline.mjs",
