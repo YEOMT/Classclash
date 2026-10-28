@@ -1,0 +1,44 @@
+{
+  "kind": "OBSERVED_REMOTE_BASELINE_NOT_LIVE_TEST",
+  "checkedDate": "2026-10-28",
+  "repo": "YEOMT/Classclash",
+  "commit": "d060b535c49b63d219f851c431e0294e9dbcb157",
+  "localLatestNotInspected": true,
+  "publicUrlNotConfirmed": true,
+  "confirmedPaths": [
+    "package.json",
+    "README.md",
+    "PROGRESS.md",
+    "src/shared/balance.ts",
+    "docs/specification/balance.defaults.json",
+    "src/client/renderer.ts",
+    "src/server/combat.ts",
+    "src/shared/heroes.ts"
+  ],
+  "reportedRisks": [
+    {
+      "id": "B01",
+      "fact": "build invokes scripts/build-sprites.mjs; pretest invokes build",
+      "source": "package.json",
+      "consequence": "Edited PNG may be overwritten unless local pipeline changed; inspect before build."
+    },
+    {
+      "id": "B02",
+      "fact": "Renderer observed with fixed 288 frames and 64x64 cell loading",
+      "source": "src/client/renderer.ts:1-65",
+      "consequence": "Data-driven atlas contract required for new art."
+    },
+    {
+      "id": "B03",
+      "fact": "Prior report records tick p95 57.1ms and p99 132.07ms",
+      "source": "PROGRESS.md",
+      "consequence": "Historical reported failure, not a new measurement."
+    },
+    {
+      "id": "B04",
+      "fact": "Public deployment and school hardware tests reported not run",
+      "source": "PROGRESS.md",
+      "consequence": "Do not claim public URL or classroom validation without new evidence."
+    }
+  ]
+}

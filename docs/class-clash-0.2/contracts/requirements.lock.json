@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "1.0",
+  "documentVersion": "0.2-spec-2026-10-28",
+  "kind": "DEVELOPMENT_CONTRACT_NOT_GAME_CONFIGURATION",
+  "repository": "YEOMT/Classclash",
+  "observedRemoteCommit": "d060b535c49b63d219f851c431e0294e9dbcb157",
+  "localWorktreeMayBeNewer": true,
+  "userLocked": {
+    "maxPlayersIncludingBots": 30,
+    "teamCount": 2,
+    "laneIds": [
+      "TOP",
+      "BOTTOM"
+    ],
+    "activeHeroesPerPlayer": 1,
+    "structuresPerTeam": {
+      "nexus": 1,
+      "nexusGuards": 2,
+      "outerAndInnerTowersPerLane": 2
+    },
+    "structuresTotal": {
+      "towers": 12,
+      "nexuses": 2
+    },
+    "nexusLocations": "LEFT_AND_RIGHT_EDGES",
+    "lanesMergeInFrontOfGuards": true,
+    "wideLanes": true,
+    "quiz": {
+      "openingQuestionCount": 20,
+      "battleSetQuestionCount": 10,
+      "cooldownSecondsAfterFinalAcceptedAnswer": 30
+    },
+    "minionsPerTeamPerLane": {
+      "melee": 3,
+      "ranged": 4,
+      "firstWaveAtBattleSecond": 0
+    },
+    "summon": {
+      "normalCost": 2,
+      "premiumCost": 10,
+      "normalLegendProbability": 0,
+      "premiumLegendProbability": 0.1
+    },
+    "legends": [
+      "rune_mage",
+      "ancient_one",
+      "guardian_spirit"
+    ],
+    "whileHeroActive": {
+      "allow": [
+        "SPECTATE",
+        "ANSWER_QUIZ",
+        "READ_ONLY_INFORMATION"
+      ],
+      "reject": [
+        "DRAW_HERO",
+        "LEVEL_UP",
+        "ENHANCE",
+        "SWAP_HERO",
+        "CHANGE_LANE",
+        "COMMAND_MOVE",
+        "COMMAND_TARGET",
+        "COMMAND_SKILL",
+        "RECALL",
+        "CONFIRM_NEXT_DEPLOYMENT"
+      ]
+    },
+    "maintenanceOnly": [
+      "DRAW_HERO",
+      "LEVEL_UP",
+      "ENHANCE",
+      "SELECT_HERO",
+      "SELECT_LANE",
+      "DEPLOY"
+    ],
+    "allowQuizDuringMaintenance": true,
+    "automaticRedeployHuman": false,
+    "growthTransfersBetweenHeroes": false,
+    "skillsAtFinalLevel": 2,
+    "winCondition": "DESTROY_ENEMY_NEXUS",
+    "targetBattleSeconds": [
+      600,
+      780
+    ],
+    "forcedTimeWinner": false,
+    "host": {
+      "fullMapAlwaysVisible": true,
+      "topScoreboard": true,
+      "showAllSemanticCombatEffects": true,
+      "autoCameraCut": false
+    },
+    "studentCamera": "FOLLOW_OWN_HERO",
+    "lobbyBotsRequired": true,
+    "awardsRequired": true,
+    "rematchRequired": true
+  },
+  "existingBaselineToPreserveUntilValidatedChange": {
+    "runtimeNodeMajor": 24,
+    "tickHz": 20,
+    "aiHz": 5,
+    "snapshotHz": 10,
+    "heroCount": 18,
+    "skillCount": 36,
+    "normalRarityWeights": {
+      "COMMON": 0.8,
+      "ADVANCED": 0.2,
+      "LEGENDARY": 0
+    },
+    "premiumRarityWeights": {
+      "COMMON": 0.3,
+      "ADVANCED": 0.6,
+      "LEGENDARY": 0.1
+    },
+    "premiumPools": [
+      "ALL",
+      "tank",
+      "melee",
+      "mage"
+    ],
+    "normalPools": [
+      "ALL",
+      "tank",
+      "melee",
+      "ranged",
+      "mage",
+      "support"
+    ],
+    "correctAnswerCurrency": 1,
+    "starterCommonChoices": 1,
+    "killCurrency": 0,
+    "inventoryLimit": 120,
+    "maxLevel": 5,
+    "skillUnlockLevels": [
+      2,
+      5
+    ],
+    "levelUpCosts": [
+      2,
+      3,
+      4,
+      6
+    ],
+    "maxEnhancementsTotal": 3,
+    "enhancementCosts": [
+      2,
+      4,
+      6
+    ],
+    "minimumDeadWaitSeconds": 20,
+    "waveIntervalSeconds": 20,
+    "worldSize": [
+      1536,
+      768
+    ],
+    "laneWidth": 144,
+    "mergeWidth": 240,
+    "structureHP": {
+      "OUTER": 9000,
+      "INNER": 12000,
+      "GUARD": 9000,
+      "NEXUS": 12000
+    },
+    "minionStructureMultipliers": [
+      {
+        "from": 0,
+        "multiplier": 1
+      },
+      {
+        "from": 480,
+        "multiplier": 2
+      },
+      {
+        "from": 600,
+        "multiplier": 8
+      },
+      {
+        "from": 720,
+        "multiplier": 16
+      }
+    ],
+    "duplicates": "INDEPENDENT_OWNED_HERO_INSTANCES",
+    "sameTickBothNexusDestroyed": "DRAW"
+  },
+  "notAuthorizedByThisContract": [
+    "NEW_PAID_SERVICE_PURCHASE",
+    "DOMAIN_PURCHASE",
+    "FORCE_PUSH",
+    "DISCARD_LOCAL_ART",
+    "COPY_UNLICENSED_COMMERCIAL_ASSETS"
+  ],
+  "delivery": {
+    "publicUrlRequiredWhenAuthorizedDeploymentPossible": true,
+    "unknownPublicUrl": null,
+    "noDeploymentCredentialsStatus": "BLOCKED_DEPLOYMENT"
+  }
+}

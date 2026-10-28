@@ -1,0 +1,260 @@
+{
+  "id": "monk",
+  "name": "수도승",
+  "baseType": "elder",
+  "reason": "elder의 낮은 어깨·회색 눈썹·얼굴을 재사용. 황토 장삼과 염주, 긴 봉으로 노련한 수도승 표현.",
+  "sourceRect": [
+    24,
+    0,
+    24,
+    32
+  ],
+  "placement": [
+    12,
+    12
+  ],
+  "sourceKey": "human",
+  "source": {
+    "author": "Svetlana Kushnariova (Cabbit), diamonddmgirl, Jordan Irwin (AntumDeluge)",
+    "page": "https://opengameart.org/content/human-bases-cabbit-rework",
+    "archive": "assets/vendor/cc0-research/cabbit-rework/human_20220627.zip",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "originalFile": "assets/vendor/cc0-research/cabbit-rework/extracted/24x32/SWEN_elder.png",
+  "originalSha256": "699a2b617e14aa540322836299f478d51d2aaad9dc1601bbd048040edf1b3e3c",
+  "image": "monk.png",
+  "beforeImage": "monk-before.png",
+  "sourceImage": "monk-source.png",
+  "canvas": [
+    48,
+    48
+  ],
+  "pivot": [
+    24,
+    43
+  ],
+  "bounds": [
+    17,
+    15,
+    37,
+    45
+  ],
+  "opaqueColors": 17,
+  "baseOpaquePixels": 220,
+  "unchangedVisibleSourcePixels": 104,
+  "protectedSourcePixels": 52,
+  "protectedPixelsIntact": true,
+  "protectedCoordinates": [
+    [
+      18,
+      24
+    ],
+    [
+      18,
+      25
+    ],
+    [
+      19,
+      24
+    ],
+    [
+      19,
+      25
+    ],
+    [
+      19,
+      26
+    ],
+    [
+      19,
+      27
+    ],
+    [
+      20,
+      24
+    ],
+    [
+      20,
+      25
+    ],
+    [
+      20,
+      26
+    ],
+    [
+      20,
+      27
+    ],
+    [
+      20,
+      28
+    ],
+    [
+      21,
+      24
+    ],
+    [
+      21,
+      25
+    ],
+    [
+      21,
+      26
+    ],
+    [
+      21,
+      27
+    ],
+    [
+      21,
+      28
+    ],
+    [
+      22,
+      24
+    ],
+    [
+      22,
+      25
+    ],
+    [
+      22,
+      26
+    ],
+    [
+      22,
+      27
+    ],
+    [
+      22,
+      28
+    ],
+    [
+      23,
+      24
+    ],
+    [
+      23,
+      25
+    ],
+    [
+      23,
+      26
+    ],
+    [
+      23,
+      27
+    ],
+    [
+      23,
+      28
+    ],
+    [
+      24,
+      24
+    ],
+    [
+      24,
+      25
+    ],
+    [
+      24,
+      26
+    ],
+    [
+      24,
+      27
+    ],
+    [
+      24,
+      28
+    ],
+    [
+      25,
+      24
+    ],
+    [
+      25,
+      25
+    ],
+    [
+      25,
+      26
+    ],
+    [
+      25,
+      27
+    ],
+    [
+      25,
+      28
+    ],
+    [
+      26,
+      24
+    ],
+    [
+      26,
+      25
+    ],
+    [
+      26,
+      26
+    ],
+    [
+      26,
+      27
+    ],
+    [
+      26,
+      28
+    ],
+    [
+      27,
+      24
+    ],
+    [
+      27,
+      25
+    ],
+    [
+      27,
+      26
+    ],
+    [
+      27,
+      27
+    ],
+    [
+      27,
+      28
+    ],
+    [
+      28,
+      24
+    ],
+    [
+      28,
+      25
+    ],
+    [
+      28,
+      26
+    ],
+    [
+      28,
+      27
+    ],
+    [
+      29,
+      24
+    ],
+    [
+      29,
+      25
+    ]
+  ],
+  "reviewStatus": "candidate—not quality-approved",
+  "animationFrames": 1
+}

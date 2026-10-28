@@ -1,0 +1,5 @@
+# The approved source lock covers exact bytes, including JSON/source line endings.
+assets/source/** -text
+public/assets/** -text
+assets/art-source/source-lock.json -text
+src/generated/** text eol=lf

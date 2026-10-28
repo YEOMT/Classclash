@@ -1,0 +1,174 @@
+{
+  "revision": "lol-jungle-20261027",
+  "source": "User supplied map_free.zip and drive-download-20261027T004544Z-1-001.zip",
+  "rights": "Attached assets are imported unchanged. Mod author metadata is preserved; no new license is inferred. Existing Class Clash roles and two skills are retained.",
+  "map": {
+    "file": "public/assets/maps/lol/background.png",
+    "source": "map_free.zip/aseprite_resources/ingame/5v5/LOL/background_5v5.png",
+    "sha256": "9a8a99b47f9dae58f1e19fabdd8f26d3b56b6adf1500074ffdba5334133b1c02"
+  },
+  "champions": [
+    {
+      "id": "paladin",
+      "name": "레오나",
+      "author": "Wythm + Codex",
+      "mod": "leona_mod",
+      "archive": "package2",
+      "file": "public/assets/champions/paladin.png",
+      "sha256": "7444e1bf7194a0aac6e24c4419266a1894e82fed318745bafd1192c3d3772b74"
+    },
+    {
+      "id": "brawler",
+      "name": "바이",
+      "author": "Yuuroo",
+      "mod": "cf_vi",
+      "archive": "package3",
+      "file": "public/assets/champions/brawler.png",
+      "sha256": "e5a1d15f6b0a8e34086ce425189a0ce3dd7d767b56a81dce3de81cda7851f9d7"
+    },
+    {
+      "id": "swordsman",
+      "name": "아트록스",
+      "author": "Yuuroo",
+      "mod": "cf_aatrox",
+      "archive": "package5",
+      "file": "public/assets/champions/swordsman.png",
+      "sha256": "28c52c991be34d079710f5ca5769fd252c608bd7350304d6b887935b2c04a800"
+    },
+    {
+      "id": "archer",
+      "name": "애쉬",
+      "author": "Yuuroo",
+      "mod": "cf_ashe",
+      "archive": "champions",
+      "file": "public/assets/champions/archer.png",
+      "sha256": "cb87374e81602406ad895554f578f32ed1e35590f22cdcb905356fe757082ceb"
+    },
+    {
+      "id": "pyromancer",
+      "name": "애니",
+      "author": "Yuuroo",
+      "mod": "cf_annie",
+      "archive": "champions",
+      "file": "public/assets/champions/pyromancer.png",
+      "sha256": "2532f7a9c815f922994af38ba88aeeb667ffcc919f001112c0c0b0d3950ff1d5"
+    },
+    {
+      "id": "priest",
+      "name": "소라카",
+      "author": "Wythm",
+      "mod": "wythm_soraka",
+      "archive": "package4",
+      "file": "public/assets/champions/priest.png",
+      "sha256": "f0d226d079a56510fc73da329963bfcd38bb24eb2709d496145559d21f4b5220"
+    },
+    {
+      "id": "barbarian",
+      "name": "올라프",
+      "author": "Yuuroo",
+      "mod": "cf_olaf",
+      "archive": "package5",
+      "file": "public/assets/champions/barbarian.png",
+      "sha256": "ec0a5459a389a7e0610b19bdb5b956be66fc78d0749acab1180058ea0896ff24"
+    },
+    {
+      "id": "crossbowman",
+      "name": "케이틀린",
+      "author": "Yuuroo",
+      "mod": "cf_caitlyn",
+      "archive": "package3",
+      "file": "public/assets/champions/crossbowman.png",
+      "sha256": "4192a6e72c70ac8356ea6523c5d797af51b2f2a3bd5b8f574a26b9121a31002f"
+    },
+    {
+      "id": "cryomancer",
+      "name": "리산드라",
+      "author": "Your Name",
+      "mod": "cf_lissandra",
+      "archive": "package3",
+      "file": "public/assets/champions/cryomancer.png",
+      "sha256": "f5c1ef8ffdfa9d3e45c36683484aa1c22fec05f0c1851d5111ba4510ab74caf7"
+    },
+    {
+      "id": "monk",
+      "name": "오공",
+      "author": "Yuuroo",
+      "mod": "cf_wukong",
+      "archive": "package3",
+      "file": "public/assets/champions/monk.png",
+      "sha256": "b2b74a63f813951bee42b1d9a4342e58471ecb957341d4354ab45d166695bf97"
+    },
+    {
+      "id": "iron_knight",
+      "name": "세주아니",
+      "author": "Yuuroo",
+      "mod": "cf_sejuani",
+      "archive": "package5",
+      "file": "public/assets/champions/iron_knight.png",
+      "sha256": "02707eaf0e9db69af62e809fe8f745608285c581f561d8140c2358f7690cc60c"
+    },
+    {
+      "id": "assassin",
+      "name": "파이크",
+      "author": "Yuuroo",
+      "mod": "cf_pyke",
+      "archive": "package6",
+      "file": "public/assets/champions/assassin.png",
+      "sha256": "c120e02accc4ae8fade7a2ba8aa08e2dd4c4213516240d656d3d5fd5982dc209"
+    },
+    {
+      "id": "stormcaller",
+      "name": "케넨",
+      "author": "Wythm1",
+      "mod": "wythm_kennen",
+      "archive": "package4",
+      "file": "public/assets/champions/stormcaller.png",
+      "sha256": "65c4625077c6cb5c890eb412a346e5f8719fbba7e9e78d796569e8e04fa3a0c6"
+    },
+    {
+      "id": "guardian_golem",
+      "name": "람머스",
+      "author": "Wythm",
+      "mod": "wythm_rammus",
+      "archive": "package4",
+      "file": "public/assets/champions/guardian_golem.png",
+      "sha256": "02ca2a627e747bbc8121941c5957b795e21c47568cf8bc4a96b4f74cb2019f53"
+    },
+    {
+      "id": "bard",
+      "name": "소나",
+      "author": "Yuuroo",
+      "mod": "cf_sona",
+      "archive": "package6",
+      "file": "public/assets/champions/bard.png",
+      "sha256": "95649626da479b3c23141c5914f336f55bf743ddadd1f3c6898e93290e284e8f"
+    },
+    {
+      "id": "rune_mage",
+      "name": "라이즈",
+      "author": "Yuuroo",
+      "mod": "cf_ryze",
+      "archive": "package5",
+      "file": "public/assets/champions/rune_mage.png",
+      "sha256": "a3d80835c2b409c0145f669057a811ad7cb0bcef994fa8e39a4e0aed68694fce"
+    },
+    {
+      "id": "ancient_one",
+      "name": "초가스",
+      "author": "Yuuroo",
+      "mod": "cf_cho_gath",
+      "archive": "package6",
+      "file": "public/assets/champions/ancient_one.png",
+      "sha256": "1bc4785359359adc1f5792142fc7f876d725f341ecf293ebce4c8094383eba6a"
+    },
+    {
+      "id": "guardian_spirit",
+      "name": "아이번",
+      "author": "Yuuroo",
+      "mod": "cf_ivern",
+      "archive": "package6",
+      "file": "public/assets/champions/guardian_spirit.png",
+      "sha256": "2ff81c4720ed8e0ca1eabbd83c26782a117e8164bef46aa75b74605b4ea425e0"
+    }
+  ]
+}

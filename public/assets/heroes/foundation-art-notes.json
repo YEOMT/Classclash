@@ -1,0 +1,42 @@
+{
+  "title": "Foundry Three / Original three-hero visual rework",
+  "original": true,
+  "nativePixel": 1,
+  "cell": [
+    64,
+    64
+  ],
+  "pivot": [
+    32,
+    52
+  ],
+  "directions": 8,
+  "ids": [
+    "paladin",
+    "brawler",
+    "pyromancer"
+  ],
+  "techniques": [
+    "hand-authored material clusters",
+    "selective 1px dark contours",
+    "five separately drawn facing heads plus mirrored west",
+    "articulated upper/forearm and legs",
+    "per-action anticipation/contact/follow-through keyframes",
+    "nearest-neighbour offline part rotation"
+  ],
+  "design": {
+    "paladin": "Ivory sallet, brass crest, sea-glass heraldic shield, plum cape, flanged ceremonial mace",
+    "brawler": "Amber skin, tousled walnut hair, long vermilion headband, wrapped iron-red fists, jade trousers, bare feet",
+    "pyromancer": "Cinder-red ceremonial headpiece, auburn bob, split garnet robe with gold inlay, forked ember staff"
+  },
+  "actionContacts": {
+    "basicAttack": 2,
+    "skill1": 2,
+    "skill2": 3,
+    "brawlerFlurry": [
+      2,
+      3,
+      4
+    ]
+  }
+}

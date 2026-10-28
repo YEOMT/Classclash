@@ -1,0 +1,66 @@
+services:
+  game:
+    image: classclash:${COMMIT_SHA:?Set the verified commit SHA}
+    build:
+      context: ..
+      args:
+        COMMIT_SHA: ${COMMIT_SHA}
+    restart: unless-stopped
+    stop_grace_period: 15s
+    init: true
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: '3000'
+      DATABASE_PATH: /data/class-clash.sqlite
+      APP_ORIGIN: ${APP_ORIGIN:?Set the actual HTTPS origin}
+      HOST_ACCESS_CODE_FILE: /run/secrets/host_access_code
+      MAX_ACTIVE_ROOMS: '1'
+      ROOM_EXPIRY_HOURS: '24'
+      DRAIN_FILE: /data/drain
+    secrets:
+      - host_access_code
+    volumes:
+      - game_data:/data
+    expose:
+      - '3000'
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 2g
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+  proxy:
+    image: caddy:2.10.2-alpine
+    restart: unless-stopped
+    depends_on:
+      game:
+        condition: service_healthy
+    ports:
+      - '80:80'
+      - '443:443'
+    environment:
+      PUBLIC_HOST: ${PUBLIC_HOST:?Set the DNS hostname you control}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+secrets:
+  host_access_code:
+    file: ${HOST_ACCESS_CODE_PATH:?Set a local secret-file path}
+volumes:
+  game_data:
+  caddy_data:
+  caddy_config:

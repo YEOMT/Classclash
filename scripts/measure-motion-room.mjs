@@ -1,0 +1,17 @@
+import {chromium,expect} from '@playwright/test';
+import {spawn} from 'node:child_process';
+import {writeFile} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+const base='http://127.0.0.1:3126',server=spawn(process.execPath,['dist/server.js'],{windowsHide:true,env:{...process.env,PORT:'3126',DATABASE_PATH:join(tmpdir(),`clash-motion-perf-${Date.now()}.sqlite`),CLASH_TEST_SPEED:'1'},stdio:'ignore'});
+let browser,context;const report={recording:false,views:1,seconds:40};
+const summary=a=>{const s=[...a].sort((a,b)=>a-b);return{samples:s.length,p50:s[Math.floor(s.length*.5)],p95:s[Math.floor(s.length*.95)],p99:s[Math.floor(s.length*.99)],max:s.at(-1)};};
+try{
+ for(let i=0;i<80;i++){try{if((await fetch(base+'/api/health')).ok)break;}catch{}await new Promise(r=>setTimeout(r,250));}
+ browser=await chromium.launch({args:['--use-gl=angle','--use-angle=d3d11'],ignoreDefaultArgs:['--enable-unsafe-swiftshader']});context=await browser.newContext({viewport:{width:1440,height:1000},deviceScaleFactor:1});const p=await context.newPage();
+ await p.goto(base);await p.getByRole('button',{name:'새 방 만들기'}).click();await p.getByRole('button',{name:'30명 채우기',exact:true}).click();await p.getByRole('button',{name:/^시작 퀴즈 시작/}).click();await p.getByRole('button',{name:'시작 퀴즈 마감',exact:true}).click();await p.locator('[data-modal-confirm]').click();await expect(p.getByRole('button',{name:'전투 시작 →',exact:true})).toBeEnabled({timeout:45000});await p.getByRole('button',{name:'전투 시작 →',exact:true}).click();await expect.poll(()=>p.evaluate(()=>window.__classClash.snapshot.phase),{timeout:20000}).toBe('BATTLE');
+ await expect.poll(()=>p.evaluate(()=>window.__classClash.rendererMetrics?.frames??0),{timeout:30000}).toBeGreaterThan(60);console.log('Measuring one real host, no recorder, 30 AI, normal speed.');
+ const data=await p.evaluate(()=>new Promise(resolve=>{const frames=[],counts=[],start=performance.now(),startTick=window.__classClash.snapshot.battle.tick;let last=start;function f(now){frames.push(now-last);last=now;const s=window.__classClash.snapshot,b=s.battle;counts.push([b.units.filter(u=>u.kind==='HERO'&&u.hp>0).length,b.units.filter(u=>u.kind.endsWith('MINION')&&u.hp>0).length]);if(now-start<40000){requestAnimationFrame(f);return;}resolve({frames,counts,startTick,endTick:b.tick,diagnostics:s.diagnostics,renderer:window.__classClash.rendererMetrics,invalid:b.metrics.invalidPositions});}requestAnimationFrame(f);}));
+ Object.assign(report,{frameMs:summary(data.frames),sceneUpdateMs:summary(data.renderer.sceneUpdateCpuMs),renderSubmissionMs:summary(data.renderer.renderSubmissionCpuMs),peakHeroes:Math.max(...data.counts.map(c=>c[0])),peakMinions:Math.max(...data.counts.map(c=>c[1])),simulationTicks:data.endTick-data.startTick,server:data.diagnostics,invalidPositions:data.invalid,assetErrors:data.renderer.assetErrors});
+ await p.screenshot({path:'artifacts/asset-motion/real-host-no-record.png'});await p.getByRole('button',{name:'경기 중단',exact:true}).click();await p.locator('[data-modal-confirm]').click();report.status='PASS';
+}catch(e){report.status='FAIL';report.error=String(e);process.exitCode=1;console.error(e);}finally{await writeFile('artifacts/asset-motion/performance-no-record.json',JSON.stringify(report,null,2));await context?.close();await browser?.close();server.kill();console.log(JSON.stringify({...report,server:report.server?{...report.server,bots:undefined}:undefined},null,2));}

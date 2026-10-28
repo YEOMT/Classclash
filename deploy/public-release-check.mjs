@@ -1,0 +1,10 @@
+import {execFileSync} from 'node:child_process';
+import {readFileSync} from 'node:fs';
+execFileSync(process.execPath,['scripts/check-public-assets.mjs'],{stdio:'inherit'});
+const origin=process.env.APP_ORIGIN;
+if(!origin||new URL(origin).protocol!=='https:')throw new Error('Set the actual authorized APP_ORIGIN');
+const identity=JSON.parse(readFileSync('dist/build-info.json','utf8'));
+if(!/^[a-f0-9]{40}$/.test(identity.commitSha||''))throw new Error('Build must identify a committed revision');
+if(identity.commitSha!==process.env.COMMIT_SHA)throw new Error('COMMIT_SHA differs from tested build');
+if(!identity.assetManifestHash)throw new Error('Build must identify the exact art manifest');
+console.log('Release prerequisites verified. This is not evidence of an external deployment.');

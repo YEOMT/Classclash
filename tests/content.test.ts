@@ -31,19 +31,32 @@ test('36 timelines have tick-aligned starts and distinct mechanisms',()=>{
  assert.equal(Object.values(SKILLS).filter(s=>s.allowDuringBasicRecovery).length,1);
  assert.ok(HERO_BY_ID.guardian_spirit.skills.every(s=>!s.kind.startsWith('heal')));
 });
-function decodePng(file:string){const bytes=fs.readFileSync(file);assert.equal(bytes.subarray(1,4).toString(),'PNG');const width=bytes.readUInt32BE(16),height=bytes.readUInt32BE(20),chunks:Buffer[]=[];for(let p=8;p<bytes.length;){const n=bytes.readUInt32BE(p),type=bytes.subarray(p+4,p+8).toString();if(type==='IDAT')chunks.push(bytes.subarray(p+8,p+8+n));p+=12+n;}const raw=zlib.inflateSync(Buffer.concat(chunks)),rgba=Buffer.alloc(width*height*4);for(let y=0;y<height;y++){assert.equal(raw[y*(width*4+1)],0,'deterministic no-filter PNG');raw.copy(rgba,y*width*4,y*(width*4+1)+1,(y+1)*(width*4+1));}return{width,height,rgba};}
-test('all original PNGs contain visible 8-direction, 8-state frames and valid sockets',()=>{
- const manifest=json('public/assets/heroes/manifest.json');assert.equal(Object.keys(manifest.heroes).length,18);assert.equal(manifest.directions.length,8);
- const silhouettes=new Set<string>();
- for(const h of HEROES){const meta=json(`public/assets/heroes/${h.id}.json`),png=decodePng(`public/assets/heroes/${h.id}.png`);assert.ok(png.width<=2048&&png.height<=2048);assert.deepEqual(meta.pivot,[32,52]);assert.ok(meta.worldBodySize[0]<=40&&meta.worldBodySize[1]<=48);
-  const actionHashes:Record<string,string>={};
-  for(const direction of manifest.directions){const sock=meta.sockets[direction];for(const k of ['hand','offHand','projectile']){assert.ok(sock[k].every((n:number)=>n>=0&&n<64));}assert.ok(Math.hypot(sock.projectile[0]-sock.hand[0],sock.projectile[1]-sock.hand[1])<=12);
-   for(const [state,info] of Object.entries(manifest.states) as [string,{count:number}][]){const anim=meta.animations[`${state}.${direction}`];assert.equal(anim.frames.length,info.count);const hashes=[];
-    for(const frame of anim.frames){let opaque=0;const data=Buffer.alloc(64*64*4);for(let y=0;y<64;y++)for(let x=0;x<64;x++){const src=((frame.y+y)*png.width+frame.x+x)*4,dst=(y*64+x)*4;png.rgba.copy(data,dst,src,src+4);if(data[dst+3]>0)opaque++;}assert.ok(opaque>=110,`${h.id}/${state}/${direction} blank (${opaque})`);hashes.push(crypto.createHash('sha256').update(data).digest('hex'));if(state==='idle'&&direction==='SE'&&hashes.length===1){const silhouette=Buffer.from(Array.from({length:4096},(_,i)=>data[i*4+3]?1:0));silhouettes.add(crypto.createHash('sha256').update(silhouette).digest('hex'));}}
-    actionHashes[`${state}.${direction}`]=hashes.join('|');
-   }
-   assert.equal(new Set(['basicAttack','skill1','skill2'].map(s=>actionHashes[`${s}.${direction}`])).size,3,`${h.id}/${direction} duplicate actions`);
+function decodePng(file:string){
+ const bytes=fs.readFileSync(file);assert.equal(bytes.subarray(1,4).toString(),'PNG');
+ const width=bytes.readUInt32BE(16),height=bytes.readUInt32BE(20),chunks:Buffer[]=[];
+ assert.equal(bytes[24],8);assert.equal(bytes[25],6,'RGBA PNG');
+ for(let p=8;p<bytes.length;){const n=bytes.readUInt32BE(p),type=bytes.subarray(p+4,p+8).toString();if(type==='IDAT')chunks.push(bytes.subarray(p+8,p+8+n));p+=12+n;}
+ const raw=zlib.inflateSync(Buffer.concat(chunks)),rgba=Buffer.alloc(width*height*4),stride=width*4;
+ const paeth=(a:number,b:number,c:number)=>{const p=a+b-c,pa=Math.abs(p-a),pb=Math.abs(p-b),pc=Math.abs(p-c);return pa<=pb&&pa<=pc?a:pb<=pc?b:c;};
+ for(let y=0;y<height;y++){const filter=raw[y*(stride+1)]!;assert.ok(filter<=4);
+  for(let x=0;x<stride;x++){const i=y*stride+x,a=x>=4?rgba[i-4]!:0,b=y?rgba[i-stride]!:0,c=y&&x>=4?rgba[i-stride-4]!:0;
+   rgba[i]=(raw[y*(stride+1)+1+x]!+[0,a,b,Math.floor((a+b)/2),paeth(a,b,c)][filter]!)&255;
   }
+ }
+ return{width,height,rgba};
+}
+
+test('acquired raster PNGs have visible complete motions, distinct actions and unique silhouettes',()=>{
+ const manifest=json('public/assets/heroes/manifest.json');assert.equal(Object.keys(manifest.heroes).length,18);assert.equal(manifest.directionMode,'side-mirrored');
+ const silhouettes=new Set<string>();
+ for(const h of HEROES){const meta=json(`public/assets/heroes/${h.id}.json`),png=decodePng(`public/assets/heroes/${h.id}.png`);assert.equal(png.width,512);assert.equal(png.height,320);assert.deepEqual(meta.pivot,[32,52]);
+  const actionHashes:Record<string,string>={};
+  for(const [state,info] of Object.entries(manifest.states) as [string,{count:number}][]){const anim=meta.animations[state];assert.equal(anim.frames.length,info.count);const hashes=[];
+   for(const frame of anim.frames){let opaque=0;const data=Buffer.alloc(64*64*4);for(let y=0;y<64;y++)for(let x=0;x<64;x++){const src=((frame.y+y)*png.width+frame.x+x)*4,dst=(y*64+x)*4;png.rgba.copy(data,dst,src,src+4);if(data[dst+3]>0)opaque++;}assert.ok(opaque>=110,`${h.id}/${state} blank (${opaque})`);hashes.push(crypto.createHash('sha256').update(data).digest('hex'));if(state==='idle'&&hashes.length===1){const silhouette=Buffer.from(Array.from({length:4096},(_,i)=>data[i*4+3]?1:0));silhouettes.add(crypto.createHash('sha256').update(silhouette).digest('hex'));}}
+   actionHashes[state]=hashes.join('|');
+   if(['walk','basicAttack','skill1','skill2','death'].includes(state))assert.ok(new Set(hashes).size>=3,`${h.id}/${state} needs real pose changes`);
+  }
+  assert.equal(new Set(['basicAttack','skill1','skill2'].map(s=>actionHashes[s])).size,3,`${h.id} duplicate actions`);
  }
  assert.equal(silhouettes.size,18,'No two heroes differ only by palette');
 });

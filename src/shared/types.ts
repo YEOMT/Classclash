@@ -1,5 +1,7 @@
 export type Team = 'A' | 'B';
-export type Lane = 'TOP' | 'BOTTOM';
+export type Lane = 'TOP' | 'MID' | 'BOTTOM';
+export type Position = Lane | 'JUNGLE';
+export type CombatTeam = Team | 'NEUTRAL';
 export type Phase = 'LOBBY' | 'OPENING_QUIZ' | 'INITIAL_MAINTENANCE' | 'COUNTDOWN' | 'BATTLE' | 'RESULT' | 'CANCELLED';
 export type PlayerStatus = 'WAITING' | 'INITIAL_MAINTENANCE' | 'READY' | 'DEPLOYING' | 'ACTIVE' | 'DEAD_MAINTENANCE' | 'FINISHED';
 export type BotProfile = 'BASIC' | 'STANDARD' | 'SKILLED';
@@ -17,7 +19,7 @@ export interface PlayerStats {
 export interface PublicPlayer {
   playerId: string; name: string; team: Team; isBot: boolean; botProfile?: BotProfile;
   online: boolean; state: PlayerStatus; activeEntityId: string | null;
-  heroDefinitionId: string | null; level: number; lane: Lane; quizProgress: number;
+  heroDefinitionId: string | null; level: number; lane: Position; quizProgress: number;
 }
 export interface PublicQuiz {
   attemptId: string; kind: 'OPENING' | 'BATTLE'; index: number; total: number; completed: boolean;
@@ -26,7 +28,7 @@ export interface PublicQuiz {
 }
 export interface SelfState {
   playerId: string; gold: number; inventory: OwnedHero[]; selectedOwnedHeroId: string | null;
-  selectedLane: Lane; starterChoiceUsed: boolean; hasDeployedThisMatch: boolean;
+  selectedLane: Position; starterChoiceUsed: boolean; hasDeployedThisMatch: boolean;
   redeployNotBeforeTick: number; quizAvailableAtTick: number; quiz: PublicQuiz | null;
   deathId: string | null;
   ledgerRevision: number; stats: PlayerStats; sharedSkillReadyAt: Record<string, number>;

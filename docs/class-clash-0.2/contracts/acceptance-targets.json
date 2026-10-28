@@ -1,0 +1,66 @@
+{
+  "kind": "PROPOSED_ACCEPTANCE_TARGETS_NOT_MEASURED_RESULTS",
+  "status": "NOT_RUN",
+  "contextRequired": [
+    "commitSha",
+    "assetManifestHash",
+    "serverHardware",
+    "clientHardware",
+    "gpuMode",
+    "browser",
+    "resolution",
+    "network",
+    "speedMultiplier",
+    "testDuration",
+    "activeRooms"
+  ],
+  "server": {
+    "fullTickP95MsMax": 40,
+    "fullTickP99MsMax": 50,
+    "tickHz": 20,
+    "includeDatabaseAndBroadcastCosts": true
+  },
+  "host": {
+    "frameP95MsMax": 20,
+    "frameP99MsMax": 33.3,
+    "allSemanticEffectsRequired": true
+  },
+  "student": {
+    "frameP95MsMax": 33.3,
+    "quizVisibleDuringRenderTest": true
+  },
+  "network": {
+    "durableCommandAckP95MsMax": 500,
+    "assumedTestRttMsMax": 100,
+    "duplicateEconomyResultsMax": 0,
+    "liveSemanticEventLossMax": 0
+  },
+  "balance": {
+    "seedCount": 40,
+    "standardBots": 30,
+    "timeWindowSeconds": [
+      600,
+      780
+    ],
+    "minimumMatchesInWindow": 28,
+    "medianInWindow": true,
+    "runnerObservationCapSeconds": 900,
+    "runnerCapIsNotGameTimeLimit": true
+  },
+  "stress": {
+    "heroes": 30,
+    "minionWaves": 4,
+    "minionsPerWave": 28,
+    "movingUnits": 142,
+    "structures": 14,
+    "suggestedPersistentAreas": 24,
+    "note": "Synthetic benchmark only; also record real match peaks. Do not delete live units to meet budget."
+  },
+  "visualApproval": {
+    "automaticChecksAreNotAestheticApproval": true,
+    "userApprovalStatus": "NOT_REQUESTED_IN_THIS_DOCUMENT"
+  },
+  "rematch": {
+    "consecutiveRematchesAfterFirstMatch": 3
+  }
+}

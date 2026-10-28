@@ -1,14 +1,11 @@
 {
+  "revision": "asset-motion-01",
   "heroes": 18,
-  "directions": 8,
-  "states": 8,
-  "framesPerHero": 288,
-  "totalFrames": 5184,
-  "atlas": [
-    1024,
-    1152
-  ],
-  "originalSource": "assets/source/heroes.json + scripts/build-sprites.mjs",
-  "uniqueActionStreams": true,
-  "sha256": "0fe5ef5f682da180301b95dc8a739f537de56a6c59c6760e40c27a2954d19469"
+  "timelinePoses": 648,
+  "uniquePoses": 421,
+  "decodedAtlasBytes": 11796480,
+  "previousDecodedAtlasBytes": 84934656,
+  "atlasPngBytes": 316407,
+  "sourceBodies": "17 TFM2 raster atlases + 1 CC0 articulated raster",
+  "directionMode": "two side facings (mirrored at render time), not eight authored views"
 }

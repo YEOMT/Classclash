@@ -1,11 +1,16 @@
 node_modules/
 dist/
 .tools/
+.local-asset-backups/
 spec-source/
 *.zip
 *.bundle
 data/
 .env
+.env.*
+!.env.example
+deploy/secrets/
+deploy/*.env
 test-results/
 playwright-report/
 artifacts/**/*.webm

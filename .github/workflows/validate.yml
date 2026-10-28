@@ -1,0 +1,48 @@
+name: Validate Class Clash
+on:
+  push:
+    branches: ['codex/**']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-and-available-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.19.0
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run test:source
+      - id: assets
+        name: Detect separately supplied local artwork
+        run: |
+          if test -f public/assets/maps/lol/background.png && test -f public/assets/champions/paladin.png; then
+            echo 'available=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'available=false' >> "$GITHUB_OUTPUT"
+            echo 'Full runtime/art/browser validation NOT_RUN: local school artwork is not redistributed in this source branch.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - if: steps.assets.outputs.available == 'true'
+        run: npm run build
+      - if: steps.assets.outputs.available == 'true'
+        run: npm test
+      - if: steps.assets.outputs.available == 'true'
+        run: npx playwright install --with-deps chromium
+      - if: steps.assets.outputs.available == 'true'
+        run: npm run test:e2e
+      - name: Record tested identity
+        if: steps.assets.outputs.available == 'true'
+        run: node scripts/write-build-info.mjs
+      # Do not upload restricted source art/screenshots as public workflow artifacts.
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-identity
+          path: dist/build-info.json
+          if-no-files-found: ignore

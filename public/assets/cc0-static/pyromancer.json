@@ -1,0 +1,260 @@
+{
+  "id": "pyromancer",
+  "name": "화염술사",
+  "baseType": "adult_f_tall_torsoB_armsB",
+  "reason": "tall armsB의 열린 팔과 원본 얼굴을 보존. 갈라진 불꽃 두건·비대칭 적색 로브·화염 지팡이.",
+  "sourceRect": [
+    24,
+    0,
+    24,
+    32
+  ],
+  "placement": [
+    12,
+    12
+  ],
+  "sourceKey": "human",
+  "source": {
+    "author": "Svetlana Kushnariova (Cabbit), diamonddmgirl, Jordan Irwin (AntumDeluge)",
+    "page": "https://opengameart.org/content/human-bases-cabbit-rework",
+    "archive": "assets/vendor/cc0-research/cabbit-rework/human_20220627.zip",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "originalFile": "assets/vendor/cc0-research/cabbit-rework/extracted/24x32/SWEN_adult_f_tall_torsoB_armsB.png",
+  "originalSha256": "18ca9ff7cbdf0e96f6e53b41c5ee477a8512eb3f0051176220dcd451bc72da15",
+  "image": "pyromancer.png",
+  "beforeImage": "pyromancer-before.png",
+  "sourceImage": "pyromancer-source.png",
+  "canvas": [
+    48,
+    48
+  ],
+  "pivot": [
+    24,
+    43
+  ],
+  "bounds": [
+    15,
+    10,
+    41,
+    44
+  ],
+  "opaqueColors": 21,
+  "baseOpaquePixels": 304,
+  "unchangedVisibleSourcePixels": 81,
+  "protectedSourcePixels": 52,
+  "protectedPixelsIntact": true,
+  "protectedCoordinates": [
+    [
+      18,
+      19
+    ],
+    [
+      18,
+      20
+    ],
+    [
+      19,
+      19
+    ],
+    [
+      19,
+      20
+    ],
+    [
+      19,
+      21
+    ],
+    [
+      19,
+      22
+    ],
+    [
+      20,
+      19
+    ],
+    [
+      20,
+      20
+    ],
+    [
+      20,
+      21
+    ],
+    [
+      20,
+      22
+    ],
+    [
+      20,
+      23
+    ],
+    [
+      21,
+      19
+    ],
+    [
+      21,
+      20
+    ],
+    [
+      21,
+      21
+    ],
+    [
+      21,
+      22
+    ],
+    [
+      21,
+      23
+    ],
+    [
+      22,
+      19
+    ],
+    [
+      22,
+      20
+    ],
+    [
+      22,
+      21
+    ],
+    [
+      22,
+      22
+    ],
+    [
+      22,
+      23
+    ],
+    [
+      23,
+      19
+    ],
+    [
+      23,
+      20
+    ],
+    [
+      23,
+      21
+    ],
+    [
+      23,
+      22
+    ],
+    [
+      23,
+      23
+    ],
+    [
+      24,
+      19
+    ],
+    [
+      24,
+      20
+    ],
+    [
+      24,
+      21
+    ],
+    [
+      24,
+      22
+    ],
+    [
+      24,
+      23
+    ],
+    [
+      25,
+      19
+    ],
+    [
+      25,
+      20
+    ],
+    [
+      25,
+      21
+    ],
+    [
+      25,
+      22
+    ],
+    [
+      25,
+      23
+    ],
+    [
+      26,
+      19
+    ],
+    [
+      26,
+      20
+    ],
+    [
+      26,
+      21
+    ],
+    [
+      26,
+      22
+    ],
+    [
+      26,
+      23
+    ],
+    [
+      27,
+      19
+    ],
+    [
+      27,
+      20
+    ],
+    [
+      27,
+      21
+    ],
+    [
+      27,
+      22
+    ],
+    [
+      27,
+      23
+    ],
+    [
+      28,
+      19
+    ],
+    [
+      28,
+      20
+    ],
+    [
+      28,
+      21
+    ],
+    [
+      28,
+      22
+    ],
+    [
+      29,
+      19
+    ],
+    [
+      29,
+      20
+    ]
+  ],
+  "reviewStatus": "candidate—not quality-approved",
+  "animationFrames": 1
+}

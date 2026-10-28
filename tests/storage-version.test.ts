@@ -5,7 +5,11 @@ import {createRoom,addPlayer,directCommand,type RoomData} from '../src/server/ro
 import {CURRENT_VERSIONS,RULES_VERSION,fingerprint,type RuntimeVersions} from '../src/server/versions.js';
 import {HEROES,SKILLS} from '../src/shared/heroes.js';
 import {BALANCE} from '../src/shared/balance.js';
+import {JUNGLE_BALANCE} from '../src/shared/jungle-balance.js';
 import {BOT_TACTICS} from '../src/shared/bot-balance.js';
+import {ENGINE_TACTICS} from '../src/shared/engine-tactics.js';
+import defaults from '../docs/specification/balance.defaults.json';
+import {createCombat} from '../src/server/combat.js';
 
 function active(code='VERS01'){
  const r=createRoom(code,'host');addPlayer(r,'복원 학생 A','a');addPlayer(r,'복원 학생 B','b');assert.equal(directCommand(r,'host','START_OPENING_QUIZ').status,'APPLIED');return r;
@@ -15,9 +19,22 @@ const stale=(r:RoomData)=>{r.updatedAt=new Date(Date.now()-25*60*60*1000).toISOS
 const storeRequest=(db:Storage,r:RoomData)=>db.save(r,undefined,{id:`request-${r.roomCode}`,fingerprint:'fingerprint',actor:'host'});
 
 test('runtime fingerprints cover exact hero content, balance and bot tactics with stable object ordering',()=>{
- assert.equal(CURRENT_VERSIONS.rulesVersion,RULES_VERSION);assert.equal(CURRENT_VERSIONS.contentHash,fingerprint({heroes:HEROES,skills:SKILLS}));assert.equal(CURRENT_VERSIONS.balanceHash,fingerprint({balance:BALANCE,botTactics:BOT_TACTICS}));assert.match(CURRENT_VERSIONS.contentHash,/^[a-f0-9]{64}$/);assert.match(CURRENT_VERSIONS.balanceHash,/^[a-f0-9]{64}$/);
+ assert.equal(CURRENT_VERSIONS.rulesVersion,RULES_VERSION);assert.equal(CURRENT_VERSIONS.contentHash,fingerprint({heroes:HEROES,skills:SKILLS}));assert.equal(CURRENT_VERSIONS.balanceHash,fingerprint({balance:BALANCE,botTactics:BOT_TACTICS,jungle:JUNGLE_BALANCE,engine:ENGINE_TACTICS}));assert.match(CURRENT_VERSIONS.contentHash,/^[a-f0-9]{64}$/);assert.match(CURRENT_VERSIONS.balanceHash,/^[a-f0-9]{64}$/);
  assert.equal(fingerprint({a:1,b:{y:2,x:3}}),fingerprint({b:{x:3,y:2},a:1}));assert.notEqual(fingerprint([1,2]),fingerprint([2,1]));
  const changed=structuredClone(HEROES);changed[0].baseStats.hp++;assert.notEqual(CURRENT_VERSIONS.contentHash,fingerprint({heroes:changed,skills:SKILLS}));const skills=structuredClone(SKILLS);skills['rune_mage.triple_rune'].hitTimesMs[1]++;assert.notEqual(CURRENT_VERSIONS.contentHash,fingerprint({heroes:HEROES,skills}));assert.notEqual(CURRENT_VERSIONS.balanceHash,fingerprint({balance:BALANCE,botTactics:{...BOT_TACTICS,objectiveWeight:BOT_TACTICS.objectiveWeight+1}}));
+});
+test('old narrow-map combat checkpoints refuse recovery while current jungle-map checkpoints restore exactly',()=>{
+ const db=new Storage(':memory:');try{
+  const r=active('OLDMAP');r.phase='BATTLE';r.combat=createCombat(r.matchId!,r.seed,r.tick);
+  const currentCombat=structuredClone(r.combat);
+  const previousBalance={...BALANCE,map:defaults.map,minions:{...BALANCE.minions,melee:defaults.minions.melee,ranged:defaults.minions.ranged}};
+  const previousHash=fingerprint({balance:previousBalance,botTactics:BOT_TACTICS});
+  assert.notEqual(previousHash,CURRENT_VERSIONS.balanceHash,'map geometry and minion power belong to the existing compatibility hash');
+  r.versions={...CURRENT_VERSIONS,balanceHash:previousHash};db.save(r);const before=stored(db,r.roomCode);
+  assert.throws(()=>db.load(),/Incompatible active checkpoint.*balanceHash.*Database preserved/);
+  assert.equal(stored(db,r.roomCode),before);
+  r.versions={...CURRENT_VERSIONS};db.save(r);assert.deepEqual(db.load()[0].combat,currentCombat);
+ }finally{db.close();}
 });
 for(const phase of ['OPENING_QUIZ','INITIAL_MAINTENANCE','COUNTDOWN','BATTLE'] as const)for(const key of ['rulesVersion','contentHash','balanceHash'] as (keyof RuntimeVersions)[])test(`${phase}: incompatible ${key} refuses recovery without writing the checkpoint`,()=>{
  const db=new Storage(':memory:');try{const r=active();r.phase=phase;r.versions={...CURRENT_VERSIONS,[key]:'previous-version'};storeRequest(db,r);const before=stored(db,r.roomCode);assert.throws(()=>db.load(),new RegExp(`Incompatible active checkpoint.*${r.roomCode}.*${key}.*Database preserved`));assert.equal(stored(db,r.roomCode),before);assert.ok(db.request(`request-${r.roomCode}`));}finally{db.close();}

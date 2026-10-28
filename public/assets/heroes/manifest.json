@@ -1,18 +1,9 @@
 {
-  "atlasVersion": 1,
-  "license": "Original Class Clash artwork; no third-party art copied",
-  "directions": [
-    "S",
-    "SE",
-    "E",
-    "NE",
-    "N",
-    "NW",
-    "W",
-    "SW"
-  ],
+  "revision": "asset-motion-01",
   "cellSize": 64,
-  "columns": 16,
+  "columns": 8,
+  "poseCount": 36,
+  "directionMode": "side-mirrored",
   "states": {
     "idle": {
       "start": 0,
@@ -50,218 +41,74 @@
   "heroes": {
     "paladin": {
       "image": "/assets/heroes/paladin.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/paladin.json"
     },
     "swordsman": {
       "image": "/assets/heroes/swordsman.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/swordsman.json"
     },
     "brawler": {
       "image": "/assets/heroes/brawler.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/brawler.json"
     },
     "archer": {
       "image": "/assets/heroes/archer.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/archer.json"
     },
     "pyromancer": {
       "image": "/assets/heroes/pyromancer.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/pyromancer.json"
     },
     "cryomancer": {
       "image": "/assets/heroes/cryomancer.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/cryomancer.json"
     },
     "priest": {
       "image": "/assets/heroes/priest.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/priest.json"
     },
     "barbarian": {
       "image": "/assets/heroes/barbarian.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/barbarian.json"
     },
     "monk": {
       "image": "/assets/heroes/monk.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/monk.json"
     },
     "iron_knight": {
       "image": "/assets/heroes/iron_knight.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/iron_knight.json"
     },
     "guardian_golem": {
       "image": "/assets/heroes/guardian_golem.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        40,
-        48
-      ],
       "metadata": "/assets/heroes/guardian_golem.json"
     },
     "assassin": {
       "image": "/assets/heroes/assassin.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/assassin.json"
     },
     "crossbowman": {
       "image": "/assets/heroes/crossbowman.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/crossbowman.json"
     },
     "stormcaller": {
       "image": "/assets/heroes/stormcaller.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/stormcaller.json"
     },
     "bard": {
       "image": "/assets/heroes/bard.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/bard.json"
     },
     "rune_mage": {
       "image": "/assets/heroes/rune_mage.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        32,
-        40
-      ],
       "metadata": "/assets/heroes/rune_mage.json"
     },
     "ancient_one": {
       "image": "/assets/heroes/ancient_one.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        40,
-        48
-      ],
       "metadata": "/assets/heroes/ancient_one.json"
     },
     "guardian_spirit": {
       "image": "/assets/heroes/guardian_spirit.png",
-      "pivot": [
-        32,
-        52
-      ],
-      "worldBodySize": [
-        40,
-        48
-      ],
       "metadata": "/assets/heroes/guardian_spirit.json"
     }
   }

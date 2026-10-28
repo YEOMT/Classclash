@@ -1,3 +1,35 @@
+# 0.2 통합 진행 · 2026-10-28
+
+상태: IN_PROGRESS. 현재 기준HEAD70987cb7181e8f5eda29735927efcf96c997a24e, 브랜치 codex/class-clash-0.2. 최신 사용자 확정은 LOL3라인+정글 유지. 별도 리워크 방의2라인 시도는 취소·백업했고 현재 기준으로 대체했다.
+
+완료: 원본/미추적/취소본 ZIP 보존,185개 기준 시험 재현, 원본 검증·패킹 build(365파일 해시 보존),18챔피언 native 동작/실제효과 층 통합, 정글 경로 경계 정체 수정, 표적/접근 슬롯/거리 유지 개선, 퀴즈 새로고침 선택 복원 및 쿨타임 버튼 갱신, 운영 인증/origin/영구 SQLite 배치 저장·백업·버전 확인.
+
+진행 중: 최종 건물 체력 후보 후40시드, 브라우저4경기/3재경기, 실제1배속13분과 독립30WS 성능, 시각자료와214행 인수판정, 공개 소스만 분리한 PR. 배포는 권한 있는 Node호스트/공개origin 부재 및 비배포 자산 조건으로 BLOCKED_DEPLOYMENT.
+
+다음 명령: npm run build; npm run typecheck; npm test; npm run test:v02; npm run test:soak:parallel. 무거운 시험 종료 후 npm run test:load, npm run test:realtime. artifacts/v02의 실제 로그를 확인하고 실패·미실행을 통과로 올리지 않는다.
+
+---
+
+# 현재 진행 상태 · 2026-10-27 LOL 리워크
+
+현재 구현 커밋: 05dd1223950539e4c0dc1efe057bcbd022cdb10d. 브랜치 codex/positions-jungle-rework. 이후 커밋은 검증 증거와 문서 정리입니다.
+
+완료: LOL 1280×1280 3라인 맵, 남서/북동 본진·타워, 출진 포지션 4개, 서버 권위 정글 몬스터와 아군 사냥→지원/침투→회복, AI 포지션 선택, 18종 첨부 챔피언 원본 애니메이션, 기존 퀴즈/자원/독립 성장/수동 재출진/넥서스 승리/시상·재경기 기능 연결.
+
+검증: 타입·빌드 성공, 자동 185/185. 30 AI 두 경기 완주(743.2 / 358.2초), 사람1+AI29 실제 Chromium 396.45초 종료, 답안30·실제출진2·새로고침·시상7·JS오류0. TEST_REPORT.md와 artifacts/jungle-rework 참조.
+
+남은 실패: 목표 10~13분 1/2 충족으로 분포 시험 FAIL(정상적으로 exit1). 혼잡 구간 정체 진단28/9건 추가 분류. 미실행: 40시드, 3회 연속 전체 재경기, 모든 스킬 시각 조합, 공개 배포·학교 기기. 사용자 지시에 따라 후속 폴리싱으로 남김.
+
+보존: Class_Clash_Before_Jungle_Rework_20261027.zip은 리워크 전 미커밋 아트를 포함한 전체 소스. Class_Clash_Jungle_Rework_20261027.bundle과 ZIP은 이번 전체 프로젝트 보존본. 기존 원본 자료·아트·이전 보고서는 삭제하지 않음. 새 로컬 게임 DB는 data/class-clash-jungle.sqlite.
+
+현재 최종 게임 서버: http://127.0.0.1:3001 (정상1배속). 이전3000프로세스는 건드리지 않음. 새로 시작하려면 start-local.cmd 또는 npm ci / npm run build / npm start (기본3000, 필요하면 PORT=3001).
+
+다음 명령: npm run typecheck; npm test; npm run test:jungle. 분포 확인: SEEDS=40으로 npm run test:soak. 첫 원격 main은 d060b535c49b63d219f851c431e0294e9dbcb157이며 이번 리워크 브랜치는 아직 원격에 push하지 않음.
+
+---
+
+# 이전 작업 기록
+
 # 진행 기록
 
 2026-10-26 KST. 브랜치 codex/first-playable. 검증 대상 구현 커밋 **94f16bb**. 문서·실행 증거는 후속 커밋으로 저장하며 최종 커밋은 git log -1로 확인한다. 원격 YEOMT/Classclash는 처음 빈 저장소였고 AGENTS.md·소스·패키지·테스트가 없었다. 사용자 ZIP과 docs/specification 원문을 보존했다.

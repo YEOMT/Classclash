@@ -1,6 +1,6 @@
 {
   "name": "class-clash",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -8,16 +8,24 @@
   },
   "scripts": {
     "dev": "tsx watch src/server/index.ts --dev",
-    "build": "node scripts/build-sprites.mjs && vite build && esbuild src/server/index.ts --platform=node --packages=external --bundle --format=esm --outfile=dist/server.js",
+    "build": "node scripts/build.mjs",
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit",
-    "pretest": "npm run build",
+    "pretest": "node scripts/build.mjs",
     "test": "tsx --test tests/*.test.ts",
     "test:e2e": "playwright test",
     "test:load": "tsx scripts/load-test.ts",
     "test:soak": "tsx scripts/soak-test.ts",
-    "assets": "node scripts/build-sprites.mjs",
-    "test:render-perf": "playwright test --config tests/e2e/performance.config.ts"
+    "assets": "node scripts/pack-art.mjs && node scripts/validate-art.mjs",
+    "test:render-perf": "playwright test --config tests/e2e/performance.config.ts",
+    "test:jungle": "playwright test --config tests/e2e/jungle.config.ts",
+    "test:unit": "tsx --test tests/*.test.ts",
+    "test:art-preservation": "node scripts/test-art-preservation.mjs",
+    "test:v02": "playwright test --config tests/e2e/v02.config.ts",
+    "test:realtime": "node scripts/verify-v02-realtime.mjs",
+    "assets:public-check": "node scripts/check-public-assets.mjs",
+    "test:source": "node scripts/test-source.mjs",
+    "test:soak:parallel": "node scripts/soak-parallel.mjs"
   },
   "dependencies": {
     "pixi.js": "8.22.0",

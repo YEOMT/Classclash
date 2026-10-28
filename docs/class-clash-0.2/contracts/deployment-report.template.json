@@ -1,0 +1,64 @@
+{
+  "kind": "TEMPLATE_NOT_A_DEPLOYMENT_RESULT",
+  "status": "NOT_RUN",
+  "publicPlayUrl": null,
+  "verifiedEntryFlow": null,
+  "provider": null,
+  "region": null,
+  "commitSha": null,
+  "assetManifestHash": null,
+  "protocolVersion": null,
+  "permanentStorage": null,
+  "billingApproved": null,
+  "checks": {
+    "https": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "wss": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "externalHost": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "externalStudent": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "openingQuiz": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "fullMatch": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "reconnect": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "persistentRestore": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "versionMatch": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "rematch": {
+      "status": "NOT_RUN",
+      "evidence": null
+    }
+  },
+  "supportedConcurrentRooms": null,
+  "measuredIndependentClients": null,
+  "blockers": [],
+  "warnings": [],
+  "allowedFinalStates": [
+    "PUBLIC_VERIFIED",
+    "DEPLOYED_NOT_EXTERNALLY_VERIFIED",
+    "BLOCKED_DEPLOYMENT"
+  ]
+}

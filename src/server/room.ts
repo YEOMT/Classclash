@@ -1,5 +1,6 @@
 import { randomUUID, randomInt } from 'node:crypto';
-import type { BotProfile, ClientCommand, CommandReply, Lane, MatchResult, OwnedHero, Phase, PlayerStats, PlayerStatus, RoomSnapshot, SelfState, Team } from '../shared/types.js';
+import {POSITIONS} from '../shared/battle-map.js';
+import type { BotProfile, ClientCommand, CommandReply, Position, MatchResult, OwnedHero, Phase, PlayerStats, PlayerStatus, RoomSnapshot, SelfState, Team } from '../shared/types.js';
 import { hash32, nextRandom } from '../shared/random.js';
 import { HEROES, HERO_BY_ID } from '../shared/heroes.js';
 import { createCombat, deployHero, stepCombat } from './combat.js';
@@ -22,7 +23,7 @@ export interface Player {
   playerId: string; name: string; team: Team; isBot: boolean; botProfile: BotProfile;
   sessionHash: string; connectionEpoch: number; online: boolean; state: PlayerStatus;
   gold: number; starterChoiceUsed: boolean; inventory: OwnedHero[]; selectedOwnedHeroId: string | null;
-  selectedLane: Lane; activeEntityId: string | null; hasDeployedThisMatch: boolean;
+  selectedLane: Position; activeEntityId: string | null; hasDeployedThisMatch: boolean;
   deathId: string | null; redeployNotBeforeTick: number; sharedSkillReadyAt: Record<string,number>;
   quizAttempt: QuizAttempt | null; quizAvailableAtTick: number; quizSeen: string[];
   ledgerRevision: number; stats: PlayerStats; bot: BotState | null;
@@ -48,7 +49,7 @@ export function addPlayer(r:RoomData,name:string,sessionHash:string,options?:{bo
   const team=options?.team || (r.players.filter(p=>p.team==='A').length<=r.players.filter(p=>p.team==='B').length?'A':'B');
   requireRule(r.players.filter(p=>p.team===team).length<15,'TEAM_FULL');
   const serial=r.nextBotSerial++;
-  const p:Player={playerId:options?.bot?`bot-${String(serial).padStart(3,'0')}`:`player-${randomUUID()}`,name,team,isBot:!!options?.bot,botProfile:options?.profile||'STANDARD',sessionHash,connectionEpoch:0,online:!!options?.bot,state:'WAITING',gold:0,starterChoiceUsed:false,inventory:[],selectedOwnedHeroId:null,selectedLane:serial%2?'TOP':'BOTTOM',activeEntityId:null,hasDeployedThisMatch:false,deathId:null,redeployNotBeforeTick:0,sharedSkillReadyAt:{},quizAttempt:null,quizAvailableAtTick:0,quizSeen:[],ledgerRevision:0,stats:zeroStats(),bot:null};
+  const p:Player={playerId:options?.bot?`bot-${String(serial).padStart(3,'0')}`:`player-${randomUUID()}`,name,team,isBot:!!options?.bot,botProfile:options?.profile||'STANDARD',sessionHash,connectionEpoch:0,online:!!options?.bot,state:'WAITING',gold:0,starterChoiceUsed:false,inventory:[],selectedOwnedHeroId:null,selectedLane:POSITIONS[(serial-1)%POSITIONS.length]!,activeEntityId:null,hasDeployedThisMatch:false,deathId:null,redeployNotBeforeTick:0,sharedSkillReadyAt:{},quizAttempt:null,quizAvailableAtTick:0,quizSeen:[],ledgerRevision:0,stats:zeroStats(),bot:null};
   if(p.isBot) p.bot={streams:{},nextDecisionTick:0,decisionCounter:0,pendingAnswer:null,maintenanceKey:'',purchases:0,drawn:false,selected:false,tendency:options?.tendency||'BALANCED',preferredRole:options?.preferredRole||'AUTO',lastError:null,maintenanceStartedTick:0,lastProgressTick:0,lastAction:'WAITING'};
   r.players.push(p); return p;
 }
@@ -151,7 +152,7 @@ function apply(r:RoomData,actor:Actor,type:string,payload:Record<string,unknown>
     requireRule(total<3,'ENHANCEMENT_MAX');requireRule(payload.kind==='power'||payload.kind==='vitality','INVALID_INPUT');spend(p,defaults.growth.enhancementCosts[total]);if(payload.kind==='power')hero.powerEnhancements++;else hero.vitalityEnhancements++;return hero;
   }
   if(type==='SELECT_HERO_AND_LANE'){
-    const hero=owned(p,payload.ownedHeroInstanceId);requireRule(payload.lane==='TOP'||payload.lane==='BOTTOM','INVALID_INPUT');p.selectedOwnedHeroId=hero.ownedHeroInstanceId;p.selectedLane=payload.lane;return {};
+    const hero=owned(p,payload.ownedHeroInstanceId);requireRule(POSITIONS.includes(payload.lane as Position),'INVALID_INPUT');p.selectedOwnedHeroId=hero.ownedHeroInstanceId;p.selectedLane=payload.lane as Position;return {};
   }
   if(type==='SET_READY'){
     requireRule(r.phase==='INITIAL_MAINTENANCE','INVALID_PHASE');requireRule(typeof payload.ready==='boolean','INVALID_INPUT');
@@ -207,9 +208,9 @@ function roleNeed(r:RoomData,p:Player){
   return Object.keys(roleWeights).sort((a,b)=>(roleWeights[b]*friends.length-counts[b])-(roleWeights[a]*friends.length-counts[a]))[0];
 }
 function choosePair(r:RoomData,p:Player){
-  const candidates=p.inventory.flatMap(hero=>(['TOP','BOTTOM'] as Lane[]).map(lane=>{
-    const friends=r.players.filter(x=>x.team===p.team&&x.playerId!==p.playerId&&(x.activeEntityId||x.state==='READY')&&x.selectedLane===lane),enemies=r.players.filter(x=>x.team!==p.team&&x.activeEntityId&&x.selectedLane===lane);
-    const roles=friends.map(f=>HERO_BY_ID[f.inventory.find(h=>h.ownedHeroInstanceId===f.selectedOwnedHeroId)!.heroDefinitionId].role),role=HERO_BY_ID[hero.heroDefinitionId].role;
+  const candidates=p.inventory.flatMap(hero=>POSITIONS.map(lane=>{
+    const friends=r.players.filter(x=>x.team===p.team&&x.playerId!==p.playerId&&(x.activeEntityId||x.state==='READY'||x.state==='INITIAL_MAINTENANCE')&&x.selectedLane===lane),enemies=r.players.filter(x=>x.team!==p.team&&x.activeEntityId&&x.selectedLane===lane);
+    const roles=friends.flatMap(f=>{const h=f.inventory.find(h=>h.ownedHeroInstanceId===f.selectedOwnedHeroId);return h?[HERO_BY_ID[h.heroDefinitionId]!.role]:[];}),role=HERO_BY_ID[hero.heroDefinitionId].role;
     const need=role==='tank'&&!roles.includes('tank')?24:role==='support'&&friends.length>=4&&!roles.includes('support')?18:['ranged','mage'].includes(role)&&roles.filter(x=>['tank','melee'].includes(x)).length>=3?12:0;
     const laneTowers=r.combat?.structures.filter(s=>s.team!==p.team&&s.lane===lane)||[];
     const outerDown=laneTowers.some(s=>s.kind==='OUTER'&&s.hp<=0),innerDown=laneTowers.some(s=>s.kind==='INNER'&&s.hp<=0);
@@ -217,11 +218,13 @@ function choosePair(r:RoomData,p:Player){
     const wave=r.combat?.units.some(u=>u.team===p.team&&u.lane===lane&&u.hp>0&&u.kind.includes('MINION'));
     const opportunity=(outerDown?BOT_TACTICS.outerBreachOpportunity:0)+(innerDown?BOT_TACTICS.innerBreachOpportunity:0)+(tower?(1-tower.hp/tower.maxHp)*BOT_TACTICS.damagedObjectiveWeight:0)+(wave&&friends.length>enemies.length?1:0);
     const teamSize=r.players.filter(x=>x.team===p.team).length;
-    const otherFriends=r.players.filter(x=>x.team===p.team&&x.playerId!==p.playerId&&(x.activeEntityId||x.state==='READY')&&x.selectedLane!==lane).length;
-    const allowance=opportunity>0?Math.ceil(teamSize*BOT_TACTICS.maxAssaultFraction):Math.ceil(teamSize/2);
+    const otherFriends=r.players.filter(x=>x.team===p.team&&x.playerId!==p.playerId&&(x.activeEntityId||x.state==='READY'||x.state==='INITIAL_MAINTENANCE')&&x.selectedLane!==lane).length;
+    const allowance=lane==='JUNGLE'?Math.max(1,Math.floor(teamSize/5)):opportunity>0?Math.ceil(teamSize*BOT_TACTICS.maxAssaultFraction):Math.ceil(teamSize/3);
     const population=Math.max(0,friends.length+1-allowance)+Math.max(0,friends.length-otherFriends-7);
+    const jungleFit=lane==='JUNGLE'?(['tank','melee'].includes(role)?8:-8):0;
+    const balanceScore=(r.phase==='INITIAL_MAINTENANCE'?-friends.length*45+(friends.length>=allowance?-120:0):-friends.length*3)+(lane==='JUNGLE'&&friends.length>=allowance?-1500:0);
     const laneScore=BOT_TACTICS.enemyPressureWeight*(enemies.length-friends.length)+BOT_TACTICS.objectiveWeight*opportunity-BOT_TACTICS.populationWeight*population;
-    return {hero,lane,score:(hero.level-1)*10+(hero.powerEnhancements+hero.vitalityEnhancements)*5+(hero.level>=2?8:0)+(hero.level===5?8:0)+need+(hero.ownedHeroInstanceId===p.selectedOwnedHeroId?6:0)+8*laneScore+botRandom(r,p,'managerTieBreak')};
+    return {hero,lane,score:balanceScore+jungleFit+(hero.level-1)*10+(hero.powerEnhancements+hero.vitalityEnhancements)*5+(hero.level>=2?8:0)+(hero.level===5?8:0)+need+(hero.ownedHeroInstanceId===p.selectedOwnedHeroId?6:0)+8*laneScore+botRandom(r,p,'managerTieBreak')};
   }));return candidates.sort((a,b)=>b.score-a.score)[0];
 }
 export function tickBots(r:RoomData){
@@ -273,11 +276,11 @@ export function tickRoom(r:RoomData){
   if(r.phase==='BATTLE'&&r.combat){const result=stepCombat(r.combat,r.tick);for(const death of result.deaths){const p=r.players.find(p=>p.playerId===death.playerId);if(p&&p.activeEntityId===death.entityId){p.activeEntityId=null;p.state='DEAD_MAINTENANCE';p.deathId=`death-${randomUUID()}`;p.redeployNotBeforeTick=r.tick+defaults.deployment.minimumDeadWaitSeconds*20;}}
     syncCombat(r);if(result.winner)finish(r,result.winner);}
 }
-export function snapshot(r:RoomData,actor:Actor,seq=0):RoomSnapshot{
+export function snapshot(r:RoomData,actor:Actor,seq=0,includeBattle=true):RoomSnapshot{
   const p=r.players.find(x=>x.playerId===actor);
   const student=(p:Player):SelfState=>({playerId:p.playerId,gold:p.gold,inventory:p.inventory,selectedOwnedHeroId:p.selectedOwnedHeroId,selectedLane:p.selectedLane,starterChoiceUsed:p.starterChoiceUsed,hasDeployedThisMatch:p.hasDeployedThisMatch,deathId:p.deathId,redeployNotBeforeTick:p.redeployNotBeforeTick,quizAvailableAtTick:p.quizAvailableAtTick,quiz:publicQuiz(p.quizAttempt),ledgerRevision:p.ledgerRevision,stats:p.stats,sharedSkillReadyAt:p.sharedSkillReadyAt});
   return {protocolVersion:1,roomId:r.roomId,roomCode:r.roomCode,matchId:r.matchId,phase:r.phase,phaseRevision:r.phaseRevision,paused:r.paused,tick:r.tick,battleStartTick:r.battleStartTick,countdownEndTick:r.countdownEndTick,snapshotSeq:seq,quizBankCount:r.quizBank.length,connectionEpoch:actor==='host'?r.hostConnectionEpoch:p?.connectionEpoch||0,recovered:r.recovered,
     players:r.players.map(x=>{const h=x.inventory.find(h=>h.ownedHeroInstanceId===x.selectedOwnedHeroId);return {playerId:x.playerId,name:x.name,team:x.team,isBot:x.isBot,botProfile:x.isBot?x.botProfile:undefined,online:x.online,state:x.state,activeEntityId:x.activeEntityId,heroDefinitionId:h?.heroDefinitionId||null,level:h?.level||0,lane:x.selectedLane,quizProgress:x.quizAttempt?.index||0};}),
     self:p?student(p):null,...(actor==='host'?{hostStudents:r.players.map(student)}:{}),
-    battle:r.combat?{...r.combat,seed:0,stats:{},cooldowns:{},scheduled:[],units:r.combat.units.map(u=>({...u,skillReadyAt:{},damageLedger:[],supportLedger:[]})),structures:r.combat.structures.map(u=>({...u,skillReadyAt:{},damageLedger:[],supportLedger:[]}))}:null,result:r.result};
+    battle:includeBattle&&r.combat?{...r.combat,seed:0,stats:{},cooldowns:{},scheduled:[],units:r.combat.units.map(u=>({...u,skillReadyAt:{},damageLedger:[],supportLedger:[]})),structures:r.combat.structures.map(u=>({...u,skillReadyAt:{},damageLedger:[],supportLedger:[]}))}:null,result:r.result};
 }

@@ -1,0 +1,60 @@
+{
+  "kind": "ILLUSTRATIVE_DATA_CONTRACT_NOT_AN_ACTUAL_SPRITESHEET",
+  "assetVersion": "0.2",
+  "heroId": "archer",
+  "sourceFiles": [],
+  "sourceSha256": null,
+  "atlas": null,
+  "frames": {},
+  "directionsRequired": [
+    "N",
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW"
+  ],
+  "statesRequired": [
+    "idle",
+    "walk",
+    "basicAttack",
+    "skill1",
+    "skill2",
+    "hurt",
+    "death",
+    "spawn"
+  ],
+  "perFrameRequired": [
+    "rect",
+    "pivot",
+    "sourceSize",
+    "durationOrPhase",
+    "sockets"
+  ],
+  "socketNames": [
+    "feet",
+    "mainHand",
+    "offHand",
+    "projectileOrigin"
+  ],
+  "actionBinding": {
+    "source": "AUTHORITATIVE_SERVER_ACTION",
+    "markers": [
+      "startTick",
+      "releaseTick",
+      "recoveryEndTick",
+      "cancelTick"
+    ],
+    "skillIdReference": "src/shared/heroes.ts"
+  },
+  "directionMirroring": {
+    "allowedWhenConsistent": true,
+    "asymmetricEquipmentRequiresVerifiedLayering": true
+  },
+  "bodyBoundsAreNotCollisionBounds": true,
+  "buildMayModifySourceFiles": false,
+  "noFixedGlobalFrameCount": true,
+  "provenanceManifest": "docs/art/ASSET_PROVENANCE.csv"
+}

@@ -1,0 +1,115 @@
+{
+  "kind": "ACTUAL_DEPLOYMENT_AUDIT",
+  "date": "2026-10-29 Asia/Seoul",
+  "status": "BLOCKED_DEPLOYMENT",
+  "publicPlayUrl": null,
+  "verifiedEntryFlow": null,
+  "provider": null,
+  "region": null,
+  "commitSha": null,
+  "assetManifestHash": null,
+  "protocolVersion": "classclash-ws-2",
+  "permanentStorage": null,
+  "billingApproved": false,
+  "checks": {
+    "https": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "wss": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "externalHost": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "externalStudent": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "openingQuiz": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "fullMatch": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "reconnect": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "persistentRestore": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "versionMatch": {
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    "rematch": {
+      "status": "NOT_RUN",
+      "evidence": null
+    }
+  },
+  "localChecks": {
+    "productionSecurity": {
+      "status": "PASS",
+      "evidence": "tests/production-security.test.ts: actual production HTTP/WS test, wrong origin/code rejected; 30 shared-NAT students admitted; room cap and drain tested"
+    },
+    "onlineBackupRestore": {
+      "status": "PASS",
+      "evidence": "tests/production-security.test.ts: online WAL backup, integrity, session secret, ledger and durable request restoration"
+    },
+    "containerBuild": {
+      "status": "NOT_RUN",
+      "evidence": "Docker executable not found on current host"
+    },
+    "independentClients": {
+      "status": "PASS",
+      "evidence": "artifacts/v02/load-30clients.json: 30 students and1 host, 600 opening answers,30 concurrent purchases/replays, reconnect,30 seconds actual combat. Functional result only."
+    },
+    "concurrentWorkloadPerformance": {
+      "status": "FAIL",
+      "evidence": "artifacts/v02/load-30clients.json: ACK p95 2615.84ms; full tick p95 109.69ms/p99 179.23ms. Other engine simulations ran concurrently. Isolated rerun pending."
+    },
+    "atomicCommandBatch": {
+      "status": "PASS",
+      "evidence": "tests/command-batch.test.ts and artifacts/v02/production-tests.log: late-write failure rolls back room/new results/ledger; prior durable results retained; reopen restores all committed revisions"
+    },
+    "freshInstall": {
+      "status": "PASS",
+      "evidence": "artifacts/v02/fresh-install.json: local clone + npm ci, typecheck/build, actual 2 AI quiz-to-battle flow and Vite dev browser on a1454cb8ecc976d7736bb6c7a027c2f558e27602; 365 original files unchanged; 50 runtime file hashes and manifest bba2f909... match. Test speed 10; not a 1x performance or external deployment claim."
+    },
+    "actualWriteFailure": {
+      "status": "PASS",
+      "evidence": "tests/server-write-failure.test.ts and artifacts/v02/write-failure-test.log: actual SQLite trigger failure rejects new command without publicResult, retains old durable replay, retry and restart commit exactly once"
+    },
+    "malformedWebSocket": {
+      "status": "PASS",
+      "evidence": "tests/websocket-malformed.test.ts and artifacts/v02/websocket-malformed.log: illegal WebSocket opcode closes only offending peer; health remains 200"
+    }
+  },
+  "supportedConcurrentRooms": null,
+  "configuredProductionRoomLimit": 1,
+  "measuredIndependentClients": 31,
+  "blockers": [
+    {
+      "code": "NO_AUTHORIZED_NODE_HOST",
+      "reason": "No real deployment origin, persistent Node host or provider authentication was discovered in project config, environment names, CLI inventory or SSH target configuration.",
+      "needed": "Authorized persistent Node 24+WebSocket host with writable durable volume and actual HTTPS origin"
+    },
+    {
+      "code": "LOCAL_USE_ONLY_ASSETS",
+      "reason": "User confirmed school educational noncommercial use without redistribution. Current selected artwork includes commercial or attached mod derivatives without a documented public redistribution grant.",
+      "needed": "Use rights-cleared public artwork or documented rights-holder permission before public asset distribution"
+    }
+  ],
+  "warnings": [
+    "No service account, paid plan or domain was purchased.",
+    "Local HTTP/WS checks are not external HTTPS/WSS checks.",
+    "GitHub push, main merge, public deployment and school-device validation are independent states.",
+    "Do not upload restricted local assets or their history as part of a public source push."
+  ]
+}

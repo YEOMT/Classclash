@@ -1,8 +1,12 @@
 import balance from '../shared/balance.js';
+import { MAP_BOUNDS, LANES, JUNGLE_CAMPS, inBase } from '../shared/battle-map.js';
+import {JUNGLE_BALANCE} from '../shared/jungle-balance.js';
+import {initializeJungler,jungleIntent} from './jungle.js';
 import { HERO_BY_ID, SKILLS, heroStats, type SkillDefinition } from '../shared/heroes.js';
-import type { Lane, OwnedHero, Team } from '../shared/types.js';
+import { ENGINE_TACTICS } from '../shared/engine-tactics.js';
+import type { Lane, Position, OwnedHero, Team, CombatTeam } from '../shared/types.js';
 import type { Action, CombatEvent, CombatState, CombatStats, CombatUnit, HitPayload, PersistentEffect, Point, Projectile, Source, UnitKind } from '../shared/combat-types.js';
-import { clamp, circleHits, clearSegment, coneHits, direction, distance, findLocalPath, gap, inLane, isStructure, laneProgress, living, nearestWalkable, pointOnPath, rectangleHits, safeMove, segmentDistance, SpatialHash, teamDirection, walkable } from './combat-geometry.js';
+import { clamp, circleHits, clearSegment, coneHits, direction, distance, findLocalPath, gap, inLane, isStructure, laneProgress, living, nearestWalkable, pointOnPath, rectangleHits, safeMove, segmentDistance, SpatialHash, teamDirection, walkable, forwardDirection } from './combat-geometry.js';
 export type { CombatState, CombatUnit, CombatEvent } from '../shared/combat-types.js';
 export { gap, inLane } from './combat-geometry.js';
 export const TICK_MS=50;
@@ -19,12 +23,12 @@ const stat=(s:CombatState,id:string|undefined)=>id?(s.stats[id]??=zeroStats()):u
 const hasStatus=(u:CombatUnit,type:string,tick:number)=>u.statuses.some(x=>x.type===type&&x.untilTick>tick);
 const hardCc=(u:CombatUnit,tick:number)=>u.statuses.some(x=>hardTypes.has(x.type)&&x.untilTick>tick);
 const minion=(u:CombatUnit)=>u.kind.endsWith('MINION');
-const inSameBattleLane=(a:CombatUnit,b:CombatUnit)=>(a.lane===b.lane||a.x<320&&b.x<350||a.x>1216&&b.x>1186||b.lane===null);
+const inSameBattleLane=(a:CombatUnit,b:CombatUnit)=>(a.lane===b.lane||a.position==='JUNGLE'||b.position==='JUNGLE'||b.lane===null||inBase(a.x,a.y,'A')&&inBase(b.x,b.y,'A')||inBase(a.x,a.y,'B')&&inBase(b.x,b.y,'B'));
 function emit(s:CombatState,type:string,source:Source|CombatUnit|null,targets:string[],point:Point,effectId:string,actionId='',params:Record<string,number|string>={}):CombatEvent{
   const e={eventId:`${s.matchId}:event:${++s.eventSeq}`,eventSeq:s.eventSeq,matchId:s.matchId,tick:s.tick,type,sourceEntityId:source?.entityId??null,targetEntityIds:targets,actionId,effectId,x:point.x,y:point.y,params};
   s.events.push(e);return e;
 }
-function unitBase(s:CombatState,kind:UnitKind,team:Team,lane:Lane|null,x:number,y:number,stats:{hp:number;power:number;armor:number;speed:number;range:number;radius:number;attackIntervalMs:number;windupMs:number;projectileSpeed?:number;recoveryMs?:number},id?:string):CombatUnit{
+function unitBase(s:CombatState,kind:UnitKind,team:CombatTeam,lane:Lane|null,x:number,y:number,stats:{hp:number;power:number;armor:number;speed:number;range:number;radius:number;attackIntervalMs:number;windupMs:number;projectileSpeed?:number;recoveryMs?:number},id?:string):CombatUnit{
   const entityId=id??serialId(s,'unit');
   return {entityId,deploymentId:serialId(s,'life'),kind,team,lane,x,y,previousX:x,previousY:y,vx:0,vy:0,level:1,role:kind==='MELEE_MINION'?'melee':'ranged',hp:stats.hp,maxHp:stats.hp,armor:stats.armor,power:stats.power,range:stats.range,speed:stats.speed,radius:stats.radius,attackIntervalMs:stats.attackIntervalMs,windupMs:stats.windupMs,recoveryMs:stats.recoveryMs??Math.min(300,.2*stats.attackIntervalMs),projectileSpeed:stats.projectileSpeed??0,facingX:teamDirection(team),facingY:0,state:'SPAWNING',createdTick:s.tick,shield:0,statuses:[],shields:[],protected:false,action:null,actionId:null,actionStartTick:s.tick,impactTick:0,recoveryEndTick:0,targetId:null,targetChosenTick:s.tick,nextBasicReadyTick:s.tick,nextAiTick:s.tick+7,skillReadyAt:{},goal:null,path:[],pathGoal:null,pathPlannedTick:0,lateral:0,progress:0,slotIndex:-1,slotUntilTick:0,engageX:x,tacticalUntilTick:0,retreatDistance:0,debugReason:'등장',ccChainStartTick:-100,lastHardCcActiveTick:-100,hardCcImmuneUntilTick:0,forcedMove:null,damageLedger:[],recentDamage:[],supportLedger:[],marks:{},towerTargetId:null,towerStreak:0,lastAttackTick:-100,lastProgressTick:s.tick,lastProgressX:x,lastProgressY:y,stalledTicks:0};
 }
@@ -35,7 +39,8 @@ export function createCombat(matchId:string,seed:number|string,tick=0):CombatSta
     const u=unitBase(state,kind,def.team as Team,def.lane as Lane|null,def.x,def.y,{...base,speed:0,attackIntervalMs:base.attackIntervalMs??0,windupMs:base.windupMs??0,projectileSpeed:base.projectileSpeed??0},`${matchId}:${def.id}`);
     u.state='HOLD';u.role='structure';u.nextAiTick=tick;state.structures.push(u);
   }
-  updateStructureProtection(state);spawnWave(state);return state;
+  state.camps=JUNGLE_CAMPS.map(c=>({...c,entityId:null,respawnTick:tick,clearedBy:null}));
+  updateStructureProtection(state);spawnWave(state);respawnCamps(state);return state;
 }
 function placeSpawn(s:CombatState,u:CombatUnit,preferred:Point):void{
   const lane=u.lane??'TOP';
@@ -48,12 +53,13 @@ function placeSpawn(s:CombatState,u:CombatUnit,preferred:Point):void{
   // Never omit a legitimate wave. The normal separation solver clears rare crowded spawn areas.
   u.x=preferred.x;u.y=preferred.y;
 }
-export function deployHero(s:CombatState,args:{playerId:string;team:Team;lane:Lane;hero:OwnedHero;sharedSkillReadyAt:Record<string,number>}):CombatUnit{
+export function deployHero(s:CombatState,args:{playerId:string;team:Team;lane:Position;hero:OwnedHero;sharedSkillReadyAt:Record<string,number>}):CombatUnit{
   if(s.winner)throw new Error('MATCH_FINISHED');
   const existing=s.units.find(u=>living(u)&&u.ownerPlayerId===args.playerId);if(existing)throw new Error('HERO_ALREADY_ACTIVE');
-  const {hero,playerId,team,lane}=args,def=HERO_BY_ID[hero.heroDefinitionId];if(!def)throw new Error('INVALID_HERO');
+  const {hero,playerId,team}=args,lane:Lane=args.lane==='JUNGLE'?'MID':args.lane,def=HERO_BY_ID[hero.heroDefinitionId];if(!def)throw new Error('INVALID_HERO');
   const stats=heroStats(def.id,hero.level,hero.powerEnhancements,hero.vitalityEnhancements),spawn=balance.map.spawn[team];
   const u=unitBase(s,'HERO',team,lane,spawn[0]!,spawn[1]!,{...stats,projectileSpeed:stats.projectileSpeed??0});
+  u.position=args.lane;if(args.lane==='JUNGLE')initializeJungler(u,s.tick);
   u.ownerPlayerId=playerId;u.ownedHeroInstanceId=hero.ownedHeroInstanceId;u.heroDefinitionId=def.id;u.level=hero.level;u.role=def.role;
   const cd=s.cooldowns[playerId]??={instance:{},shared:{...args.sharedSkillReadyAt}};
   cd.instance[hero.ownedHeroInstanceId]??={...hero.skillReadyAt};
@@ -65,25 +71,27 @@ export function deployHero(s:CombatState,args:{playerId:string;team:Team;lane:La
 }
 export function spawnWave(s:CombatState):void{
   s.wave++;s.metrics.wavesSpawned++;const spawnTick=s.tick;
-  for(const team of ['A','B'] as Team[])for(const lane of ['TOP','BOTTOM'] as Lane[]){
+  for(const team of ['A','B'] as Team[])for(const lane of LANES){
     for(const kind of ['MELEE_MINION','RANGED_MINION'] as const){
       const base=kind==='MELEE_MINION'?balance.minions.melee:balance.minions.ranged;
-      const laterals=kind==='MELEE_MINION'?[-28,0,28]:[-42,-14,14,42];
+      const laterals=kind==='MELEE_MINION'?balance.minions.formation.melee:balance.minions.formation.ranged;
       for(const lateral of laterals){
         const p=pointOnPath(kind==='MELEE_MINION'?48:18,lane,team,lateral+(lane==='TOP'?-22:22));
-        const u=unitBase(s,kind,team,lane,p.x,p.y,base);u.lateral=lateral;u.nextAiTick=spawnTick+1;
+        const healthMultiplier=[...balance.minions.healthPhases].reverse().find(phase=>phase.fromBattleSecond<=(s.tick-s.battleStartTick)/20)!.multiplier;
+        const powerMultiplier=[...balance.minions.powerPhases].reverse().find(phase=>phase.fromBattleSecond<=(s.tick-s.battleStartTick)/20)!.multiplier;
+        const u=unitBase(s,kind,team,lane,p.x,p.y,{...base,hp:base.hp*healthMultiplier,power:base.power*powerMultiplier});u.lateral=lateral;u.nextAiTick=spawnTick+1;
         placeSpawn(s,u,p);s.units.push(u);s.metrics.spawnedMinions++;
       }
     }
   }
   s.nextWaveTick=spawnTick+ticks(balance.minions.waveIntervalSeconds*1000);
-  emit(s,'WAVE',null,[],{x:768,y:384},'wave','',{wave:s.wave});
+  emit(s,'WAVE',null,[],{x:MAP_BOUNDS.centerX,y:MAP_BOUNDS.centerY},'wave','',{wave:s.wave});
 }
 export function updateStructureProtection(s:CombatState):void{
   for(const team of ['A','B'] as Team[]){
     const structures=s.structures.filter(u=>u.team===team);
     const laneOpen=(lane:Lane)=>!structures.some(u=>u.lane===lane&&living(u));
-    const guardsOpen=laneOpen('TOP')||laneOpen('BOTTOM');
+    const guardsOpen=LANES.some(laneOpen);
     const nexusOpen=!structures.some(u=>u.kind==='GUARD'&&living(u));
     for(const u of structures){u.protected=u.kind==='INNER'?structures.some(v=>v.kind==='OUTER'&&v.lane===u.lane&&living(v)):u.kind==='GUARD'?!guardsOpen:u.kind==='NEXUS'?!nexusOpen:false;}
   }
@@ -105,7 +113,7 @@ function frontier(s:CombatState,u:CombatUnit):CombatUnit|undefined{
     frontierCaches.set(s,cache);
   }
   if(cache.units.has(u.entityId))return cache.units.get(u.entityId);
-  const candidates=s.structures.filter(t=>t.team!==u.team&&living(t)&&!t.protected&&(t.lane===u.lane||t.lane===null));
+  const candidates=s.structures.filter(t=>t.team!==u.team&&living(t)&&!t.protected&&(t.lane===u.lane||t.lane===null)&&(u.unreachableTargets?.[t.entityId]??0)<=s.tick);
   const result=candidates.sort((a,b)=>{
     const count=(target:CombatUnit)=>cache!.reservations.get(target.entityId)??0;
     const score=(target:CombatUnit)=>distance(u,target)+count(target)*22+(target.kind==='GUARD'?target.hp/target.maxHp*40:0);
@@ -114,17 +122,20 @@ function frontier(s:CombatState,u:CombatUnit):CombatUnit|undefined{
 }
 function targetValid(s:CombatState,u:CombatUnit,t:CombatUnit):boolean{
   if(!living(t)||t.team===u.team||t.protected||!inSameBattleLane(u,t))return false;
+  if((u.unreachableTargets?.[t.entityId]??0)>s.tick)return false;
   if(isStructure(t))return t.lane===u.lane||t.lane===null;
-  const f=frontier(s,u),sign=teamDirection(u.team);
-  if(f&&(t.x-f.x)*sign>f.radius+64)return false;
-  if(u.targetId===t.entityId&&s.tick-u.targetChosenTick>50&&(t.x-u.engageX)*sign>160)return false;
+  if(t.kind==='MONSTER')return u.kind==='HERO'&&u.position==='JUNGLE'&&u.jungle?.campId===t.campId&&!t.leashReset;
+  const f=frontier(s,u);
+  if(u.position!=='JUNGLE'&&f&&laneProgress(t,u.lane!,u.team)>laneProgress(f,u.lane!,u.team)+f.radius+64)return false;
+  if(u.targetId===t.entityId&&s.tick-u.targetChosenTick>ENGINE_TACTICS.maximumChaseTicks&&gap(u,t)>u.range+80)return false;
+  if(u.targetId===t.entityId&&u.engagePoint&&distance(u,u.engagePoint)>ENGINE_TACTICS.maximumChaseDistance&&gap(u,t)>u.range+40)return false;
   return true;
 }
 function threatToBackline(t:CombatUnit,allies:CombatUnit[]):boolean{
   return allies.some(a=>living(a)&&['ranged','mage','support'].includes(a.role)&&(t.targetId===a.entityId||gap(t,a)<50));
 }
 function towerTarget(s:CombatState,tower:CombatUnit,index:Map<string,CombatUnit>,space:SpatialHash):CombatUnit|undefined{
-  const enemies=space.nearby(tower,tower.range+tower.radius+20).filter(u=>u.team!==tower.team&&gap(tower,u)<=tower.range);
+  const enemies=space.nearby(tower,tower.range+tower.radius+20).filter(u=>u.kind!=='MONSTER'&&u.team!==tower.team&&gap(tower,u)<=tower.range);
   const defenders=space.nearby(tower,tower.range+tower.radius+40).filter(u=>u.kind==='HERO'&&u.team===tower.team);
   const aggro=enemies.filter(u=>u.kind==='HERO').map(u=>({u,damage:defenders.reduce((sum,a)=>sum+a.recentDamage.filter(d=>d.sourceId===u.entityId&&s.tick-d.tick<=60).reduce((n,d)=>n+d.value,0),0)})).filter(x=>x.damage>0).sort((a,b)=>b.damage-a.damage||gap(tower,a.u)-gap(tower,b.u));
   if(aggro[0])return aggro[0].u;
@@ -138,22 +149,28 @@ function chooseTarget(s:CombatState,u:CombatUnit,index:Map<string,CombatUnit>,sp
   const foes=space.nearby(u,detect+u.radius).filter(t=>targetValid(s,u,t));
   const f=frontier(s,u);if(f)foes.push(f);
   const allies=space.nearby(u,220).filter(t=>t.team===u.team);
+  const scores=new Map<string,number>();
   const score=(t:CombatUnit)=>{
-    const g=gap(u,t),crowd=s.units.filter(a=>a.team===u.team&&a.targetId===t.entityId&&a.range<40&&living(a)).length;
+    const cached=scores.get(t.entityId);if(cached!==undefined)return cached;
+    const g=gap(u,t),crowd=frontierCaches.get(s)?.reservations.get(t.entityId)??0;
     let value=30*clamp(1-g/300,0,1)+(g<=u.range?25:0)+(u.targetId===t.entityId?18:0)+10*(1-t.hp/t.maxHp)-Math.max(0,crowd-4)*5;
     if(t.kind==='HERO')value+=u.role==='melee'?10:8;
     if(threatToBackline(t,allies))value+=u.role==='tank'?33:18;
-    if(isStructure(t)){value-=18;if(t.kind==='NEXUS'&&g<=u.range+60)value+=50;if(g>u.range+100&&foes.some(x=>!isStructure(x)&&gap(u,x)<130))value-=40;}
+    if(isStructure(t)){value-=18;if(t.kind==='NEXUS'&&g<=u.range+60)value+=50;
+      if(t.hp<=u.power*3&&g<=u.range+80)value+=45;
+      if(g>u.range+100&&foes.some(x=>!isStructure(x)&&gap(u,x)<130))value-=40;}
     if(u.heroDefinitionId==='assassin'&&t.kind==='HERO'&&['mage','support','ranged'].includes(t.role)&&g<=110)value+=16;
     if(u.heroDefinitionId==='rune_mage'&&t.marks[`rune:${u.ownedHeroInstanceId}`])value+=7;
     if(u.heroDefinitionId==='ancient_one'&&t.marks[`sigil:${u.ownedHeroInstanceId}`])value+=8;
-    return value;
+    scores.set(t.entityId,value);return value;
   };
   foes.sort((a,b)=>score(b)-score(a)||distance(u,a)-distance(u,b));
   let chosen=foes[0];const current=u.targetId?index.get(u.targetId):undefined;
-  if(current&&targetValid(s,u,current)&&distance(u,current)<detect+120&&chosen&&chosen!==current&&score(chosen)<score(current)*1.2&&s.tick-u.targetChosenTick<50)chosen=current;
-  if(current&&living(current)&&chosen!==current&&s.tick-u.targetChosenTick<6&&targetValid(s,u,current))chosen=current;
-  if(chosen?.entityId!==u.targetId){u.targetId=chosen?.entityId??null;u.targetChosenTick=s.tick;u.engageX=u.x;u.slotIndex=-1;u.path=[];u.pathGoal=null;}
+  if(current&&targetValid(s,u,current)&&distance(u,current)<detect+120&&chosen&&chosen!==current){
+    const finish=chosen.kind==='NEXUS'&&chosen.hp<=u.power*3&&gap(u,chosen)<=u.range+60;
+    if(!finish&&(s.tick-u.targetChosenTick<ENGINE_TACTICS.targetMinHoldTicks||score(chosen)<score(current)+ENGINE_TACTICS.targetSwitchMargin))chosen=current;
+  }
+  if(chosen?.entityId!==u.targetId){u.targetId=chosen?.entityId??null;u.targetChosenTick=s.tick;u.engageX=u.x;u.engagePoint={x:u.x,y:u.y};u.slotIndex=-1;u.slotUntilTick=0;u.path=[];u.pathGoal=null;}
   return chosen;
 }
 
@@ -304,26 +321,26 @@ function startAction(s:CombatState,u:CombatUnit,target:CombatUnit|undefined,plan
 }
 
 function reserveSlot(s:CombatState,u:CombatUnit,target:CombatUnit):Point|null{
-  const count=isStructure(target)?16:8,ring=u.radius+target.radius+Math.max(0,u.range-3);
+  const ring=u.radius+target.radius+Math.max(0,u.range-3),count=Math.max(6,Math.min(32,Math.floor(2*Math.PI*ring/(u.radius*2+4))));
   const reservations=s.units.filter(v=>v!==u&&living(v)&&v.team===u.team&&v.targetId===target.entityId&&v.slotUntilTick>s.tick);
   const scored:{i:number;p:Point;value:number}[]=[];
   for(let i=0;i<count;i++){
     const a=i*2*Math.PI/count,p={x:target.x+Math.cos(a)*ring,y:target.y+Math.sin(a)*ring};
     if(!walkable(s,p,u.radius,u.lane!))continue;
-    if(reservations.some(v=>v.slotIndex===i||distance(v,p)<u.radius+v.radius-2&&v.action))continue;
-    const back=(p.x-target.x)*teamDirection(u.team)>8?35:0;
+    if(reservations.some(v=>(v.goal&&distance(v.goal,p)<u.radius+v.radius+2)||(distance(v,p)<u.radius+v.radius-2&&v.action)))continue;
+    const forward=forwardDirection(u),back=(p.x-target.x)*forward.x+(p.y-target.y)*forward.y>8?35:0;
     const crowd=s.units.filter(v=>v!==u&&living(v)&&distance(v,p)<u.radius+v.radius+3).length;
     const value=-distance(u,p)-crowd*20-back+(i===u.slotIndex?18:0)+(hash(`${s.seed}/${u.entityId}/${i}`)%100)*.001;
     scored.push({i,p,value});
   }
   const choice=scored.sort((a,b)=>b.value-a.value)[0];if(!choice)return null;
-  u.slotIndex=choice.i;u.slotUntilTick=s.tick+12;return choice.p;
+  u.slotIndex=choice.i;u.slotUntilTick=s.tick+ENGINE_TACTICS.slotTtlTicks;return choice.p;
 }
 function tacticalGoal(s:CombatState,u:CombatUnit,target:CombatUnit|undefined,space:SpatialHash,index:Map<string,CombatUnit>):Point|null{
   if(!u.lane)return null;
-  const sign=teamDirection(u.team),allies=space.nearby(u,280).filter(a=>a.team===u.team&&a!==u&&a.lane===u.lane);
-  const front=allies.filter(a=>a.role==='tank'||a.role==='melee'||a.kind==='MELEE_MINION').map(a=>laneProgress(a,u.lane!,u.team)).sort((a,b)=>a-b);
-  const frontProgress=front.length?front[Math.floor((front.length-1)*(front.length>2?.7:.5))]!:u.progress;
+  const forward=forwardDirection(u),allies=space.nearby(u,280).filter(a=>a.team===u.team&&a!==u&&a.lane===u.lane);
+  const front=allies.filter(a=>a.hp/a.maxHp>=.3&&(a.role==='tank'||a.role==='melee'&&a.heroDefinitionId!=='assassin'||a.kind==='MELEE_MINION')).map(a=>laneProgress(a,u.lane!,u.team)).sort((a,b)=>a-b);
+  const frontProgress=front.length?front[Math.floor((front.length-1)*.5)]!:u.progress;
   const backline=u.role==='support'||u.role==='mage'||u.role==='ranged';
   if(target&&isStructure(target)&&gap(u,target)>340){
     let progress=u.progress+64;
@@ -345,14 +362,17 @@ function tacticalGoal(s:CombatState,u:CombatUnit,target:CombatUnit|undefined,spa
     }
     if(target.targetId===u.entityId&&u.hp<target.power*2*100/(100+u.armor)&&!finish){
       u.state='RETREAT';u.debugReason='타워 다음 두 발 위험';u.tacticalUntilTick=s.tick+10;
-      return {x:u.x-sign*90,y:u.y};
+      return {x:u.x-forward.x*90,y:u.y-forward.y*90};
     }
   }
   if(target&&backline&&u.range>55){
     const threat=space.nearby(u,100).find(e=>e.team!==u.team&&e.range<40&&gap(u,e)<Math.max(55,e.speed*.7+e.range)&&!allies.some(a=>(a.role==='tank'||a.role==='melee')&&segmentDistance(a,e,u)<a.radius+10&&distance(a,e)<distance(u,e)));
     if(threat&&s.tick>=u.tacticalUntilTick&&u.retreatDistance<110){
-      const away=direction(threat,u);u.state='REPOSITION';u.debugReason='근접 위협으로부터 사거리 확보';u.tacticalUntilTick=s.tick+24;u.retreatDistance+=40;
-      return {x:u.x+away.x*35-sign*10,y:u.y+away.y*35};
+      const away=direction(threat,u),p={x:u.x+away.x*35-forward.x*10,y:u.y+away.y*35-forward.y*10};
+      const dangerousTower=s.structures.some(t=>living(t)&&t.team!==u.team&&t.power>0&&gap({...p,radius:u.radius},t)<t.range&&gap(u,t)>=t.range);
+      if(!dangerousTower&&walkable(s,p,u.radius,u.lane)&&clearSegment(s,u,p,u.radius,u.lane)){
+        u.state='REPOSITION';u.debugReason='근접 위협으로부터 사거리 확보';u.tacticalUntilTick=s.tick+ENGINE_TACTICS.rangedRetreatHoldTicks;u.retreatDistance+=40;return p;
+      }
     }
     if(s.tick<u.tacticalUntilTick&&u.state==='REPOSITION'&&u.goal)return u.goal;
   }
@@ -360,11 +380,12 @@ function tacticalGoal(s:CombatState,u:CombatUnit,target:CombatUnit|undefined,spa
     if(gap(u,target)<=u.range){u.state='HOLD';u.debugReason='사거리 내 다음 공격 대기';return null;}
     if(u.role==='support'){
       const escort=allies.filter(a=>a.kind==='HERO'&&['ranged','mage','support'].includes(a.role)).sort((a,b)=>distance(u,a)-distance(u,b))[0];
-      if(u.heroDefinitionId==='monk'&&escort&&distance(target,escort)>90){u.state='HOLD';u.debugReason='후열 호위';return {x:escort.x+sign*28,y:escort.y+u.lateral*.3};}
+      if(u.heroDefinitionId==='monk'&&escort&&distance(target,escort)>90){u.state='HOLD';u.debugReason='후열 호위';return {x:escort.x+forward.x*28,y:escort.y+forward.y*28+u.lateral*.3};}
       if(u.range>50&&front.length&&laneProgress(target,u.lane,u.team)>frontProgress+150&&u.progress>frontProgress-65){u.state='HOLD';u.debugReason='지원 대형 유지';return null;}
     }
     u.state='APPROACH';u.debugReason='유효 표적 접근';
-    if(u.range<40){const slot=reserveSlot(s,u,target);if(slot)return slot;u.state='HOLD';u.debugReason='공격 자리 대기';u.targetId=null;return null;}
+    if(u.range<40){const slot=reserveSlot(s,u,target);if(slot)return slot;
+      (u.unreachableTargets??={})[target.entityId]=s.tick+12;u.slotIndex=-1;u.slotUntilTick=0;u.state='HOLD';u.debugReason='공격 자리 만원 · 다른 표적 평가';u.targetId=null;return null;}
     const d=direction(target,u),r=target.radius+u.radius+u.range*.86;
     return {x:target.x+d.x*r,y:target.y+d.y*r};
   }
@@ -395,17 +416,55 @@ function planUnit(s:CombatState,u:CombatUnit,index:Map<string,CombatUnit>,space:
     const target=towerTarget(s,u,index,space);u.targetId=target?.entityId??null;
     if(target&&s.tick>=u.nextBasicReadyTick)startAction(s,u,target);return;
   }
+  if(u.kind==='MONSTER'){planMonster(s,u,index,space);return;}
   u.progress=laneProgress(u,u.lane!,u.team);
+  const intent=u.jungle?jungleIntent(s,u):null;
+  if(intent&&!intent.laneCombat){
+    const defender=space.nearby(u,95).filter(v=>v.kind==='HERO'&&v.team!==u.team&&living(v)).sort((a,b)=>distance(u,a)-distance(u,b))[0];
+    const target=intent.targetId?index.get(intent.targetId):undefined;
+    if(intent.goal&&(!target||distance(u,target)>300)&&!defender){u.targetId=null;u.state=u.jungle!.stage==='RECOVER'?'RETREAT':'ADVANCE';u.debugReason=u.jungle!.reason;setMoveGoal(s,u,intent.goal);return;}
+    if(u.jungle!.stage==='RECOVER'){u.targetId=null;u.state='RETREAT';u.debugReason=u.jungle!.reason;setMoveGoal(s,u,intent.goal);return;}
+    if(target||defender){const enemy=defender??target!;u.targetId=enemy.entityId;const skill=findSkill(s,u,index,space);if(skill){startAction(s,u,enemy,skill);return;}if(gap(u,enemy)<=u.range&&s.tick>=u.nextBasicReadyTick){startAction(s,u,enemy);return;}u.debugReason=u.jungle!.reason;setMoveGoal(s,u,tacticalGoal(s,u,enemy,space,index));return;}
+  }
   const target=chooseTarget(s,u,index,space),plan=findSkill(s,u,index,space);
   if(plan){startAction(s,u,target,plan);return;}
   if(target&&gap(u,target)<=u.range&&s.tick>=u.nextBasicReadyTick){startAction(s,u,target);u.slotUntilTick=s.tick+12;return;}
-  const intended=tacticalGoal(s,u,target,space,index),goal=intended?nearestWalkable(s,intended,u.radius,u.lane!):null;u.goal=goal;
+  const intended=intent?.laneCombat&&intent.goal&&distance(u,intent.goal)>240&&(!target||isStructure(target))?intent.goal:tacticalGoal(s,u,target,space,index),goal=intended?nearestWalkable(s,intended,u.radius,u.lane!):null;u.goal=goal;
+  if(u.jungle)u.debugReason=u.jungle.reason+(intent?.laneCombat&&intent.goal&&distance(u,intent.goal)>240?' · 지원 라인으로 이동':' · '+u.debugReason.split(' · ').at(-1));
   if(goal){
     const changed=!u.pathGoal||distance(u.pathGoal,goal)>24;
     if(changed||!u.path.length&&s.tick-u.pathPlannedTick>=16||u.stalledTicks>=16&&s.tick-u.pathPlannedTick>=16){
       u.path=findLocalPath(s,u,goal);u.pathGoal={...goal};u.pathPlannedTick=s.tick;
     }
   }else u.path=[];
+}
+
+
+function setMoveGoal(s:CombatState,u:CombatUnit,intended:Point|null){
+ const goal=intended?nearestWalkable(s,intended,u.radius,u.lane??'MID'):null;u.goal=goal;
+ if(!goal){u.path=[];return;}
+ if(!u.pathGoal||distance(u.pathGoal,goal)>24||!u.path.length&&s.tick-u.pathPlannedTick>=16||u.stalledTicks>=16&&s.tick-u.pathPlannedTick>=16){u.path=findLocalPath(s,u,goal);u.pathGoal={...goal};u.pathPlannedTick=s.tick;}
+}
+function respawnCamps(s:CombatState){
+ for(const camp of s.camps??[]){
+  if(camp.entityId||s.tick<camp.respawnTick)continue;
+  const u=unitBase(s,'MONSTER','NEUTRAL','MID',camp.x,camp.y,JUNGLE_BALANCE.monsters[camp.kind]);
+  u.campId=camp.id;u.monsterKind=camp.kind;u.home={x:camp.x,y:camp.y};u.role='monster';u.state='HOLD';u.nextAiTick=s.tick+1;
+  camp.entityId=u.entityId;camp.clearedBy=null;s.units.push(u);emit(s,'CAMP_SPAWN',u,[u.entityId],u,'camp_spawn','',{campId:camp.id});
+ }
+}
+function planMonster(s:CombatState,u:CombatUnit,index:Map<string,CombatUnit>,space:SpatialHash){
+ const home=u.home!,recent=u.recentDamage.map(d=>index.get(d.sourceId)).filter((x):x is CombatUnit=>!!x&&living(x)&&x.kind==='HERO');
+ const candidates=[...new Set([...recent,...space.nearby(u,JUNGLE_BALANCE.aggroRadius).filter(v=>v.kind==='HERO'&&living(v))])].filter(v=>distance(home,v)<=JUNGLE_BALANCE.leashRadius+45);
+ const target=candidates.sort((a,b)=>distance(u,a)-distance(u,b))[0];
+ if(distance(home,u)>JUNGLE_BALANCE.leashRadius||!target&&distance(home,u)>8||u.leashReset){
+  u.leashReset=true;u.targetId=null;u.debugReason='정글 캠프로 복귀';u.state='RETREAT';u.hp=Math.min(u.maxHp,u.hp+u.maxHp*.03);setMoveGoal(s,u,home);
+  if(distance(home,u)<8){u.leashReset=false;u.hp=u.maxHp;u.goal=null;u.path=[];u.state='HOLD';u.recentDamage=[];}return;
+ }
+ u.targetId=target?.entityId??null;
+ if(!target){u.goal=null;u.state='HOLD';return;}
+ if(gap(u,target)<=u.range){u.goal=null;u.path=[];u.state='HOLD';if(s.tick>=u.nextBasicReadyTick)startAction(s,u,target);return;}
+ u.state='APPROACH';u.debugReason='침입자 추적';const d=direction(target,u);setMoveGoal(s,u,{x:target.x+d.x*(target.radius+u.radius+u.range*.8),y:target.y+d.y*(target.radius+u.radius+u.range*.8)});
 }
 
 function skillPayload(skill:SkillDefinition,coefficient=skill.coefficients[0]??0):HitPayload{
@@ -687,12 +746,16 @@ function resolveImpacts(s:CombatState,impacts:Impact[],index:Map<string,CombatUn
     if(target.kind==='HERO'){
       stat(s,target.ownerPlayerId)!.deaths++;deaths.push({playerId:target.ownerPlayerId!,entityId:target.entityId});
       if(killer){
-        s.teamKills[killer.source.team]++;if(killer.source.playerId)stat(s,killer.source.playerId)!.kills++;
+        if(killer.source.team!=='NEUTRAL')s.teamKills[killer.source.team]++;if(killer.source.playerId)stat(s,killer.source.playerId)!.kills++;
         const contributors=new Set(target.damageLedger.filter(d=>s.tick-d.tick<=100).map(d=>d.playerId));
         for(const c of [...contributors]){const attacker=s.units.find(x=>x.ownerPlayerId===c);if(attacker)for(const support of attacker.supportLedger.filter(x=>s.tick-x.tick<=100))contributors.add(support.playerId);}
         contributors.delete(killer.source.playerId??'');contributors.delete(target.ownerPlayerId!);for(const id of contributors)stat(s,id)!.assists++;
       }
       emit(s,'DEATH',killer?.source??null,[target.entityId],target,'death','',{heroId:target.heroDefinitionId!,deploymentId:target.deploymentId});
+    }else if(target.kind==='MONSTER'){
+      const camp=s.camps?.find(c=>c.id===target.campId);if(camp){camp.entityId=null;camp.respawnTick=s.tick+JUNGLE_BALANCE.respawnTicks;camp.clearedBy=killer&&killer.source.team!=='NEUTRAL'?killer.source.team:null;}
+      const hunter=killer?index.get(killer.source.entityId):null;if(hunter&&living(hunter)&&hunter.kind==='HERO'){const healed=Math.min(hunter.maxHp-hunter.hp,hunter.maxHp*JUNGLE_BALANCE.clearHealRatio);hunter.hp+=healed;hunter.statuses= hunter.statuses.filter(x=>x.type!=='jungleHaste');hunter.statuses.push({type:'jungleHaste',sourceId:target.entityId,untilTick:s.tick+JUNGLE_BALANCE.clearHasteTicks,magnitude:.12});if(hunter.jungle&&!hunter.jungle.visited.includes(target.campId!))hunter.jungle.visited.push(target.campId!);}
+      emit(s,'CAMP_CLEARED',killer?.source??null,[target.entityId],target,'jungle_clear','',{campId:target.campId??'',respawnTick:camp?.respawnTick??0});
     }else if(isStructure(target)){
       if(killer?.source.playerId)stat(s,killer.source.playerId)!.towerKills++;
       s.metrics.destroyed.push({id:target.entityId,tick:s.tick,kind:target.kind});
@@ -716,13 +779,21 @@ export function stepCombat(s:CombatState,effectiveTick=s.tick+1):{deaths:{player
     for(const [key,mark]of Object.entries(u.marks))if(mark.untilTick<=s.tick)delete u.marks[key];
     if(isStructure(u)&&s.tick-u.lastAttackTick>40)u.towerStreak=0;
   }
-  if(s.tick>=s.nextWaveTick)spawnWave(s);
+  if(s.tick>=s.nextWaveTick)spawnWave(s);respawnCamps(s);
+  for(const u of s.units)if(u.kind==='HERO'&&living(u)&&u.team!=='NEUTRAL'&&inBase(u.x,u.y,u.team)&&distance(u,{x:balance.map.spawn[u.team][0],y:balance.map.spawn[u.team][1]})<105)u.hp=Math.min(u.maxHp,u.hp+u.maxHp*.0025);
   updateStructureProtection(s);
   const index=new Map(allUnits(s).map(u=>[u.entityId,u])),space=new SpatialHash(s.units),impacts:Impact[]=[];
   // Intent formation does not alter HP. Both teams read the same pre-damage battlefield.
   const rank=(u:CombatUnit)=>{let n=initiativeRanks.get(u);if(n===undefined){n=hash(`${s.seed}/${u.entityId}`);initiativeRanks.set(u,n);}return n;};
   const intentOrder=allUnits(s).sort((a,b)=>(a.kind==='HERO'?0:1)-(b.kind==='HERO'?0:1)||rank(a)-rank(b));
-  for(const u of intentOrder)planUnit(s,u,index,space);
+  for(const u of intentOrder){
+    const previousTarget=u.targetId,previousState=u.state,previousReason=u.debugReason;
+    planUnit(s,u,index,space);
+    if(u.kind==='HERO'&&(u.targetId!==previousTarget||u.state!==previousState||u.debugReason!==previousReason)){
+      const trace=s.decisions??=[];trace.push({tick:s.tick,entityId:u.entityId,targetId:u.targetId,state:u.state,reasonCode:u.debugReason});
+      if(trace.length>256)trace.splice(0,trace.length-256);
+    }
+  }
   moveUnits(s,space,impacts);
   for(const u of s.units)if(living(u)&&(!Number.isFinite(u.x)||!Number.isFinite(u.y)||!Number.isFinite(u.hp)||!inLane(u,u.radius,u.lane!))){
     s.metrics.invalidPositions++;emit(s,'DIAGNOSTIC',u,[],u,'invalid_position','',{x:u.x,y:u.y,hp:u.hp});
@@ -737,7 +808,7 @@ export function stepCombat(s:CombatState,effectiveTick=s.tick+1):{deaths:{player
   s.events=s.events.filter(e=>s.tick-e.tick<=200);
   s.metrics.maxUnits=Math.max(s.metrics.maxUnits,s.units.filter(living).length);
   const lostA=s.structures.some(u=>u.team==='A'&&u.kind==='NEXUS'&&u.hp<=0),lostB=s.structures.some(u=>u.team==='B'&&u.kind==='NEXUS'&&u.hp<=0);
-  if(lostA||lostB){s.winner=lostA&&lostB?'DRAW':lostA?'B':'A';emit(s,'MATCH_END',null,[],{x:768,y:384},'nexus_destroyed','',{winner:s.winner});}
+  if(lostA||lostB){s.winner=lostA&&lostB?'DRAW':lostA?'B':'A';emit(s,'MATCH_END',null,[],{x:MAP_BOUNDS.centerX,y:MAP_BOUNDS.centerY},'nexus_destroyed','',{winner:s.winner});}
   return {deaths,...(s.winner?{winner:s.winner}:{})};
 }
 function moveUnits(s:CombatState,space:SpatialHash,impacts:Impact[]):void{
@@ -759,25 +830,41 @@ function moveUnits(s:CombatState,space:SpatialHash,impacts:Impact[]):void{
         if(skill.kind==='dash_line')for(const t of allUnits(s))if(t.team!==u.team&&living(t)&&!a.hitIds.includes(t.entityId)&&segmentDistance(t,u,next)<=t.radius+(skill.width??26)/2){a.hitIds.push(t.entityId);queueHit(s,impacts,a.source,t,skillPayload(skill),a.id,t);if(a.hitIds.length>=(skill.maxTargets??4))break;}
       }
     }else if(!hardCc(u,s.tick)&&!hasStatus(u,'root',s.tick)&&u.goal&&u.state!=='SPAWNING'){
-      while(u.path[0]&&distance(u,u.path[0])<5)u.path.shift();const waypoint=u.path[0]??u.goal;
-      if(distance(u,waypoint)<3){u.goal=null;u.state='HOLD';u.lastProgressTick=s.tick;u.stalledTicks=0;continue;}
+      while(u.path[0]&&distance(u,u.path[0])<.75&&(!u.path[1]||clearSegment(s,u,u.path[1],u.radius,u.lane!)))u.path.shift();const waypoint=u.path[0]??u.goal;
+      if(distance(u,waypoint)<.75){u.goal=null;u.state='HOLD';u.lastProgressTick=s.tick;u.stalledTicks=0;continue;}
       let d=direction(u,waypoint);const near=space.nearby(u,u.radius+30);
       let sx=0,sy=0;
       for(const other of near){if(other===u)continue;const dist=distance(u,other),desired=u.radius+other.radius+3;if(dist<desired&&dist>.1){sx+=(u.x-other.x)/dist*(desired-dist)/desired;sy+=(u.y-other.y)/dist*(desired-dist)/desired;}}
       d={x:d.x+sx*.65,y:d.y+sy*.65};const len=Math.hypot(d.x,d.y)||1;d.x/=len;d.y/=len;
       const slow=Math.min(.5,Math.max(0,...u.statuses.filter(x=>x.type==='slow').map(x=>x.magnitude)));
-      const amount=Math.min(u.speed*(1-slow)*.05,distance(u,waypoint));next={x:u.x+d.x*amount,y:u.y+d.y*amount};
+      const haste=hasStatus(u,'jungleHaste',s.tick)?1.12:1;const amount=Math.min(u.speed*haste*(1-slow)*.05,distance(u,waypoint));next={x:u.x+d.x*amount,y:u.y+d.y*amount};
     }
     if(next){
-      const pos=safeMove(s,u,next);u.x=pos.x;u.y=pos.y;u.vx=(u.x-u.previousX)*20;u.vy=(u.y-u.previousY)*20;
+      let pos=safeMove(s,u,next);
+      // Crowd steering must not press an otherwise valid route into a wall.
+      if(!u.action&&!u.forcedMove&&u.goal&&distance(u,pos)<distance(u,next)*.5){const waypoint=u.path[0]??u.goal,d=direction(u,waypoint),step=Math.min(distance(u,next),distance(u,waypoint)),direct=safeMove(s,u,{x:u.x+d.x*step,y:u.y+d.y*step});if(distance(u,direct)>distance(u,pos))pos=direct;}
+      u.x=pos.x;u.y=pos.y;u.vx=(u.x-u.previousX)*20;u.vy=(u.y-u.previousY)*20;
       if(Math.hypot(u.vx,u.vy)>.1&&!u.action){const d=direction({x:u.previousX,y:u.previousY},u);u.facingX=d.x;u.facingY=d.y;}
-      const moved=distance(u,{x:u.lastProgressX,y:u.lastProgressY});
-      if(moved>=4){u.lastProgressTick=s.tick;u.lastProgressX=u.x;u.lastProgressY=u.y;u.stalledTicks=0;}
-      else if(!u.action&&!u.forcedMove){u.stalledTicks=s.tick-u.lastProgressTick;if(u.stalledTicks===16){
-        const side=hash(`${s.seed}/${u.entityId}`)%2?1:-1;
-        const escape={x:u.x,y:u.y+side*28};if(walkable(s,escape,u.radius,u.lane!)){u.path=[escape];u.pathGoal=null;u.tacticalUntilTick=s.tick+12;}
-      }if(u.stalledTicks===40){u.targetId=null;u.path=[];}if(u.stalledTicks===100){s.metrics.stalledEvents++;(s.metrics.stalls??=[]).push({tick:s.tick,entityId:u.entityId,heroId:u.heroDefinitionId??'',kind:u.kind,x:u.x,y:u.y,goal:u.goal,reason:u.debugReason});emit(s,'DIAGNOSTIC',u,[],u,'stalled','',{durationTicks:u.stalledTicks});}}
-    }else{u.lastProgressTick=s.tick;u.lastProgressX=u.x;u.lastProgressY=u.y;u.stalledTicks=0;}
+      // Progress means getting closer to the committed path waypoint. A sideways
+      // crowd oscillation must not continually reset the stuck timer.
+      const goal=u.path[0]??u.goal,remaining=goal?distance(u,goal):0;
+      const changed=goal&&(!u.navigationProgress||distance(u.navigationProgress.goal,goal)>8);
+      const progressed=goal&&u.navigationProgress&&remaining<u.navigationProgress.distance-2;
+      if(changed||progressed||!goal){u.navigationProgress=goal?{goal:{...goal},distance:remaining,tick:s.tick}:undefined;u.lastProgressTick=s.tick;u.lastProgressX=u.x;u.lastProgressY=u.y;u.stalledTicks=0;}
+      else if(!u.action&&!u.forcedMove){
+        u.stalledTicks=s.tick-(u.navigationProgress?.tick??u.lastProgressTick);
+        if(u.stalledTicks===ENGINE_TACTICS.stuckRecoveryTicks){
+          u.slotIndex=-1;u.slotUntilTick=0;
+          const candidates=Array.from({length:16},(_,i)=>{const a=i*Math.PI/8;return{x:u.x+Math.cos(a)*24,y:u.y+Math.sin(a)*24};})
+            .filter(p=>walkable(s,p,u.radius,u.lane!)&&clearSegment(s,u,p,u.radius,u.lane!));
+          candidates.sort((a,b)=>distance(a,u.goal??u)-distance(b,u.goal??u)+space.nearby(a,u.radius+12).length*8-space.nearby(b,u.radius+12).length*8);
+          if(candidates[0]){u.path=[candidates[0]];u.pathGoal=null;u.tacticalUntilTick=s.tick+12;}
+          emit(s,'DIAGNOSTIC',u,[],u,'path_recovery','',{durationTicks:u.stalledTicks});
+        }
+        if(u.stalledTicks===ENGINE_TACTICS.stuckRetargetTicks){if(u.targetId)(u.unreachableTargets??={})[u.targetId]=s.tick+ENGINE_TACTICS.blockedTargetRetryTicks;u.targetId=null;u.slotUntilTick=0;u.path=[];u.pathGoal=null;}
+        if(u.stalledTicks===ENGINE_TACTICS.fullStallTicks){s.metrics.stalledEvents++;(s.metrics.stalls??=[]).push({tick:s.tick,entityId:u.entityId,heroId:u.heroDefinitionId??'',kind:u.kind,x:u.x,y:u.y,goal:u.goal,reason:u.debugReason});emit(s,'DIAGNOSTIC',u,[],u,'stalled','',{durationTicks:u.stalledTicks});}
+      }
+    }else{u.lastProgressTick=s.tick;u.lastProgressX=u.x;u.lastProgressY=u.y;u.stalledTicks=0;u.navigationProgress=undefined;}
     if(u.forcedMove&&(u.forcedMove.remaining<=0||u.forcedMove.untilTick<=s.tick))u.forcedMove=null;
   }
   // Each pair's correction is split symmetrically, accumulated from the same positions, and capped at three units/tick.

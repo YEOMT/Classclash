@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import {spawnSync} from 'node:child_process';
+import {assertSourcesUnchanged,sha256} from './pack-art.mjs';
+const lock=assertSourcesUnchanged();
+const before=Object.fromEntries(Object.keys(lock.files).map(file=>[file,sha256(fs.readFileSync(file))]));
+const build=spawnSync(process.execPath,['scripts/build.mjs'],{stdio:'inherit'});
+if(build.status!==0)process.exit(build.status??1);
+assertSourcesUnchanged(lock);
+const changed=Object.keys(before).filter(file=>sha256(fs.readFileSync(file))!==before[file]);
+if(changed.length)throw new Error('Build modified source files: '+changed.join(', '));
+console.log(`PASS: build preserved every byte of ${Object.keys(before).length} approved original files.`);

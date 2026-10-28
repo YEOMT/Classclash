@@ -15,10 +15,10 @@ function hero(s:CombatState,id:string,heroId:string,team:'A'|'B',x:number,y=224,
 function source(u:CombatUnit):Source{return {entityId:u.entityId,deploymentId:u.deploymentId,playerId:u.ownerPlayerId,ownedHeroInstanceId:u.ownedHeroInstanceId,heroDefinitionId:u.heroDefinitionId,team:u.team,kind:u.kind,power:u.power,maxHp:u.maxHp};}
 function run(s:CombatState,n:number){for(let i=0;i<n;i++)stepCombat(s);}
 
-test('COM-001/002/047: exact opening and 20-second waves with a monotonic match clock',()=>{
- const s=createCombat('waves',42,6000);assert.equal(s.units.length,28);assert.equal(s.battleStartTick,6000);
- for(const team of ['A','B'])for(const lane of ['TOP','BOTTOM']){assert.equal(s.units.filter(u=>u.team===team&&u.lane===lane&&u.kind==='MELEE_MINION').length,3);assert.equal(s.units.filter(u=>u.team===team&&u.lane===lane&&u.kind==='RANGED_MINION').length,4);}
- run(s,399);assert.equal(s.wave,1);run(s,1);assert.equal(s.wave,2);assert.equal(s.metrics.spawnedMinions,56);run(s,1);assert.equal(s.wave,2);
+test('COM-001/002/047: exact opening and 35-second waves with a monotonic match clock',()=>{
+ const s=createCombat('waves',42,6000);assert.equal(s.units.filter(u=>u.kind.includes('MINION')).length,42);assert.equal(s.battleStartTick,6000);
+ for(const team of ['A','B'])for(const lane of ['TOP','MID','BOTTOM']){assert.equal(s.units.filter(u=>u.team===team&&u.lane===lane&&u.kind==='MELEE_MINION').length,3);assert.equal(s.units.filter(u=>u.team===team&&u.lane===lane&&u.kind==='RANGED_MINION').length,4);}
+ run(s,699);assert.equal(s.wave,1);run(s,1);assert.equal(s.wave,2);assert.equal(s.metrics.spawnedMinions,84);run(s,1);assert.equal(s.wave,2);
 });
 test('COM-045: millisecond timelines ceil to exact integer ticks',()=>{
  assert.equal(ticks(230),5);assert.equal(ticks(300),6);assert.equal(ticks(150),3);
@@ -81,9 +81,9 @@ test('COM-044: melee surface-gap ring can actually hit a large structure',()=>{
  const a=hero(s,'a','swordsman','A',t.x-t.radius-11-10,t.y);a.power=100;t.power=0;const hp=t.hp;run(s,30);assert.ok(t.hp<hp);assert.ok(gap(a,t)<=a.range+6);
 });
 test('COM-003/020: corridor and ability shapes include collision radii',()=>{
- assert.equal(inLane({x:768,y:224},12,'TOP'),true);assert.equal(inLane({x:768,y:384},12,'TOP'),false);assert.equal(inLane({x:300,y:384},12,'TOP'),true);
+ assert.equal(inLane({x:768,y:224},12,'TOP'),true);assert.equal(inLane({x:768,y:384},12,'TOP'),false);assert.equal(inLane({x:640,y:640},12,'MID'),true);
  const s=fixture(),u=hero(s,'a','paladin','A',700,224);assert.equal(circleHits({x:680,y:224},8,u),true);assert.equal(rectangleHits({x:660,y:224},{x:1,y:0},30,10,u),true);assert.equal(coneHits({x:660,y:224},{x:1,y:0},30,90,u),true);
- const full=createCombat('walkable',1);assert.equal(walkable(full,{x:520,y:224},12,'TOP'),false);
+ const full=createCombat('walkable',1);assert.equal(walkable(full,{x:435,y:210},12,'TOP'),false);
 });
 test('COM-033: dead human units remain dead without an explicit deployment command',()=>{
  const s=fixture(),a=hero(s,'a','archer','A',650);a.hp=0;a.state='DEAD';a.deathTick=0;run(s,400);assert.equal(s.units.filter(u=>u.ownerPlayerId==='a'&&u.hp>0).length,0);
@@ -112,20 +112,20 @@ function distanceSafe(a:{x:number;y:number},b:{x:number;y:number}){return Math.h
 test('COM-007: a tank adjacent to its own tower navigates around the solid obstacle',()=>{
  const s=createCombat('own-tower',1002);s.units=[];s.nextWaveTick=1e9;
  const u=deployHero(s,{playerId:'tank',team:'A',lane:'BOTTOM',hero:owned('tank-owned','paladin'),sharedSkillReadyAt:{}});
- Object.assign(u,{x:516.5280411617823,y:502.80858350223946,state:'HOLD',createdTick:-10,nextAiTick:0,lateral:-28});
- run(s,200);assert.ok(u.x>600,`tank remained at ${u.x},${u.y} (${u.debugReason})`);assert.equal(s.metrics.stalledEvents,0);assert.equal(s.metrics.invalidPositions,0);
+ Object.assign(u,{x:810,y:1045,state:'HOLD',createdTick:-10,nextAiTick:0,lateral:-28});
+ run(s,200);assert.ok(distanceSafe(u,{x:810,y:1045})>60,`tank remained at ${u.x},${u.y} (${u.debugReason})`);assert.equal(s.metrics.stalledEvents,0);assert.equal(s.metrics.invalidPositions,0);
 });
 test('COM-007: a mage at the inner tower and corridor corner finds a valid departure edge',()=>{
  const s=createCombat('inner-corner',1003);s.units=[];s.nextWaveTick=1e9;
  const u=deployHero(s,{playerId:'mage',team:'B',lane:'TOP',hero:owned('mage-owned','pyromancer'),sharedSkillReadyAt:{}});
- Object.assign(u,{x:1214.9746788405403,y:205.58672775991658,state:'HOLD',createdTick:-10,nextAiTick:0,lateral:42});
- run(s,200);assert.ok(u.x<1100,`mage remained at ${u.x},${u.y} (${u.debugReason})`);assert.equal(s.metrics.stalledEvents,0);assert.equal(s.metrics.invalidPositions,0);
+ Object.assign(u,{x:728,y:185,state:'HOLD',createdTick:-10,nextAiTick:0,lateral:42});
+ run(s,200);assert.ok(u.x<640,`mage remained at ${u.x},${u.y} (${u.debugReason})`);assert.equal(s.metrics.stalledEvents,0);assert.equal(s.metrics.invalidPositions,0);
 });
 
 test('COM-007: a nearby ranged-minion goal cannot shortcut the tower tangent from its grid center',()=>{
  const s=createCombat('minion-tangent-1010',1010);const u=s.units.find(u=>u.kind==='RANGED_MINION'&&u.team==='A'&&u.lane==='TOP')!;
- s.units=[u];s.nextWaveTick=1e9;const goal={x:534.5924068296854,y:259.8812588496486};
- Object.assign(u,{x:515.3242810526128,y:258.9889647221098,previousX:515.3242810526128,previousY:258.9889647221098,state:'APPROACH',createdTick:-10,nextAiTick:1e9,targetId:s.structures.find(t=>t.entityId.endsWith('B_TOP_OUTER'))!.entityId,goal,lastProgressX:515.3242810526128,lastProgressY:258.9889647221098,lastProgressTick:0});
+ s.units=[u];s.nextWaveTick=1e9;const goal={x:449.5924068296854,y:245.8812588496486};
+ Object.assign(u,{x:430.3242810526128,y:244.9889647221098,previousX:430.3242810526128,previousY:244.9889647221098,state:'APPROACH',createdTick:-10,nextAiTick:1e9,targetId:s.structures.find(t=>t.entityId.endsWith('B_TOP_OUTER'))!.entityId,goal,lastProgressX:430.3242810526128,lastProgressY:244.9889647221098,lastProgressTick:0});
  assert.equal(walkable(s,u,u.radius,'TOP'),true);assert.equal(walkable(s,goal,u.radius,'TOP'),true);
  assert.equal(clearSegment(s,u,goal,u.radius,'TOP'),false,'direct tangent crosses the solid tower');
  u.path=findLocalPath(s,u,goal);assert.ok(u.path.length>0,'legal short detour must not be discarded by virtual start-cell termination');

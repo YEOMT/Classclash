@@ -44,7 +44,7 @@ test('L13: exactly two standard AI complete all 40 graded answers, choose and gr
  for(let i=0;i<6000&&!r.players.every(p=>p.state==='READY');i++)tickRoom(r);
  assert.equal(r.phase,'INITIAL_MAINTENANCE');assert.equal(r.combat,null);assert.ok(r.players.every(p=>p.state==='READY'));
  for(const p of r.players){assert.equal(p.stats.openingAnswered,20);assert.equal(p.stats.earned,p.stats.openingCorrect);assert.equal(p.gold+p.stats.spent,p.stats.earned);assert.equal(p.stats.deployments,0);assert.equal(p.starterChoiceUsed,true);assert.ok(p.inventory.some(h=>h.obtainedFrom==='STARTER'));assert.ok(p.selectedOwnedHeroId);}
- apply(r,'host','START_COUNTDOWN');tick(r,99);assert.equal(r.phase,'COUNTDOWN');assert.equal(r.combat,null);tickRoom(r);assert.equal(r.phase,'BATTLE');assert.equal(r.combat!.units.filter(u=>u.kind==='HERO').length,2);assert.equal(r.combat!.units.filter(u=>u.kind.endsWith('MINION')).length,28);assert.ok(r.players.every(p=>p.stats.deployments===1));
+ apply(r,'host','START_COUNTDOWN');tick(r,99);assert.equal(r.phase,'COUNTDOWN');assert.equal(r.combat,null);tickRoom(r);assert.equal(r.phase,'BATTLE');assert.equal(r.combat!.units.filter(u=>u.kind==='HERO').length,2);assert.equal(r.combat!.units.filter(u=>u.kind.endsWith('MINION')).length,42);assert.ok(r.players.every(p=>p.stats.deployments===1));
 });
 
 test('B05: 2000 wrong-intent choices across real shuffled items reach every distractor and never the answer',()=>{

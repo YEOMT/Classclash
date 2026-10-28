@@ -5,21 +5,23 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
+import {cpus,platform,release,totalmem} from 'node:os';
 import { DEFAULT_BANK } from '../src/server/quiz.js';
 import type { RoomSnapshot, SessionInfo, CommandReply, ClientCommand } from '../src/shared/types.js';
 const port=Number(process.env.TEST_PORT||3102),base=`http://127.0.0.1:${port}`;
-const proc=spawn(process.execPath,['dist/server.js'],{env:{...process.env,PORT:String(port),DATABASE_PATH:join(tmpdir(),`classclash-load-${Date.now()}.sqlite`),NODE_ENV:'test',CLASH_TEST_SPEED:'1'},stdio:['ignore','pipe','pipe'],windowsHide:true});
+const proc=spawn(process.execPath,process.env.LOAD_FROM_SOURCE==='1'?['--import','tsx','src/server/index.ts']:['dist/server.js'],{env:{...process.env,PORT:String(port),HOST:'127.0.0.1',DATABASE_PATH:join(tmpdir(),`classclash-load-${Date.now()}.sqlite`),NODE_ENV:'test',CLASH_TEST_SPEED:'1',APP_ORIGIN:'',HOST_ACCESS_CODE:'',HOST_ACCESS_CODE_FILE:''},stdio:['ignore','pipe','pipe'],windowsHide:true});
 let serverLog='';proc.stdout.on('data',x=>serverLog+=x);proc.stderr.on('data',x=>serverLog+=x);
 const sleep=(ms:number)=>new Promise(r=>setTimeout(r,ms));
 async function waitFor(fn:()=>boolean,ms=15000){const start=Date.now();while(!fn()){if(Date.now()-start>ms)throw new Error('Timed out');await sleep(25);}}
 async function post(path:string,data:unknown){const response=await fetch(base+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const result=await response.json();assert.ok(response.ok,JSON.stringify(result));return result as SessionInfo;}
+const ackTimes:number[]=[];
 class Client {
   ws:WebSocket; snap?:RoomSnapshot; bytes=0; snapshots=0; pending=new Map<string,{resolve:(v:CommandReply)=>void;reject:(e:Error)=>void}>(); session:SessionInfo; welcomed=false; oldEpoch=0;
   constructor(s:SessionInfo){this.session=s;this.ws=new WebSocket(base.replace('http','ws')+'/ws');this.ws.on('open',()=>this.ws.send(JSON.stringify({type:'HELLO',roomCode:s.roomCode,token:s.token})));
     this.ws.on('message',raw=>{this.bytes+=Buffer.byteLength(raw.toString());const m=JSON.parse(raw.toString());if(m.type==='WELCOME'){this.welcomed=true;this.oldEpoch=m.connectionEpoch;}if(m.type==='SNAPSHOT'){this.snap=m.snapshot;this.snapshots++;if(m.snapshot.battle)this.ws.send(JSON.stringify({type:'EVENT_ACK',lastEventSeq:m.snapshot.battle.eventSeq}));}if(m.type==='ACK'){this.pending.get(m.reply.commandId)?.resolve(m.reply);this.pending.delete(m.reply.commandId);}if(m.type==='ERROR')console.error(m);});}
   async ready(){await waitFor(()=>!!this.snap);return this;}
-  async send(type:string,payload:Record<string,unknown>={},override?:ClientCommand){const s=this.snap!;const command=override||{commandId:randomUUID(),type,payload,matchId:s.matchId,expectedPhaseRevision:s.phaseRevision,connectionEpoch:s.connectionEpoch,ledgerRevision:s.self?.ledgerRevision};
-    const result=await new Promise<CommandReply>((resolve,reject)=>{this.pending.set(command.commandId,{resolve,reject});this.ws.send(JSON.stringify({type:'COMMAND',command}));setTimeout(()=>{if(this.pending.delete(command.commandId))reject(new Error('ACK timeout '+type));},10000).unref();});return {result,command};}
+  async send(type:string,payload:Record<string,unknown>={},override?:ClientCommand){const began=performance.now(),s=this.snap!;const command=override||{commandId:randomUUID(),type,payload,matchId:s.matchId,expectedPhaseRevision:s.phaseRevision,connectionEpoch:s.connectionEpoch,ledgerRevision:s.self?.ledgerRevision};
+    const result=await new Promise<CommandReply>((resolve,reject)=>{this.pending.set(command.commandId,{resolve,reject});this.ws.send(JSON.stringify({type:'COMMAND',command}));setTimeout(()=>{if(this.pending.delete(command.commandId))reject(new Error('ACK timeout '+type));},10000).unref();});ackTimes.push(performance.now()-began);return {result,command};}
   async apply(type:string,payload:Record<string,unknown>={}){const {result}=await this.send(type,payload);assert.notEqual(result.status,'REJECTED',`${type}: ${result.errorCode}`);await sleep(60);return result;}
 }
 const clients:Client[]=[];
@@ -43,12 +45,15 @@ try{
   await Promise.all(students.map(c=>c.apply('SET_READY',{ready:true})));await waitFor(()=>host.snap!.players.every(p=>p.state==='READY'));
   await host.apply('START_COUNTDOWN');await waitFor(()=>host.snap?.phase==='BATTLE',10000);
   const wireBytes=(c:Client)=>(c.ws as unknown as {_socket:{bytesRead:number}})._socket.bytesRead;
-  const started=Date.now(),bytesBefore=students.map(c=>c.bytes),wireBefore=students.map(wireBytes);await sleep(Number(process.env.LOAD_SECONDS||20)*1000);
+  const started=Date.now(),startTick=host.snap!.tick,bytesBefore=students.map(c=>c.bytes),wireBefore=students.map(wireBytes);await sleep(Number(process.env.LOAD_SECONDS||20)*1000);
   const elapsed=(Date.now()-started)/1000;
   assert.ok(host.snap!.battle!.units.some(u=>u.hp<u.maxHp)||host.snap!.battle!.events.some(e=>e.type==='HIT'),'Actual combat did not produce damage');
   const wireRates=students.map((c,i)=>(wireBytes(c)-wireBefore[i])/1024/elapsed);
-  const result={status:'PASS',transport:'31 independent authenticated WebSocket connections, one reconnected participant; WebSocket permessage-deflate',players:30,host:1,elapsedSeconds:elapsed,snapshots:students.map(c=>c.snapshots),receivedWireKiBPerSecond:wireRates,receivedDecodedKiBPerSecond:students.map((c,i)=>(c.bytes-bytesBefore[i])/1024/elapsed),concurrentDraws:30,duplicateDrawReplays:30,duplicateDraw:'PASS',reconnect:'PASS',openingAnswers:600,battleEntities:host.snap!.battle!.units.length,serverDiagnostics:host.snap!.diagnostics,node:process.version,serverLog};
+  const ordered=ackTimes.sort((a,b)=>a-b),pct=(p:number)=>ordered[Math.floor((ordered.length-1)*p)]||0;
+  const performanceChecks={commandAckP95:pct(.95)<=500,fullTickP95:(host.snap!.diagnostics?.tickP95||0)<=40,fullTickP99:(host.snap!.diagnostics?.tickP99||0)<=50};
+  const result={status:Object.values(performanceChecks).every(Boolean)?'PASS':'FAIL',functionalStatus:'PASS',performanceChecks,concurrentWorkload:process.env.LOAD_WORKLOAD||'not specified; record other active tasks before treating this as isolated performance',transport:'31 independent authenticated WebSocket connections, one reconnected participant; WebSocket permessage-deflate',speedMultiplier:1,network:'loopback; no artificial RTT or packet-loss injection',hardware:{cpu:cpus()[0]?.model,logicalCpus:cpus().length,memoryBytes:totalmem(),os:`${platform()} ${release()}`},players:30,host:1,elapsedSeconds:elapsed,startTick,endTick:host.snap!.tick,simulatedSeconds:(host.snap!.tick-startTick)/20,commandAckMs:{count:ordered.length,p50:pct(.5),p95:pct(.95),p99:pct(.99)},snapshots:students.map(c=>c.snapshots),receivedWireKiBPerSecond:wireRates,receivedDecodedKiBPerSecond:students.map((c,i)=>(c.bytes-bytesBefore[i])/1024/elapsed),concurrentDraws:30,duplicateDrawReplays:30,duplicateDraw:'PASS',reconnect:'PASS',openingAnswers:600,battleEntities:host.snap!.battle!.units.length,serverDiagnostics:host.snap!.diagnostics,node:process.version,identity:await (await fetch(base+'/api/health')).json(),serverLog};
   assert.ok(Math.max(...wireRates)<=100,'Per-client mean wire bandwidth exceeds100KiB/s');
-  mkdirSync('artifacts',{recursive:true});writeFileSync('artifacts/load-results.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));
-}catch(e){console.error(e);console.error(serverLog);mkdirSync('artifacts',{recursive:true});writeFileSync('artifacts/load-results.json',JSON.stringify({status:'FAIL',error:String(e),serverLog,at:new Date().toISOString()},null,2));process.exitCode=1;}finally{for(const c of clients)c.ws.close();proc.kill();}
+  if(result.status==='FAIL')process.exitCode=1;
+  const output=process.env.LOAD_OUTPUT||'artifacts/load-results.json';mkdirSync(join(output,'..'),{recursive:true});writeFileSync(output,JSON.stringify(result,null,2));console.log(JSON.stringify({status:result.status,players:result.players,elapsedSeconds:result.elapsedSeconds,commandAckMs:result.commandAckMs,serverDiagnostics:result.serverDiagnostics,output},null,2));
+}catch(e){console.error(e);console.error(serverLog);const output=process.env.LOAD_OUTPUT||'artifacts/load-results.json';mkdirSync(join(output,'..'),{recursive:true});writeFileSync(output,JSON.stringify({status:'FAIL',error:String(e),serverLog,at:new Date().toISOString()},null,2));process.exitCode=1;}finally{for(const c of clients)c.ws.close();proc.kill();}
 

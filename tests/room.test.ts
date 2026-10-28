@@ -52,7 +52,7 @@ test('G05-G09: exact boundaries, valid role pools and 100000 sample distribution
   assert.deepEqual(HEROES.filter(h=>h.rarity==='LEGENDARY').map(h=>h.id).sort(),['ancient_one','guardian_spirit','rune_mage']);
 });
 test('M01-M03 C01-C02: first deployment and t0 wave; live mutation rejected',()=>{
-  const {r,a}=battle();assert.equal(r.combat!.units.filter(u=>u.kind==='HERO').length,2);assert.equal(r.combat!.units.filter(u=>u.kind.includes('MINION')).length,28);assert.equal(r.combat!.structures.length,14);
+  const {r,a}=battle();assert.equal(r.combat!.units.filter(u=>u.kind==='HERO').length,2);assert.equal(r.combat!.units.filter(u=>u.kind.includes('MINION')).length,42);assert.equal(r.combat!.structures.length,18);
   for(const type of ['DRAW_HERO','LEVEL_UP','ENHANCE_HERO','SELECT_HERO_AND_LANE','DEPLOY_HERO'])assert.equal(directCommand(r,a.playerId,type,{}).errorCode,'HERO_ALREADY_ACTIVE');
 });
 test('Q08-Q09 Q13: incomplete attempt resume and exactly 30s cooldown after tenth',()=>{

@@ -1,0 +1,1188 @@
+{
+  "kind": "PUBLIC_AUTHORED_SOURCE_WITHOUT_LOCAL_ARTWORK",
+  "base": "d060b535c49b63d219f851c431e0294e9dbcb157",
+  "localBaseline": "70987cb7181e8f5eda29735927efcf96c997a24e",
+  "excluded": "Latest private artwork, original archives, screenshots, videos, database, environment secrets and private rework history. Public main previously generated assets are unchanged.",
+  "files": [
+    {
+      "file": "ART_REWORK_REPORT.md",
+      "sha256": "589e78f45f75b500ef2963e15eb66e7119e0ab358ee0a00f2380f9c1825bfaa2"
+    },
+    {
+      "file": "scripts/balance-candidate.ts",
+      "sha256": "d98ccb02a94310b1445f2a6ce3044deea7522f9960e1a90e30868abfe1f7ff5e"
+    },
+    {
+      "file": "scripts/report-v02.mjs",
+      "sha256": "24f1c03da7ea16f98a3a45d0ba8b3889ca66d6cc81c2f688ca74d2a19153478a"
+    },
+    {
+      "file": "scripts/verify-engine-populations.ts",
+      "sha256": "e774c5f0332b505a227bdc87d48f779790014fc1700b13fb9f072b6f6a6520de"
+    },
+    {
+      "file": "scripts/verify-v02-responsive.mjs",
+      "sha256": "ad310d4591717f6840b9253b10888ff6380cec99b904544053e7246589081d39"
+    },
+    {
+      "file": ".dockerignore",
+      "sha256": "ecb21059ec8e0a460511e5b06a85c67cd2368375f33502d9faac3c651d39ee32"
+    },
+    {
+      "file": ".env.example",
+      "sha256": "da940150e5d1d901bf620d4b4f3c1fdba70cdf24d19119c139b7b149a225f8f1"
+    },
+    {
+      "file": ".gitattributes",
+      "sha256": "38da4ade0c61686ef0c99306feebf9178d31a7621c829e44f7f4196bf27c1f37"
+    },
+    {
+      "file": ".github/workflows/validate.yml",
+      "sha256": "c5e6760f7651f736bca30d3a2a225a3dcb4e2275c3189d5903aea8180f14645f"
+    },
+    {
+      "file": ".gitignore",
+      "sha256": "25a3b8d921f3e5cbe34769005d8be0c5965764f9cb4dba1cacdef17b0507cf79"
+    },
+    {
+      "file": ".nvmrc",
+      "sha256": "7e8a2fa94951112b894a3dbe3d05efef5e9263741fa49125f0a70f40fedab4cc"
+    },
+    {
+      "file": "ARCHITECTURE.md",
+      "sha256": "96d9796814d29cd567dac5601e5c0cda96c21601eeaad8087fc99372a841c85c"
+    },
+    {
+      "file": "BALANCE_CHANGELOG.md",
+      "sha256": "8b645cab115312449df92382a5a60c3352d09ff5e0c156e3468a597e0a1684ba"
+    },
+    {
+      "file": "BASELINE_AUDIT.md",
+      "sha256": "b6550c7aede6be7f438b0fae18dfedaafbe7d63b0b67b14b3a289d0a9542eef7"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "sha256": "77f227af0904a7e9ccba4a2778a376e61e1fb768961fcb9a3c83dd7b05b02af2"
+    },
+    {
+      "file": "DEPLOYMENT.md",
+      "sha256": "2c74ea95b9d0b635df0ac0ad6ec13e2b8d7c0d2e62c51e2374ca79ec0be3cbd8"
+    },
+    {
+      "file": "DEPLOYMENT_REPORT.json",
+      "sha256": "905852012b80f27d21314da6a9ef6c49fd6197f4ca2580a24e5a86c0ae5589e1"
+    },
+    {
+      "file": "Dockerfile",
+      "sha256": "6f4553923e553999d6abb9768eebbf7a64a4ee5883b4e6b628db8afd3aa29f74"
+    },
+    {
+      "file": "ENGINE_CHANGELOG.md",
+      "sha256": "f459961fad4d1eedd13c219e267fffdfe6fa40072e614f76062ab98efe21c346"
+    },
+    {
+      "file": "PROGRESS.md",
+      "sha256": "a2f3c3d50fc19325762392e4becede9e2f2903fa0299ebeb7a3680123a053803"
+    },
+    {
+      "file": "README.md",
+      "sha256": "38deadea0d7107130eee6689adcdc0d357cdc91c70752dcd1d8704df180d14bb"
+    },
+    {
+      "file": "TEST_REPORT.md",
+      "sha256": "f744ea856175fa7f82c900a5765aa087fbeef96b2f09fd93242c722e32f51c38"
+    },
+    {
+      "file": "assets/art-source/source-lock.json",
+      "sha256": "8f583c9f94284d04fc3e91ccc52ccc34805dca9bc99007d87441906a10223ffe"
+    },
+    {
+      "file": "assets/source/asset-motion/motion-catalog.json",
+      "sha256": "07ac0b3365b43f79cf1a9ce94af80435d2df960f22308c822b27ace7f95513e1"
+    },
+    {
+      "file": "assets/source/asset-motion/source-regions.json",
+      "sha256": "4bbdf98e5c14156061075d5d77603f70d0dcea4ce9a7eb15f681456cfc8ce3b3"
+    },
+    {
+      "file": "assets/source/asset-static/provenance.json",
+      "sha256": "c990f085ccf97f8dbd675cb75fa2d396fd51e715901b39356f4be9a9c345262f"
+    },
+    {
+      "file": "assets/source/cc0-static/provenance.json",
+      "sha256": "8946dc9736e1fb906b201028407a5ac5f0d927154f747e786e75e8dd71530117"
+    },
+    {
+      "file": "assets/source/compact-archer.mjs",
+      "sha256": "780df19251597458707103bef65dd8cd235496ddc20ac1bddbc402c56bd3f4c9"
+    },
+    {
+      "file": "assets/source/compact-paladin.mjs",
+      "sha256": "a7450f1565f162faeb48dca92c0a8baa36e519f805e6fe3bb00989665e5437e5"
+    },
+    {
+      "file": "assets/source/compact-pixel-core.mjs",
+      "sha256": "aedcbfdbc8d1865e50ee1764ff2be77db0e0f204d05382bde96898d0850f9e78"
+    },
+    {
+      "file": "assets/source/compact-pyromancer.mjs",
+      "sha256": "30c8e360232bada99b9cbb7ddf4185bba38e04489d71cd150ddfdabebce53031"
+    },
+    {
+      "file": "assets/source/compact-sprites.mjs",
+      "sha256": "6c4ee13b011a9ed3fa169947388035ca2dfe5f08fce754ef4a130a832b4501ab"
+    },
+    {
+      "file": "assets/source/foundation-sprites.mjs",
+      "sha256": "f30618064804c659760d78121862f374defa0ba018e57733963589040645f55f"
+    },
+    {
+      "file": "assets/source/heroes.json",
+      "sha256": "9b225bf24c068500c185aaec6095b6436121b60bd6067096c8cd0f349cf5eab6"
+    },
+    {
+      "file": "assets/source/jungle-rework/provenance.json",
+      "sha256": "08e1dbd037f1ab0326399a2a592c13f47aa5668e6452d8124acc2148792fca28"
+    },
+    {
+      "file": "assets/source/poses/README.md",
+      "sha256": "5d0dc9a8d4155608f8adedb11d0f387beee5d6a12894eef0ca4e7853ab3c6733"
+    },
+    {
+      "file": "assets/source/rigs/README.md",
+      "sha256": "f88fcde957cac945ce5d99b51ab04f9b0383c5bf4f011e58d734003a40c985c4"
+    },
+    {
+      "file": "assets/source/world-assets/originals/android.anim.json",
+      "sha256": "15638fc6f73d0f02469ec730d0fba430e0f8b7a9caf27343b399187da7e2e59c"
+    },
+    {
+      "file": "assets/source/world-assets/originals/archer.anim.json",
+      "sha256": "07d7d8dd7d9ccde0489d99b2f268bc359f84f5ef84169beb859d59a67a8c534e"
+    },
+    {
+      "file": "assets/source/world-assets/originals/bard.anim.json",
+      "sha256": "87d9e9d05ab1df08adc9e96c5a7bf679eecb7c9271000f975639f0e93e2cc12d"
+    },
+    {
+      "file": "assets/source/world-assets/originals/barrier_magician.anim.json",
+      "sha256": "3834da7434b8831652d9d69c80d2a7b1d2b8ad36048c1715d3331e633700d311"
+    },
+    {
+      "file": "assets/source/world-assets/originals/berserker.anim.json",
+      "sha256": "e2e0d0dfedd4ab47ba5584bb63cfe18769b7f3c1bbacaab707b44b634ec8fb16"
+    },
+    {
+      "file": "assets/source/world-assets/originals/fighter.anim.json",
+      "sha256": "a205300e8b31a014e7d5735d46c29b52b0b783c488f595c6ca50f871ea40920e"
+    },
+    {
+      "file": "assets/source/world-assets/originals/guardian_spirit.anim.json",
+      "sha256": "c614f2778c70c62632919262100e2584257c9569986232703987004a93e384fd"
+    },
+    {
+      "file": "assets/source/world-assets/originals/hunter.anim.json",
+      "sha256": "cc588564a55f7f7c956ae5c844183331c02c7105a588a9a3f0f606d38ce7a6da"
+    },
+    {
+      "file": "assets/source/world-assets/originals/ice_mage.anim.json",
+      "sha256": "27f7a429abdc4aa8145a2a02e7996b18fe4b134fb8fdad287bb319b5deafa051"
+    },
+    {
+      "file": "assets/source/world-assets/originals/knight.anim.json",
+      "sha256": "4d8d5ab3ddd6e55455226af85c1e8c37d7f524c34fa29fa140be04deca005219"
+    },
+    {
+      "file": "assets/source/world-assets/originals/lightning_mage.anim.json",
+      "sha256": "0cb0aad5113856b0cf0178ec3a3aff9ea4e583e42da2f5931ec9705587d32a4c"
+    },
+    {
+      "file": "assets/source/world-assets/originals/monk.anim.json",
+      "sha256": "8c7961dba99d1e2303e02cad68b8c01810f3d970c45cfaa2c8f47eff4beb79ef"
+    },
+    {
+      "file": "assets/source/world-assets/originals/ninja.anim.json",
+      "sha256": "275d2c0c28a617e86ae09f222f6fae64f24e6e184e9fd7506d821fefd1178ec8"
+    },
+    {
+      "file": "assets/source/world-assets/originals/priest.anim.json",
+      "sha256": "a9bbbdf0b8615f8a8c60322dd70c45f5b0cfe03a39ab8e668ac2c1e132cf9f5d"
+    },
+    {
+      "file": "assets/source/world-assets/originals/pyromancer.anim.json",
+      "sha256": "1259644ac0d025736e1e1a03e1570527a196913a6419cf6805615b603329906b"
+    },
+    {
+      "file": "assets/source/world-assets/originals/shield_bearer.anim.json",
+      "sha256": "04a81ceedd4bf9a02ef29e24cb0f8256f922e49b0ce84db067f682fbe0a0f589"
+    },
+    {
+      "file": "assets/source/world-assets/originals/swordman.anim.json",
+      "sha256": "1a08ccfa3098b5928ca13a188d18085dfda5c7d9c3a9b5b044411ef7be1e5a52"
+    },
+    {
+      "file": "assets/source/world-assets/provenance.json",
+      "sha256": "159aec2bb646132fe9d1cc6fedbddf4a75261b73f521259b515fffa7a927b19b"
+    },
+    {
+      "file": "assets/source/world-assets/runtime.json",
+      "sha256": "a405018e92e648dab4085076d2b37009acf2f9709b3bb456cb6398150f1b74d0"
+    },
+    {
+      "file": "battle-art-lab.html",
+      "sha256": "b2493a2379d022fff2785d0ac79796227f784b8db907697fc743a05e3db72ce4"
+    },
+    {
+      "file": "deploy/compose.yaml",
+      "sha256": "4e7becbe1cc635badf1f8681226e4a70827a51204d690f88b9e66d16675c26f9"
+    },
+    {
+      "file": "deploy/public-release-check.mjs",
+      "sha256": "cfa08cabc00e5bd7afa38b4e8f6a9548c6d7717e15a4a9dcc232cb42a9175a6b"
+    },
+    {
+      "file": "docs/ACCEPTANCE_MATRIX.md",
+      "sha256": "955c91458d97263664f3370237d212b73e089f36252dc14cd2f5efa07ed7aadd"
+    },
+    {
+      "file": "docs/ART_REFERENCE.md",
+      "sha256": "a39618b1ed8bc8b750e14979fa194c69e10644a1868fd0efc5e43898492dbe8a"
+    },
+    {
+      "file": "docs/COMBAT_ACCEPTANCE.md",
+      "sha256": "9a4694d4cb817d0a204ba571db335210034df6892f400c3ad7ddaf4ac0e29c55"
+    },
+    {
+      "file": "docs/JUNGLE_REWORK.md",
+      "sha256": "ea1b47fddc9d60e2201c27e6d9b5fed6bc5b25052161ac95fc17c4b9ec806e06"
+    },
+    {
+      "file": "docs/ROOM_EDGE_AUDIT.md",
+      "sha256": "dc6ff406170b2725afcfe408840a878522e8ca7df7a849837c8682085232727d"
+    },
+    {
+      "file": "docs/SOAK_RUNBOOK.md",
+      "sha256": "4bb65a524327ebe249eb732c845e6d5616eca26a1985d75c309ff9f4724bb242"
+    },
+    {
+      "file": "docs/art/ART_STYLE_GUIDE.md",
+      "sha256": "442d9e66dcc5f7a9a50b89580f77fce383aae8d5608cca5594501dda34c74ed1"
+    },
+    {
+      "file": "docs/art/ASSET_PROVENANCE.csv",
+      "sha256": "e4633f059cbcd4daaad287466d699c64016e744a50aa6a023fdb7bff09e83c85"
+    },
+    {
+      "file": "docs/art/VISUAL_REVIEW.md",
+      "sha256": "7feb56942713dabcd66062db717acf496827ecdf0597bc156ac2210e16d08950"
+    },
+    {
+      "file": "docs/class-clash-0.2/00_USER_OVERRIDES.md",
+      "sha256": "c99420eed1ac0fe82e3da9a9af033700741915e26834f4c1b445cb36deedd764"
+    },
+    {
+      "file": "docs/class-clash-0.2/01_MASTER_SPEC.md",
+      "sha256": "7fd1eb6945306543035fffbf4a104b14be38fe30d3c11e04971c4b205602ef65"
+    },
+    {
+      "file": "docs/class-clash-0.2/02_ART_ANIMATION_VFX_UI.md",
+      "sha256": "b2da41b68f2186099d7581b61f576fc0aa5428ab56542de837f33df62faa3f04"
+    },
+    {
+      "file": "docs/class-clash-0.2/03_MATCH_ENGINE_AI.md",
+      "sha256": "8093005a61193b44809d4606c6f858a85fc180b036482d829b80023a22fedad1"
+    },
+    {
+      "file": "docs/class-clash-0.2/04_MULTIPLAYER_DEPLOYMENT.md",
+      "sha256": "c3dffec8f12d8414f0b682d783a8ac32d2aeb75058cf40402fe1cb40fb99b7dd"
+    },
+    {
+      "file": "docs/class-clash-0.2/05_TESTS_DELIVERY.md",
+      "sha256": "c06e5599eec7d0b8a509ef23de7f8025c81d11d2c4de69c208bb7f3cfd45a891"
+    },
+    {
+      "file": "docs/class-clash-0.2/06_HERO_DIRECTION.md",
+      "sha256": "841ab72150fe5fb12d685e84094129fa019d50b9cbe119d60b495e3219739f2a"
+    },
+    {
+      "file": "docs/class-clash-0.2/07_SOURCES_BASELINE.md",
+      "sha256": "1f6b1c51166df32e48363d6e79677012c647026921d87baa468db34d6d5ea991"
+    },
+    {
+      "file": "docs/class-clash-0.2/contracts/acceptance-targets.json",
+      "sha256": "a888d3b5fcbc60531152ca2438acb4afe5a6734549e2f3cab7aeb7c62a4f7501"
+    },
+    {
+      "file": "docs/class-clash-0.2/contracts/asset-contract.example.json",
+      "sha256": "2b2681488af05bf959c2da2f5a5a6d349790887b3cae08f73dfcb2a7febf4688"
+    },
+    {
+      "file": "docs/class-clash-0.2/contracts/deployment-report.template.json",
+      "sha256": "5b37809dc7e835618ed79dd32a47764505b9f052bf840864ffd0ef8c5af00057"
+    },
+    {
+      "file": "docs/class-clash-0.2/contracts/observed-baseline.json",
+      "sha256": "ca3eccc89573d8a69802a1e290e6b1f8ac412c581b03efb2c2d38f796e0de2d5"
+    },
+    {
+      "file": "docs/class-clash-0.2/contracts/requirements.effective.json",
+      "sha256": "0d7be9b418d5e7865c4dc7400cb244d0f24007cbdb3bf37e5343b3b04f5fb46e"
+    },
+    {
+      "file": "docs/class-clash-0.2/contracts/requirements.lock.json",
+      "sha256": "a8ab3358a5f2456f7511a81efa0736dd8c3c37e136d8fda4d6d8e5e271561351"
+    },
+    {
+      "file": "docs/class-clash-0.2/tests/ACCEPTANCE.csv",
+      "sha256": "5d9b19e5466c902bc0948ea5e23a8b67edc6c8226197d6e77e38b11b7f7ca33c"
+    },
+    {
+      "file": "docs/class-clash-0.2/tests/ACCEPTANCE.json",
+      "sha256": "8b94ac2ab5aa0f1b6a46d3a9cbb1b7af0d2313729c61c246494fa9fc8de0a77c"
+    },
+    {
+      "file": "docs/specification/00_CODEX_START_PROMPT.md",
+      "sha256": "493ca32ae64fb719f66c6563b82f5314d34c8e2221779f4e555405f8b5cbcafe"
+    },
+    {
+      "file": "docs/specification/01_MASTER_SPEC.md",
+      "sha256": "9b3ae07222e08b68f866ca2dbc6acd2f36db7376dfbdfcde7139a1a8cdbe4659"
+    },
+    {
+      "file": "docs/specification/02_AI_AND_COMBAT.md",
+      "sha256": "a5a563ecc65e65accf45966f85841e947e90580833e9db1faa5eddf01b9df2da"
+    },
+    {
+      "file": "docs/specification/03_HEROES_AND_PIXEL_ART.md",
+      "sha256": "37fdbd35d74e134907643ad505f6b71494745732ca1f5703cb2875008c0dbd49"
+    },
+    {
+      "file": "docs/specification/04_TECHNICAL_SPEC.md",
+      "sha256": "a87407c4bd272040da291d05521c1e23430b873242c4a094e590747f60a109f3"
+    },
+    {
+      "file": "docs/specification/05_BOTS_AND_ACCEPTANCE.md",
+      "sha256": "7626537cee6710fe81640b422cf9e93aa5e2dc9eb624af52354dcb90d9b09211"
+    },
+    {
+      "file": "docs/specification/06_IMPLEMENTATION_AND_SOURCES.md",
+      "sha256": "34e82a5c5196c1ecb5ef038cbbf5aaac0140d95e1f56faa9ef63c73c007e3328"
+    },
+    {
+      "file": "docs/specification/README.md",
+      "sha256": "df1e5d44be31103314d9e43064c37b17566fd1c24df78377b193a9b822507e4c"
+    },
+    {
+      "file": "docs/specification/SPEC_VALIDATION.md",
+      "sha256": "46c46a73964d52f4a77ab93a650de261c0f6871ab39edb894134998e95f03c10"
+    },
+    {
+      "file": "docs/specification/acceptance-matrix.csv",
+      "sha256": "acd3f1dc892bc8663c88caf58b2c248de2c1a639a55c1015b7ddff482096e957"
+    },
+    {
+      "file": "docs/specification/balance.defaults.json",
+      "sha256": "bcf48d08c14ed0f17c6d6a9c1bc75347c8ed7dfae3ee1aee81522dab02c8bc6a"
+    },
+    {
+      "file": "docs/specification/heroes.reference.json",
+      "sha256": "4973785f226382055eabae268bb45e16d2755838b5ee5883fbf8cbe9918cf722"
+    },
+    {
+      "file": "docs/specification/map-layout.svg",
+      "sha256": "41c68a0870da9f8ccd4f2303d6dda6aea48ed85347bcc6ae09f9bec3b3a1ea81"
+    },
+    {
+      "file": "index.html",
+      "sha256": "c943df0c24468b16b0f3f0d924e0db1c0ac6e11cd6e330f11d29e01dfefeb6c6"
+    },
+    {
+      "file": "package-lock.json",
+      "sha256": "3193c845a8b2ac16612691141bb13622cb38cf7c1b600ed165e9e1eac4665f3a"
+    },
+    {
+      "file": "package.json",
+      "sha256": "55808843f5eb8bbc0260214d384bbb7f57ce38833b52cb90023deb92175e2ff1"
+    },
+    {
+      "file": "playwright.config.ts",
+      "sha256": "026fc10066f8e4a8cdc95791033b0b2bfa0638fe867a5a128fd81904bb13bc60"
+    },
+    {
+      "file": "public/art-gallery.html",
+      "sha256": "6eccb4af340e7fcb044d47c566651af9405fa63dd2da1339864197513f944a3f"
+    },
+    {
+      "file": "public/assets/art-review-v3/before/archer.json",
+      "sha256": "826c9388dbfa60fcc3c2dcf5da0510d5591fdd7430d51ddf5bc8467437b24ec5"
+    },
+    {
+      "file": "public/assets/art-review-v3/before/paladin.json",
+      "sha256": "40e24ce5efdb922a9fefa2dd3b9f33e26fd4b9511808838835037edf9584231a"
+    },
+    {
+      "file": "public/assets/art-review-v3/before/pyromancer.json",
+      "sha256": "073ecac1a7bccb66a86eefee378fd56a418a744f4aa0666047c1aa5acc3f22d0"
+    },
+    {
+      "file": "public/assets/cc0-static/ancient_one.json",
+      "sha256": "d066737805273318cd9179ba04eaa8bc52afd8b1db61df21f48f1633c2882de4"
+    },
+    {
+      "file": "public/assets/cc0-static/archer.json",
+      "sha256": "d7fde4733a43f2575e69ffd45af4efa32f43b40db6d4414cf936dfd8e15e8e45"
+    },
+    {
+      "file": "public/assets/cc0-static/assassin.json",
+      "sha256": "e2f2e2b5ab454e2171c526b76f82bdaaa19d93cdb5c3ca0f3ca4cb7e49939041"
+    },
+    {
+      "file": "public/assets/cc0-static/barbarian.json",
+      "sha256": "33bbd550f15ae63538f3dded9a2b2a98e94f2e7adb0eb54b2040bbe26da05643"
+    },
+    {
+      "file": "public/assets/cc0-static/bard.json",
+      "sha256": "ca31b33ba7e1ccd3ce98c65ed89cabc4e4dda44b5bac79bb54cd64c2402d51aa"
+    },
+    {
+      "file": "public/assets/cc0-static/brawler.json",
+      "sha256": "8362da2827897906098241a72619db549521c043e1ce13eac41b99f3cf0e62ac"
+    },
+    {
+      "file": "public/assets/cc0-static/crossbowman.json",
+      "sha256": "8e3f67e28b9f4f7ace2756f119bea09e94d8b55d8e051d47520a7c24c8722b54"
+    },
+    {
+      "file": "public/assets/cc0-static/cryomancer.json",
+      "sha256": "27a1671510abb0efd768e3fe0ccf4de756cfb070e2ead159d1c8ba2cb7bc1e11"
+    },
+    {
+      "file": "public/assets/cc0-static/guardian_golem.json",
+      "sha256": "8493b5e5222d53438b303594e714e045dccaaf7a4d8d896efa07b40dc81f0174"
+    },
+    {
+      "file": "public/assets/cc0-static/guardian_spirit.json",
+      "sha256": "2a98a365f8e07121ab11076c1ea71d8b940c209425c5628acc4b325d6251cb35"
+    },
+    {
+      "file": "public/assets/cc0-static/iron_knight.json",
+      "sha256": "6bda68258163bbe7b89c6ce1cb19442757146747e86d237a50be397ad2ddb02b"
+    },
+    {
+      "file": "public/assets/cc0-static/manifest.json",
+      "sha256": "8946dc9736e1fb906b201028407a5ac5f0d927154f747e786e75e8dd71530117"
+    },
+    {
+      "file": "public/assets/cc0-static/monk.json",
+      "sha256": "97a5af29917101df94eb06d4b813173bd4e48ba394913f9c11d24dd65178f751"
+    },
+    {
+      "file": "public/assets/cc0-static/paladin.json",
+      "sha256": "be466f9991b02f2234ddf97b7706e3c1e2f0f576c47e523e4f56dfe944bc1b14"
+    },
+    {
+      "file": "public/assets/cc0-static/priest.json",
+      "sha256": "bd75db1cfdef980dd76c2475af2e097eb6c4978fbfecd40ce02a563f5c210772"
+    },
+    {
+      "file": "public/assets/cc0-static/pyromancer.json",
+      "sha256": "30b5ad25a823734c366f4e5ec351c908883dbbfa18830a7554ec8df27afbcb3c"
+    },
+    {
+      "file": "public/assets/cc0-static/rune_mage.json",
+      "sha256": "adb4dfca2134eb80b5c4ebf5843003edf32961e4196f7e925fbd02e754218b43"
+    },
+    {
+      "file": "public/assets/cc0-static/stormcaller.json",
+      "sha256": "b4a26e4f795e6ec310f120fa813db3f9af86da98edd40b3ffde40717c9e3c9dc"
+    },
+    {
+      "file": "public/assets/cc0-static/swordsman.json",
+      "sha256": "271a2cfab1041d530b21953069a2bb8df32fd8f202c31d69d4d3f80172b1e460"
+    },
+    {
+      "file": "public/assets/champions/ancient_one.json",
+      "sha256": "19a62ee3079c837016b8e7aa8a5ba8c4911434ee10cb9a38947470a4d811acd3"
+    },
+    {
+      "file": "public/assets/champions/archer.json",
+      "sha256": "45bc6328d50cc053a0cf97f57a31445aede5e022bd15f6b59429fa2f68f87834"
+    },
+    {
+      "file": "public/assets/champions/assassin.json",
+      "sha256": "df92a2b32e8dce50ccec27f48b00ac8030fa1ad6926d3163ad3db735768de8be"
+    },
+    {
+      "file": "public/assets/champions/barbarian.json",
+      "sha256": "e8bb04a431cca52d8b601562eba4fd6d5b58cb74c2379bda7d733490209c1184"
+    },
+    {
+      "file": "public/assets/champions/bard.json",
+      "sha256": "b0eb7b34b00522abeb14cec28aaa469633c85d150060e404e21bbebcfea108e3"
+    },
+    {
+      "file": "public/assets/champions/brawler.json",
+      "sha256": "a02948e853a9144673378df0317c12dba0e6aed05852ce5152d741239e64e6d3"
+    },
+    {
+      "file": "public/assets/champions/crossbowman.json",
+      "sha256": "d185a84f1194720a9f773ef6aa2305e9cd9048ebc68c47673fd5a8a09e3a3f78"
+    },
+    {
+      "file": "public/assets/champions/cryomancer.json",
+      "sha256": "ad4896d620c786d3e9d4ef1568e90b2493d58738b3a60797ef098c5660274309"
+    },
+    {
+      "file": "public/assets/champions/guardian_golem.json",
+      "sha256": "2de7398a04e74bb69851bc43aa9d0c292d7ef15a54463ab894fdec0cfd7f1dce"
+    },
+    {
+      "file": "public/assets/champions/guardian_spirit.json",
+      "sha256": "3d9325b9c7cd751db9826f7a1ef31e84d54cb5f8f91c95f0eb723829668f6c68"
+    },
+    {
+      "file": "public/assets/champions/iron_knight.json",
+      "sha256": "6407f88c843dac181cacddcaf795a1992fad1510504e091fbf018b6b5ce30c86"
+    },
+    {
+      "file": "public/assets/champions/manifest.json",
+      "sha256": "0d5347d45d57cc67969de9840ffd457961161c835f98cfdb3a0fc621c9ef89eb"
+    },
+    {
+      "file": "public/assets/champions/monk.json",
+      "sha256": "34d112ef56f7bf058eed2298c6cfc089473e292915416a8c575be198223a9576"
+    },
+    {
+      "file": "public/assets/champions/paladin.json",
+      "sha256": "c3512446a3869016ed75cf0c6f8baffe2a9d50e13c5a51c968f4c5f930116712"
+    },
+    {
+      "file": "public/assets/champions/priest.json",
+      "sha256": "7b852fa0e88db9c5e873fad5e0551c0dd9504d7f6583eed486452057ab36c7ff"
+    },
+    {
+      "file": "public/assets/champions/pyromancer.json",
+      "sha256": "b0f57c2dc05524f3cd56aa89fd6794184664bf70a7ec6a2e9485ed21b6b0a5a2"
+    },
+    {
+      "file": "public/assets/champions/rune_mage.json",
+      "sha256": "0abd206593f578ec7ac066c903ffede1c3067a31a491bff764f239c792de83d9"
+    },
+    {
+      "file": "public/assets/champions/stormcaller.json",
+      "sha256": "eb6e88064db2c7250ced466f9aa76814a0b7bd3d2bcdadc01352a38764026710"
+    },
+    {
+      "file": "public/assets/champions/swordsman.json",
+      "sha256": "8c7ef45e208f08f12b1da46ba98835157b01c06f372a1727577a25495e675ab3"
+    },
+    {
+      "file": "public/assets/heroes/ancient_one.json",
+      "sha256": "879be59ace254b25d6ee58fdcc336ebf9e12974f3b5d4a438bcb66bfa4396933"
+    },
+    {
+      "file": "public/assets/heroes/archer.json",
+      "sha256": "c69ba0561412be3439beab06b673fd2c77c594db992ce69d8bab98250ee47083"
+    },
+    {
+      "file": "public/assets/heroes/assassin.json",
+      "sha256": "4594e3618093079c80dceac635e26a314b8c9c02a3999a2b66d3fd836704bdb5"
+    },
+    {
+      "file": "public/assets/heroes/barbarian.json",
+      "sha256": "4ce46f0fdcc2eb254560abcf8aada2c5e0b5a25a629c9ecff613135befa9a1cc"
+    },
+    {
+      "file": "public/assets/heroes/bard.json",
+      "sha256": "a21b8e4f52fd37609ea2efc2fd978331c8cd7596c68fc9ae49c9ca0aac0540b0"
+    },
+    {
+      "file": "public/assets/heroes/brawler.json",
+      "sha256": "b714cd2a503990f5c66f11661aa888bfe335422a2e58238f49fc6e194f6b31d0"
+    },
+    {
+      "file": "public/assets/heroes/build-report.json",
+      "sha256": "68ade939b16592161e870eb65341928ea47acfe8d091ab6c6bad2c356b0eece5"
+    },
+    {
+      "file": "public/assets/heroes/crossbowman.json",
+      "sha256": "7955b5f96774786c94f4b7b191dc6f61b29c70b4d69a1a68e338b485e2d9b4a6"
+    },
+    {
+      "file": "public/assets/heroes/cryomancer.json",
+      "sha256": "5708c043b0556b93e5f3251f2564bab1183199f9d4950f7856f107448439a091"
+    },
+    {
+      "file": "public/assets/heroes/foundation-art-notes.json",
+      "sha256": "520162fa07bad1960a32a7e5f5a242ecad4a72dd2fd23d6cf76f123b5b62050b"
+    },
+    {
+      "file": "public/assets/heroes/foundation-raster-validation.json",
+      "sha256": "6178449824439a6014448a87c924297880f61be78df9a2725165b7d0218862a5"
+    },
+    {
+      "file": "public/assets/heroes/guardian_golem.json",
+      "sha256": "3bd13b68bc11204a35ed91c5fd480b24f2a791612ed4069333c1a9e08bf1c5d3"
+    },
+    {
+      "file": "public/assets/heroes/guardian_spirit.json",
+      "sha256": "9a4a2242bf46a212461c06e556c20f9575a1c8bc5fe4ba55eafc13db0a928a4f"
+    },
+    {
+      "file": "public/assets/heroes/iron_knight.json",
+      "sha256": "aaf1b94e56db66c2385583aa0df6d16ad31ed3b3ea767403e8b30d5c458c0deb"
+    },
+    {
+      "file": "public/assets/heroes/manifest.json",
+      "sha256": "15d9c27dbd330f8ee27db582a3e16a2f2b1a1e3e7c9f57c495678bb73992988f"
+    },
+    {
+      "file": "public/assets/heroes/monk.json",
+      "sha256": "a8029e3c693ba9343254373762b1b364c6d7ce4d400152a98b4e48981792d91a"
+    },
+    {
+      "file": "public/assets/heroes/paladin.json",
+      "sha256": "b323e94aef19827ec685310c15b0129ececd64a5ffbf2d29b30cd7a201c651e5"
+    },
+    {
+      "file": "public/assets/heroes/priest.json",
+      "sha256": "bce5363ea2d9e8ada300051b5a25532f3eac2a5e0b493c13bf910a37ab777dba"
+    },
+    {
+      "file": "public/assets/heroes/pyromancer.json",
+      "sha256": "f96f96ad0fdadd2bbe2704e30ca31de0985fa010291749b886964095c80e3c4c"
+    },
+    {
+      "file": "public/assets/heroes/rune_mage.json",
+      "sha256": "7bcba7b9de834b8868f63dfceeb9aacdcfe661d53b3fa49972568738c80fea91"
+    },
+    {
+      "file": "public/assets/heroes/stormcaller.json",
+      "sha256": "d1cb789fc11fd6dd22b0f33e2a1f63fdce821513592e39862d777a45bb418568"
+    },
+    {
+      "file": "public/assets/heroes/swordsman.json",
+      "sha256": "2e750049029d4b4b713cb48817a449da5cdebbbdc854abe7c96a95336939b11f"
+    },
+    {
+      "file": "public/assets/v2/manifest.json",
+      "sha256": "bba2f9090927e34c8c670e0d8ccc681603f07d22accffbd160de4670485f9d09"
+    },
+    {
+      "file": "public/assets/world/manifest.json",
+      "sha256": "70a2d372a6c6e72362c0b043e8b32b9f3989a54095d2d9aa8dc55efd8618cebf"
+    },
+    {
+      "file": "public/champion-review.html",
+      "sha256": "00bb2c16d4e43e84cb8e95ca3b850c9c883e69deb39e364e053cfa8aa7e94580"
+    },
+    {
+      "file": "public/native-art-review.html",
+      "sha256": "1e0e05b3b4b145fe4f6785279388fc6b10861a8c157907cb296e218711152ff8"
+    },
+    {
+      "file": "scripts/backup-database.mjs",
+      "sha256": "1845aeff5c21eb82372989c55ad7d0192d778a3605c557a99348c96668fa6c87"
+    },
+    {
+      "file": "scripts/build-sprites.mjs",
+      "sha256": "ffc233315d871cebf14dc171dc8a13200e7d8133c02803df9aede881e7b1ca69"
+    },
+    {
+      "file": "scripts/build.mjs",
+      "sha256": "6bd2db932d982695f43ae0b7c60b6000cfe6d4e0b1ed8137ac3c98c9ff62b623"
+    },
+    {
+      "file": "scripts/capture-motion-sequential.mjs",
+      "sha256": "921d72d405f71612815f5f6deebd5dd9a5f608ce2d24cbddc48466cd19cf86b1"
+    },
+    {
+      "file": "scripts/capture-static-review.mjs",
+      "sha256": "223de111b1b167b98f12543e7edf3801d2b870026dd7c62de78f3077d5fbea7a"
+    },
+    {
+      "file": "scripts/capture-v02-art.mjs",
+      "sha256": "94fb08aeb38c76b72b059149ded7e60a82b6e397448cbd3cee2251153d973c35"
+    },
+    {
+      "file": "scripts/capture-world-canvas.mjs",
+      "sha256": "b613d20b83a2c5ab335257113c9980b14e706df00cf8ac946e59277d5127c768"
+    },
+    {
+      "file": "scripts/capture-world-combat.mjs",
+      "sha256": "a3487510ba02140e19e06fefaf44340838dd44be90ef17df986a144fb6aa1ef6"
+    },
+    {
+      "file": "scripts/check-public-assets.mjs",
+      "sha256": "10bb3381a813fb7708c323e3549d24222e0c85c0bf06328af7be5648316bfcdf"
+    },
+    {
+      "file": "scripts/combat-diagnostic.ts",
+      "sha256": "e81e1b73a27eaebdfa8926757a7195a41ea3887e271196414aa86a474eb73731"
+    },
+    {
+      "file": "scripts/gpu-probe.mjs",
+      "sha256": "1db66fd34e8720063a5aa03d10c15e0bb129aa3501d130e1cd884a07788a5338"
+    },
+    {
+      "file": "scripts/import-local-assets.mjs",
+      "sha256": "aa17623981ac0d33272906575363b5fffa7fc6cd6b9202851da6e093f114ecce"
+    },
+    {
+      "file": "scripts/load-test.ts",
+      "sha256": "d719754106e4abcc558d23c7b46ed69e2e627a05ca2f8c31eaaa5c53b165f226"
+    },
+    {
+      "file": "scripts/measure-motion-room.mjs",
+      "sha256": "ce6a07a8b471bbf559b8d638146f16dbc7d3565a122dba56ebd5bd60e3885ef9"
+    },
+    {
+      "file": "scripts/measure-world-room.mjs",
+      "sha256": "95424903e5b5511e7547bc57b945e22ebba5820c5fb727fd8e7a9dc09fd0ed4a"
+    },
+    {
+      "file": "scripts/pack-art.mjs",
+      "sha256": "a17561c649ec73d7de9f4d91775e59165b4a90e29110a9c5cec09e6195b11106"
+    },
+    {
+      "file": "scripts/package-local.ps1",
+      "sha256": "60f360543c359c1acff21edcb15f161914e24fd464bb53b6730763d689de7257"
+    },
+    {
+      "file": "scripts/render-baseline.mjs",
+      "sha256": "594e02e5aa027e860b437f67ffbf82fb9055b3e432baafdd806b52e85749fc5a"
+    },
+    {
+      "file": "scripts/review-compact-art.mjs",
+      "sha256": "34ee7c531e63f6c8ddb88d78cea5aa9f708bed5c55a0e54d78739f0a641ca7da"
+    },
+    {
+      "file": "scripts/run-physical-perf.mjs",
+      "sha256": "01b591bd37e397017e12d89409a3c126c6a12b7740b9574bd9f0da51e0c5077d"
+    },
+    {
+      "file": "scripts/serve-art-review.mjs",
+      "sha256": "85e1a4d7f0588350f26dfdefaf84876b754428385a13701670cc3863bf2df236"
+    },
+    {
+      "file": "scripts/serve-motion-review.mjs",
+      "sha256": "259a6952ad37e3d136a30dbfd4a972a6fba6311418cd80d8953d6bd90ace862e"
+    },
+    {
+      "file": "scripts/serve-world-review.mjs",
+      "sha256": "b6a88615eab7927b873fd8aeda9dc621919cc94905d54d87abef41e44c28e08e"
+    },
+    {
+      "file": "scripts/simulate.ts",
+      "sha256": "316ffc86676632ef254348498284f47fe30b0bcabb2af9af3ff08a8037cda2c7"
+    },
+    {
+      "file": "scripts/soak-final-worker.mjs",
+      "sha256": "7d7c0320528bd9fff8366ba3d5a0b55e5ca14ca6915ea33033ac7571f097c7cb"
+    },
+    {
+      "file": "scripts/soak-final.mjs",
+      "sha256": "2cb473ad14f02597871a27cc99102cb7e42329684bf4ee2bbd6b425e60ad8b39"
+    },
+    {
+      "file": "scripts/soak-parallel.mjs",
+      "sha256": "3f38050c707306abe9e452fe435df2043c768eb2f4077ce2c9cf2b28f06b0cd4"
+    },
+    {
+      "file": "scripts/soak-test.ts",
+      "sha256": "0c188ae78f65954a98ab916c2cf339b5fe07e89bef06600084c81bbfb750002e"
+    },
+    {
+      "file": "scripts/test-art-preservation.mjs",
+      "sha256": "d3033086b29522a64034c7a9381052d50a97dc686ea430546e48b2579eb2c0dd"
+    },
+    {
+      "file": "scripts/test-source.mjs",
+      "sha256": "7681be9996c12c7048dc7622037530dd06a1a526ea5f709ef8521b266ef1621b"
+    },
+    {
+      "file": "scripts/transport-diagnostic.mjs",
+      "sha256": "4aa09d12edebbea5646d52ea97a49cdcae547de06054e857b5fe34a1fe3fb275"
+    },
+    {
+      "file": "scripts/validate-art.mjs",
+      "sha256": "c4fc7b077d31714888cf62a0efaff8a48488ea590ab9a5ecf7710ac0c21f62df"
+    },
+    {
+      "file": "scripts/validate-rework-assets.mjs",
+      "sha256": "9484331f4ee6764f9a3de8a775f1659b7a01b1ef1901f05b3d9942ee9db70e67"
+    },
+    {
+      "file": "scripts/verify-art-diagnostics.mjs",
+      "sha256": "09be22ec04d613c597a59f8d8dbda0a2fe7321a1e6d623d6e7cae192d9153e2c"
+    },
+    {
+      "file": "scripts/verify-art-rework.mjs",
+      "sha256": "15cff4f97fa2b809babba6486fbd6022c089b2f58cc767404d910945f9d3e50d"
+    },
+    {
+      "file": "scripts/verify-asset-motion.mjs",
+      "sha256": "07887178a8ed0b8e897f89730129e4d6e180ada01ebc78117f7ccbf6cbeec779"
+    },
+    {
+      "file": "scripts/verify-motion-viewers.mjs",
+      "sha256": "0c56ccda3b42b999e6612d27437c8eade0c84b9beeb0e3fdf7e5ca312d36da54"
+    },
+    {
+      "file": "scripts/verify-v02-realtime.mjs",
+      "sha256": "21b9fca2a57ce21f4d37fba9d7fbaa932ee034bf74c6769a3e6a0774049fb182"
+    },
+    {
+      "file": "scripts/verify-world-render.mjs",
+      "sha256": "39b056185f5fa77d1cab5c71064e87d7cb7f105ed6682177d7f31e205b96fb8b"
+    },
+    {
+      "file": "scripts/verify-world-review.mjs",
+      "sha256": "33ac16b51253ef324c7cb03797802e8f485d6ad4274a7bea70f1d71368a59c8c"
+    },
+    {
+      "file": "scripts/visual-spot-check.mjs",
+      "sha256": "f4bccff5b17429cef921b2b87710267052d9682cc67689ed5b65020bbd9703e0"
+    },
+    {
+      "file": "scripts/write-build-info.mjs",
+      "sha256": "6ac698830e8abceef9f8da6edc54e1919400bd9cef56a6f541d54dd0e7d0daf1"
+    },
+    {
+      "file": "src/client/art-contract.ts",
+      "sha256": "2f66fee02c5cfd2e17f59fd59eb34f212a92393a61a3e22ca811bb346f7a315c"
+    },
+    {
+      "file": "src/client/art-lab-fixture.ts",
+      "sha256": "2b59d69888613ef3470e654a9bd27e8e07a9149d11abf0fedf33aab6d7516d2e"
+    },
+    {
+      "file": "src/client/art-lab.css",
+      "sha256": "da8c2bddd4e8a15cade8b83e7d0b92e15e7d3e417a6eeae26ec19f45ce04be8d"
+    },
+    {
+      "file": "src/client/art-lab.ts",
+      "sha256": "9ae026fe7fc95a44c3ddc331068b5b98c2534aadef1b5bdb1c9d70dc826f4ddd"
+    },
+    {
+      "file": "src/client/champion-animation.ts",
+      "sha256": "2d58bf5d508577062721695a5eb546dc4a1a74a0ed847e20e21b6c5174498f13"
+    },
+    {
+      "file": "src/client/combat-audio.ts",
+      "sha256": "67fecc1acf89d7cd74c2ad68daaee8be31d443bbe83ca81f15a32fefe87eb930"
+    },
+    {
+      "file": "src/client/event-playback.ts",
+      "sha256": "3b578dd40c11479d9b9bbca2ac7295e418115ca4fae95baa623b89b6ac940bb0"
+    },
+    {
+      "file": "src/client/hero-animation.ts",
+      "sha256": "ad5ecac3c2de29e56661afa9d1e1f389b5bdda39e8bc96f3f3115f6ee6cbb2b6"
+    },
+    {
+      "file": "src/client/hero-atlas.ts",
+      "sha256": "ced725d4797fccd639769a0f940bb419ff68123c67d22b54666d6991e5bac03d"
+    },
+    {
+      "file": "src/client/host-inspector.ts",
+      "sha256": "a58e7b453b8bf3d7348f66799baad54c3a40c3568ffd2f32e40ae2aa67b1944f"
+    },
+    {
+      "file": "src/client/main.ts",
+      "sha256": "960f61fc6bfb16fa4642b774aec8e7634713e4cb5b8d99ffc06bcbd53bae3962"
+    },
+    {
+      "file": "src/client/minimap.ts",
+      "sha256": "3b63f13d4dc6977b7b8b791a2d6c39c9cb4675e7165fd895707361b7dab537bb"
+    },
+    {
+      "file": "src/client/monster-art.ts",
+      "sha256": "2c4e36a934abd35b0ce0f49fcdfef65d58b74d790490e557f71ed72b5da602f0"
+    },
+    {
+      "file": "src/client/quiz-feedback.ts",
+      "sha256": "c0c8ac6bab155007d66d0013b72551e6df81114e667e685ba3a626adf9009c2c"
+    },
+    {
+      "file": "src/client/renderer.ts",
+      "sha256": "831ac97f2912eb28524b3f1f68ecf320cbe89c033f83143631644ef84e8745e9"
+    },
+    {
+      "file": "src/client/snapshot-order.ts",
+      "sha256": "df84436873637946efaddff9b2abccd6f2b8608a0c1580ac7dda3ca82ece668a"
+    },
+    {
+      "file": "src/client/style.css",
+      "sha256": "6ce679d8851b7450b3f6ba16d6ce8b57a6d390b9939d54fd0a0c47602be035fb"
+    },
+    {
+      "file": "src/client/vite-env.d.ts",
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
+    },
+    {
+      "file": "src/client/world-art.ts",
+      "sha256": "2862f8d6ba9e5d1745354a7df54dbd415c4bca670e5a4f1fca6f8034f2cc56e7"
+    },
+    {
+      "file": "src/generated/art-manifest.json",
+      "sha256": "bba2f9090927e34c8c670e0d8ccc681603f07d22accffbd160de4670485f9d09"
+    },
+    {
+      "file": "src/server/awards.ts",
+      "sha256": "35a3f9eaab20f18a6abdbb37cb5db7e69357bd7aae6618e35d34834363902f70"
+    },
+    {
+      "file": "src/server/build-info.ts",
+      "sha256": "308dc140de2626b097e62122b1f3cc566d1ae2f95f9766c4ed9b90b2709b4855"
+    },
+    {
+      "file": "src/server/combat-geometry.ts",
+      "sha256": "0e3b70539581f2da933703eeaa58f016b6b96e8c805c4bce18d77f15437243d5"
+    },
+    {
+      "file": "src/server/combat.ts",
+      "sha256": "218183b28bc238d625f825554557d5a04cff97977dee653bc9bcec4f99d66773"
+    },
+    {
+      "file": "src/server/errors.ts",
+      "sha256": "f3e1276695d80f21ab1a71cfbe609686512bacf9560fa14eb55e1b7565837291"
+    },
+    {
+      "file": "src/server/heartbeat.ts",
+      "sha256": "26c1f88cf1add6a37c492d22eb7c23116009f973e8413caf60d51b9c432ce26f"
+    },
+    {
+      "file": "src/server/index.ts",
+      "sha256": "b780ff267c6e223043649df1d832cf728eda8df5fa6ca277392090c5ba63f2de"
+    },
+    {
+      "file": "src/server/jungle.ts",
+      "sha256": "a863d0ebc14bcdd690c987dd19044b41dbbad8b3328cb81bfb4f42a4ee3270e9"
+    },
+    {
+      "file": "src/server/production-config.ts",
+      "sha256": "f834378a64e722eb1a91f1890097ff095b390933d71b785e3e76bd6ed4d79471"
+    },
+    {
+      "file": "src/server/quiz.ts",
+      "sha256": "61b7394637b5a1059851061314eee16c52caff3142219ebc9dba752cc8b950ed"
+    },
+    {
+      "file": "src/server/room.ts",
+      "sha256": "5a72ced41dfccc7d36ceb50bdc38602b5724b21087eb40ee98298ceb9afee1b1"
+    },
+    {
+      "file": "src/server/storage.ts",
+      "sha256": "3cb5e516b6dcdb9b156b62ac7434a26a9f9e95ab6a9dc81e2a0c547bc2649730"
+    },
+    {
+      "file": "src/server/versions.ts",
+      "sha256": "95d6ded763bee2faf9c33b04bcd34548d92a819e94a7d794df5092c5e39fecf8"
+    },
+    {
+      "file": "src/shared/balance.ts",
+      "sha256": "93219b5b0e5906c05cb31c1b3ed81119ec3289dab9cd968f58d987cf7913bbd2"
+    },
+    {
+      "file": "src/shared/battle-map.ts",
+      "sha256": "c505b0eb194376998f9c418561e09d5ac5f264c500f07731b38601205d23ffca"
+    },
+    {
+      "file": "src/shared/bot-balance.ts",
+      "sha256": "5889994587de1439a255f8880d0e05b511f4c7c560460c366c63d203ef2a567e"
+    },
+    {
+      "file": "src/shared/champion-art.json",
+      "sha256": "0d5347d45d57cc67969de9840ffd457961161c835f98cfdb3a0fc621c9ef89eb"
+    },
+    {
+      "file": "src/shared/combat-types.ts",
+      "sha256": "c8889036891dae8459398ab1dc5fca7af1a88ec0d639d845a1cf61d646468540"
+    },
+    {
+      "file": "src/shared/engine-tactics.ts",
+      "sha256": "1d07c81ca6ca9928f555d69d1bae65a3ba38fe6c4a3657042ac7234b3ed656c8"
+    },
+    {
+      "file": "src/shared/heroes.ts",
+      "sha256": "c221f885c62141d3b7fcb75037642e99d094c3d6b09fdcc01890e3371b0ded9e"
+    },
+    {
+      "file": "src/shared/jungle-balance.ts",
+      "sha256": "44d1ce07a6b92ccd6f2ea9a5cfea5b2aa93f7867a96505775c2df938e2606b74"
+    },
+    {
+      "file": "src/shared/random.ts",
+      "sha256": "4e2464f2cd6bc248e61dcd2df549eb3d3487e7c65cfe10d2613bff3a717e8f57"
+    },
+    {
+      "file": "src/shared/types.ts",
+      "sha256": "80125a79d4249fe14da39cb03175c0e4458523a3f4fc60dcbfebbecde26bf4d9"
+    },
+    {
+      "file": "start-local.cmd",
+      "sha256": "62bae30a9d25fd1a3af93ac64099d1e6877a0d16b243142943c80d03a844028b"
+    },
+    {
+      "file": "tests/acceptance-extra.test.ts",
+      "sha256": "43e909b1d2a60fb8199b3802b82d53cafa484bb1e63f715c2d06fb5056896a61"
+    },
+    {
+      "file": "tests/art-lab.test.ts",
+      "sha256": "e7b50d21a4227c2b9987066b1dea845593263f7ad5c54945e2bbfb5d6d8fe49f"
+    },
+    {
+      "file": "tests/battle-map.test.ts",
+      "sha256": "0d58def6be6a726b77be6f116f472f171898067f02ad9bc5cdbda7d1285b4fb9"
+    },
+    {
+      "file": "tests/bot-distributions.test.ts",
+      "sha256": "72930a6d21cac7f2d4aaccb5edf744559db0ce3a733f95ea613a3b9f14c8c83a"
+    },
+    {
+      "file": "tests/build-identity.test.ts",
+      "sha256": "73db8ec3e65437a6bbea5b72f2c55f3d7d56fa23a5e0eb93ceb37328a49942df"
+    },
+    {
+      "file": "tests/client-animation.test.ts",
+      "sha256": "35dbbb4a269a3c3f7390e19183e578cf33ccb77d82469bfec7bbbff1a6f39af1"
+    },
+    {
+      "file": "tests/client-event-playback.test.ts",
+      "sha256": "9ee2077587b329f389c58eb0fba27ffe467c5055458e8f063ac90043289dfc68"
+    },
+    {
+      "file": "tests/client-quiz-feedback.test.ts",
+      "sha256": "74c0761b4bb964d1d339003abbe698cdbcb833bfb1b04e27fd037104c2a28be0"
+    },
+    {
+      "file": "tests/client-snapshot-order.test.ts",
+      "sha256": "309464aa1271296ac12b0e2154ca533f0ed4209e6ef0395dd1bc2bb4225a8932"
+    },
+    {
+      "file": "tests/combat.test.ts",
+      "sha256": "4f9b904f13dd8b5e1894c2c6091fcfb2c2f1b817b1bd5851031b31a028b0b470"
+    },
+    {
+      "file": "tests/command-batch.test.ts",
+      "sha256": "19dbaa7866763ff715668e864c595390eb7d93e032d64209ff8bf78bce665eed"
+    },
+    {
+      "file": "tests/content.test.ts",
+      "sha256": "32fc6f15d9a0a8168811ef6de3eec72d901a7547724ee54686cb305805292a4f"
+    },
+    {
+      "file": "tests/e2e/cleanup.ts",
+      "sha256": "5b7f459d24de54333c6bc2a6da2e755d2fe8cb66cdb7043b796bb5859cba6e49"
+    },
+    {
+      "file": "tests/e2e/full-game.spec.ts",
+      "sha256": "77670247bfc509d36c5fa6dace2348d1a319690171739d6fdb91254aa677e1f8"
+    },
+    {
+      "file": "tests/e2e/jungle.config.ts",
+      "sha256": "273c780f95af2d24bfb22e8679be448fc4e9b5c78db102e854d37aa659a43594"
+    },
+    {
+      "file": "tests/e2e/jungle.spec.ts",
+      "sha256": "bab4d79f3ce1ba9b5145fd529cd9bcffba2136fd82b39b27868c8a4668725667"
+    },
+    {
+      "file": "tests/e2e/lobby-errors.spec.ts",
+      "sha256": "8a22cce896d77512045f5e2f08793802612a9d285cf20e9a5a9388e85a992153"
+    },
+    {
+      "file": "tests/e2e/performance.config.ts",
+      "sha256": "511593a0d6d48ef7d8e3049db81bb0d75520f367f2a1f9aba38989864265f125"
+    },
+    {
+      "file": "tests/e2e/ui.config.ts",
+      "sha256": "834cb5b2dfb64a0c3fc511f41fad769acc5af41dfab074227e9851cbb5ef00db"
+    },
+    {
+      "file": "tests/e2e/ui.spec.ts",
+      "sha256": "0329b2d58b8c2ea23d264a8953e2b697029bafcd85bbba89b98683c3c6002141"
+    },
+    {
+      "file": "tests/e2e/v02.config.ts",
+      "sha256": "a5fe36405ca8d10f95c943e7b5272cf6920ec7cef170b37c58280cf029fc7a04"
+    },
+    {
+      "file": "tests/e2e/v02.spec.ts",
+      "sha256": "9ce22aa20687f41c37ba9198afd0c9f68118b7567be888e142f1558a45992fb3"
+    },
+    {
+      "file": "tests/e2e/visual-performance.spec.ts",
+      "sha256": "8de95baccf5e6567f1e66a9b55dcfd7a9db21177661dc81ad281b9e2ecb37b77"
+    },
+    {
+      "file": "tests/economy-boundaries.test.ts",
+      "sha256": "057f8cda32d3998d3469ef2aed24784e3003763c7ac346b813d3d06486b8aa2b"
+    },
+    {
+      "file": "tests/heartbeat.test.ts",
+      "sha256": "452316e90c709696bbfeb064f424e742dd9c1b706be98da044bae91c8f7a15f2"
+    },
+    {
+      "file": "tests/hero-assets.test.ts",
+      "sha256": "bb7f27abaf821b2f66348d1c7d1964d29df2ce5a1aec26442236e77a91b5d419"
+    },
+    {
+      "file": "tests/hero-skills.test.ts",
+      "sha256": "86fe8824d6822314a998f49889c37df9f13335d3b6481ce8d246b83035b787dd"
+    },
+    {
+      "file": "tests/jungle.test.ts",
+      "sha256": "7a12e16392b23d9c37994a0b2335676edf7c6842696aaacc88b7608b6b62e467"
+    },
+    {
+      "file": "tests/production-security.test.ts",
+      "sha256": "39138ce3da1cda8639cc6153aae3f2ec72acdf478cf2cf13114700e513b6308f"
+    },
+    {
+      "file": "tests/room-edge.test.ts",
+      "sha256": "2229513c0d4514d44906c201d45f8a6564072e829a15f1f50e3eea9799cfbe12"
+    },
+    {
+      "file": "tests/room.test.ts",
+      "sha256": "8ce7f5d17d1d4469f58b5df6a2e16bbbf5f7854f0171457fe1a883546e057d50"
+    },
+    {
+      "file": "tests/server-write-failure.test.ts",
+      "sha256": "15be9dcd80e4dadef6600631945252cbcfc44e4986b721a7f3a14e3d91460c00"
+    },
+    {
+      "file": "tests/server.test.ts",
+      "sha256": "59d9f698264d4f2a21efdb1f5f548a0dbbbef9b556e29f3fd272d60c9a8197ee"
+    },
+    {
+      "file": "tests/storage-version.test.ts",
+      "sha256": "8a1e8a8233df668bff3080e4c34af0797fcef55853de2849bba80a4c46dca54c"
+    },
+    {
+      "file": "tests/v02-art-contract.test.ts",
+      "sha256": "55ea981c132d4f77e00b1bc5fb9c9810c64d9653e03bd8364d4ee2240803141a"
+    },
+    {
+      "file": "tests/v02-engine-scenarios.test.ts",
+      "sha256": "b27480007e5acb6a536d9ee44228321f3a36c3b38ee43cc2ed80094158db5d86"
+    },
+    {
+      "file": "tests/websocket-malformed.test.ts",
+      "sha256": "5955e008114151e5f63fc4e1fc8f7dca8888f798aec086ea2ccf1c7b8d7fc116"
+    },
+    {
+      "file": "tests/world-assets.test.ts",
+      "sha256": "04e11ddd30875dbe17d09ed087c74913eb30db49b673710b5a31c41e007209ef"
+    },
+    {
+      "file": "tsconfig.json",
+      "sha256": "f30ea364fe4a8363ea8267f2bd6a0e548418f1e4abd01a18a8bff1aa3d8c25f5"
+    },
+    {
+      "file": "vite.config.ts",
+      "sha256": "46682f84cfd04b05bf33234b93e10687eeaa9aea0a8649663d90216823931996"
+    }
+  ]
+}

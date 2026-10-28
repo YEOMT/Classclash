@@ -1,1 +1,899 @@
-{"heroId":"priest","atlasVersion":1,"image":"/assets/heroes/priest.png","logicalSize":[64,64],"pivot":[32,52],"worldBodySize":[32,40],"directions":["S","SE","E","NE","N","NW","W","SW"],"sockets":{"S":{"hand":[36,38],"offHand":[28,37],"foot":[32,52],"projectile":[36,39]},"SE":{"hand":[37,37],"offHand":[27,37],"foot":[32,52],"projectile":[43,37]},"E":{"hand":[39,35],"offHand":[25,35],"foot":[32,52],"projectile":[47,33]},"NE":{"hand":[37,33],"offHand":[27,35],"foot":[32,52],"projectile":[43,29]},"N":{"hand":[36,32],"offHand":[28,35],"foot":[32,52],"projectile":[36,27]},"NW":{"hand":[27,33],"offHand":[37,35],"foot":[32,52],"projectile":[21,29]},"W":{"hand":[25,35],"offHand":[39,35],"foot":[32,52],"projectile":[17,33]},"SW":{"hand":[27,37],"offHand":[37,37],"foot":[32,52],"projectile":[21,37]}},"animations":{"idle.S":{"frames":[{"x":0,"y":0,"w":64,"h":64},{"x":512,"y":0,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"idle.SE":{"frames":[{"x":64,"y":0,"w":64,"h":64},{"x":576,"y":0,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"idle.E":{"frames":[{"x":128,"y":0,"w":64,"h":64},{"x":640,"y":0,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"idle.NE":{"frames":[{"x":192,"y":0,"w":64,"h":64},{"x":704,"y":0,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"idle.N":{"frames":[{"x":256,"y":0,"w":64,"h":64},{"x":768,"y":0,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"idle.NW":{"frames":[{"x":320,"y":0,"w":64,"h":64},{"x":832,"y":0,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"idle.W":{"frames":[{"x":384,"y":0,"w":64,"h":64},{"x":896,"y":0,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"idle.SW":{"frames":[{"x":448,"y":0,"w":64,"h":64},{"x":960,"y":0,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"walk.S":{"frames":[{"x":0,"y":64,"w":64,"h":64},{"x":512,"y":64,"w":64,"h":64},{"x":0,"y":128,"w":64,"h":64},{"x":512,"y":128,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"walk.SE":{"frames":[{"x":64,"y":64,"w":64,"h":64},{"x":576,"y":64,"w":64,"h":64},{"x":64,"y":128,"w":64,"h":64},{"x":576,"y":128,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"walk.E":{"frames":[{"x":128,"y":64,"w":64,"h":64},{"x":640,"y":64,"w":64,"h":64},{"x":128,"y":128,"w":64,"h":64},{"x":640,"y":128,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"walk.NE":{"frames":[{"x":192,"y":64,"w":64,"h":64},{"x":704,"y":64,"w":64,"h":64},{"x":192,"y":128,"w":64,"h":64},{"x":704,"y":128,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"walk.N":{"frames":[{"x":256,"y":64,"w":64,"h":64},{"x":768,"y":64,"w":64,"h":64},{"x":256,"y":128,"w":64,"h":64},{"x":768,"y":128,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"walk.NW":{"frames":[{"x":320,"y":64,"w":64,"h":64},{"x":832,"y":64,"w":64,"h":64},{"x":320,"y":128,"w":64,"h":64},{"x":832,"y":128,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"walk.W":{"frames":[{"x":384,"y":64,"w":64,"h":64},{"x":896,"y":64,"w":64,"h":64},{"x":384,"y":128,"w":64,"h":64},{"x":896,"y":128,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"walk.SW":{"frames":[{"x":448,"y":64,"w":64,"h":64},{"x":960,"y":64,"w":64,"h":64},{"x":448,"y":128,"w":64,"h":64},{"x":960,"y":128,"w":64,"h":64}],"loop":true,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"basicAttack.S":{"frames":[{"x":0,"y":192,"w":64,"h":64},{"x":512,"y":192,"w":64,"h":64},{"x":0,"y":256,"w":64,"h":64},{"x":512,"y":256,"w":64,"h":64},{"x":0,"y":320,"w":64,"h":64},{"x":512,"y":320,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"basicAttack.SE":{"frames":[{"x":64,"y":192,"w":64,"h":64},{"x":576,"y":192,"w":64,"h":64},{"x":64,"y":256,"w":64,"h":64},{"x":576,"y":256,"w":64,"h":64},{"x":64,"y":320,"w":64,"h":64},{"x":576,"y":320,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"basicAttack.E":{"frames":[{"x":128,"y":192,"w":64,"h":64},{"x":640,"y":192,"w":64,"h":64},{"x":128,"y":256,"w":64,"h":64},{"x":640,"y":256,"w":64,"h":64},{"x":128,"y":320,"w":64,"h":64},{"x":640,"y":320,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"basicAttack.NE":{"frames":[{"x":192,"y":192,"w":64,"h":64},{"x":704,"y":192,"w":64,"h":64},{"x":192,"y":256,"w":64,"h":64},{"x":704,"y":256,"w":64,"h":64},{"x":192,"y":320,"w":64,"h":64},{"x":704,"y":320,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"basicAttack.N":{"frames":[{"x":256,"y":192,"w":64,"h":64},{"x":768,"y":192,"w":64,"h":64},{"x":256,"y":256,"w":64,"h":64},{"x":768,"y":256,"w":64,"h":64},{"x":256,"y":320,"w":64,"h":64},{"x":768,"y":320,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"basicAttack.NW":{"frames":[{"x":320,"y":192,"w":64,"h":64},{"x":832,"y":192,"w":64,"h":64},{"x":320,"y":256,"w":64,"h":64},{"x":832,"y":256,"w":64,"h":64},{"x":320,"y":320,"w":64,"h":64},{"x":832,"y":320,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"basicAttack.W":{"frames":[{"x":384,"y":192,"w":64,"h":64},{"x":896,"y":192,"w":64,"h":64},{"x":384,"y":256,"w":64,"h":64},{"x":896,"y":256,"w":64,"h":64},{"x":384,"y":320,"w":64,"h":64},{"x":896,"y":320,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"basicAttack.SW":{"frames":[{"x":448,"y":192,"w":64,"h":64},{"x":960,"y":192,"w":64,"h":64},{"x":448,"y":256,"w":64,"h":64},{"x":960,"y":256,"w":64,"h":64},{"x":448,"y":320,"w":64,"h":64},{"x":960,"y":320,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill1.S":{"frames":[{"x":0,"y":384,"w":64,"h":64},{"x":512,"y":384,"w":64,"h":64},{"x":0,"y":448,"w":64,"h":64},{"x":512,"y":448,"w":64,"h":64},{"x":0,"y":512,"w":64,"h":64},{"x":512,"y":512,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill1.SE":{"frames":[{"x":64,"y":384,"w":64,"h":64},{"x":576,"y":384,"w":64,"h":64},{"x":64,"y":448,"w":64,"h":64},{"x":576,"y":448,"w":64,"h":64},{"x":64,"y":512,"w":64,"h":64},{"x":576,"y":512,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill1.E":{"frames":[{"x":128,"y":384,"w":64,"h":64},{"x":640,"y":384,"w":64,"h":64},{"x":128,"y":448,"w":64,"h":64},{"x":640,"y":448,"w":64,"h":64},{"x":128,"y":512,"w":64,"h":64},{"x":640,"y":512,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill1.NE":{"frames":[{"x":192,"y":384,"w":64,"h":64},{"x":704,"y":384,"w":64,"h":64},{"x":192,"y":448,"w":64,"h":64},{"x":704,"y":448,"w":64,"h":64},{"x":192,"y":512,"w":64,"h":64},{"x":704,"y":512,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill1.N":{"frames":[{"x":256,"y":384,"w":64,"h":64},{"x":768,"y":384,"w":64,"h":64},{"x":256,"y":448,"w":64,"h":64},{"x":768,"y":448,"w":64,"h":64},{"x":256,"y":512,"w":64,"h":64},{"x":768,"y":512,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill1.NW":{"frames":[{"x":320,"y":384,"w":64,"h":64},{"x":832,"y":384,"w":64,"h":64},{"x":320,"y":448,"w":64,"h":64},{"x":832,"y":448,"w":64,"h":64},{"x":320,"y":512,"w":64,"h":64},{"x":832,"y":512,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill1.W":{"frames":[{"x":384,"y":384,"w":64,"h":64},{"x":896,"y":384,"w":64,"h":64},{"x":384,"y":448,"w":64,"h":64},{"x":896,"y":448,"w":64,"h":64},{"x":384,"y":512,"w":64,"h":64},{"x":896,"y":512,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill1.SW":{"frames":[{"x":448,"y":384,"w":64,"h":64},{"x":960,"y":384,"w":64,"h":64},{"x":448,"y":448,"w":64,"h":64},{"x":960,"y":448,"w":64,"h":64},{"x":448,"y":512,"w":64,"h":64},{"x":960,"y":512,"w":64,"h":64}],"loop":false,"windupFrames":[0,1],"impactFrame":2,"recoveryFrames":[2,3,4,5],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill2.S":{"frames":[{"x":0,"y":576,"w":64,"h":64},{"x":512,"y":576,"w":64,"h":64},{"x":0,"y":640,"w":64,"h":64},{"x":512,"y":640,"w":64,"h":64},{"x":0,"y":704,"w":64,"h":64},{"x":512,"y":704,"w":64,"h":64},{"x":0,"y":768,"w":64,"h":64},{"x":512,"y":768,"w":64,"h":64}],"loop":false,"windupFrames":[0,1,2],"impactFrame":3,"recoveryFrames":[3,4,5,6,7],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill2.SE":{"frames":[{"x":64,"y":576,"w":64,"h":64},{"x":576,"y":576,"w":64,"h":64},{"x":64,"y":640,"w":64,"h":64},{"x":576,"y":640,"w":64,"h":64},{"x":64,"y":704,"w":64,"h":64},{"x":576,"y":704,"w":64,"h":64},{"x":64,"y":768,"w":64,"h":64},{"x":576,"y":768,"w":64,"h":64}],"loop":false,"windupFrames":[0,1,2],"impactFrame":3,"recoveryFrames":[3,4,5,6,7],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill2.E":{"frames":[{"x":128,"y":576,"w":64,"h":64},{"x":640,"y":576,"w":64,"h":64},{"x":128,"y":640,"w":64,"h":64},{"x":640,"y":640,"w":64,"h":64},{"x":128,"y":704,"w":64,"h":64},{"x":640,"y":704,"w":64,"h":64},{"x":128,"y":768,"w":64,"h":64},{"x":640,"y":768,"w":64,"h":64}],"loop":false,"windupFrames":[0,1,2],"impactFrame":3,"recoveryFrames":[3,4,5,6,7],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill2.NE":{"frames":[{"x":192,"y":576,"w":64,"h":64},{"x":704,"y":576,"w":64,"h":64},{"x":192,"y":640,"w":64,"h":64},{"x":704,"y":640,"w":64,"h":64},{"x":192,"y":704,"w":64,"h":64},{"x":704,"y":704,"w":64,"h":64},{"x":192,"y":768,"w":64,"h":64},{"x":704,"y":768,"w":64,"h":64}],"loop":false,"windupFrames":[0,1,2],"impactFrame":3,"recoveryFrames":[3,4,5,6,7],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill2.N":{"frames":[{"x":256,"y":576,"w":64,"h":64},{"x":768,"y":576,"w":64,"h":64},{"x":256,"y":640,"w":64,"h":64},{"x":768,"y":640,"w":64,"h":64},{"x":256,"y":704,"w":64,"h":64},{"x":768,"y":704,"w":64,"h":64},{"x":256,"y":768,"w":64,"h":64},{"x":768,"y":768,"w":64,"h":64}],"loop":false,"windupFrames":[0,1,2],"impactFrame":3,"recoveryFrames":[3,4,5,6,7],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill2.NW":{"frames":[{"x":320,"y":576,"w":64,"h":64},{"x":832,"y":576,"w":64,"h":64},{"x":320,"y":640,"w":64,"h":64},{"x":832,"y":640,"w":64,"h":64},{"x":320,"y":704,"w":64,"h":64},{"x":832,"y":704,"w":64,"h":64},{"x":320,"y":768,"w":64,"h":64},{"x":832,"y":768,"w":64,"h":64}],"loop":false,"windupFrames":[0,1,2],"impactFrame":3,"recoveryFrames":[3,4,5,6,7],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill2.W":{"frames":[{"x":384,"y":576,"w":64,"h":64},{"x":896,"y":576,"w":64,"h":64},{"x":384,"y":640,"w":64,"h":64},{"x":896,"y":640,"w":64,"h":64},{"x":384,"y":704,"w":64,"h":64},{"x":896,"y":704,"w":64,"h":64},{"x":384,"y":768,"w":64,"h":64},{"x":896,"y":768,"w":64,"h":64}],"loop":false,"windupFrames":[0,1,2],"impactFrame":3,"recoveryFrames":[3,4,5,6,7],"events":[{"name":"release","serverBoundary":"impactTick"}]},"skill2.SW":{"frames":[{"x":448,"y":576,"w":64,"h":64},{"x":960,"y":576,"w":64,"h":64},{"x":448,"y":640,"w":64,"h":64},{"x":960,"y":640,"w":64,"h":64},{"x":448,"y":704,"w":64,"h":64},{"x":960,"y":704,"w":64,"h":64},{"x":448,"y":768,"w":64,"h":64},{"x":960,"y":768,"w":64,"h":64}],"loop":false,"windupFrames":[0,1,2],"impactFrame":3,"recoveryFrames":[3,4,5,6,7],"events":[{"name":"release","serverBoundary":"impactTick"}]},"hurt.S":{"frames":[{"x":0,"y":832,"w":64,"h":64},{"x":512,"y":832,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"hurt.SE":{"frames":[{"x":64,"y":832,"w":64,"h":64},{"x":576,"y":832,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"hurt.E":{"frames":[{"x":128,"y":832,"w":64,"h":64},{"x":640,"y":832,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"hurt.NE":{"frames":[{"x":192,"y":832,"w":64,"h":64},{"x":704,"y":832,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"hurt.N":{"frames":[{"x":256,"y":832,"w":64,"h":64},{"x":768,"y":832,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"hurt.NW":{"frames":[{"x":320,"y":832,"w":64,"h":64},{"x":832,"y":832,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"hurt.W":{"frames":[{"x":384,"y":832,"w":64,"h":64},{"x":896,"y":832,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"hurt.SW":{"frames":[{"x":448,"y":832,"w":64,"h":64},{"x":960,"y":832,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"death.S":{"frames":[{"x":0,"y":896,"w":64,"h":64},{"x":512,"y":896,"w":64,"h":64},{"x":0,"y":960,"w":64,"h":64},{"x":512,"y":960,"w":64,"h":64},{"x":0,"y":1024,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"death.SE":{"frames":[{"x":64,"y":896,"w":64,"h":64},{"x":576,"y":896,"w":64,"h":64},{"x":64,"y":960,"w":64,"h":64},{"x":576,"y":960,"w":64,"h":64},{"x":64,"y":1024,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"death.E":{"frames":[{"x":128,"y":896,"w":64,"h":64},{"x":640,"y":896,"w":64,"h":64},{"x":128,"y":960,"w":64,"h":64},{"x":640,"y":960,"w":64,"h":64},{"x":128,"y":1024,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"death.NE":{"frames":[{"x":192,"y":896,"w":64,"h":64},{"x":704,"y":896,"w":64,"h":64},{"x":192,"y":960,"w":64,"h":64},{"x":704,"y":960,"w":64,"h":64},{"x":192,"y":1024,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"death.N":{"frames":[{"x":256,"y":896,"w":64,"h":64},{"x":768,"y":896,"w":64,"h":64},{"x":256,"y":960,"w":64,"h":64},{"x":768,"y":960,"w":64,"h":64},{"x":256,"y":1024,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"death.NW":{"frames":[{"x":320,"y":896,"w":64,"h":64},{"x":832,"y":896,"w":64,"h":64},{"x":320,"y":960,"w":64,"h":64},{"x":832,"y":960,"w":64,"h":64},{"x":320,"y":1024,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"death.W":{"frames":[{"x":384,"y":896,"w":64,"h":64},{"x":896,"y":896,"w":64,"h":64},{"x":384,"y":960,"w":64,"h":64},{"x":896,"y":960,"w":64,"h":64},{"x":384,"y":1024,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"death.SW":{"frames":[{"x":448,"y":896,"w":64,"h":64},{"x":960,"y":896,"w":64,"h":64},{"x":448,"y":960,"w":64,"h":64},{"x":960,"y":960,"w":64,"h":64},{"x":448,"y":1024,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"spawn.S":{"frames":[{"x":512,"y":1024,"w":64,"h":64},{"x":0,"y":1088,"w":64,"h":64},{"x":512,"y":1088,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"spawn.SE":{"frames":[{"x":576,"y":1024,"w":64,"h":64},{"x":64,"y":1088,"w":64,"h":64},{"x":576,"y":1088,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"spawn.E":{"frames":[{"x":640,"y":1024,"w":64,"h":64},{"x":128,"y":1088,"w":64,"h":64},{"x":640,"y":1088,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"spawn.NE":{"frames":[{"x":704,"y":1024,"w":64,"h":64},{"x":192,"y":1088,"w":64,"h":64},{"x":704,"y":1088,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"spawn.N":{"frames":[{"x":768,"y":1024,"w":64,"h":64},{"x":256,"y":1088,"w":64,"h":64},{"x":768,"y":1088,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"spawn.NW":{"frames":[{"x":832,"y":1024,"w":64,"h":64},{"x":320,"y":1088,"w":64,"h":64},{"x":832,"y":1088,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"spawn.W":{"frames":[{"x":896,"y":1024,"w":64,"h":64},{"x":384,"y":1088,"w":64,"h":64},{"x":896,"y":1088,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]},"spawn.SW":{"frames":[{"x":960,"y":1024,"w":64,"h":64},{"x":448,"y":1088,"w":64,"h":64},{"x":960,"y":1088,"w":64,"h":64}],"loop":false,"windupFrames":[],"impactFrame":2,"recoveryFrames":[],"events":[]}},"rig":"robe","motions":["staff_cast","heal_reach","prayer"]}
+{
+  "heroId": "priest",
+  "atlasVersion": 2,
+  "artRevision": "asset-motion-01",
+  "image": "/assets/heroes/priest.png",
+  "logicalSize": [
+    64,
+    64
+  ],
+  "pivot": [
+    32,
+    52
+  ],
+  "directionMode": "side-mirrored",
+  "sourceUrl": "https://github.com/hexase1-ship-it/TFM2.gg/blob/3e65bd7cf505ae6586be020869a8fcdebeb6990b/TFM2_Meta_Dashboard_v0.3.3%20%28%ED%8C%80%ED%8C%8C%EB%A7%A4.gg%29/resources/app/tfm2_meta_dashboard/assets/champions/priest.png",
+  "sourceSha256": "b21c4c74f4a42376e279c5e265e7a1233fc4ef694cb15e418c2d31b2e59ee125",
+  "license": "No asset reuse license found; user-authorized local design study",
+  "animations": {
+    "idle": {
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 64,
+          "y": 0,
+          "w": 64,
+          "h": 64
+        }
+      ],
+      "loop": true,
+      "impactFrame": null
+    },
+    "walk": {
+      "frames": [
+        {
+          "x": 128,
+          "y": 0,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 192,
+          "y": 0,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 256,
+          "y": 0,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 320,
+          "y": 0,
+          "w": 64,
+          "h": 64
+        }
+      ],
+      "loop": true,
+      "impactFrame": null
+    },
+    "basicAttack": {
+      "frames": [
+        {
+          "x": 384,
+          "y": 0,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 448,
+          "y": 0,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 0,
+          "y": 64,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 64,
+          "y": 64,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 128,
+          "y": 64,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 192,
+          "y": 64,
+          "w": 64,
+          "h": 64
+        }
+      ],
+      "loop": false,
+      "impactFrame": 2
+    },
+    "skill1": {
+      "frames": [
+        {
+          "x": 256,
+          "y": 64,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 320,
+          "y": 64,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 384,
+          "y": 64,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 448,
+          "y": 64,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 0,
+          "y": 128,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 64,
+          "y": 128,
+          "w": 64,
+          "h": 64
+        }
+      ],
+      "loop": false,
+      "impactFrame": 2
+    },
+    "skill2": {
+      "frames": [
+        {
+          "x": 128,
+          "y": 128,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 192,
+          "y": 128,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 256,
+          "y": 128,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 320,
+          "y": 128,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 384,
+          "y": 128,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 448,
+          "y": 128,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 0,
+          "y": 192,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 64,
+          "y": 192,
+          "w": 64,
+          "h": 64
+        }
+      ],
+      "loop": false,
+      "impactFrame": 3
+    },
+    "hurt": {
+      "frames": [
+        {
+          "x": 128,
+          "y": 192,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 192,
+          "y": 192,
+          "w": 64,
+          "h": 64
+        }
+      ],
+      "loop": false,
+      "impactFrame": null
+    },
+    "death": {
+      "frames": [
+        {
+          "x": 256,
+          "y": 192,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 320,
+          "y": 192,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 384,
+          "y": 192,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 448,
+          "y": 192,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 0,
+          "y": 256,
+          "w": 64,
+          "h": 64
+        }
+      ],
+      "loop": false,
+      "impactFrame": null
+    },
+    "spawn": {
+      "frames": [
+        {
+          "x": 64,
+          "y": 256,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 128,
+          "y": 256,
+          "w": 64,
+          "h": 64
+        },
+        {
+          "x": 192,
+          "y": 256,
+          "w": 64,
+          "h": 64
+        }
+      ],
+      "loop": false,
+      "impactFrame": null
+    }
+  },
+  "poses": [
+    {
+      "sourceRegionIndex": 0,
+      "sourceRect": [
+        1,
+        1,
+        20,
+        36
+      ],
+      "translation": [
+        20,
+        17
+      ],
+      "sourceCropSha256": "01e56802f503a9ed5c9391395d07c2ae4a95077b9249ddcf4049ef5ea08917ea",
+      "state": "idle",
+      "frame": 0,
+      "pose": 0
+    },
+    {
+      "sourceRegionIndex": 1,
+      "sourceRect": [
+        27,
+        1,
+        46,
+        37
+      ],
+      "translation": [
+        20,
+        16
+      ],
+      "sourceCropSha256": "bbb5d083a48cb9c58aaee4cc9705b0ab2f4bd2d354784df3a27b60f916af1d21",
+      "state": "idle",
+      "frame": 1,
+      "pose": 1
+    },
+    {
+      "sourceRegionIndex": 5,
+      "sourceRect": [
+        131,
+        1,
+        151,
+        35
+      ],
+      "translation": [
+        18,
+        18
+      ],
+      "sourceCropSha256": "0a01cdb7dc7e2adf50bd0e28f5cb90698d69de898b2906c7fd3305044fdb7d8c",
+      "state": "walk",
+      "frame": 0,
+      "pose": 2
+    },
+    {
+      "sourceRegionIndex": 7,
+      "sourceRect": [
+        183,
+        1,
+        203,
+        35
+      ],
+      "translation": [
+        18,
+        18
+      ],
+      "sourceCropSha256": "09d542d09536de7c716975d19b5e7f038e41a086c830b404c77974cdd9601f83",
+      "state": "walk",
+      "frame": 1,
+      "pose": 3
+    },
+    {
+      "sourceRegionIndex": 9,
+      "sourceRect": [
+        235,
+        1,
+        255,
+        35
+      ],
+      "translation": [
+        18,
+        18
+      ],
+      "sourceCropSha256": "0a01cdb7dc7e2adf50bd0e28f5cb90698d69de898b2906c7fd3305044fdb7d8c",
+      "state": "walk",
+      "frame": 2,
+      "pose": 4
+    },
+    {
+      "sourceRegionIndex": 11,
+      "sourceRect": [
+        287,
+        1,
+        308,
+        35
+      ],
+      "translation": [
+        17,
+        18
+      ],
+      "sourceCropSha256": "9ce6ad565b734d5e1423fc5690e90ba3f2fda2203b02ade0bc4dd7f7f559f5a9",
+      "state": "walk",
+      "frame": 3,
+      "pose": 5
+    },
+    {
+      "sourceRegionIndex": 13,
+      "sourceRect": [
+        343,
+        1,
+        377,
+        36
+      ],
+      "translation": [
+        16,
+        17
+      ],
+      "sourceCropSha256": "339cb71f8d6014640b5f8cc633b23d24dc1a1230d87c7019b8044576fde21182",
+      "state": "basicAttack",
+      "frame": 0,
+      "pose": 6
+    },
+    {
+      "sourceRegionIndex": 13,
+      "sourceRect": [
+        343,
+        1,
+        377,
+        36
+      ],
+      "translation": [
+        16,
+        17
+      ],
+      "sourceCropSha256": "339cb71f8d6014640b5f8cc633b23d24dc1a1230d87c7019b8044576fde21182",
+      "state": "basicAttack",
+      "frame": 1,
+      "pose": 7
+    },
+    {
+      "sourceRegionIndex": 14,
+      "sourceRect": [
+        392,
+        1,
+        427,
+        36
+      ],
+      "translation": [
+        18,
+        17
+      ],
+      "sourceCropSha256": "da6d6531f558ea4423f72956703a536e4460c65d4260ea99b58eae5d764b435c",
+      "state": "basicAttack",
+      "frame": 2,
+      "pose": 8
+    },
+    {
+      "sourceRegionIndex": 16,
+      "sourceRect": [
+        512,
+        1,
+        546,
+        35
+      ],
+      "translation": [
+        19,
+        18
+      ],
+      "sourceCropSha256": "d2ee54d271df644219d8992632e225a5e859ce1c28e2a57e86e00b81cec813c8",
+      "state": "basicAttack",
+      "frame": 3,
+      "pose": 9
+    },
+    {
+      "sourceRegionIndex": 17,
+      "sourceRect": [
+        571,
+        1,
+        605,
+        36
+      ],
+      "translation": [
+        19,
+        17
+      ],
+      "sourceCropSha256": "41c143b58123834895e2068d93e363d1f756364cb00083fa016a4cb8fb038dc5",
+      "state": "basicAttack",
+      "frame": 4,
+      "pose": 10
+    },
+    {
+      "sourceRegionIndex": 0,
+      "sourceRect": [
+        1,
+        1,
+        20,
+        36
+      ],
+      "translation": [
+        20,
+        17
+      ],
+      "sourceCropSha256": "01e56802f503a9ed5c9391395d07c2ae4a95077b9249ddcf4049ef5ea08917ea",
+      "state": "basicAttack",
+      "frame": 5,
+      "pose": 11
+    },
+    {
+      "sourceRegionIndex": 0,
+      "sourceRect": [
+        1,
+        1,
+        20,
+        36
+      ],
+      "translation": [
+        20,
+        17
+      ],
+      "sourceCropSha256": "01e56802f503a9ed5c9391395d07c2ae4a95077b9249ddcf4049ef5ea08917ea",
+      "state": "skill1",
+      "frame": 0,
+      "pose": 12
+    },
+    {
+      "sourceRegionIndex": 28,
+      "sourceRect": [
+        999,
+        1,
+        1017,
+        42
+      ],
+      "translation": [
+        21,
+        11
+      ],
+      "sourceCropSha256": "5fee853e9aa4d86a78a27434efb10b091e8c0e20d1c6a27cb5b6b9378fdc88bf",
+      "state": "skill1",
+      "frame": 1,
+      "pose": 13
+    },
+    {
+      "sourceRegionIndex": 30,
+      "sourceRect": [
+        1069,
+        1,
+        1093,
+        51
+      ],
+      "translation": [
+        15,
+        2
+      ],
+      "sourceCropSha256": "2f28c38479c3093e4b8080eaed7b78f99644c2dfe6ceef0dd6de9bfca18ef521",
+      "state": "skill1",
+      "frame": 2,
+      "pose": 14
+    },
+    {
+      "sourceRegionIndex": 31,
+      "sourceRect": [
+        1107,
+        1,
+        1131,
+        51
+      ],
+      "translation": [
+        15,
+        2
+      ],
+      "sourceCropSha256": "aa89fa5cd4aacaa77b5eb42bca6e76a30ebe76b04d0005dd1917f2c8f9bf7198",
+      "state": "skill1",
+      "frame": 3,
+      "pose": 15
+    },
+    {
+      "sourceRegionIndex": 34,
+      "sourceRect": [
+        1207,
+        1,
+        1224,
+        51
+      ],
+      "translation": [
+        22,
+        2
+      ],
+      "sourceCropSha256": "9fe3ce438af25c948e6f66b2ac135c8517c2c1dbfd5f896c2e2f17bd84256f4f",
+      "state": "skill1",
+      "frame": 4,
+      "pose": 16
+    },
+    {
+      "sourceRegionIndex": 0,
+      "sourceRect": [
+        1,
+        1,
+        20,
+        36
+      ],
+      "translation": [
+        20,
+        17
+      ],
+      "sourceCropSha256": "01e56802f503a9ed5c9391395d07c2ae4a95077b9249ddcf4049ef5ea08917ea",
+      "state": "skill1",
+      "frame": 5,
+      "pose": 17
+    },
+    {
+      "sourceRegionIndex": 0,
+      "sourceRect": [
+        1,
+        1,
+        20,
+        36
+      ],
+      "translation": [
+        20,
+        17
+      ],
+      "sourceCropSha256": "01e56802f503a9ed5c9391395d07c2ae4a95077b9249ddcf4049ef5ea08917ea",
+      "state": "skill2",
+      "frame": 0,
+      "pose": 18
+    },
+    {
+      "sourceRegionIndex": 37,
+      "sourceRect": [
+        1279,
+        1,
+        1296,
+        39
+      ],
+      "translation": [
+        21,
+        14
+      ],
+      "sourceCropSha256": "fbee9fdbe5bada9c67b07539a010f42e9aa06600bae3567724634c1658a6c1b9",
+      "state": "skill2",
+      "frame": 1,
+      "pose": 19
+    },
+    {
+      "sourceRegionIndex": 38,
+      "sourceRect": [
+        1311,
+        1,
+        1328,
+        52
+      ],
+      "translation": [
+        22,
+        1
+      ],
+      "sourceCropSha256": "599f834a915a15b42fa408629c94caa9ac0c3ec64816b4c2825c41fa3299380d",
+      "state": "skill2",
+      "frame": 2,
+      "pose": 20
+    },
+    {
+      "sourceRegionIndex": 39,
+      "sourceRect": [
+        1346,
+        1,
+        1369,
+        39
+      ],
+      "translation": [
+        23,
+        14
+      ],
+      "sourceCropSha256": "ce293611b223d13f1679e3ffb4b338dadbdd4e166e5577cb954e83f6bcae6b97",
+      "state": "skill2",
+      "frame": 3,
+      "pose": 21
+    },
+    {
+      "sourceRegionIndex": 40,
+      "sourceRect": [
+        1376,
+        1,
+        1409,
+        40
+      ],
+      "translation": [
+        17,
+        13
+      ],
+      "sourceCropSha256": "dedddf47aa3ec397f020540d5a4df60921437ec4b97feadbdebd8a5426de59d9",
+      "state": "skill2",
+      "frame": 4,
+      "pose": 22
+    },
+    {
+      "sourceRegionIndex": 44,
+      "sourceRect": [
+        1660,
+        1,
+        1693,
+        40
+      ],
+      "translation": [
+        19,
+        13
+      ],
+      "sourceCropSha256": "68a2e512dd48dbbbca57e817744899cecfc7e8ea0fb0625bed80a0ea97e7511a",
+      "state": "skill2",
+      "frame": 5,
+      "pose": 23
+    },
+    {
+      "sourceRegionIndex": 45,
+      "sourceRect": [
+        1700,
+        1,
+        1731,
+        39
+      ],
+      "translation": [
+        22,
+        14
+      ],
+      "sourceCropSha256": "727c6718ee667fba89df588899b288bedb0628a60c0ae564366d20e2eefac9b7",
+      "state": "skill2",
+      "frame": 6,
+      "pose": 24
+    },
+    {
+      "sourceRegionIndex": 0,
+      "sourceRect": [
+        1,
+        1,
+        20,
+        36
+      ],
+      "translation": [
+        20,
+        17
+      ],
+      "sourceCropSha256": "01e56802f503a9ed5c9391395d07c2ae4a95077b9249ddcf4049ef5ea08917ea",
+      "state": "skill2",
+      "frame": 7,
+      "pose": 25
+    },
+    {
+      "sourceRegionIndex": 19,
+      "sourceRect": [
+        749,
+        1,
+        770,
+        36
+      ],
+      "translation": [
+        22,
+        17
+      ],
+      "sourceCropSha256": "8927f2b965799a98387f38b3ea58889cc30a2cb1547b55c64b95dcf39bbdf1ac",
+      "state": "hurt",
+      "frame": 0,
+      "pose": 26
+    },
+    {
+      "sourceRegionIndex": 20,
+      "sourceRect": [
+        779,
+        1,
+        798,
+        35
+      ],
+      "translation": [
+        20,
+        18
+      ],
+      "sourceCropSha256": "3c5d416430ebee629549ab4dc008d2202297fd4f9195a0566a6e59f5c5d63a8d",
+      "state": "hurt",
+      "frame": 1,
+      "pose": 27
+    },
+    {
+      "sourceRegionIndex": 21,
+      "sourceRect": [
+        805,
+        1,
+        824,
+        35
+      ],
+      "translation": [
+        20,
+        18
+      ],
+      "sourceCropSha256": "f116d7663273a5876684ded939e224f3e7cfee25d53ff37ef0d76d2d573956b6",
+      "state": "death",
+      "frame": 0,
+      "pose": 28
+    },
+    {
+      "sourceRegionIndex": 22,
+      "sourceRect": [
+        831,
+        1,
+        850,
+        35
+      ],
+      "translation": [
+        20,
+        18
+      ],
+      "sourceCropSha256": "6829702528220f48cc62b7b335bde3ff66363d353793c21d37b021f7baef33c2",
+      "state": "death",
+      "frame": 1,
+      "pose": 29
+    },
+    {
+      "sourceRegionIndex": 23,
+      "sourceRect": [
+        857,
+        1,
+        876,
+        35
+      ],
+      "translation": [
+        19,
+        18
+      ],
+      "sourceCropSha256": "c3743e19cad699fd3d1f24f13feb5e99e17d2fbcded2487c04433c85456a4fe6",
+      "state": "death",
+      "frame": 2,
+      "pose": 30
+    },
+    {
+      "sourceRegionIndex": 25,
+      "sourceRect": [
+        909,
+        1,
+        928,
+        35
+      ],
+      "translation": [
+        19,
+        18
+      ],
+      "sourceCropSha256": "c3743e19cad699fd3d1f24f13feb5e99e17d2fbcded2487c04433c85456a4fe6",
+      "state": "death",
+      "frame": 3,
+      "pose": 31
+    },
+    {
+      "sourceRegionIndex": 27,
+      "sourceRect": [
+        961,
+        1,
+        980,
+        35
+      ],
+      "translation": [
+        19,
+        18
+      ],
+      "sourceCropSha256": "c3743e19cad699fd3d1f24f13feb5e99e17d2fbcded2487c04433c85456a4fe6",
+      "state": "death",
+      "frame": 4,
+      "pose": 32
+    },
+    {
+      "sourceRegionIndex": 0,
+      "sourceRect": [
+        1,
+        1,
+        20,
+        36
+      ],
+      "translation": [
+        20,
+        17
+      ],
+      "sourceCropSha256": "01e56802f503a9ed5c9391395d07c2ae4a95077b9249ddcf4049ef5ea08917ea",
+      "state": "spawn",
+      "frame": 0,
+      "pose": 33
+    },
+    {
+      "sourceRegionIndex": 1,
+      "sourceRect": [
+        27,
+        1,
+        46,
+        37
+      ],
+      "translation": [
+        20,
+        16
+      ],
+      "sourceCropSha256": "bbb5d083a48cb9c58aaee4cc9705b0ab2f4bd2d354784df3a27b60f916af1d21",
+      "state": "spawn",
+      "frame": 1,
+      "pose": 34
+    },
+    {
+      "sourceRegionIndex": 0,
+      "sourceRect": [
+        1,
+        1,
+        20,
+        36
+      ],
+      "translation": [
+        20,
+        17
+      ],
+      "sourceCropSha256": "01e56802f503a9ed5c9391395d07c2ae4a95077b9249ddcf4049ef5ea08917ea",
+      "state": "spawn",
+      "frame": 2,
+      "pose": 35
+    }
+  ],
+  "uniqueRasterPoses": 24
+}

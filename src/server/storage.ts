@@ -1,14 +1,18 @@
-import { DatabaseSync } from 'node:sqlite';
-import { mkdirSync } from 'node:fs';
-import { dirname } from 'node:path';
+import { DatabaseSync, backup, type StatementSync } from 'node:sqlite';
+import { mkdirSync, existsSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
 import { randomBytes } from 'node:crypto';
 import type { RoomData } from './room.js';
 import {CURRENT_VERSIONS,incompatibleVersions} from './versions.js';
+export interface DurableCommand {scope:string;actor:string;id:string;result:unknown}
+export interface LedgerCheckpoint {scope:string;actor:string;revision:number;gold:number;earned:number;spent:number}
 
 /** A command and the entire consistent room checkpoint commit in the same WAL transaction. */
 export class Storage {
   readonly db: DatabaseSync;
   readonly secret: string;
+  private readonly statements=new Map<string,StatementSync>();
+  private closed=false;
   constructor(path: string) {
     if(path!==':memory:')mkdirSync(dirname(path),{recursive:true});
     this.db=new DatabaseSync(path);
@@ -38,8 +42,8 @@ export class Storage {
     });
   }
   /** Caller excludes connected rooms. Recheck age, identity and phase before deleting. */
-  expireInactive(codes:string[]):string[]{
-    const removed:string[]=[],cutoff=Date.now()-24*60*60*1000;
+  expireInactive(codes:string[],expiryHours=24):string[]{
+    const removed:string[]=[],cutoff=Date.now()-expiryHours*60*60*1000;
     this.db.exec('BEGIN IMMEDIATE');
     try{
       for(const code of new Set(codes)){
@@ -56,14 +60,29 @@ export class Storage {
   save(room:RoomData,command?:{scope:string;actor:string;id:string;result:unknown},request?:{id:string;fingerprint:string;actor:string}){
     this.db.exec('BEGIN IMMEDIATE');
     try{
-      this.db.prepare('INSERT INTO rooms VALUES(?,?,?,?) ON CONFLICT(room_code) DO UPDATE SET state=excluded.state,updated_at=excluded.updated_at').run(room.roomCode,room.roomId,JSON.stringify(room),new Date().toISOString());
-      if(command)this.db.prepare('INSERT OR IGNORE INTO command_results VALUES(?,?,?,?)').run(command.scope,command.actor,command.id,JSON.stringify(command.result));
-      if(request)this.db.prepare('INSERT INTO requests VALUES(?,?,?,?)').run(request.id,request.fingerprint,room.roomCode,request.actor);
-      if(room.matchId){for(const p of room.players)this.db.prepare('INSERT OR IGNORE INTO economy_ledger VALUES(?,?,?,?,?,?)').run(room.matchId,p.playerId,p.ledgerRevision,p.gold,p.stats.earned,p.stats.spent);}
-      if(room.result)this.db.prepare('INSERT OR IGNORE INTO match_results VALUES(?,?)').run(room.result.matchId,JSON.stringify(room.result));
+      this.prepared('INSERT INTO rooms VALUES(?,?,?,?) ON CONFLICT(room_code) DO UPDATE SET state=excluded.state,updated_at=excluded.updated_at').run(room.roomCode,room.roomId,JSON.stringify(room),new Date().toISOString());
+      if(command)this.prepared('INSERT OR IGNORE INTO command_results VALUES(?,?,?,?)').run(command.scope,command.actor,command.id,JSON.stringify(command.result));
+      if(request)this.prepared('INSERT INTO requests VALUES(?,?,?,?)').run(request.id,request.fingerprint,room.roomCode,request.actor);
+      if(room.matchId){for(const p of room.players)this.prepared('INSERT OR IGNORE INTO economy_ledger VALUES(?,?,?,?,?,?)').run(room.matchId,p.playerId,p.ledgerRevision,p.gold,p.stats.earned,p.stats.spent);}
+      if(room.result)this.prepared('INSERT OR IGNORE INTO match_results VALUES(?,?)').run(room.result.matchId,JSON.stringify(room.result));
+      this.db.exec('COMMIT');
+    }catch(e){this.db.exec('ROLLBACK');throw e;}
+  }
+  /** Ordered commands share a durable boundary, never an early success ACK. */
+  saveCommandBatch(room:RoomData,commands:DurableCommand[],ledger:LedgerCheckpoint[]){
+    this.db.exec('BEGIN IMMEDIATE');
+    try{
+      this.prepared('INSERT INTO rooms VALUES(?,?,?,?) ON CONFLICT(room_code) DO UPDATE SET state=excluded.state,updated_at=excluded.updated_at').run(room.roomCode,room.roomId,JSON.stringify(room),new Date().toISOString());
+      for(const command of commands)this.prepared('INSERT OR IGNORE INTO command_results VALUES(?,?,?,?)').run(command.scope,command.actor,command.id,JSON.stringify(command.result));
+      for(const row of ledger)this.prepared('INSERT OR IGNORE INTO economy_ledger VALUES(?,?,?,?,?,?)').run(row.scope,row.actor,row.revision,row.gold,row.earned,row.spent);
+      if(room.result)this.prepared('INSERT OR IGNORE INTO match_results VALUES(?,?)').run(room.result.matchId,JSON.stringify(room.result));
       this.db.exec('COMMIT');
     }catch(e){this.db.exec('ROLLBACK');throw e;}
   }
   request(id:string){return this.db.prepare('SELECT * FROM requests WHERE request_id=?').get(id) as {request_id:string;fingerprint:string;room_code:string;actor_id:string}|undefined;}
-  close(){this.db.close();}
+  private prepared(sql:string){let statement=this.statements.get(sql);if(!statement){statement=this.db.prepare(sql);this.statements.set(sql,statement);}return statement;}
+  /** SQLite online backup includes committed WAL pages; never copy only the .sqlite file. */
+  async backupTo(destination:string){const target=resolve(destination);if(existsSync(target))throw new Error('Backup target already exists; choose a new filename');mkdirSync(dirname(target),{recursive:true});await backup(this.db,target);const check=new DatabaseSync(target,{readOnly:true});try{const result=check.prepare('PRAGMA integrity_check').get() as {integrity_check:string};if(result.integrity_check!=='ok')throw new Error('Backup integrity check failed');}finally{check.close();}return target;}
+  checkpoint(){this.db.exec('PRAGMA wal_checkpoint(TRUNCATE)');}
+  close(){if(this.closed)return;this.closed=true;this.db.close();}
 }
